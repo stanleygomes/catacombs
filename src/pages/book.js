@@ -125,7 +125,7 @@ export default class Book extends Component {
                 <MenuContext style={{ flex: 1 }}>
                     <View style={{ padding: 10, flexDirection: 'row', backgroundColor: '#f2f2f2' }}>
                         <View style={{ flex: 1 }}>
-                            <Item>
+                            <Item style={{borderBottomWidth: 0}}>
                                 <Icon style={{marginLeft: 10}} name="search" />
                                 <Input placeholder="Livros" onChangeText={(text) => this.filterBooks(text)} value={this.state.bookKey}/>
                             </Item>
@@ -155,7 +155,7 @@ export default class Book extends Component {
                     </View>
 
 
-                    <Content style={{flex: 1, marginLeft: 15}}>
+                    <Content style={{flex: 1}}>
 
                         {this.state.loading ?
                             <View style={general.loading}>

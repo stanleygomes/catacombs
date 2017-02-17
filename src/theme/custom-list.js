@@ -5,6 +5,13 @@ export default customList = {
 		flexDirection: 'column',
 		justifyContent: 'space-between'
 	},
+	cardFocus: {
+		backgroundColor: '#EF5350',
+	},
+	cardFocusText: {
+		color: '#fff',
+		fontWeight: 'bold'
+	},
 	line: {
 		flex: 1,
 		flexDirection: 'row',

@@ -62,7 +62,7 @@ export default class Chapter extends Component {
                     <Right></Right>
                 </Header>
 
-                <Content style={{marginLeft: 15}}>
+                <Content>
 
                     {this.state.loading ?
                         <View style={general.loading}>

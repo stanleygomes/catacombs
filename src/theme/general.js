@@ -43,7 +43,7 @@ export default general = {
 		fontSize: 16
 	},
 	header: {
-		backgroundColor: "#fff"
+		backgroundColor: '#fff'
 	},
 	headerText: {
 		color: '#444'

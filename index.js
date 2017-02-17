@@ -13,6 +13,7 @@ import Verse from './src/pages/verse';
 import Book from './src/pages/book';
 import About from './src/pages/about';
 import License from './src/pages/license';
+import Notification from './src/pages/notification';
 
 var _navigator;
 
@@ -89,6 +90,7 @@ export default class bible extends Component {
 
                 {route.name == 'About' ? (<About navigator={navigator} {...route.passProps}/>) : null }
                 {route.name == 'License' ? (<License navigator={navigator} {...route.passProps}/>) : null }
+                {route.name == 'Notification' ? (<Notification navigator={navigator} {...route.passProps}/>) : null }
                 {route.name == 'Book' ? (<Book navigator={navigator} {...route.passProps}/>) : null }
                 {route.name == 'Chapter' ? (<Chapter navigator={navigator} {...route.passProps}/>) : null }
                 {route.name == 'Verse' ? (<Verse navigator={navigator} {...route.passProps}/>) : null }
