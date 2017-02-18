@@ -39,9 +39,10 @@ export default class Verse extends Component {
     }
 
     shareVerse() {
+        let v = this.state.book + ' capítulo ' + this.state.chapter + ' versículo ' + this.state.shareActive + ':' + this.state.verses[this.state.shareActive];
         if(typeof this.state.verses[this.state.shareActive] !== 'undefined'){
             Share.share({
-                message: this.state.verses[this.state.shareActive].toString()
+                message: v.toString()
             },
             {
                 dialogTitle: 'Compartilhar versículo',
@@ -141,9 +142,8 @@ export default class Verse extends Component {
                 {
                     this.state.shareActive >= 0 ?
 
-                <View style={{paddingLeft:15, paddingRight: 15, paddingBottom: 15}}>
+                <View style={{paddingTop:15, paddingLeft:15, paddingRight: 15, paddingBottom: 15}}>
                     <Button block rounded style={{backgroundColor: '#EF5350'}} onPress={() => this.shareVerse()}>
-                        <Icon name="share" />
                         <Text>COMPARTILHAR VERSÍCULO</Text>
                     </Button>
                 </View>

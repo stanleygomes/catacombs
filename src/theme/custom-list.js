@@ -6,10 +6,9 @@ export default customList = {
 		justifyContent: 'space-between'
 	},
 	cardFocus: {
-		backgroundColor: '#EF5350',
+		backgroundColor: '#f2f2f2',
 	},
 	cardFocusText: {
-		color: '#fff',
 		fontWeight: 'bold'
 	},
 	line: {

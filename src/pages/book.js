@@ -98,8 +98,8 @@ export default class Book extends Component {
         if(option == 'license'){
             this._navigate('License', {});
         }
-        if(option == 'lecture'){
-            this._navigate('Lecture', {});
+        if(option == 'notification'){
+            this._navigate('Notification', {});
         }
         if(option == 'language'){
             AsyncStorage.setItem('language', '');
@@ -138,7 +138,7 @@ export default class Book extends Component {
                                 <MenuOption value={'language'}>
                                     <Text style={{fontSize: 20}}>Trocar idioma</Text>
                                 </MenuOption>
-                                <MenuOption value={'lecture'}>
+                                <MenuOption value={'notification'}>
                                     <Text style={{fontSize: 20}}>Leitura Diária</Text>
                                 </MenuOption>
                                 <MenuOption value={'share'}>

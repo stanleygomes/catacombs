@@ -56,8 +56,8 @@ export default class bible extends Component {
 
     componentDidMount() {
         // this.context.drawer.open();
-        if(this.DRAWER)
-            this.DRAWER.open();
+        // if(this.DRAWER)
+        //     this.DRAWER.open();
         // else
         //     alert('not')
     }
@@ -65,11 +65,11 @@ export default class bible extends Component {
     renderScene(route, navigator) {
         _navigator = navigator;
 
-        closeDrawer = () => {
-            this.setState({drawer: false})
+        // closeDrawer = () => {
+        //     this.setState({drawer: false})
             // this.refs['DRAWER_REF'].closeDrawer();
             // this._drawer._root.close()
-        };
+        // };
         // openDrawer = () => {
         //     this._drawer._root.open()
         // };
@@ -82,7 +82,7 @@ export default class bible extends Component {
         }
         else{
             return (
-                <Drawer onClose={() => this.closeDrawer()} ref={'DRAWER_REF'} styles={drawer} tapToClose={true} panCloseMask={0.2} closedDrawerOffset={-3} openDrawerOffset={0.2} content={
+                <Drawer ref={'DRAWER_REF'} styles={drawer} tapToClose={true} panCloseMask={0.2} closedDrawerOffset={-3} openDrawerOffset={0.2} content={
 
                     <Sidebar navigator={navigator} {...route.passProps} />
 
