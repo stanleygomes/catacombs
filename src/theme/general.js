@@ -29,6 +29,9 @@ export default general = {
 	colors: {
 		grey: {
 			backgroundColor: '#f2f2f2'
+		},
+		white: {
+			color: '#fff'
 		}
 	},
 	loading: {
