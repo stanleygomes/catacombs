@@ -22,6 +22,10 @@ export default general = {
 	marginTop15: {
 		marginTop: 15
 	},
+	container: {
+		flex: 1,
+		backgroundColor: '#fff'
+	}
 	fab: {
 		zIndex: 1,
 		backgroundColor: '#16a085'
