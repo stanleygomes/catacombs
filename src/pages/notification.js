@@ -90,11 +90,7 @@ export default class Notification extends Component {
         return (
             <Container style={{flex: 1}} backgroundColor="#fff">
                 <Header noShadow={true} transparent style={general.header}>
-                    <Left>
-                        <Button transparent onPress={() => this.goBack()}>
-                            <Icon name='ios-arrow-back' style={general.headerIcon}/>
-                        </Button>
-                    </Left>
+                    <Left></Left>
                     <Body>
                         <Title style={general.headerIcon}>Leitura diária</Title>
                     </Body>
