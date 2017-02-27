@@ -38,6 +38,7 @@ export default class Intro extends Component {
 
                 <Swiper style={swiper.wrapper} showsButtons={false} loop={false} activeDotColor="#f44336" paginationStyle={swiper.paginationStyle}>
                     <View style={swiper.slide}>
+                        <Image style={swiper.image} source={require('../assets/img/icon-app.png')} />
                         <Text style={swiper.text}>A Bíblia Sagrada</Text>
                     </View>
                     <View style={swiper.slide}>

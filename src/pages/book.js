@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { TextInput, Share, View, Text, Image, StyleSheet, TouchableHighlight, StatusBar, AsyncStorage } from 'react-native';
 import { Container, Header, Title, Left, Right, Body, Item, Input, Card, CardItem, List, ListItem, Content, Button, Icon, Spinner } from 'native-base';
 
-import Menu, { MenuContext, MenuOptions, MenuOption, MenuTrigger } from 'react-native-menu';
-
 import general from '../theme/general';
 import customList from '../theme/custom-list';
+
+import Navigation from '../components/navigation';
 
 export default class Book extends Component {
 
@@ -16,7 +16,6 @@ export default class Book extends Component {
 
         this.bibleData = [];
         this.tempBooks = [];
-        this._drawer;
         this.state = {
             books: [],
             tempBooks: [],
@@ -90,102 +89,53 @@ export default class Book extends Component {
         });
     }
 
-    menuOptions(option) {
-
-        if(option == 'about'){
-            this._navigate('About', {});
-        }
-        if(option == 'license'){
-            this._navigate('License', {});
-        }
-        if(option == 'notification'){
-            this._navigate('Notification', {});
-        }
-        if(option == 'language'){
-            AsyncStorage.setItem('language', '');
-            this.setRoot('Language', {});
-        }
-        if(option == 'share'){
-            Share.share({
-                message: 'Leia a Bíblia com applicativo \'A Bíblia Sagrada\'. Baixe no google play em https://play.google.com/store/apps/details?id=com.PiguinSoft.CafeRacer'
-            },
-            {
-                dialogTitle: 'Compartilhar Aplicativo',
-            })
-            .then(this._showResult)
-            .catch((error) => this.setState({result: 'error: ' + error.message}));
-        }
-    }
-
     render () {
 
         return (
             <Container style={{flex: 1}} backgroundColor="#fff">
 
-                <MenuContext style={{ flex: 1 }}>
-                    <View style={{ padding: 10, flexDirection: 'row', backgroundColor: '#f2f2f2' }}>
-                        <View style={{ flex: 1 }}>
-                            <Item style={{borderBottomWidth: 0}}>
-                                <Icon style={{marginLeft: 10}} name="search" />
-                                <Input placeholder="Livros" onChangeText={(text) => this.filterBooks(text)} value={this.state.bookKey}/>
-                            </Item>
+                <View style={{ padding: 10, flexDirection: 'row', backgroundColor: '#f2f2f2' }}>
+                    <View style={{ flex: 1 }}>
+                        <Item style={{borderBottomWidth: 0}}>
+                            <Icon style={{marginLeft: 10}} name="ios-search" />
+                            <Input placeholder="Livros" onChangeText={(text) => this.filterBooks(text)} value={this.state.bookKey}/>
+                        </Item>
+                    </View>
+                </View>
+
+                <Content style={{flex: 1}}>
+
+                    {this.state.loading ?
+                        <View style={general.loading}>
+                            <Spinner color="#dd5e5a" />
                         </View>
-                        <Menu onSelect={(value) => this.menuOptions(value)}>
-                            <MenuTrigger>
-                                <Icon style={{marginLeft: 20, marginRight: 5, marginTop: 10}} name="md-more" />
-                            </MenuTrigger>
-                            <MenuOptions>
-                                <MenuOption value={'language'}>
-                                    <Text style={{fontSize: 20}}>Trocar idioma</Text>
-                                </MenuOption>
-                                <MenuOption value={'notification'}>
-                                    <Text style={{fontSize: 20}}>Leitura Diária</Text>
-                                </MenuOption>
-                                <MenuOption value={'share'}>
-                                    <Text style={{fontSize: 20}}>Compartilhe o App</Text>
-                                </MenuOption>
-                                <MenuOption value={'license'}>
-                                    <Text style={{fontSize: 20}}>Licença</Text>
-                                </MenuOption>
-                                <MenuOption value={'about'}>
-                                    <Text style={{fontSize: 20}}>Sobre</Text>
-                                </MenuOption>
-                            </MenuOptions>
-                        </Menu>
+                    :
+                        null
+                    }
+
+                    <View style={customList.container}>
+
+                        <Card bordered={false} style={general.noAnyThing}>
+                            {this.state.books.map(function (book, index){
+                            return (
+                                <CardItem button key={index} style={general.noAnyThing} onPress={ function(){ this.loadChapter(index) }.bind(this)}>
+                                    <View style={customList.line}>
+                                        <View style={customList.contentLeft}>
+                                            <Text style={customList.titleLeft}>{book}</Text>
+                                        </View>
+                                    </View>
+                                </CardItem>
+                            );
+                            }, this)}
+                        </Card>
+
                     </View>
 
+                </Content>
 
-                    <Content style={{flex: 1}}>
-
-                        {this.state.loading ?
-                            <View style={general.loading}>
-                                <Spinner color="#dd5e5a" />
-                            </View>
-                        :
-                            null
-                        }
-
-                        <View style={customList.container}>
-
-                            <Card bordered={false} style={general.noAnyThing}>
-                                {this.state.books.map(function (book, index){
-                                return (
-                                    <CardItem button key={index} style={general.noAnyThing} onPress={ function(){ this.loadChapter(index) }.bind(this)}>
-                                        <View style={customList.line}>
-                                            <View style={customList.contentLeft}>
-                                                <Text style={customList.titleLeft}>{book}</Text>
-                                            </View>
-                                        </View>
-                                    </CardItem>
-                                );
-                                }, this)}
-                            </Card>
-
-                        </View>
-
-                    </Content>
-
-                </MenuContext>
+                <View>
+                    <Navigation navigator={this.props.navigator} activePage="Book" />
+                </View>
 
                 <StatusBar backgroundColor="#f2f2f2" barStyle="dark-content" />
 
@@ -194,3 +144,55 @@ export default class Book extends Component {
     }
 }
 
+    // menuOptions(option) {
+
+    //     if(option == 'about'){
+    //         this._navigate('About', {});
+    //     }
+    //     if(option == 'license'){
+    //         this._navigate('License', {});
+    //     }
+    //     if(option == 'notification'){
+    //         this._navigate('Notification', {});
+    //     }
+    //     if(option == 'language'){
+    //         AsyncStorage.setItem('language', '');
+    //         this.setRoot('Language', {});
+    //     }
+    //     if(option == 'share'){
+    //         Share.share({
+    //             message: 'Leia a Bíblia com applicativo \'A Bíblia Sagrada\'. Baixe no google play em https://play.google.com/store/apps/details?id=com.PiguinSoft.CafeRacer'
+    //         },
+    //         {
+    //             dialogTitle: 'Compartilhar Aplicativo',
+    //         })
+    //         .then(this._showResult)
+    //         .catch((error) => this.setState({result: 'error: ' + error.message}));
+    //     }
+    // }
+
+// import Menu, { MenuContext, MenuOptions, MenuOption, MenuTrigger } from 'react-native-menu';
+                // <MenuContext style={{ flex: 1 }}>
+                        // <Menu onSelect={(value) => this.menuOptions(value)}>
+                        //     <MenuTrigger>
+                        //         <Icon style={{marginLeft: 20, marginRight: 5, marginTop: 10}} name="md-more" />
+                        //     </MenuTrigger>
+                        //     <MenuOptions>
+                        //         <MenuOption value={'language'}>
+                        //             <Text style={{fontSize: 20}}>Trocar idioma</Text>
+                        //         </MenuOption>
+                        //         <MenuOption value={'notification'}>
+                        //             <Text style={{fontSize: 20}}>Leitura Diária</Text>
+                        //         </MenuOption>
+                        //         <MenuOption value={'share'}>
+                        //             <Text style={{fontSize: 20}}>Compartilhe o App</Text>
+                        //         </MenuOption>
+                        //         <MenuOption value={'license'}>
+                        //             <Text style={{fontSize: 20}}>Licença</Text>
+                        //         </MenuOption>
+                        //         <MenuOption value={'about'}>
+                        //             <Text style={{fontSize: 20}}>Sobre</Text>
+                        //         </MenuOption>
+                        //     </MenuOptions>
+                        // </Menu>
+                // </MenuContext>

@@ -144,7 +144,7 @@ export default class Verse extends Component {
 
                 <View style={{paddingTop:15, paddingLeft:15, paddingRight: 15, paddingBottom: 15}}>
                     <Button block rounded style={{backgroundColor: '#EF5350'}} onPress={() => this.shareVerse()}>
-                        <Text>COMPARTILHAR VERSÍCULO</Text>
+                        <Text style={general.colors.clWhite}>COMPARTILHAR VERSÍCULO</Text>
                     </Button>
                 </View>
 

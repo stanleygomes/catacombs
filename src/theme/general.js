@@ -25,7 +25,7 @@ export default general = {
 	container: {
 		flex: 1,
 		backgroundColor: '#fff'
-	}
+	},
 	fab: {
 		zIndex: 1,
 		backgroundColor: '#16a085'
@@ -34,8 +34,23 @@ export default general = {
 		grey: {
 			backgroundColor: '#f2f2f2'
 		},
+		clGrey: {
+			color: '#888'
+		},
+		clWhite: {
+			color: '#fff'
+		},
+		clBlack: {
+			color: '#222'
+		},
 		white: {
 			color: '#fff'
+		},
+		bgGreen: {
+			backgroundColor: '#16a085'
+		},
+		bgWhite: {
+			backgroundColor: '#fff'
 		}
 	},
 	loading: {
@@ -57,6 +72,11 @@ export default general = {
 	},
 	headerIcon: {
 		color: '#444'
+	},
+	footer: {
+		backgroundColor: '#fff',
+		borderTopWidth: 1,
+		borderTopColor: '#ddd',
 	},
 	center: {
 		justifyContent: 'center',

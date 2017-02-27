@@ -10,8 +10,11 @@ export default class Language extends Component {
     constructor() {
         super();
 
+        this.bibleData = [];
+        this.books = [];
+
         this.state = {
-            loading: false
+            loading: 0
         }
     }
 
@@ -22,11 +25,44 @@ export default class Language extends Component {
         });
     }
 
-    selectIdiom (id) {
-        this.setState({'loading': true});
-        AsyncStorage.setItem('intro', '2');
-        AsyncStorage.setItem('language', id);
-        this._navigate('Book', {})
+    selectIdiom (value) {
+
+        this.setState({loading: '1'});
+
+        if(value != ''){
+            var v;
+            if(value == 'db_ptbr')
+                v = require('../database/db_ptbr.json');
+            if(value == 'db_de')
+                v = require('../database/db_de.json');
+            if(value == 'db_en')
+                v = require('../database/db_en.json');
+            if(value == 'db_es')
+                v = require('../database/db_es.json');
+            if(value == 'db_fr')
+                v = require('../database/db_fr.json');
+
+            this.bibleData = v;
+
+            for (var i = 0; i < this.bibleData.length; i++){
+                this.books.push(this.bibleData[i].book);
+            }
+
+            AsyncStorage.setItem('bible', JSON.stringify(this.bibleData)).then(() => {
+                alert(123)
+                AsyncStorage.setItem('books', JSON.stringify(this.books)).then(() => {
+                    this.setState({loading: '0'});
+                    alert('123')
+                }).done();
+            }).done();
+        }
+        else
+            this._navigate('Language', {});
+
+        // this.setState({'in': true});
+        // AsyncStorage.setItem('intro', '2');
+        // AsyncStorage.setItem('language', id);
+        // this._navigate('Book', {})
     }
 
     render () {
@@ -75,7 +111,7 @@ export default class Language extends Component {
 
                 <Content>
 
-                    {this.state.loading ?
+                    {this.state.loading == '1' ?
                         <View style={general.loading}>
                             <Spinner color="#dd5e5a" />
                         </View>
