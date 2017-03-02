@@ -73,7 +73,8 @@ export default class Verse extends Component {
                     verse: this.state.verses[this.state.shareActive],
                     verseN: (this.state.shareActive + 1),
                 };
-            if(!favorites.length || favorites.length == 0)
+
+            if(!favorites || !favorites.length || favorites.length == 0)
                 favorites = [];
 
             favorites.push(obj)
