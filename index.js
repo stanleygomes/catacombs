@@ -10,6 +10,11 @@ import Book from './src/pages/book';
 import About from './src/pages/about';
 import License from './src/pages/license';
 import Notification from './src/pages/notification';
+import Favorite from './src/pages/favorite';
+import Feed from './src/pages/feed';
+
+import * as firebase from "firebase";
+import Firebase from "./src/components/Firebase";
 
 var _navigator;
 
@@ -32,6 +37,8 @@ export default class bible extends Component {
             intro: 0,
             language: 0
         }
+
+        Firebase.initialise();
 
         //intro types
         // 0: go intro
@@ -69,6 +76,10 @@ export default class bible extends Component {
             return <Chapter navigator={navigator} {...route.passProps}/>
         if(route.name == 'Verse')
             return <Verse navigator={navigator} {...route.passProps}/>
+        if(route.name == 'Favorite')
+            return <Favorite navigator={navigator} {...route.passProps}/>
+        if(route.name == 'Feed')
+            return <Feed navigator={navigator} {...route.passProps}/>
     }
 
     render() {

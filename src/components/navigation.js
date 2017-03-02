@@ -13,9 +13,9 @@ export default class Navigation extends Component {
 			active: this.props.activePage,
 			tabs: [
 				{page: 'Book', iconOutline: 'ios-home-outline', icon: 'ios-home', count: 0},
-				// {page: 'About', iconOutline: 'ios-information-circle-outline', icon: 'ios-information-circle', count: 2},
-				// {page: 'License', iconOutline: 'ios-map-outline', icon: 'ios-map', count: 10},
-				{page: 'Language', iconOutline: 'ios-flag-outline', icon: 'ios-flag', count: 2},
+				// {page: 'Feed', iconOutline: 'ios-albums-outline', icon: 'ios-albums', count: 0},
+				{page: 'Favorite', iconOutline: 'ios-heart-outline', icon: 'ios-heart', count: 0},
+				{page: 'Language', iconOutline: 'ios-globe-outline', icon: 'ios-globe', count: 0},
 				{page: 'Notification',  iconOutline: 'ios-settings-outline', icon: 'ios-settings', count: 0}
 			]
 		};

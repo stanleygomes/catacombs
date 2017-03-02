@@ -74,6 +74,7 @@ export default class Notification extends Component {
         }).done();
     }
 
+                    // <Left></Left>
 // if(option == 'share'){
 //             Share.share({
 //                 message: 'Leia a Bíblia com applicativo \'A Bíblia Sagrada\'. Baixe no google play em https://play.google.com/store/apps/details?id=com.PiguinSoft.CafeRacer'
@@ -90,7 +91,6 @@ export default class Notification extends Component {
         return (
             <Container style={{flex: 1}} backgroundColor="#fff">
                 <Header noShadow={true} transparent style={general.header}>
-                    <Left></Left>
                     <Body>
                         <Title style={general.headerIcon}>Leitura diária</Title>
                     </Body>

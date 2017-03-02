@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { BackAndroid, View, Text, Image, StyleSheet, TouchableHighlight, StatusBar, AsyncStorage } from 'react-native';
-import { Container, Header, Title, Left, Right, Body, Card, CardItem, Content, Button, Icon, List, ListItem } from 'native-base';
+import { Container, Header, Title, Left, Right, Body, Card, CardItem, Content, Button, Icon, List, ListItem, Spinner } from 'native-base';
 
 import general from '../theme/general';
 import customList from '../theme/custom-list';
+
+import Firebase from "../components/Firebase";
 
 export default class Chapter extends Component {
 
@@ -12,9 +14,18 @@ export default class Chapter extends Component {
 
         this.chapters = [];
 
+        this.chapterLabels = [];
+        this.chapterLabels['db_ptbr'] = 'Capítulo';
+        this.chapterLabels['db_de'] = 'Kapitel';
+        this.chapterLabels['db_en'] = 'Chapter';
+        this.chapterLabels['db_es'] = 'Capítulo';
+        this.chapterLabels['db_fr'] = 'Chapitre';
+
         this.state = {
             book: '',
-            chapters: []
+            loading: true,
+            chapters: [],
+            chapterLabel: ''
         };
     }
 
@@ -30,18 +41,32 @@ export default class Chapter extends Component {
     }
 
     loadVerse(index) {
-        this._navigate('Verse', {book: this.state.book, chapter: index, verses: this.props.content.chapters[index]});
+        this._navigate('Verse', {book: this.props.book, bookName: this.state.book, chapter: index});
     }
 
-    componentDidMount() {
-        if(typeof this.props.content !== 'undefined'){
-            this.chaptersList = this.props.content.chapters;
-            for(var i = 0; i < this.chaptersList.length; i++){
-                this.chapters.push(i + 1);
-            }
+    async componentDidMount() {
+        try {
+            AsyncStorage.getItem('language').then((value) => {
 
-            this.setState({chapters: this.chapters});
-            this.setState({book: this.props.content.book});
+                if(value != ''){
+
+                    Firebase.listen('bible/' + value + '/' + (this.props.book + 1) + '/', (chapterList) => {
+
+                        this.chaptersList = chapterList.chapters;
+                        for(var i = 0; i < this.chaptersList.length; i++){
+                            this.chapters.push(i + 1);
+                        }
+
+                        this.setState({chapters: this.chapters});
+                        this.setState({book: chapterList.book});
+                        this.setState({loading: false});
+                        this.setState({chapterLabel: this.chapterLabels[value]});
+                    });
+                }
+            }).done();
+
+        } catch (error) {
+            // alert(error)
         }
     }
 
@@ -77,10 +102,10 @@ export default class Chapter extends Component {
                         <Card bordered={false} style={general.noAnyThing}>
                             {this.state.chapters.map(function (chapter, index){
                             return (
-                                <CardItem button key={index} style={general.noAnyThing} onPress={ function(){ this.loadVerse(chapter) }.bind(this)}>
+                                <CardItem button key={index} style={general.noAnyThing} onPress={ function(){ this.loadVerse(index) }.bind(this)}>
                                     <View style={customList.line}>
                                         <View style={customList.contentLeft}>
-                                            <Text style={customList.titleLeft}>Capítulo {chapter}</Text>
+                                            <Text style={customList.titleLeft}>{this.state.chapterLabel} {chapter}</Text>
                                         </View>
                                     </View>
                                 </CardItem>

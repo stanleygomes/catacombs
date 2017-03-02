@@ -16,11 +16,10 @@ export default class About extends Component {
     }
 
     openFeedback() {
-        Linking.openURL('mailto:stanleygomesdasilva@gmail.com?subject=FeedBack');
+        Linking.openURL('mailto:feedback@abibliasagrada.xyz?subject=FeedBack');
     }
 
     render () {
-
         return (
             <Container style={{flex: 1}} backgroundColor="#fff">
 
@@ -51,7 +50,9 @@ export default class About extends Component {
                         <Text style={general.marginTop15}>github.com/thiagobodruk/biblia</Text>
 
                         <TouchableHighlight style={general.marginTop15} onPress={() => this.openFeedback()}>
-                            <Text>ENVIAR FEEDBACK</Text>
+                            <Button>
+                                <Text>ENVIAR FEEDBACK</Text>
+                            </Button>
                         </TouchableHighlight>
                     </View>
 

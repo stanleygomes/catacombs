@@ -5,9 +5,9 @@ import { Fab, Container, Header, Title, Subtitle, Left, Right, Body, Card, CardI
 import general from '../theme/general';
 import customList from '../theme/custom-list';
 
-import Firebase from "../components/Firebase";
+import Navigation from '../components/navigation';
 
-export default class Verse extends Component {
+export default class Favorite extends Component {
 
     constructor(props) {
         super(props);
@@ -27,7 +27,7 @@ export default class Verse extends Component {
             shareActive: -1,
             verses: [],
             chapterLabel: '',
-            favorited: false
+            shareText: ''
         };
     }
 
@@ -38,21 +38,16 @@ export default class Verse extends Component {
         });
     }
 
-    goBack() {
-        this.props.navigator.pop();
-    }
-
-    checkVerse(index) {
-        this.setState({'favorited': false});
+    checkVerse(index, text) {
         if(this.state.shareActive == index)
             this.setState({shareActive: -1});
         else
-            this.setState({shareActive: index});
+            this.setState({shareActive: index, shareText: text});
     }
 
     shareVerse() {
-        let v = this.state.book + ' capítulo ' + this.state.chapter + ' versículo ' + this.state.shareActive + ':' + this.state.verses[this.state.shareActive];
-        if(typeof this.state.verses[this.state.shareActive] !== 'undefined'){
+        let v = this.state.shareText;
+        if(typeof v !== 'undefined'){
             Share.share({
                 message: v.toString()
             },
@@ -64,49 +59,33 @@ export default class Verse extends Component {
         }
     }
 
-    addFavorite() {
-        AsyncStorage.getItem('favorites').then((value) => {
-            let favorites = JSON.parse(value),
-                obj = {
-                    book: this.state.book,
-                    chapter: this.state.chapter,
-                    verse: this.state.verses[this.state.shareActive],
-                    verseN: (this.state.shareActive + 1),
-                };
-            if(!favorites.length || favorites.length == 0)
-                favorites = [];
+    removeFavorite() {
+        let temp = []
+        for(var i = 0; i < this.state.verses.length; i++){
+            if(i != this.state.shareActive)
+                temp.push(this.state.verses[i]);
+        }
+        this.setState({verses: temp, shareActive: -1})
 
-            favorites.push(obj)
-
-            AsyncStorage.setItem('favorites', JSON.stringify(favorites));
-            this.setState({'favorited': true});
-        });
+        AsyncStorage.setItem('favorites', JSON.stringify(temp));
     }
 
     async componentDidMount() {
         try {
             AsyncStorage.getItem('language').then((value) => {
-
                 if(value != ''){
-
-                    Firebase.listen('bible/' + value + '/' + (this.props.book + 1) + '/chapters/' + (this.props.chapter) + '/', (chapterList) => {
-
-                        this.versesList = chapterList;
-
-                        for(var verse in this.versesList){
-                            this.versesList = this.versesList[verse];
+                    AsyncStorage.getItem('favorites').then((fav) => {
+                        if(!fav){
+                            // alert('nada ainda')
                         }
+                        else{
+                            let favorites = JSON.parse(fav);
 
-                        for(var verse in this.versesList){
-                            this.verses.push([this.versesList[verse]]);
+                            this.setState({
+                                verses: favorites,
+                                chapterLabel: this.chapterLabels[value]
+                            });
                         }
-
-                        this.setState({
-                            chapter: this.props.chapter + 1,
-                            verses: this.verses,
-                            book: this.props.bookName,
-                            chapterLabel: this.chapterLabels[value]
-                        });
                     });
                 }
             }).done();
@@ -117,45 +96,34 @@ export default class Verse extends Component {
     }
 
     render () {
-
         return (
             <Container style={{flex: 1}} backgroundColor="#fff">
 
                 <Header noShadow={true} transparent style={{backgroundColor: this.state.shareActive >= 0 ? '#EF5350' : '#fff'}}>
+                    {
+                        this.state.shareActive >= 0 ?
+                        (
                     <Left>
-                        {
-                            this.state.shareActive >= 0 ?
-                            (
                         <Button transparent onPress={() => this.checkVerse(-1)}>
                             <Icon name='md-close' style={{color: this.state.shareActive >= 0 ? '#fff' : '#444'}}/>
                         </Button>
-                            )
-
-                            :
-
-                            (
-                        <Button transparent onPress={() => this.goBack()}>
-                            <Icon name='ios-arrow-back' style={{color: this.state.shareActive >= 0 ? '#fff' : '#444'}}/>
-                        </Button>
-                            )
-                        }
                     </Left>
+                        )
+
+                        :
+
+                        null
+                    }
                     <Body>
-                        <Title style={{color: this.state.shareActive >= 0 ? '#fff' : '#444'}}>{this.state.book}</Title>
-                        <Subtitle style={{color: this.state.shareActive >= 0 ? '#fff' : '#444'}}>{this.state.chapterLabel} {this.state.chapter}</Subtitle>
+                        <Title style={{color: this.state.shareActive >= 0 ? '#fff' : '#444'}}>Favoritos</Title>
                     </Body>
                     <Right>
                         {
                             this.state.shareActive >= 0 ?
                             (
                         <View>
-                            <Button transparent onPress={() => this.addFavorite()}>
-                                {
-                                    this.state.favorited ?
-                                (<Icon name='ios-heart' style={{color: '#fff'}}/>)
-                                    :
-                                (<Icon name='ios-heart-outline' style={{color: '#fff'}}/>)
-                                }
+                            <Button transparent onPress={() => this.removeFavorite()}>
+                                <Icon name='ios-trash-outline' style={{color: '#fff'}}/>
                             </Button>
                         </View>
                             )
@@ -175,13 +143,13 @@ export default class Verse extends Component {
                         <Card bordered={false} style={general.noAnyThing}>
                             {this.state.verses.map(function (verse, index){
                             return (
-                                <CardItem button key={index} style={general.noAnyThing} onPress={ function(){ this.checkVerse(index) }.bind(this)}>
+                                <CardItem button key={index} style={general.noAnyThing} onPress={ function(){ this.checkVerse(index, verse.book + ' - ' + this.state.chapterLabel + ' ' + verse.chapter + ' - ' + verse.verseN + ' : ' + verse.verse) }.bind(this)}>
                                     {
                                         this.state.shareActive == index ?
 
                                     <View style={[customList.line, customList.cardFocus]}>
                                         <View style={customList.contentLeft}>
-                                            <Text style={[customList.titleLeft, customList.cardFocusText]}>{index + 1}. {verse}</Text>
+                                            <Text style={customList.titleLeft}>{verse.book} - {this.state.chapterLabel} {verse.chapter} - {verse.verseN} : {verse.verse} </Text>
                                         </View>
                                     </View>
 
@@ -189,7 +157,7 @@ export default class Verse extends Component {
 
                                     <View style={customList.line}>
                                         <View style={customList.contentLeft}>
-                                            <Text style={customList.titleLeft}>{index + 1}. {verse}</Text>
+                                            <Text style={customList.titleLeft}>{verse.book} - {this.state.chapterLabel} {verse.chapter} - {verse.verseN} : {verse.verse} </Text>
                                         </View>
                                     </View>
 
@@ -207,7 +175,6 @@ export default class Verse extends Component {
                     this.state.shareActive >= 0 ?
 
                 <View style={{paddingTop:15, paddingLeft:15, paddingRight: 15, paddingBottom: 15}}>
-                    
                     <Button block rounded style={{backgroundColor: '#EF5350'}} onPress={() => this.shareVerse()}>
                         <Text style={general.colors.clWhite}>COMPARTILHAR VERSÍCULO</Text>
                     </Button>
@@ -217,6 +184,11 @@ export default class Verse extends Component {
 
                 null
                 }
+
+
+                <View>
+                    <Navigation navigator={this.props.navigator} activePage="Favorite" />
+                </View>
 
                 <StatusBar backgroundColor={this.state.shareActive >= 0 ? '#EF5350' : '#fff'} barStyle="dark-content" />
 
