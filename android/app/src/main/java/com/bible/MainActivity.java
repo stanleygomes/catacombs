@@ -1,4 +1,4 @@
-package com.bible;
+package com.stanley.theholybible;
 
 import com.facebook.react.ReactActivity;
 

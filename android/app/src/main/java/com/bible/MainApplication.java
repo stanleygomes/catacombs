@@ -1,4 +1,4 @@
-package com.bible;
+package com.stanley.theholybible;
 
 import android.app.Application;
 import android.util.Log;

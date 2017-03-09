@@ -143,7 +143,7 @@ export default class Notification extends Component {
                     <Navigation navigator={this.props.navigator} activePage="Notification" />
                 </View>
 
-                <StatusBar backgroundColor="#444" barStyle="light-content" />
+                <StatusBar backgroundColor="#fff" barStyle="dark-content" />
 
             </Container>
         );
