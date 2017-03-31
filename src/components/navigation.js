@@ -55,3 +55,4 @@ export default class Navigation extends Component {
 		);
 	}
 }
+									// <Text active={true} style={{color: '#333'}}>{item.page}</Text>
