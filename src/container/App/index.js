@@ -1,5 +1,7 @@
+/* eslint-disable camelcase */
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
+// import { AppLoading } from 'expo';
 import { StyleSheet, Text, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import Button from 'react-bootstrap/Button';
@@ -15,6 +17,10 @@ const styles = StyleSheet.create({
 });
 
 export default function App() {
+  // if (!fontsLoaded) {
+  //   return <AppLoading />;
+  // }
+
   return (
     <View style={styles.container}>
       <Text>Open up App.js to start working on your app!</Text>
