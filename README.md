@@ -1,6 +1,9 @@
+[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](https://github.com/standard/standard)
+![Lint and test](https://github.com/stanleygomes/bible-app/workflows/Lint%20and%20test/badge.svg)
+
 # A Bíblia Sagrada
 
-This app was built using [Expo CLI]() for react native. ✝️ 📖 📜 🙏
+This app was built using [Expo CLI](https://expo.io) for react native. ✝️ 📖 📜 🙏
 
 *******
 Table of contents
@@ -27,7 +30,7 @@ These are some of patterns definitions to help us to keep a default arquitecture
 - Package manager: [npm](https://medium.com/@vincentnewkirk/npm-vs-yarn-2019-e88757b17038), sure
 - Node version: [v10.x](https://nodejs.org/ca/blog/release/v10.16.3)
 - Component Libray: [React Bootstrap](https://react-bootstrap.github.io)
-- Linter: eslint [standard](https://standardjs.com) pattern
+- Linter: eslint [Airbnb](https://airbnb.io/javascript) style guide
 - i18n: take a look [here](https://www.npmjs.com/package/i18n)
 - Date and time: [moment](https://momentjs.com)
 
