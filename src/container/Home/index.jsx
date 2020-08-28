@@ -1,7 +1,4 @@
-/* eslint-disable camelcase */
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-// import { AppLoading } from 'expo';
 import { StyleSheet, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import Button from 'react-bootstrap/Button';
@@ -17,16 +14,11 @@ const styles = StyleSheet.create({
   },
 });
 
-const App = () => {
-  // if (!fontsLoaded) {
-  //   return <AppLoading />;
-  // }
-
+const Home = () => {
   return (
     <View style={styles.container}>
       <Translate k="welcome" />
       <Ionicons name="md-checkmark-circle" size={32} color="green" />
-      <StatusBar />
       <Alert dismissible variant="danger">
         <Alert.Heading>Oh snap! You got an error!</Alert.Heading>
         <p>Change this and that and try again.</p>
@@ -36,4 +28,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Home;
