@@ -1,11 +1,13 @@
 const express = require('express')
 const router = express.Router()
 const gitlabRest = require('../api/gitlab/gitlabRest')
+const welcomeRest = require('../api/welcome/welcomeRest')
 const i18nUtils = require('../utils/i18n')
 const loggerUtils = require('../utils/logger')
 const config = require('../config')
 
 /* non auth routes */
+router.use('/', welcomeRest)
 router.use('/gitlab', gitlabRest)
 
 /* static route for website */
