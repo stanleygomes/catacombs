@@ -7,11 +7,14 @@ const hook = (req, res) => {
     const action = body.event_type
     const projectName = body.project.name
     const repositoryUrl = body.project.homepage
-    const branchSource = body.object_attributes.source_branch
-    const branchTarget = body.object_attributes.target_branch
-    const iid = body.object_attributes.iid
 
     if (action === 'merge_request') {
+      const branchSource = body.object_attributes.source_branch
+      const branchTarget = body.object_attributes.target_branch
+      const iid = body.object_attributes.iid
+      // open: unchecked
+      // const mergeStatus = body.object_attributes.merge_status
+
       const request = {
         text: `
 Tem merge request novo para aprovar no projeto *${projectName}*, dá uma olhada aqui nesse link:
