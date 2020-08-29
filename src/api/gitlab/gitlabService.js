@@ -11,6 +11,10 @@ const hook = (req, res) => {
     const branchTarget = body.object_attributes.target_branch
     const iid = body.object_attributes.iid
 
+    console.log(body);
+
+    resolve(body)
+
     if (action === 'merge_request') {
       const request = {
         text: `
