@@ -7,9 +7,6 @@ const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
 const i18nUtils = require('./utils/i18n')
 const privateKey = config.privateKey
-const moment = require('moment')
-const timeStart = moment().format('DD/MM/YYYY HH:mm')
-const started = () => console.log(`Running on port ${config.server.port}. Started at: ${timeStart}.`)
 
 if (privateKey === null || privateKey === undefined) {
   console.log(i18nUtils.translate('none_private_key'))
@@ -27,4 +24,4 @@ app.use(bodyParser.urlencoded({
 }))
 app.use(config.baseEndpoint, routes)
 
-app.listen(config.server.port, started)
+module.exports = app

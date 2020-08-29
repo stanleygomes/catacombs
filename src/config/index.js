@@ -26,7 +26,15 @@ const appConfig = {
     directory: path.join(__dirname, '/i18n-locales'),
     autoReload: true
   },
-  privateKey: process.env.APP_KEY
+  privateKey: process.env.APP_KEY,
+  request: {
+    baseUrl: '',
+    timeout: 1000,
+    responseType: 'json',
+    defaultHeaders: {
+      'Content-Type': 'application/json'
+    }
+  }
 }
 
 module.exports = appConfig

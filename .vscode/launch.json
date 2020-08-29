@@ -5,7 +5,7 @@
             "type": "node",
             "request": "launch",
             "name": "Launch nodevader on debug",
-            "program": "${workspaceFolder}/src/index.js"
+            "program": "${workspaceFolder}/src/server.js"
         }
     ]
 }

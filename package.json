@@ -4,10 +4,8 @@
   "description": "Come to the node side",
   "main": "./src/index.js",
   "scripts": {
-    "start": "node src/index.js",
-    "dev": "NODE_ENV=development eslint . && cd ./src && mocha && cd .. && nodemon src/index.js",
-    "prd": "NODE_ENV=production eslint . && pm2 start src/config/ecosystem.config.js --no-daemon",
-    "migrate": "node src/migrate.js",
+    "start": "node src/function.js",
+    "dev": "NODE_ENV=development nodemon src/server.js",
     "lint": "eslint .",
     "test": "NODE_ENV=test eslint . && cd ./src && mocha"
   },
@@ -23,25 +21,24 @@
   "bugs": {
     "url": "https://github.com/stanleygomes/nodevader"
   },
+  "engines": {
+    "node": "8"
+  },
   "homepage": "https://github.com/stanleygomes/nodevader",
   "dependencies": {
     "@hapi/joi": "^16.1.7",
     "axios": "^0.19.0",
-    "bcrypt": "^5.0.0",
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.4",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.16.4",
+    "firebase-admin": "^9.1.1",
+    "firebase-functions": "^3.11.0",
     "helmet": "^3.21.2",
     "i18n": "^0.8.3",
-    "jsonwebtoken": "^8.5.1",
-    "knex": "^0.20.6",
     "moment": "^2.24.0",
     "multer": "^1.4.2",
-    "mustache": "^3.2.1",
-    "nodemailer": "^6.3.1",
-    "postgrator": "^4.0.1",
     "winston": "^3.2.1"
   },
   "devDependencies": {
@@ -52,6 +49,7 @@
     "eslint-plugin-node": "^11.0.0",
     "eslint-plugin-promise": "^4.1.1",
     "eslint-plugin-standard": "^4.0.0",
+    "firebase-functions-test": "^0.2.1",
     "mocha": "^6.1.4"
   }
 }
