@@ -9,16 +9,19 @@ const hook = (req, res) => {
     const repositoryUrl = body.project.homepage
     const branchSource = body.object_attributes.source_branch
     const branchTarget = body.object_attributes.target_branch
+    const iid = body.object_attributes.iid
 
     if (action === 'merge_request') {
       const request = {
         text: `
-Tem merge request novo para aprovar no projeto ${projectName}, dá uma olhada aqui nesse link: ${repositoryUrl}/merge_request.
+Tem merge request novo para aprovar no projeto *${projectName}*, dá uma olhada aqui nesse link:
 
-Branch origem: ${branchSource}
-Branch destino: ${branchTarget}
+${repositoryUrl}/merge_requests/${iid}
 
-Vou comprar um chocolate para quem validar!
+Branch origem: *${branchSource}*
+Branch destino: *${branchTarget}*
+
+Vou comprar um chocolate para quem validar! :harold: :morumbi: :araxa:
         `
       }
 
