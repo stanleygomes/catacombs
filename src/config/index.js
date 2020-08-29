@@ -4,7 +4,7 @@ dotenv.config()
 
 const appConfig = {
   server: {
-    port: process.env.PORT || 5000,
+    port: process.env.HTTP_PORT || process.env.PORT || 5000,
     static: 'src/static'
   },
   upload: {
