@@ -1,0 +1,20 @@
+image: node:latest
+
+stages:
+  - build
+  - deploy
+
+build:
+  stage: build
+  only:
+    - master
+  script:
+    - npm install
+    - npm i -g firebase-tools
+
+deploy:
+  stage: deploy
+  only:
+    - master
+  script:
+    - firebase deploy --token REMOVED
