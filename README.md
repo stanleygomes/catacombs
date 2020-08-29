@@ -1,0 +1,2 @@
+# gitlab-slack-automate
+
