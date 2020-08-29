@@ -23,8 +23,8 @@
     "url": "https://github.com/stanleygomes/nodevader"
   },
   "engines": {
-    "node": "10",
-    "npm": "6"
+    "node": "10.x",
+    "npm": "6.x"
   },
   "homepage": "https://github.com/stanleygomes/nodevader",
   "dependencies": {
