@@ -7,6 +7,7 @@ const hook = (req, res) => {
     const action = body.event_type
     const projectName = body.project.name
     const repositoryUrl = body.project.homepage
+    let textTemplate = null;
 
     if (action === 'merge_request') {
       const branchSource = body.object_attributes.source_branch
@@ -14,9 +15,7 @@ const hook = (req, res) => {
       const iid = body.object_attributes.iid
       // open: unchecked
       // const mergeStatus = body.object_attributes.merge_status
-
-      const request = {
-        text: `
+      textTemplate = `
 Tem merge request novo para aprovar no projeto *${projectName}*, dá uma olhada aqui nesse link:
 
 ${repositoryUrl}/merge_requests/${iid}
@@ -26,12 +25,15 @@ Branch destino: *${branchTarget}*
 
 Vou comprar um chocolate para quem validar! :harold: :morumbi: :araxa:
         `
-      }
-
-      http.post(slackHookUrl, request).then(resp => {
-        resolve(resp)
-      }).catch(err => reject(err))
     }
+
+    const request = {
+      text: textTemplate
+    }
+
+    http.post(slackHookUrl, request).then(resp => {
+      resolve(resp)
+    }).catch(err => reject(err))
   })
 }
 
