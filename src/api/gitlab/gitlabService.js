@@ -26,10 +26,7 @@ Vou comprar um chocolate para quem validar! :harold: :morumbi: :araxa:
       }
 
       http.post(slackHookUrl, request).then(resp => {
-        resolve({
-          status: 'ok',
-          resp: resp
-        })
+        resolve(resp)
       }).catch(err => reject(err))
     }
   })
