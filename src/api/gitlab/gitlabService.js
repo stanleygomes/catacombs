@@ -3,11 +3,12 @@ const http = require('../../utils/http')
 const hook = (req, res) => {
   return new Promise((resolve, reject) => {
     const body = req.body
+    // const slackHookUrlTest = 'REMOVED
     const slackHookUrl = 'REMOVED
     const action = body.event_type
     const projectName = body.project.name
     const repositoryUrl = body.project.homepage
-    let textTemplate = null;
+    let textTemplate = null
 
     if (action === 'merge_request') {
       const branchSource = body.object_attributes.source_branch
