@@ -1,4 +1,3 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -8,15 +7,12 @@ const Tab = createBottomTabNavigator();
 
 const BottomAppBar = () => {
   return (
-    <>
-      <StatusBar />
-      <NavigationContainer>
-        <Tab.Navigator>
-          {router != null &&
-            router.map(item => <Tab.Screen name={item.name} component={item.component} />)}
-        </Tab.Navigator>
-      </NavigationContainer>
-    </>
+    <NavigationContainer>
+      <Tab.Navigator>
+        {router != null &&
+          router.map(item => <Tab.Screen name={item.name} component={item.component} />)}
+      </Tab.Navigator>
+    </NavigationContainer>
   );
 };
 

@@ -3,6 +3,7 @@ import { StyleSheet, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert';
+import { ArrowRight, ArrowLeft, ArrowRightCircle } from 'react-bootstrap-icons';
 import Translate from '../../component/Translate';
 
 const styles = StyleSheet.create({
@@ -23,6 +24,9 @@ const Home = () => {
         <Alert.Heading>Oh snap! You got an error!</Alert.Heading>
         <p>Change this and that and try again.</p>
         <Button variant="primary">Primary</Button>
+        <ArrowRight size="2em" />
+        <ArrowLeft size="2em" />
+        <ArrowRightCircle size="2em" />
       </Alert>
     </View>
   );
