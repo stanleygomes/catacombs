@@ -18,8 +18,10 @@ const hook = (req, res) => {
       const mergeStatus = body.object_attributes.merge_status
       const title = body.object_attributes.title
 
-      textTemplate = `
-Tem merge request novo para aprovar no projeto *${projectName}*, dá uma olhada aqui nesse link:
+      // open merge request
+      if (mergeStatus === 'unchecked') {
+        textTemplate = `
+@here Tem merge request novo para aprovar no projeto *${projectName}*, dá uma olhada aqui nesse link:
 
 ${repositoryUrl}/merge_requests/${iid}
 
@@ -27,14 +29,24 @@ Branch origem: *${branchSource}*
 Branch destino: *${branchTarget}*
 Mensagem: *${title}*
 
-Vou comprar um chocolate para quem validar! :harold: :morumbi: :araxa:
+Vou comprar um chocolate para quem validar! :morumbi:
         `
+      } else {
+        textTemplate = `
+@here O merge request abaixo no projeto *${projectName}* foi avaliado, dá uma olhada aqui nesse link:
 
-      // open merge request
-      if (mergeStatus === 'unchecked') {
-        request = {
-          text: textTemplate
-        }
+${repositoryUrl}/merge_requests/${iid}
+
+Branch origem: *${branchSource}*
+Branch destino: *${branchTarget}*
+Mensagem: *${title}*
+
+Boa sorte! :harold:
+        `
+      }
+
+      request = {
+        text: textTemplate
       }
 
       // solicitado: unchecked
