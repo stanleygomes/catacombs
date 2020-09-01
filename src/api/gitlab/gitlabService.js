@@ -3,8 +3,8 @@ const http = require('../../utils/http')
 const hook = (req, res) => {
   return new Promise((resolve, reject) => {
     const body = req.body
-    const slackHookUrl = 'REMOVED
     // const slackHookUrl = 'REMOVED
+    const slackHookUrl = 'REMOVED
     const action = body.event_type
     const projectName = body.project.name
     const repositoryUrl = body.project.homepage
@@ -18,7 +18,6 @@ const hook = (req, res) => {
       const mergeStatus = body.object_attributes.merge_status
       const title = body.object_attributes.title
 
-      // open:
       textTemplate = `
 Tem merge request novo para aprovar no projeto *${projectName}*, dá uma olhada aqui nesse link:
 
@@ -31,11 +30,15 @@ Mensagem: *${title}*
 Vou comprar um chocolate para quem validar! :harold: :morumbi: :araxa:
         `
 
+      // open merge request
       if (mergeStatus === 'unchecked') {
         request = {
           text: textTemplate
         }
       }
+
+      // solicitado: unchecked
+      // aprovado/cancelado: can_be_merged
     }
 
     if (request != null) {
