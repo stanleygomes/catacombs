@@ -11,8 +11,6 @@ const hook = (req, res) => {
     let textTemplate = null
     let request = null
 
-    console.log(body);
-
     if (action === 'merge_request') {
       const branchSource = body.object_attributes.source_branch
       const branchTarget = body.object_attributes.target_branch
@@ -44,6 +42,8 @@ Vou comprar um chocolate para quem validar! :harold: :morumbi: :araxa:
       http.post(slackHookUrl, request).then(resp => {
         resolve(resp)
       }).catch(err => reject(err))
+    } else {
+      resolve(true)
     }
   })
 }
