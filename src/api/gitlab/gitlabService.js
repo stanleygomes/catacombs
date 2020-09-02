@@ -1,5 +1,10 @@
 const http = require('../../utils/http')
 
+/*
+App slack:
+https://api.slack.com/apps/A019JLAD24W/install-on-team
+*/
+
 const hook = (req, res) => {
   return new Promise((resolve, reject) => {
     const body = req.body
@@ -32,17 +37,17 @@ Mensagem: *${title}*
 Vou comprar um chocolate para quem validar! :morumbi:
         `
       } else {
-        textTemplate = `
-@here O merge request abaixo no projeto *${projectName}* foi avaliado, dá uma olhada aqui nesse link:
+//         textTemplate = `
+// @here O merge request abaixo no projeto *${projectName}* foi avaliado, dá uma olhada aqui nesse link:
 
-${repositoryUrl}/merge_requests/${iid}
+// ${repositoryUrl}/merge_requests/${iid}
 
-Branch origem: *${branchSource}*
-Branch destino: *${branchTarget}*
-Mensagem: *${title}*
+// Branch origem: *${branchSource}*
+// Branch destino: *${branchTarget}*
+// Mensagem: *${title}*
 
-Boa sorte! :harold:
-        `
+// Boa sorte! :harold:
+//         `
       }
 
       request = {
