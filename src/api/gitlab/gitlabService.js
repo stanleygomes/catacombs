@@ -26,7 +26,7 @@ const hook = (req, res) => {
       // open merge request
       if (mergeStatus === 'unchecked') {
         textTemplate = `
-@here Tem merge request novo para aprovar no projeto *${projectName}*, dá uma olhada aqui nesse link:
+Tem merge request novo para aprovar no projeto *${projectName}*, dá uma olhada aqui nesse link:
 
 ${repositoryUrl}/merge_requests/${iid}
 
@@ -38,7 +38,7 @@ Vou comprar um chocolate para quem validar! :morumbi:
         `
       } else {
 //         textTemplate = `
-// @here O merge request abaixo no projeto *${projectName}* foi avaliado, dá uma olhada aqui nesse link:
+// O merge request abaixo no projeto *${projectName}* foi avaliado, dá uma olhada aqui nesse link:
 
 // ${repositoryUrl}/merge_requests/${iid}
 
