@@ -24,7 +24,7 @@ const hook = (req, res) => {
       const title = body.object_attributes.title
 
       // open merge request
-      if (mergeStatus === 'unchecked') {
+      if (mergeStatus === 'unchecked' && branchTarget === 'develop') {
         textTemplate = `
 Tem merge request novo para aprovar no projeto *${projectName}*, dá uma olhada aqui nesse link:
 
