@@ -1,3 +1,6 @@
 {
-  "welcome": "Open up App.js to start working on your app!"
+  "appName": "A Bíblia Sagrada",
+  "appIntroDescription": "Olá! Você pode fazer o login para ter acesso a diversos recursos.",
+  "signInWithGoogle": "Entrar com Google",
+  "signInLater": "Agora não"
 }
