@@ -1,7 +1,7 @@
 import * as Localization from 'expo-localization';
 import I18n from 'i18n-js';
 
-import enUs from './locales/en';
+import enUs from './locales/enUs';
 import ptBr from './locales/ptBr';
 
 I18n.locale = Localization.locale;
