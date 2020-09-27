@@ -10,12 +10,19 @@ import { Button } from '@ant-design/react-native';
 
 // import { Button } from 'antd-mobile';
 
+/*
+
+primary: #ef6c00
+secondary: #eba469
+
+*/
 
 const SignIn = () => {
   return (
     <View style={style.container}>
       <Image source={theBibleSrc} width={250} height={250} />
-      {/* <Translate k="appName" /> */}
+      <Text>teste</Text>
+      <Translate k="appName" />
       <Button>Start</Button>
       {/* <p className="py-2"> */}
       {/* <Translate k="appIntroDescription" /> */}
