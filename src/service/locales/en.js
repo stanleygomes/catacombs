@@ -1,0 +1,6 @@
+export default {
+  appName: 'The Holy Bible',
+  appIntroDescription: 'Hello! Sign in to have access to a lot of features.',
+  signInWithGoogle: 'Sign In with Google',
+  signInLater: 'Not now',
+};
