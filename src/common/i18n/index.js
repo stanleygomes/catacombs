@@ -6,6 +6,7 @@ import ptBr from './locales/ptBr';
 
 I18n.locale = Localization.locale;
 I18n.fallbacks = true;
+I18n.defaultLocale = 'en-US';
 I18n.translations = {
   'en-US': enUs,
   'pt-BR': ptBr,
