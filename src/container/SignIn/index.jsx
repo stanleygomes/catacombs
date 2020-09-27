@@ -1,44 +1,40 @@
 import React from 'react';
-import { View, Text } from 'react-native';
-import { FontAwesome } from '@expo/vector-icons';
+import { View } from 'react-native';
 import Translate from '../../component/Translate';
 import Image from '../../component/Image';
+import Button from '../../component/Button';
+import H1 from '../../component/H1';
+import H3 from '../../component/H3';
 import theBibleSrc from '../../asset/image/the-bible.png';
 import style from './style';
-
-import { Button } from '@ant-design/react-native';
-
-// import { Button } from 'antd-mobile';
-
-/*
-
-primary: #ef6c00
-secondary: #eba469
-
-*/
+import global from '../../common/style/global';
 
 const SignIn = () => {
+  const handleSignWithGoogle = () => {
+    console.log('teste');
+
+    // import { FontAwesome } from '@expo/vector-icons';
+    // {/* <FontAwesome name="google" size={22} color="#333" className="mr-3" /> */}
+
+    // estilizar o botao primary
+    // theme provider
+  };
+
   return (
-    <View style={style.container}>
+    <View style={global.container}>
       <Image source={theBibleSrc} width={250} height={250} />
-      <Text>teste</Text>
-      <Translate k="appName" />
-      <Button>Start</Button>
-      {/* <p className="py-2"> */}
-      {/* <Translate k="appIntroDescription" /> */}
-      {/* </p> */}
-      {/* <div className="d-flex flex-column my-5"> */}
-      {/* <Button>Start</Button> */}
-      {/* <Button variant="primary" className="py-3 px-4 d-flex">
-          <FontAwesome name="google" size={22} color="#fff" className="mr-3" />
-          <strong>
-            <Translate k="signInWithGoogle" />
-          </strong>
+      <View>
+        <H1 text="appName" style={style.title} />
+        <H3 text="appIntroDescription" style={style.subtitle} />
+      </View>
+      <View>
+        <Button variant="primary" onPress={() => handleSignWithGoogle()}>
+          <Translate k="signInWithGoogle" />
         </Button>
-        <Button variant="light" className="mt-3">
+        {/* <Button style={style.buttonSignInLater} onPress={() => handleSignWithGoogle()}>
           <Translate k="signInLater" />
         </Button> */}
-      {/* </div> */}
+      </View>
     </View>
   );
 };

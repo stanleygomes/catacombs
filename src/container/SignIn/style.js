@@ -1,12 +1,19 @@
 import { StyleSheet } from 'react-native';
+import theme from '../../common/style/theme';
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    flexDirection: 'column',
+const style = StyleSheet.create({
+  title: {
+    textAlign: 'center',
+  },
+  subtitle: {
+    marginTop: 15,
+    paddingLeft: 30,
+    paddingRight: 30,
+    textAlign: 'center',
+  },
+  buttonSignInLater: {
+    marginTop: 15,
   },
 });
 
-export default styles;
+export default style;
