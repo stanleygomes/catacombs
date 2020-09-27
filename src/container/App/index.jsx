@@ -1,25 +1,43 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import AuthContext from '../../provider/authContext';
+import React, { useState, useEffect } from 'react';
+import AppContext from '../../provider/appContext';
 import SignIn from '../SignIn';
 import BottomAppBar from '../../component/BottomAppBar';
 import localStorage from '../../service/localStorage';
 
 const App = () => {
-  const firstAccess = null; //localStorage.get('firstAccess');
+  const [isFirstAccess, setIsFirstAccess] = useState(true);
+  const [loading, setLoading] = useState(true);
 
-  if (firstAccess == null) {
-    console.log('Não fez o primeiro acesso!');
-  } else {
-    console.log('Já fez o primeiro acesso!');
-  }
+  const firstAccess = () => {
+    localStorage
+      .get('config')
+      .then(data => {
+        if (data != null) {
+          setIsFirstAccess(false);
+        }
+
+        setLoading(false);
+      })
+      .catch(e => {
+        setLoading(false);
+        setIsFirstAccess(true);
+        console.log(e);
+      });
+  };
+
+  const ShowView = () => {
+    return <>{isFirstAccess === true ? <SignIn /> : <BottomAppBar />}</>;
+  };
+
+  useEffect(() => {
+    firstAccess();
+  }, []);
 
   return (
     <>
       <StatusBar />
-      <AuthContext.Provider>
-        {firstAccess == null ? <SignIn /> : <BottomAppBar />}
-      </AuthContext.Provider>
+      <AppContext.Provider>{loading === false && <ShowView />}</AppContext.Provider>
     </>
   );
 };

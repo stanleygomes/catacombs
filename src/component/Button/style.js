@@ -2,8 +2,8 @@ import { StyleSheet } from 'react-native';
 
 const style = StyleSheet.create({
   default: {
-    color: 'red'
-    // backgroundColor: 'red'
+    color: 'red',
+    backgroundColor: 'red'
   },
   primary: {
     backgroundColor: 'blue',
