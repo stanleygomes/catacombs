@@ -34,12 +34,17 @@ const SignIn = () => {
         <H3 text="appIntroDescription" style={style.subtitle} />
       </View>
       <View>
-        <Button variant="primary" onPress={() => handleSignWithGoogle()}>
-          <Translate k="signInWithGoogle" />
-        </Button>
-        <Button style={style.buttonSignInLater} onPress={() => handleSignWithGoogle()}>
-          <Translate k="signInLater" />
-        </Button>
+        <Button
+          variant="primary"
+          onPress={() => handleSignWithGoogle()}
+          content="signInWithGoogle"
+        />
+        <Button
+          variant="light"
+          style={style.buttonSignInLater}
+          onPress={() => handleSignWithGoogle()}
+          content="signInLater"
+        />
       </View>
     </View>
   );
