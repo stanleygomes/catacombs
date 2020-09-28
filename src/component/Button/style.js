@@ -2,11 +2,19 @@ import { StyleSheet } from 'react-native';
 
 const style = StyleSheet.create({
   default: {
-    color: 'red',
-    backgroundColor: 'red'
+    borderWidth: 0,
   },
   primary: {
-    backgroundColor: 'blue',
+    backgroundColor: '#ef6c00',
+  },
+  primaryText: {
+    color: '#fff',
+  },
+  outline: {
+    borderWidth: 1,
+  },
+  outlineText: {
+    color: '#555',
   },
 });
 

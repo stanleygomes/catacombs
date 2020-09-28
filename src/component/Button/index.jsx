@@ -2,17 +2,25 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Button as ButtonRN } from '@ant-design/react-native';
 import customStyle from './style';
+import Translate from '../Translate';
 
 const Button = props => {
-  const { children, style, variant } = props;
+  const { content, style, variant, handleOnPress } = props;
 
   return (
     <ButtonRN
       style={{ ...customStyle.default, ...customStyle[variant], ...style }}
-      activeStyle={customStyle.inputActive}
-      {...props}
+      // activeStyle={{ ...customStyle.default, ...customStyle[variant], ...style }}
+      onPress={handleOnPress}
     >
-      {children}
+      {typeof content === 'string' ? (
+        <Translate
+          style={{ ...customStyle.defaultText, ...customStyle[`${variant}Text`] }}
+          k={content}
+        />
+      ) : (
+        <>{content}</>
+      )}
     </ButtonRN>
   );
 };
@@ -20,13 +28,15 @@ const Button = props => {
 Button.defaultProps = {
   style: {},
   variant: 'primary',
-  children: null,
+  content: null,
+  handleOnPress: () => {},
 };
 
 Button.propTypes = {
-  children: PropTypes.element,
+  content: PropTypes.any,
   style: PropTypes.object,
   variant: PropTypes.string,
+  handleOnPress: PropTypes.func,
 };
 
 export default Button;
