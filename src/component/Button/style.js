@@ -1,8 +1,12 @@
 import { StyleSheet } from 'react-native';
+import config from '../../common/config';
 
 const style = StyleSheet.create({
   default: {
     borderWidth: 0,
+  },
+  defaultText: {
+    fontFamily: config.defaultFontFamily,
   },
   primary: {
     backgroundColor: '#ef6c00',
