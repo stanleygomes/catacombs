@@ -10,11 +10,17 @@ const style = StyleSheet.create({
   primaryText: {
     color: '#fff',
   },
+  primaryActive: {
+    backgroundColor: '#b53d00',
+  },
   outline: {
     borderWidth: 1,
   },
   outlineText: {
     color: '#555',
+  },
+  lightActive: {
+    backgroundColor: '#ddd',
   },
 });
 

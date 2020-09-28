@@ -27,7 +27,7 @@ const App = () => {
   };
 
   const ShowView = () => {
-    return <>{isFirstAccess === true ? <SignIn /> : <BottomAppBar />}</>;
+    return isFirstAccess === true ? <SignIn /> : <BottomAppBar />;
   };
 
   useEffect(() => {

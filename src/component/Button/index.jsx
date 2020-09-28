@@ -10,7 +10,7 @@ const Button = props => {
   return (
     <ButtonRN
       style={{ ...customStyle.default, ...customStyle[variant], ...style }}
-      // activeStyle={{ ...customStyle.default, ...customStyle[variant], ...style }}
+      activeStyle={{ ...customStyle.defaultActive, ...customStyle[`${variant}Active`], ...style }}
       onPress={handleOnPress}
     >
       {typeof content === 'string' ? (
