@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import { View } from 'react-native';
-import Translate from '../../component/Translate';
 import Image from '../../component/Image';
 import Button from '../../component/Button';
 import H1 from '../../component/H1';
@@ -22,7 +21,6 @@ const SignIn = () => {
     // });
     // import { FontAwesome } from '@expo/vector-icons';
     // {/* <FontAwesome name="google" size={22} color="#333" className="mr-3" /> */}
-    // estilizar o botao primary
     // theme provider
   };
 
@@ -34,16 +32,12 @@ const SignIn = () => {
         <H3 text="appIntroDescription" style={style.subtitle} />
       </View>
       <View>
-        <Button
-          variant="primary"
-          onPress={() => handleSignWithGoogle()}
-          content="signInWithGoogle"
-        />
+        <Button variant="primary" onPress={() => handleSignWithGoogle()} text="signInWithGoogle" />
         <Button
           variant="light"
           style={style.buttonSignInLater}
           onPress={() => handleSignWithGoogle()}
-          content="signInLater"
+          text="signInLater"
         />
       </View>
     </View>

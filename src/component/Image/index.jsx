@@ -3,20 +3,15 @@ import { Image as ImageRN } from 'react-native';
 import PropTypes from 'prop-types';
 
 const Image = props => {
-  const { source, width, height, className } = props;
+  const { source, width, height } = props;
 
-  return (
-    <ImageRN className={`rounded-circle ${className}`} style={{ width, height }} source={source} />
-  );
+  return <ImageRN style={{ width, height, resizeMode: 'contain' }} source={source} />;
 };
 
-Image.defaultProps = {
-  className: null,
-};
+Image.defaultProps = {};
 
 Image.propTypes = {
-  className: PropTypes.string,
-  source: PropTypes.string.isRequired,
+  source: PropTypes.any.isRequired,
   width: PropTypes.number.isRequired,
   height: PropTypes.number.isRequired,
 };
