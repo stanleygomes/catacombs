@@ -29,6 +29,7 @@ jobs:
           cd /home/defaultwebsite
 
           echo "Atualizar codigo:"
+          git checkout -- .
           git pull ${{ secrets.GIT_URL }} master
 
           echo "Copiar configuracoes de ambiente de producao:"
