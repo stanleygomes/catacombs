@@ -32,6 +32,6 @@ jobs:
           git pull ${{ secrets.GIT_URL }} master
 
           echo "Copiar configuracoes de ambiente de producao:"
-          mv blog public
+          mv blog/* public
           cd public
           cp wp-config-prd.php wp-config.php
