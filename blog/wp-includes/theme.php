@@ -351,9 +351,9 @@ function get_template_directory_uri() {
   $theme_root_uri   = get_theme_root_uri( $template );
   $template_dir_uri = "$theme_root_uri/$template";
 
-  if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
+  // if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
     $template_dir_uri = str_replace('http', 'https', $template_dir_uri);
-  }
+  // }
 
 	/**
 	 * Filters the current theme directory URI.
