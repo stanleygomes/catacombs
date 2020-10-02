@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const Home = () => {
+const Main = () => {
   return (
     <View style={styles.container}>
       <Translate k="welcome" />
@@ -29,4 +29,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Main;

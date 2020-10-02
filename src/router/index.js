@@ -1,4 +1,4 @@
-import Home from '../container/Home';
+import Home from '../container/Main';
 
 const routes = [
   { name: 'Home', component: Home },

@@ -5,6 +5,7 @@ const global = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'space-around',
+    backgroundColor: '#fff',
     flexDirection: 'column',
   },
 });

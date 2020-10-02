@@ -47,7 +47,7 @@ const App = () => {
 
   return (
     <>
-      <StatusBar />
+      <StatusBar style="dark" />
       <AppContext.Provider>{loading === false && <ShowView />}</AppContext.Provider>
     </>
   );
