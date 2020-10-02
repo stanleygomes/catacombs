@@ -283,7 +283,7 @@ add_action( 'widgets_init', 'catch_sketch_widgets_init' );
 if ( ! function_exists( 'catch_sketch_fonts_url' ) ) :
 	function catch_sketch_fonts_url() {
 		$fonts_url = '';
-		
+
 		/* Translators: If there are characters in your language that are not
 		* supported by Rubik, translate this to 'off'. Do not translate
 		* into your own language.
@@ -349,7 +349,6 @@ add_filter( 'wp_resource_hints', 'catch_sketch_resource_hints', 10, 2 );
 function catch_sketch_scripts() {
 	wp_enqueue_style( 'catch-sketch-fonts', catch_sketch_fonts_url(), array(), null );
 
-	wp_enqueue_style( 'font-awesome', trailingslashit( esc_url ( get_template_directory_uri() ) ) . 'assets/css/font-awesome/css/font-awesome.css', array(), '4.7.0', 'all' );
 
 	// Theme stylesheet.
 	wp_enqueue_style( 'catch-sketch-style', get_stylesheet_uri() );
@@ -362,7 +361,7 @@ function catch_sketch_scripts() {
 	$deps[] = 'jquery';
 	$deps[] = 'jquery-match-height';
 
-	$enable_portfolio = get_theme_mod( 'catch_sketch_portfolio_option', 'disabled' ); 
+	$enable_portfolio = get_theme_mod( 'catch_sketch_portfolio_option', 'disabled' );
 
 	if ( catch_sketch_check_section( $enable_portfolio ) ) {
 		$deps[] = 'jquery-masonry';

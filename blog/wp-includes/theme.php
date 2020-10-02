@@ -348,8 +348,12 @@ function get_template_directory() {
  */
 function get_template_directory_uri() {
 	$template         = str_replace( '%2F', '/', rawurlencode( get_template() ) );
-	$theme_root_uri   = get_theme_root_uri( $template );
-	$template_dir_uri = "$theme_root_uri/$template";
+  $theme_root_uri   = get_theme_root_uri( $template );
+  $template_dir_uri = "$theme_root_uri/$template";
+
+  if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
+    $template_dir_uri = str_replace('http', 'https', $template_dir_uri);
+  }
 
 	/**
 	 * Filters the current theme directory URI.
