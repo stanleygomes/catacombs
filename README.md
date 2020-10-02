@@ -18,9 +18,6 @@ Table of contents
 ## How to use
 
 
-
-
-
 <div id='patterns'/>
 
 ## Patterns
