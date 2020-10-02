@@ -20,6 +20,9 @@
     "ios": {
       "supportsTablet": true
     },
+    "android": {
+      "package": "com.abibliasagrada.app"
+    },
     "web": {
       "favicon": "./assets/favicon.png"
     },
