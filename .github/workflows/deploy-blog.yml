@@ -1,0 +1,37 @@
+name: Deploy PRD
+on:
+  push:
+    branches:
+    - master
+jobs:
+  deploy:
+    name: Lint, Test and Deploy
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [10.x]
+    steps:
+    - uses: actions/checkout@v1
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Sign in to remote server
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.PRD_HOST }}
+        username: ${{ secrets.PRD_USERNAME }}
+        port: ${{ secrets.PRD_PORT }}
+        key: ${{ secrets.PRD_SSH_KEY }}
+        script_stop: true
+        script: |
+          echo "Acessar pasta da aplicacao:"
+          cd /usr/src/app
+
+          echo "Atualizar codigo:"
+          git pull ${{ secrets.GIT_URL }} master
+
+          echo "Copiar configuracoes de ambiente de producao:"
+          mv blog public
+          cd public
+          cp wp-config-prd.php wp-config.php
