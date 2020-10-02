@@ -26,7 +26,7 @@ jobs:
         script_stop: true
         script: |
           echo "Acessar pasta da aplicacao:"
-          cd /usr/src/app
+          cd /home/defaultwebsite
 
           echo "Atualizar codigo:"
           git pull ${{ secrets.GIT_URL }} master
