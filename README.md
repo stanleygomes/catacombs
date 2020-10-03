@@ -1,6 +1,4 @@
-[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](https://github.com/standard/standard)
-![Lint and test](https://github.com/stanleygomes/bible-app/workflows/Lint%20and%20test/badge.svg)
-
+[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)]![Deploy Blog - PRD](https://github.com/stanleygomes/bible-app/workflows/Deploy%20PRD/badge.svg)
 # A Bíblia Sagrada
 
 This app was built using [Expo CLI](https://expo.io) for react native. ✝️ 📖 📜 🙏
