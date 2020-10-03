@@ -18,17 +18,6 @@
  * @package WordPress
  */
 
-
-/** SSL */
-define('FORCE_SSL_ADMIN', true);
-
-// in some setups HTTP_X_FORWARDED_PROTO might contain
-// a comma-separated list e.g. http,https
-// so check for https existence
-if (strpos($_SERVER['HTTP_X_FORWARDED_PROTO'], 'https') !== false) {
-  $_SERVER['HTTPS'] = 'on';
-}
-
 define('FS_METHOD', 'direct');
 
 // ** MySQL settings - You can get this info from your web host ** //
