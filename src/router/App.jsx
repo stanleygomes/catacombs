@@ -4,6 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import SignIn from '../container/SignIn';
 import Main from '../container/Main';
+import Profile from '../container/Profile';
 
 const AppRouter = () => {
   const { Navigator, Screen } = createStackNavigator();
@@ -12,6 +13,7 @@ const AppRouter = () => {
     <NavigationContainer>
       <Navigator screenOptions={{ headerShown: false }}>
         <Screen name="SignIn" component={SignIn} />
+        <Screen name="Profile" component={Profile} />
         <Screen name="Main" component={Main} />
       </Navigator>
     </NavigationContainer>
