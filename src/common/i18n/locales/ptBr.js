@@ -5,4 +5,11 @@ export default {
   signInLater: 'Agora não',
   daysStreak: 'Dias seguidos',
   versesSaved: 'Versos salvos',
+  logout: 'Sair',
+  profileInformation: 'Minhas informações',
+  savedVerses: 'Versos salvos',
+  readingReminders: 'Lembretes de leitura',
+  theme: 'Tema',
+  privacy: 'Privacidade',
+  about: 'Sobre',
 };
