@@ -3,9 +3,12 @@ import { ScrollView, View } from 'react-native';
 import Image from '../../component/Image';
 import H1 from '../../component/H1';
 import Text from '../../component/Text';
+import MenuContainer from '../../component/MenuContainer';
+import MenuItemIcon from '../../component/MenuItemIcon';
+import Button from '../../component/Button';
 import prayerSrc from '../../asset/image/prayer-avatar.png';
-import style from './style';
 import global from '../../common/style/global';
+import style from './style';
 
 const Profile = () => {
   const user = {
@@ -20,6 +23,27 @@ const Profile = () => {
     {
       title: 'daysStreak',
       value: String(10),
+    },
+  ];
+
+  const menuItems = [
+    {
+      title: 'profileInformation',
+    },
+    {
+      title: 'savedVerses',
+    },
+    {
+      title: 'readingReminders',
+    },
+    {
+      title: 'theme',
+    },
+    {
+      title: 'privacy',
+    },
+    {
+      title: 'about',
     },
   ];
 
@@ -38,20 +62,25 @@ const Profile = () => {
             </View>
           ))}
       </View>
-
-      {/*
-
-      MENU
-
-      - profile information / minhas informações
-      - saved verses / versos salvos
-      - reading reminders / lembretes de leitura
-      - theme / tema (light / dark)
-      - privacy / privacidade
-      - about / sobre
-      - logout / sair
-
-    */}
+      <MenuContainer>
+        {menuItems != null &&
+          menuItems.map(item => (
+            <MenuItemIcon
+              key={item.title}
+              textKey={item.title}
+              onPress={() => console.log('foi')}
+            />
+          ))}
+      </MenuContainer>
+      <View style={style.logoutContainer}>
+        <Button
+          variant="light"
+          style={style.logoutButton}
+          styleText={style.logoutButtonText}
+          onPress={() => console.log()}
+          text="logout"
+        />
+      </View>
     </ScrollView>
   );
 };
