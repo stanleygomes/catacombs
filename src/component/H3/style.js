@@ -1,10 +1,10 @@
 import { StyleSheet } from 'react-native';
-import config from '../../common/config';
+import theme from '../../common/style/theme';
 
 const style = StyleSheet.create({
   default: {
     fontSize: 20,
-    fontFamily: config.defaultFontFamily,
+    fontFamily: theme.font.defaultFontFamily,
   },
 });
 

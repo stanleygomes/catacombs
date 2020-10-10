@@ -1,21 +1,23 @@
 import { StyleSheet } from 'react-native';
-import config from '../../common/config';
+import theme from '../../common/style/theme';
+
+const activeTheme = 'light';
 
 const style = StyleSheet.create({
   default: {
     borderWidth: 0,
   },
   defaultText: {
-    fontFamily: config.defaultFontFamily,
+    fontFamily: theme.font.defaultFontFamily,
   },
   primary: {
-    backgroundColor: '#ef6c00',
+    backgroundColor: theme[activeTheme].primary,
   },
   primaryText: {
     color: '#fff',
   },
   primaryActive: {
-    backgroundColor: '#b53d00',
+    backgroundColor: theme[activeTheme].primary,
   },
   outline: {
     borderWidth: 1,
