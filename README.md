@@ -6,33 +6,47 @@ This app was built using [Expo CLI](https://expo.io) for react native. ✝️ �
 
 *******
 Table of contents
+ 0. [Requirements](#requirements)
  1. [How to use](#startup)
  2. [Patterns and libs](#patterns)
  3. [Contribute](#contribute)
  4. [Gitflow recommendations](#gitflow)
+ 5. [Licence](#license)
 *******
+
+<div id='requirements'/>
+
+## :pencil: Requirements
+
+This app supports:
+
+- Node.js from version v10.x
+- React from version v16.x
+- React Native CLI from version v2.x
+- Expo from version v38.x
+- Expo CLI from version v3.27.x
 
 <div id='startup'/>
 
-## How to use
-
+## :rocket: How to use
 
 <div id='patterns'/>
 
-## Patterns
+Step by step to get this up and running
+
+## :heavy_check_mark: Patterns
 
 These are some of patterns definitions to help us to keep a default arquitecture.
 
 - Package manager: [npm](https://medium.com/@vincentnewkirk/npm-vs-yarn-2019-e88757b17038), sure
 - Node version: [v10.x](https://nodejs.org/ca/blog/release/v10.16.3)
-- Component Libray: [React Bootstrap](https://react-bootstrap.github.io)
+- RN Framework: [Expo](https://expo.io)
+- Component Libray: [AntDesign RN](https://rn.mobile.ant.design)
 - Linter: eslint [Airbnb](https://airbnb.io/javascript) style guide
-- i18n: take a look [here](https://www.npmjs.com/package/i18n)
-- Date and time: [moment](https://momentjs.com)
 
 <div id='contribute'/>
 
-## How to get contribute
+## :fist: How to get contribute
 
 Step by step to get this up and running
 
@@ -64,7 +78,7 @@ npm start
 
 <div id='gitflow'/>
 
-## Git flow
+## :trident: Git flow
 
 To file a new a feature
 
@@ -72,3 +86,12 @@ To file a new a feature
 - file a pull request on `master` branch
 - since your PR is aproved, it will be merged to `master` branch
 - in a moment in time we'll create a release, using the pattern: `release/vX.X.X`
+
+<div id='license'/>
+
+## :scroll: License 
+
+```
+MIT license. Copyright (c) 2019 Stanley.
+For more information, see the LICENSE file.
+```
