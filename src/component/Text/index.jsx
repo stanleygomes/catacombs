@@ -21,8 +21,8 @@ Text.defaultProps = {
 };
 
 Text.propTypes = {
-  textKey: PropTypes.string,
   style: PropTypes.object,
+  textKey: PropTypes.string,
   textPlain: PropTypes.string,
 };
 

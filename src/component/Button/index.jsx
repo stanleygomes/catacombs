@@ -5,7 +5,7 @@ import customStyle from './style';
 import Translate from '../Translate';
 
 const Button = props => {
-  const { content, text, style, variant, handleOnPress } = props;
+  const { content, text, style, styleText, variant, handleOnPress } = props;
 
   return (
     <ButtonRN
@@ -15,7 +15,7 @@ const Button = props => {
     >
       {text != null ? (
         <Translate
-          style={{ ...customStyle.defaultText, ...customStyle[`${variant}Text`] }}
+          style={{ ...customStyle.defaultText, ...customStyle[`${variant}Text`], ...styleText }}
           k={text}
         />
       ) : (
@@ -30,6 +30,7 @@ Button.defaultProps = {
   variant: 'primary',
   content: null,
   text: null,
+  styleText: null,
   handleOnPress: () => {},
 };
 
@@ -37,6 +38,7 @@ Button.propTypes = {
   text: PropTypes.string,
   content: PropTypes.element,
   style: PropTypes.object,
+  styleText: PropTypes.object,
   variant: PropTypes.string,
   handleOnPress: PropTypes.func,
 };
