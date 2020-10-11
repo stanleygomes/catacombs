@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { View } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import Image from '../../component/Image';
 import Button from '../../component/Button';
 import H1 from '../../component/H1';
@@ -12,10 +13,16 @@ import AppContext from '../../provider/appContext';
 
 const SignIn = () => {
   const appContext = useContext(AppContext);
+  const { navigate } = useNavigation();
 
-  console.log(appContext);
+  console.log('appContext');
+
+  const handleNavigateToTabs = () => {
+    navigate('AppTabsNavigation');
+  };
 
   const handleSignWithGoogle = () => {
+    handleNavigateToTabs();
     // localStorage.set('config', 'yes').then(() => {
     //   console.log('foi');
     // });
@@ -32,11 +39,11 @@ const SignIn = () => {
         <H3 text="appIntroDescription" style={style.subtitle} />
       </View>
       <View>
-        <Button variant="primary" onPress={() => handleSignWithGoogle()} text="signInWithGoogle" />
+        <Button variant="primary" onPress={handleSignWithGoogle} text="signInWithGoogle" />
         <Button
           variant="light"
           style={style.buttonSignInLater}
-          onPress={() => handleSignWithGoogle()}
+          onPress={handleSignWithGoogle}
           text="signInLater"
         />
       </View>
