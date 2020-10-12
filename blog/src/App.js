@@ -1,7 +1,7 @@
 import React from 'react';
 
 const App = () => {
-  window.location.href = 'https://example.com/1234';
+  window.location.href = 'http://instagram.com/bibliasagrada.app.br';
   return null;
 };
 
