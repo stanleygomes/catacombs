@@ -6,11 +6,11 @@ import Text from '../Text';
 import customStyle from './style';
 
 const MenuItemIcon = props => {
-  const { style, textKey, textPlain, onPressFn } = props;
+  const { style, textKey, textPlain, onPress } = props;
 
   return (
     <View style={{ ...customStyle.menuItemContainerDefault, ...style }}>
-      <TouchableOpacity style={{ ...customStyle.menuItemDefault, ...style }} onPress={onPressFn}>
+      <TouchableOpacity style={{ ...customStyle.menuItemDefault, ...style }} onPress={onPress}>
         <Text
           textKey={textKey}
           textPlain={textPlain}
@@ -26,14 +26,14 @@ MenuItemIcon.defaultProps = {
   style: {},
   textKey: null,
   textPlain: null,
-  onPressFn: () => {},
+  onPress: () => {},
 };
 
 MenuItemIcon.propTypes = {
   textKey: PropTypes.string,
   textPlain: PropTypes.string,
   style: PropTypes.object,
-  onPressFn: PropTypes.func,
+  onPress: PropTypes.func,
 };
 
 export default MenuItemIcon;
