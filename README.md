@@ -1,11 +1,12 @@
-![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)
-![Deploy Blog - PRD](https://github.com/stanleygomes/bible-app/workflows/Deploy%20PRD/badge.svg)
+[![CodeFactor](https://www.codefactor.io/repository/github/stanleygomes/biblia-sagrada/badge?s=14a1005caf0a61c702bbdd81ebddcfb3fd57aae4)](https://www.codefactor.io/repository/github/stanleygomes/biblia-sagrada)
+
 # A Bíblia Sagrada
 
 This app was built using [Expo CLI](https://expo.io) for react native. ✝️ 📖 📜 🙏
 
 *******
 Table of contents
+
  0. [Requirements](#requirements)
  1. [How to use](#startup)
  2. [Patterns and libs](#patterns)
@@ -46,7 +47,7 @@ These are some of patterns definitions to help us to keep a default arquitecture
 
 <div id='contribute'/>
 
-## :fist: How to get contribute
+## :fist: How to contribute
 
 Step by step to get this up and running
 
