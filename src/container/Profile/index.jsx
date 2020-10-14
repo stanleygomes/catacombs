@@ -1,5 +1,6 @@
 import React from 'react';
 import { ScrollView, View } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import Image from '../../component/Image';
 import H1 from '../../component/H1';
 import Text from '../../component/Text';
@@ -11,6 +12,7 @@ import global from '../../common/style/global';
 import style from './style';
 
 const Profile = () => {
+  const { navigate } = useNavigation();
   const user = {
     name: 'Luke Skywalker',
   };
@@ -29,23 +31,33 @@ const Profile = () => {
   const menuItems = [
     {
       title: 'profileInformation',
+      to: '',
     },
     {
       title: 'savedVerses',
+      to: '',
     },
     {
       title: 'readingReminders',
+      to: '',
     },
     {
       title: 'theme',
+      to: '',
     },
     {
       title: 'privacy',
+      to: '',
     },
     {
       title: 'about',
+      to: 'About',
     },
   ];
+
+  const handleNavigate = to => {
+    navigate(to);
+  };
 
   return (
     <ScrollView>
@@ -68,7 +80,7 @@ const Profile = () => {
             <MenuItemIcon
               key={item.title}
               textKey={item.title}
-              onPress={() => console.log('foi')}
+              onPress={() => handleNavigate(item.to)}
             />
           ))}
       </MenuContainer>

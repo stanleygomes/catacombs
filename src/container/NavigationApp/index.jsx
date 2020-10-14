@@ -32,14 +32,27 @@ const NavigationApp = () => {
     firstAccess();
   }, []);
 
+  const screens = [
+    {
+      name: 'SignIn',
+      component: SignIn,
+    },
+    {
+      name: 'AppTabsNavigation',
+      component: AppTabsNavigation,
+    },
+  ];
+
   return (
     <>
       {loading === false && (
         <NavigationContainer>
           <Navigator screenOptions={{ headerShown: false }}>
             {/* {isFirstAccess === false && <Screen name="SignIn" component={SignIn} />} */}
-            <Screen name="SignIn" component={SignIn} />
-            <Screen name="AppTabsNavigation" component={AppTabsNavigation} />
+            {screens != null &&
+              screens.map(screen => (
+                <Screen key={screen.name} name={screen.name} component={screen.component} />
+              ))}
           </Navigator>
         </NavigationContainer>
       )}
