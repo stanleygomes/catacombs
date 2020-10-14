@@ -8,6 +8,10 @@ const global = StyleSheet.create({
     backgroundColor: '#fff',
     flexDirection: 'column',
   },
+  containerBackground: {
+    flex: 1,
+    backgroundColor: '#fff',
+  },
 });
 
 export default global;

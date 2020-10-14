@@ -10,57 +10,20 @@ import Button from '../../component/Button';
 import prayerSrc from '../../asset/image/prayer-avatar.png';
 import global from '../../common/style/global';
 import style from './style';
+import profileService from '../../service/profile';
 
 const Profile = () => {
   const { navigate } = useNavigation();
-  const user = {
-    name: 'Luke Skywalker',
-  };
-
-  const statsList = [
-    {
-      title: 'versesSaved',
-      value: String(50),
-    },
-    {
-      title: 'daysStreak',
-      value: String(10),
-    },
-  ];
-
-  const menuItems = [
-    {
-      title: 'profileInformation',
-      to: '',
-    },
-    {
-      title: 'savedVerses',
-      to: '',
-    },
-    {
-      title: 'readingReminders',
-      to: '',
-    },
-    {
-      title: 'theme',
-      to: '',
-    },
-    {
-      title: 'privacy',
-      to: '',
-    },
-    {
-      title: 'about',
-      to: 'About',
-    },
-  ];
+  const user = profileService.getUser();
+  const statsList = profileService.getStatsList();
+  const menuItems = profileService.getMenuItems();
 
   const handleNavigate = to => {
     navigate(to);
   };
 
   return (
-    <ScrollView>
+    <ScrollView style={{ ...global.containerBackground }}>
       <View style={{ ...global.container, ...style.containerTop }}>
         <Image source={prayerSrc} width={100} height={100} />
         <H1 textPlain={user.name} style={style.title} />
