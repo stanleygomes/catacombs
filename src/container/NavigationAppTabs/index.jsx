@@ -1,7 +1,8 @@
 import React from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Profile from '../Profile';
+import NavigationProfile from '../NavigationProfile';
+import Text from '../../component/Text';
 import Dashboard from '../Dashboard';
 import style from './style';
 
@@ -24,15 +25,15 @@ const NavigationAppTabs = () => {
       name: 'Dashboard',
       component: Dashboard,
       options: {
-        tabBarLabel: 'Dashboard',
+        tabBarLabel: () => <Text textKey="dashboard" />,
         tabBarIcon: ({ color, size }) => <Ionicons name="ios-easel" color={color} size={size} />,
       },
     },
     {
-      name: 'Profile',
-      component: Profile,
+      name: 'NavigationProfile',
+      component: NavigationProfile,
       options: {
-        tabBarLabel: 'Profile',
+        tabBarLabel: () => <Text textKey="profile" />,
         tabBarIcon: ({ color, size }) => <Ionicons name="ios-heart" color={color} size={size} />,
       },
     },
