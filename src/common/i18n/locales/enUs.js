@@ -12,4 +12,6 @@ export default {
   theme: 'Theme',
   privacy: 'Privacy',
   about: 'About',
+  dashboard: 'Dashboard',
+  profile: 'Profile',
 };
