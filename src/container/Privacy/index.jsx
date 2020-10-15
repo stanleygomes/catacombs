@@ -18,15 +18,24 @@ const Privacy = () => {
   };
 
   return (
-    <ScrollView style={{ ...global.containerBackground }}>
+    <View style={{ ...global.containerBackground }}>
       <Header showBackButton="yes" />
-      <View style={{ ...global.container, ...style.containerTop }}>
-        <Image source={privacySrc} width={70} height={70} style={{ borderRadius: 20 }} />
-        <H1 text="privacy" style={style.title} />
-        <Text textKey="privacyDescription" style={style.description} />
-        <Button text="privacyButtonText" style={style.button} onPress={handleNavigateProfileEdit} />
-      </View>
-    </ScrollView>
+      <ScrollView
+        contentContainerStyle={style.scrollView}
+        style={{ ...global.containerBackground }}
+      >
+        <View style={{ ...global.container, ...style.containerTop }}>
+          <Image source={privacySrc} width={70} height={70} style={{ borderRadius: 20 }} />
+          <H1 text="privacy" style={style.title} />
+          <Text textKey="privacyDescription" style={style.description} />
+          <Button
+            text="privacyButtonText"
+            style={style.button}
+            onPress={handleNavigateProfileEdit}
+          />
+        </View>
+      </ScrollView>
+    </View>
   );
 };
 

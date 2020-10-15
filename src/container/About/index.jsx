@@ -15,18 +15,23 @@ const About = () => {
   };
 
   return (
-    <ScrollView style={{ ...global.containerBackground }}>
+    <View style={{ ...global.containerBackground }}>
       <Header showBackButton="yes" />
-      <View style={{ ...global.container, ...style.containerTop }}>
-        <Image source={logoSrc} width={100} height={100} style={{ borderRadius: 20 }} />
-        <H1 text="appName" style={style.title} />
-        <Text textKey="appDescription" style={style.description} />
-        <Text textKey="bibleCredit" style={style.credit} />
-        <TouchableOpacity style={style.creditButton} onPress={handleOpenLink}>
-          <Text textKey="bibleCreditButton" style={style.creditButtonText} />
-        </TouchableOpacity>
-      </View>
-    </ScrollView>
+      <ScrollView
+        contentContainerStyle={style.scrollView}
+        style={{ ...global.containerBackground }}
+      >
+        <View style={{ ...global.container, ...style.containerTop }}>
+          <Image source={logoSrc} width={100} height={100} style={{ borderRadius: 20 }} />
+          <H1 text="appName" style={style.title} />
+          <Text textKey="appDescription" style={style.description} />
+          <Text textKey="bibleCredit" style={style.credit} />
+          <TouchableOpacity style={style.creditButton} onPress={handleOpenLink}>
+            <Text textKey="bibleCreditButton" style={style.creditButtonText} />
+          </TouchableOpacity>
+        </View>
+      </ScrollView>
+    </View>
   );
 };
 

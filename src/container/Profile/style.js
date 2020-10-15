@@ -15,13 +15,15 @@ const style = StyleSheet.create({
   },
   containerResume: {
     flexDirection: 'row',
+    padding: 25,
   },
   containerResumeBox: {
     backgroundColor: theme[activeTheme].primaryLight,
     borderRadius: 30,
     flexGrow: 1,
-    margin: 15,
+    flexBasis: 0,
     padding: 25,
+    margin: 10,
   },
   containerResumeBoxTitle: {
     fontSize: 30,
