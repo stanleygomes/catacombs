@@ -1,19 +1,24 @@
 import React from 'react';
 import { Image as ImageRN } from 'react-native';
 import PropTypes from 'prop-types';
+import customStyle from './style';
 
 const Image = props => {
-  const { source, width, height } = props;
+  const { source, width, height, style } = props;
+  const proportion = { width, height };
 
-  return <ImageRN style={{ width, height, resizeMode: 'contain' }} source={source} />;
+  return <ImageRN style={{ ...customStyle, ...proportion, ...style }} source={source} />;
 };
 
-Image.defaultProps = {};
+Image.defaultProps = {
+  style: {},
+};
 
 Image.propTypes = {
   source: PropTypes.any.isRequired,
   width: PropTypes.number.isRequired,
   height: PropTypes.number.isRequired,
+  style: PropTypes.object,
 };
 
 export default Image;
