@@ -1,10 +1,10 @@
 export default {
   appName: 'A Bíblia Sagrada',
-  appDescription: 'Nosso objetivo é espalhar a palavra de Deus.',
+  appDescription: 'Nosso objetivo é espalhar a palavra de Deus',
   bibleCredit:
-    'Um agradecimento especial ao Thiago Bodruk, por disponibilizar a transcrição da bíblia.',
+    'Um agradecimento especial ao Thiago Bodruk, por disponibilizar a transcrição da bíblia',
   bibleCreditButton: 'Conheça',
-  appIntroDescription: 'Olá! Você pode fazer o login para ter acesso a diversos recursos.',
+  appIntroDescription: 'Olá! Você pode fazer o login para ter acesso a diversos recursos',
   signInWithGoogle: 'Entrar com Google',
   signInLater: 'Agora não',
   daysStreak: 'Dias seguidos',
@@ -15,6 +15,9 @@ export default {
   readingReminders: 'Lembretes de leitura',
   theme: 'Tema',
   privacy: 'Privacidade',
+  privacyDescription:
+    'Seus dados e sua privacidade são muito importantes. Não compartilhamos esses dados com ninguém. Confira abaixo as informações pessoais que guardamos sobre você.',
+  privacyButtonText: 'Mostre me',
   about: 'Sobre',
   dashboard: 'Dashboard',
   profile: 'Perfil',
