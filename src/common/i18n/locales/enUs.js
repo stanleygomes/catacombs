@@ -1,5 +1,8 @@
 export default {
   appName: 'The Holy Bible',
+  appDescription: "Our goal is to spread God's word.",
+  bibleCredit: 'Special thanks to Thiago Bodruk, for making the Bible transcript available.',
+  bibleCreditButton: 'Check it out',
   appIntroDescription: 'Hello! Sign in to have access to a lot of features.',
   signInWithGoogle: 'Sign In with Google',
   signInLater: 'Not now',
