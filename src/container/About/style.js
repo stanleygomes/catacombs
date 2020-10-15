@@ -1,7 +1,4 @@
 import { StyleSheet } from 'react-native';
-import theme from '../../common/style/theme';
-
-const activeTheme = 'light';
 
 const style = StyleSheet.create({
   containerTop: {
@@ -13,35 +10,16 @@ const style = StyleSheet.create({
     textAlign: 'center',
     marginTop: 15,
   },
-  containerResume: {
-    flexDirection: 'row',
+  description: {
+    textAlign: 'center',
+    marginTop: 15,
+    fontSize: 20,
   },
-  containerResumeBox: {
-    backgroundColor: theme[activeTheme].primaryLight,
-    borderRadius: 30,
-    flexGrow: 1,
-    margin: 15,
-    padding: 25,
-  },
-  containerResumeBoxTitle: {
-    fontSize: 30,
-    fontFamily: theme.font.defaultFontFamilyBold,
-    textAlign: 'left',
-  },
-  containerResumeBoxValue: {
-    fontFamily: theme.font.defaultFontFamilyBold,
-    textAlign: 'left',
-  },
-  logoutContainer: {
-    padding: 20,
-    marginBottom: 15,
-  },
-  logoutButton: {
-    backgroundColor: theme[activeTheme].primaryLight,
-  },
-  logoutButtonText: {
-    color: theme[activeTheme].terciary,
-    fontFamily: theme.font.defaultFontFamilyBold,
+  credit: {
+    textAlign: 'center',
+    marginTop: 50,
+    fontSize: 16,
+    padding: 50,
   },
 });
 
