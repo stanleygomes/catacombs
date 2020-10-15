@@ -1,6 +1,5 @@
 import React from 'react';
-import { ScrollView, View, Linking } from 'react-native';
-import Button from '../../component/Button';
+import { ScrollView, View, Linking, TouchableOpacity } from 'react-native';
 import Image from '../../component/Image';
 import Header from '../../component/Header';
 import H1 from '../../component/H1';
@@ -19,11 +18,13 @@ const About = () => {
     <ScrollView style={{ ...global.containerBackground }}>
       <Header showBackButton="yes" />
       <View style={{ ...global.container, ...style.containerTop }}>
-        <Image source={logoSrc} width={100} height={100} style={{ borderRadius: 100 }} />
+        <Image source={logoSrc} width={100} height={100} style={{ borderRadius: 20 }} />
         <H1 text="appName" style={style.title} />
         <Text textKey="appDescription" style={style.description} />
         <Text textKey="bibleCredit" style={style.credit} />
-        <Button text="bibleCreditButton" onPress={handleOpenLink} />
+        <TouchableOpacity style={style.creditButton} onPress={handleOpenLink}>
+          <Text textKey="bibleCreditButton" style={style.creditButtonText} />
+        </TouchableOpacity>
       </View>
     </ScrollView>
   );

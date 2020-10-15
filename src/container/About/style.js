@@ -19,7 +19,15 @@ const style = StyleSheet.create({
     textAlign: 'center',
     marginTop: 50,
     fontSize: 16,
-    padding: 50,
+    paddingLeft: 50,
+    paddingRight: 50,
+  },
+  creditButton: {
+    marginTop: 20,
+  },
+  creditButtonText: {
+    textAlign: 'center',
+    fontSize: 16,
   },
 });
 
