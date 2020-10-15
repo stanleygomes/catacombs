@@ -25,7 +25,7 @@ const Profile = () => {
   return (
     <ScrollView style={{ ...global.containerBackground }}>
       <View style={{ ...global.container, ...style.containerTop }}>
-        <Image source={prayerSrc} width={100} height={100} />
+        <Image source={prayerSrc} width={100} height={100} style={{ borderRadius: 20 }} />
         <H1 textPlain={user.name} style={style.title} />
       </View>
       <View style={{ ...global.container, ...style.containerResume }}>
