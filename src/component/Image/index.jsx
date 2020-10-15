@@ -7,7 +7,7 @@ const Image = props => {
   const { source, width, height, style } = props;
   const proportion = { width, height };
 
-  return <ImageRN style={{ ...customStyle, ...proportion, ...style }} source={source} />;
+  return <ImageRN style={{ ...customStyle.default, ...proportion, ...style }} source={source} />;
 };
 
 Image.defaultProps = {
