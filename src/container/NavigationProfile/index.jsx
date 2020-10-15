@@ -2,6 +2,7 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import About from '../About';
 import Profile from '../Profile';
+import Privacy from '../Privacy';
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -14,6 +15,10 @@ const NavigationProfile = () => {
     {
       name: 'About',
       component: About,
+    },
+    {
+      name: 'Privacy',
+      component: Privacy,
     },
   ];
 
