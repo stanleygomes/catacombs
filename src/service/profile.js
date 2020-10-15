@@ -21,23 +21,23 @@ const getMenuItems = () => {
   return [
     {
       title: 'profileInformation',
-      to: '',
+      to: 'ProfileEdit',
     },
     {
       title: 'savedVerses',
-      to: '',
+      to: 'SavedVerses',
     },
     {
       title: 'readingReminders',
-      to: '',
+      to: 'ReadingReminders',
     },
     {
       title: 'theme',
-      to: '',
+      to: 'Theme',
     },
     {
       title: 'privacy',
-      to: '',
+      to: 'Privacy',
     },
     {
       title: 'about',
