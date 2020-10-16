@@ -20,5 +20,7 @@ export default {
   privacyButtonText: 'Mostre me',
   about: 'Sobre',
   home: 'Home',
+  read: 'Ler',
+  quiz: 'Quiz',
   profile: 'Perfil',
 };

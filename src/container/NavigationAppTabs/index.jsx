@@ -1,5 +1,5 @@
 import React from 'react';
-import { Ionicons } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import NavigationProfile from '../NavigationProfile';
 import Text from '../../component/Text';
@@ -14,28 +14,39 @@ const NavigationAppTabs = () => {
     tabStyle: style.tab,
     iconStyle: style.icon,
     labelStyle: style.label,
-    inactiveBackgroundColor: '#fafafc',
-    activeBackgroundColor: '#ebebf5',
-    inactiveTintColor: '#c1bbcc',
-    activeTintColor: '#32264b',
+    inactiveBackgroundColor: style.inactiveBackgroundColor.backgroundColor,
+    activeBackgroundColor: style.activeBackgroundColor.backgroundColor,
+    inactiveTintColor: style.inactiveTintColor.backgroundColor,
+    activeTintColor: style.activeTintColor.backgroundColor,
+  };
+
+  const renderTab = (textKey, icon) => {
+    return {
+      tabBarLabel: ({ color }) => <Text textKey={textKey} style={{ color }} />,
+      tabBarIcon: ({ color, size }) => <AntDesign name={icon} color={color} size={size} />,
+    };
   };
 
   const screens = [
     {
       name: 'Home',
       component: Home,
-      options: {
-        tabBarLabel: () => <Text textKey="home" />,
-        tabBarIcon: ({ color, size }) => <Ionicons name="ios-easel" color={color} size={size} />,
-      },
+      options: renderTab('home', 'home'),
+    },
+    {
+      name: 'Read',
+      component: Home,
+      options: renderTab('read', 'book'),
+    },
+    {
+      name: 'Quiz',
+      component: Home,
+      options: renderTab('quiz', 'questioncircleo'),
     },
     {
       name: 'NavigationProfile',
       component: NavigationProfile,
-      options: {
-        tabBarLabel: () => <Text textKey="profile" />,
-        tabBarIcon: ({ color, size }) => <Ionicons name="ios-heart" color={color} size={size} />,
-      },
+      options: renderTab('profile', 'user'),
     },
   ];
 
