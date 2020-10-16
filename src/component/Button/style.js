@@ -6,9 +6,12 @@ const activeTheme = 'light';
 const style = StyleSheet.create({
   default: {
     borderWidth: 0,
+    padding: 10,
+    borderRadius: 5,
   },
   defaultText: {
     fontFamily: theme.font.defaultFontFamily,
+    textAlign: 'center',
   },
   primary: {
     backgroundColor: theme[activeTheme].primary,
@@ -16,17 +19,11 @@ const style = StyleSheet.create({
   primaryText: {
     color: '#fff',
   },
-  primaryActive: {
-    backgroundColor: theme[activeTheme].primary,
-  },
   outline: {
     borderWidth: 1,
   },
   outlineText: {
     color: '#555',
-  },
-  lightActive: {
-    backgroundColor: '#ddd',
   },
 });
 
