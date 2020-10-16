@@ -5,7 +5,7 @@ import H1 from '../../component/H1';
 import global from '../../common/style/global';
 import style from './style';
 
-const Dashboard = () => {
+const Home = () => {
   const { goBack } = useNavigation();
 
   const handleNavigateToTabs = () => {
@@ -24,4 +24,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default Home;
