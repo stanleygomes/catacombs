@@ -19,6 +19,6 @@ export default {
     'Seus dados e sua privacidade são muito importantes. Não compartilhamos esses dados com ninguém. Confira abaixo as informações pessoais que guardamos sobre você.',
   privacyButtonText: 'Mostre me',
   about: 'Sobre',
-  dashboard: 'Dashboard',
+  home: 'Home',
   profile: 'Perfil',
 };

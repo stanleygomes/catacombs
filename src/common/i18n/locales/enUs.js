@@ -18,6 +18,6 @@ export default {
     'Your data and your privacy are very important. We do not share this data with anyone. Check below how personal information we hold about you.',
   privacyButtonText: 'Show me',
   about: 'About',
-  dashboard: 'Dashboard',
+  home: 'Home',
   profile: 'Profile',
 };

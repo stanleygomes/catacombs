@@ -3,7 +3,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import NavigationProfile from '../NavigationProfile';
 import Text from '../../component/Text';
-import Dashboard from '../Dashboard';
+import Home from '../Home';
 import style from './style';
 
 const { Navigator, Screen } = createBottomTabNavigator();
@@ -22,10 +22,10 @@ const NavigationAppTabs = () => {
 
   const screens = [
     {
-      name: 'Dashboard',
-      component: Dashboard,
+      name: 'Home',
+      component: Home,
       options: {
-        tabBarLabel: () => <Text textKey="dashboard" />,
+        tabBarLabel: () => <Text textKey="home" />,
         tabBarIcon: ({ color, size }) => <Ionicons name="ios-easel" color={color} size={size} />,
       },
     },
