@@ -16,7 +16,6 @@
     "extends": "react-app"
   },
   "dependencies": {
-    "@ant-design/react-native": "^4.0.5",
     "@expo-google-fonts/poppins": "^0.1.0",
     "@expo/vector-icons": "^10.2.0",
     "@react-native-community/async-storage": "^1.12.0",

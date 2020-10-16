@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button as ButtonRN } from '@ant-design/react-native';
+import { RectButton } from 'react-native-gesture-handler';
 import customStyle from './style';
 import Translate from '../Translate';
 
@@ -8,9 +8,8 @@ const Button = props => {
   const { content, text, style, styleText, variant, onPress } = props;
 
   return (
-    <ButtonRN
+    <RectButton
       style={{ ...customStyle.default, ...customStyle[variant], ...style }}
-      activeStyle={{ ...customStyle.defaultActive, ...customStyle[`${variant}Active`], ...style }}
       onPress={onPress}
     >
       {text != null ? (
@@ -21,7 +20,7 @@ const Button = props => {
       ) : (
         <>{content}</>
       )}
-    </ButtonRN>
+    </RectButton>
   );
 };
 
