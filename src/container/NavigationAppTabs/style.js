@@ -1,6 +1,8 @@
 import { StyleSheet } from 'react-native';
 import theme from '../../common/style/theme';
 
+const activeTheme = 'light';
+
 const style = StyleSheet.create({
   tabs: {
     height: 65,
@@ -10,9 +12,18 @@ const style = StyleSheet.create({
     alignItems: 'center',
   },
   icon: {},
-  label: {
-    fontSize: 12,
-    fontFamily: theme.font.defaultFontFamily,
+  label: {},
+  inactiveBackgroundColor: {
+    backgroundColor: theme[activeTheme].backgroundPrimary,
+  },
+  activeBackgroundColor: {
+    backgroundColor: theme[activeTheme].backgroundPrimary,
+  },
+  inactiveTintColor: {
+    backgroundColor: theme[activeTheme].textLight,
+  },
+  activeTintColor: {
+    backgroundColor: theme[activeTheme].primary,
   },
 });
 
