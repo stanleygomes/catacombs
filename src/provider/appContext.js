@@ -1,10 +1,8 @@
 import { createContext } from 'react';
 
 const AppContext = createContext({
-  credential: null,
-  setCredential: () => {},
-  theme: 'light',
-  setLight: () => {},
+  appConfig: {},
+  setAppConfig: () => {},
 });
 
 export default AppContext;

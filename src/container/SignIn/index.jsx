@@ -8,27 +8,25 @@ import H3 from '../../component/H3';
 import theBibleSrc from '../../asset/image/the-bible.png';
 import style from './style';
 import global from '../../common/style/global';
-import localStorage from '../../service/localStorage';
 import AppContext from '../../provider/appContext';
+import configService from '../../service/config';
 
 const SignIn = () => {
   const appContext = useContext(AppContext);
   const { navigate } = useNavigation();
-
-  console.log('appContext');
 
   const handleNavigateToTabs = () => {
     navigate('AppTabsNavigation');
   };
 
   const handleSignWithGoogle = () => {
-    handleNavigateToTabs();
-    // localStorage.set('config', 'yes').then(() => {
-    //   console.log('foi');
-    // });
-    // import { FontAwesome } from '@expo/vector-icons';
-    // {/* <FontAwesome name="google" size={22} color="#333" className="mr-3" /> */}
-    // theme provider
+    const configUpdateData = {
+      signInChallenge: true,
+    };
+
+    configService.put(configUpdateData).then(() => {
+      handleNavigateToTabs();
+    });
   };
 
   return (
