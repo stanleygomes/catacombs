@@ -11,7 +11,8 @@ stages:
 build:
   stage: build
   only:
-    - master
+    # - master
+    - none # disabled
   script:
     - npm install
     - npm install -g firebase-tools

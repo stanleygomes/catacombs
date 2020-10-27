@@ -1,61 +1,99 @@
 const http = require('../../utils/http')
+const config = require('./gitlabConfig')
 
 /*
-App slack:
-https://api.slack.com/apps/A019JLAD24W/install-on-team
+  App slack:
+  https://api.slack.com/apps/A019JLAD24W/install-on-team
+
+  Slack test channel (gitlab-integration-test):
+  REMOVED
 */
+
+const getAttributes = data => {
+  if (data == null) {
+    return null
+  }
+
+  const attributes = {
+    action: data.object_kind,
+    projectId: data.project != null ? data.project.id : '',
+    projectName: data.project != null ? data.project.name : '',
+    repositoryUrl: data.project != null ? data.project.homepage : '',
+    branchSource: data.object_attributes != null ? data.object_attributes.source_branch : '',
+    branchTarget: data.object_attributes != null ? data.object_attributes.target_branch : '',
+    iid: data.object_attributes != null ? data.object_attributes.iid : '',
+    mergeStatus: data.object_attributes != null ? data.object_attributes.merge_status : '',
+    title: data.object_attributes != null ? data.object_attributes.title : '',
+    userName: data.user != null ? data.user.name : ''
+  }
+
+  if (data.commits != null && data.commits.length > 0) {
+    const totalCommits = data.total_commits_count
+    const commitTag = data.commits[totalCommits - 1]
+
+    attributes.tagVersion = commitTag.message.trim()
+    attributes.tagAuthor = commitTag.author.name
+  }
+
+  return attributes
+}
+
+const getProjectById = projectId => {
+  const squads = config.squads
+
+  for (let i = 0; i < squads.length; i++) {
+    const squad = squads[i]
+
+    for (let j = 0; j < squad.projects.length; j++) {
+      const project = squad.projects[j]
+
+      if (project.id === projectId) {
+        delete squad.projects
+        squad.project = project
+
+        return squad
+      }
+    }
+  }
+
+  return null
+}
 
 const hook = (req, res) => {
   return new Promise((resolve, reject) => {
-    const body = req.body
-    // const slackHookUrl = 'REMOVED
-    const slackHookUrl = 'REMOVED
-    const action = body.event_type
-    const projectName = body.project.name
-    const repositoryUrl = body.project.homepage
     let textTemplate = null
     let request = null
+    let slackHookUrl = null
 
-    if (action === 'merge_request') {
-      const branchSource = body.object_attributes.source_branch
-      const branchTarget = body.object_attributes.target_branch
-      const iid = body.object_attributes.iid
-      const mergeStatus = body.object_attributes.merge_status
-      const title = body.object_attributes.title
+    const body = req.body
+    const attributes = getAttributes(body)
+
+    if (attributes != null) {
+      const squadProject = getProjectById(attributes.projectId)
+      slackHookUrl = squadProject.slackChannel
 
       // open merge request
-      if (mergeStatus === 'unchecked' && branchTarget === 'develop') {
-        textTemplate = `
-Tem merge request novo para aprovar no projeto *${projectName}*, dá uma olhada aqui nesse link:
+      if (attributes.action === 'merge_request') {
+        // open merge request
+        if (attributes.mergeStatus === 'unchecked' && attributes.branchTarget === 'develop') {
+          textTemplate = config.getPrMessage(attributes)
+        }
 
-${repositoryUrl}/merge_requests/${iid}
-
-Branch origem: *${branchSource}*
-Branch destino: *${branchTarget}*
-Mensagem: *${title}*
-
-Vou comprar um chocolate para quem validar! :morumbi:
-        `
-      } else {
-//         textTemplate = `
-// O merge request abaixo no projeto *${projectName}* foi avaliado, dá uma olhada aqui nesse link:
-
-// ${repositoryUrl}/merge_requests/${iid}
-
-// Branch origem: *${branchSource}*
-// Branch destino: *${branchTarget}*
-// Mensagem: *${title}*
-
-// Boa sorte! :harold:
-//         `
+        request = {
+          text: textTemplate
+        }
       }
 
-      request = {
-        text: textTemplate
-      }
+      // push tag
+      if (attributes.action === 'push') {
+        slackHookUrl = config.slackChannels.triboSolucoes
+        attributes.squadName = squadProject.name
+        textTemplate = config.getTagMessage(attributes)
 
-      // solicitado: unchecked
-      // aprovado/cancelado: can_be_merged
+        request = {
+          text: textTemplate
+        }
+      }
     }
 
     if (request != null) {
