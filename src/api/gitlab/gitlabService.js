@@ -98,7 +98,14 @@ const hook = (req, res) => {
 
     if (request != null) {
       http.post(slackHookUrl, request).then(resp => {
-        resolve(resp)
+        resolve({
+          status: 200,
+          message: 'Hook executado com sucesso',
+          slackHookUrl: 'Hook executado com sucesso',
+          attributes: attributes,
+          request: request,
+          response: resp
+        })
       }).catch(err => reject(err))
     } else {
       resolve(true)
