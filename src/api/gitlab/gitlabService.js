@@ -101,7 +101,7 @@ const hook = (req, res) => {
         resolve({
           status: 200,
           message: 'Hook executado com sucesso',
-          slackHookUrl: 'Hook executado com sucesso',
+          slackHookUrl: slackHookUrl,
           attributes: attributes,
           request: request,
           response: resp
