@@ -100,6 +100,8 @@ const hook = (req, res) => {
 
     if (request != null) {
       http.post(slackHookUrl, request).then(resp => {
+        console.log(resp)
+
         resolve({
           status: resp.status,
           statusText: resp.statusText,
