@@ -96,15 +96,23 @@ const hook = (req, res) => {
       }
     }
 
+    slackHookUrl = 'REMOVED
+
     if (request != null) {
       http.post(slackHookUrl, request).then(resp => {
         resolve({
-          status: 200,
+          status: resp.status,
+          statusText: resp.statusText,
+          headers: resp.headers,
+          config: {
+            url: resp.config.url,
+            post: resp.config.post,
+            data: resp.config.data
+          },
           message: 'Hook executado com sucesso',
           slackHookUrl: slackHookUrl,
           attributes: attributes,
-          request: request,
-          response: resp
+          request: request
         })
       }).catch(err => reject(err))
     } else {
