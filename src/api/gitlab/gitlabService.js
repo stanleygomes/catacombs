@@ -77,10 +77,10 @@ const hook = (req, res) => {
         // open merge request
         if (attributes.mergeStatus === 'unchecked' && attributes.branchTarget === 'develop') {
           textTemplate = config.getPrMessage(attributes)
-        }
 
-        request = {
-          text: textTemplate
+          request = {
+            text: textTemplate
+          }
         }
       }
 
@@ -118,7 +118,10 @@ const hook = (req, res) => {
         })
       }).catch(err => reject(err))
     } else {
-      resolve(true)
+      resolve({
+        status: 400,
+        message: 'Request não enviada.'
+      })
     }
   })
 }
