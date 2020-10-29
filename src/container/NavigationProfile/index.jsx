@@ -3,6 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import About from '../About';
 import Profile from '../Profile';
 import Privacy from '../Privacy';
+import Theme from '../Theme';
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -19,6 +20,10 @@ const NavigationProfile = () => {
     {
       name: 'Privacy',
       component: Privacy,
+    },
+    {
+      name: 'Theme',
+      component: Theme,
     },
   ];
 

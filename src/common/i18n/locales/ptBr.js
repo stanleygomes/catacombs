@@ -14,9 +14,12 @@ export default {
   savedVerses: 'Versos salvos',
   readingReminders: 'Lembretes de leitura',
   theme: 'Tema',
+  themeDescription: 'O tema controla cores de fundo e das letras do aplicativo',
+  themeDark: 'Modo escuro',
+  themeLight: 'Modo claro',
   privacy: 'Privacidade',
   privacyDescription:
-    'Seus dados e sua privacidade são muito importantes. Não compartilhamos esses dados com ninguém. Confira abaixo as informações pessoais que guardamos sobre você.',
+    'Seus dados pessoais e sua privacidade são muito importantes. Não compartilhamos esses dados com ninguém. Confira abaixo as informações pessoais que guardamos sobre você.',
   privacyButtonText: 'Mostre me',
   about: 'Sobre',
   home: 'Home',
