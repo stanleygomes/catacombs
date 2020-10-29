@@ -13,9 +13,12 @@ export default {
   savedVerses: 'Saved verses',
   readingReminders: 'Reading reminders',
   theme: 'Theme',
+  themeDescription: 'Theme changes background and text colors of the app.',
+  themeDark: 'Dark theme',
+  themeLight: 'Light theme',
   privacy: 'Privacy',
   privacyDescription:
-    'Your data and your privacy are very important. We do not share this data with anyone. Check below how personal information we hold about you.',
+    'Your personal data and your privacy are very important. We do not share it with anyone. Check below how personal information we hold about you.',
   privacyButtonText: 'Show me',
   about: 'About',
   home: 'Home',

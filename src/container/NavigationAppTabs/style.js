@@ -5,11 +5,13 @@ const activeTheme = 'light';
 
 const style = StyleSheet.create({
   tabs: {
-    height: 65,
+    height: 75,
   },
   tab: {
     justifyContent: 'center',
     alignItems: 'center',
+    paddingTop: 10,
+    paddingBottom: 10,
   },
   icon: {},
   label: {},

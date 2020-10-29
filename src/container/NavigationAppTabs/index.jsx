@@ -1,9 +1,9 @@
 import React from 'react';
 import { AntDesign } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import NavigationProfile from '../NavigationProfile';
 import Text from '../../component/Text';
 import Home from '../Home';
+import NavigationProfile from '../NavigationProfile';
 import style from './style';
 
 const { Navigator, Screen } = createBottomTabNavigator();
