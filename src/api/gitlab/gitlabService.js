@@ -120,7 +120,7 @@ const hook = (req, res) => {
       }
     }
 
-    slackHookUrl = 'REMOVED
+    // slackHookUrl = 'REMOVED
 
     console.log('@@@@@@@@@@@@@@@@@@@@')
     console.log(slackHookUrl)
