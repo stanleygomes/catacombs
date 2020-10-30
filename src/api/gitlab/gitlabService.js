@@ -41,15 +41,27 @@ const getAttributes = data => {
 const getProjectById = projectId => {
   const squads = config.squads
 
+  console.log('/////// 1')
+  console.log(squads)
+
   for (let i = 0; i < squads.length; i++) {
     const squad = squads[i]
+
+    console.log('// squad')
+    console.log(squad)
 
     for (let j = 0; j < squad.projects.length; j++) {
       const project = squad.projects[j]
 
+      console.log('/// projeto')
+      console.log(project)
+
       if (project.id === projectId) {
         delete squad.projects
         squad.project = project
+
+        console.log('/// squad escolhida')
+        console.log(squad)
 
         return squad
       }
@@ -68,8 +80,8 @@ const hook = (req, res) => {
     const body = req.body
     const attributes = getAttributes(body)
 
-    console.log('##################')
-    console.log(body)
+    // console.log('##################')
+    // console.log(body)
 
     console.log('$$$$$$$$$$$$$$$$$$')
     console.log(attributes)
