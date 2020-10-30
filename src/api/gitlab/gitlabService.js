@@ -75,6 +75,7 @@ const hook = (req, res) => {
     console.log(attributes)
 
     if (attributes != null) {
+      console.log('entrou no atribbuts');
       const squadProject = getProjectById(attributes.projectId)
       slackHookUrl = squadProject.slackChannel
 
@@ -116,7 +117,6 @@ const hook = (req, res) => {
     if (request != null) {
       http.post(slackHookUrl, request).then(resp => {
         console.log('Hook executado com sucesso!')
-        console.log(resp)
 
         resolve({
           status: resp.status,
