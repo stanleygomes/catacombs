@@ -78,6 +78,9 @@ const hook = (req, res) => {
       const squadProject = getProjectById(attributes.projectId)
       slackHookUrl = squadProject.slackChannel
 
+      console.log('@@@@@@@@@@@@@@@@@@@@')
+      console.log(squadProject)
+
       // open merge request
       if (attributes.action === 'merge_request') {
         // open merge request
@@ -87,6 +90,9 @@ const hook = (req, res) => {
           request = {
             text: textTemplate
           }
+
+          console.log('%%%%%%%%%%%%%%%%')
+          console.log(request)
         }
       }
 
@@ -104,8 +110,12 @@ const hook = (req, res) => {
 
     // slackHookUrl = 'REMOVED
 
+    console.log('@@@@@@@@@@@@@@@@@@@@')
+    console.log(slackHookUrl)
+
     if (request != null) {
       http.post(slackHookUrl, request).then(resp => {
+        console.log('Hook executado com sucesso!')
         console.log(resp)
 
         resolve({
@@ -124,6 +134,7 @@ const hook = (req, res) => {
         })
       }).catch(err => reject(err))
     } else {
+      console.log('Hook não foi executado!')
       resolve({
         status: 400,
         message: 'Request não enviada.'
