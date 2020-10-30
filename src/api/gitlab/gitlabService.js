@@ -50,7 +50,8 @@ const getProjectById = projectId => {
     console.log(project)
 
     if (project.id === projectId) {
-      project.squad = config.squads[project.squad]
+      project.squad = config.squads[project.squad].name
+      project.slackChannel = config.squads[project.squad].slackChannel
 
       console.log('/// projeto escolhido')
       console.log(project)
