@@ -1,76 +1,84 @@
-const slackChannels = {
-  triboSolucoes: 'REMOVED
-  squadPlanejamento: 'REMOVED
-  squadComercial: 'REMOVED
+const squads = {
+  planejamento: {
+    name: 'Squad Planejamento Indústria',
+    slackChannel: 'REMOVED
+  },
+  comercial: {
+    name: 'Squad Comercial Indústria',
+    slackChannel: 'REMOVED
+  },
+  tribo: {
+    name: 'Tribo Soluções para o Mercado',
+    slackChannel: 'REMOVED
+  }
 }
 
-const squads = [
+const projects = [
   {
-    name: 'Squad Planejamento Indústria',
-    slackChannel: slackChannels.squadPlanejamento,
-    projects: [
-      {
-        id: 851,
-        name: 'ms-operacao',
-        url: 'https://gitlab.softbox.com.br/papaleguas/ms-operacao'
-      },
-      {
-        id: 837,
-        name: 'ms-cadastro',
-        url: 'https://gitlab.softbox.com.br/papaleguas/ms-cadastro'
-      },
-      {
-        id: 690,
-        name: 'Cashlink Indústria',
-        url: 'https://gitlab.softbox.com.br/tribo-financeiro/cashlink-industria'
-      },
-      {
-        id: 836,
-        name: 'papaleguas-gateway',
-        url: 'https://gitlab.softbox.com.br/papaleguas/papaleguas-gateway'
-      },
-      {
-        id: 91,
-        name: 'cashlink_war',
-        url: 'https://gitlab.softbox.com.br/cashlink/cashlink_war'
-      }
-    ]
+    id: 851,
+    name: 'ms-operacao',
+    url: 'https://gitlab.softbox.com.br/papaleguas/ms-operacao',
+    squad: 'planejamento'
   },
   {
-    name: 'Squad Comercial Indústria',
-    slackChannel: slackChannels.squadComercial,
-    projects: [
-      {
-        id: 989,
-        name: 'pricing',
-        url: 'https://gitlab.softbox.com.br/PRICING/pricing'
-      },
-      {
-        id: 259,
-        name: 'portal-execucao',
-        url: 'https://gitlab.softbox.com.br/portal-execucao/portal-execucao'
-      },
-      {
-        id: 1000,
-        name: 'produtos-clientes',
-        url: 'https://gitlab.softbox.com.br/PRICING/produtos-clientes'
-      },
-      {
-        id: 1066,
-        name: 'vortex-java',
-        url: 'https://gitlab.softbox.com.br/vortex/vortex-java'
-      },
-      {
-        id: 196,
-        name: 'vortex-frontend',
-        url: 'https://gitlab.softbox.com.br/vortex/vortex-frontend'
-      },
-      {
-        id: 358,
-        name: 'solucao-certa',
-        url: 'https://gitlab.softbox.com.br/solucao_certa/solucao-certa'
-      }
-    ]
+    id: 837,
+    name: 'ms-cadastro',
+    url: 'https://gitlab.softbox.com.br/papaleguas/ms-cadastro',
+    squad: 'planejamento'
+  },
+  {
+    id: 690,
+    name: 'Cashlink Indústria',
+    url: 'https://gitlab.softbox.com.br/tribo-financeiro/cashlink-industria',
+    squad: 'planejamento'
+  },
+  {
+    id: 836,
+    name: 'papaleguas-gateway',
+    url: 'https://gitlab.softbox.com.br/papaleguas/papaleguas-gateway',
+    squad: 'planejamento'
+  },
+  {
+    id: 91,
+    name: 'cashlink_war',
+    url: 'https://gitlab.softbox.com.br/cashlink/cashlink_war',
+    squad: 'planejamento'
+  },
+  {
+    id: 989,
+    name: 'pricing',
+    url: 'https://gitlab.softbox.com.br/PRICING/pricing',
+    squad: 'comercial'
+  },
+  {
+    id: 259,
+    name: 'portal-execucao',
+    url: 'https://gitlab.softbox.com.br/portal-execucao/portal-execucao',
+    squad: 'comercial'
+  },
+  {
+    id: 1000,
+    name: 'produtos-clientes',
+    url: 'https://gitlab.softbox.com.br/PRICING/produtos-clientes',
+    squad: 'comercial'
+  },
+  {
+    id: 1066,
+    name: 'vortex-java',
+    url: 'https://gitlab.softbox.com.br/vortex/vortex-java',
+    squad: 'comercial'
+  },
+  {
+    id: 196,
+    name: 'vortex-frontend',
+    url: 'https://gitlab.softbox.com.br/vortex/vortex-frontend',
+    squad: 'comercial'
+  },
+  {
+    id: 358,
+    name: 'solucao-certa',
+    url: 'https://gitlab.softbox.com.br/solucao_certa/solucao-certa',
+    squad: 'comercial'
   }
 ]
 
@@ -92,8 +100,8 @@ const getTagMessage = data => {
 }
 
 module.exports = {
+  projects,
   squads,
   getPrMessage,
-  getTagMessage,
-  slackChannels
+  getTagMessage
 }

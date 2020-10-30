@@ -39,32 +39,23 @@ const getAttributes = data => {
 }
 
 const getProjectById = projectId => {
-  const squads = config.squads
+  const projects = config.projects
+  console.log('/////// inicio')
+  console.log(projects)
+  console.log('qtd projetos: ' + projects.length)
 
-  console.log('/////// 1')
-  console.log(squads)
+  for (let i = 0; i < projects.length; i++) {
+    const project = projects[i]
+    console.log('/// projeto')
+    console.log(project)
 
-  for (let i = 0; i < squads.length; i++) {
-    const squad = squads[i]
+    if (project.id === projectId) {
+      project.squad = config.squads[project.squad]
 
-    console.log('// squad')
-    console.log(squad)
-
-    for (let j = 0; j < squad.projects.length; j++) {
-      const project = squad.projects[j]
-
-      console.log('/// projeto')
+      console.log('/// projeto escolhido')
       console.log(project)
 
-      if (project.id === projectId) {
-        // delete squad.projects
-        squad.project = project
-
-        console.log('/// squad escolhida')
-        console.log(squad)
-
-        return squad
-      }
+      return project
     }
   }
 
@@ -112,7 +103,7 @@ const hook = (req, res) => {
       // push tag
       if (attributes.action === 'push') {
         slackHookUrl = config.slackChannels.triboSolucoes
-        attributes.squadName = squadProject.name
+        attributes.squadName = squadProject.squad
         textTemplate = config.getTagMessage(attributes)
 
         request = {
@@ -121,7 +112,7 @@ const hook = (req, res) => {
       }
     }
 
-    // slackHookUrl = 'REMOVED
+    slackHookUrl = 'REMOVED
 
     console.log('@@@@@@@@@@@@@@@@@@@@')
     console.log(slackHookUrl)
