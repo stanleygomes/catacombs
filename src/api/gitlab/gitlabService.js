@@ -68,6 +68,12 @@ const hook = (req, res) => {
     const body = req.body
     const attributes = getAttributes(body)
 
+    console.log('##################')
+    console.log(body)
+
+    console.log('$$$$$$$$$$$$$$$$$$')
+    console.log(attributes)
+
     if (attributes != null) {
       const squadProject = getProjectById(attributes.projectId)
       slackHookUrl = squadProject.slackChannel

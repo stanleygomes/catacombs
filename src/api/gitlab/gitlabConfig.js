@@ -2,7 +2,6 @@ const slackChannels = {
   triboSolucoes: 'REMOVED
   squadPlanejamento: 'REMOVED
   squadComercial: 'REMOVED
-  // squadComercial: 'REMOVED
 }
 
 const squads = [
