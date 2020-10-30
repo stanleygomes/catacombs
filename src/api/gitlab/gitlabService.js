@@ -27,12 +27,11 @@ const getAttributes = data => {
     userName: data.user != null ? data.user.name : ''
   }
 
-  if (data.commits != null && data.commits.length > 0) {
-    const totalCommits = data.total_commits_count
-    const commitTag = data.commits[totalCommits - 1]
+  if (data.ref != null) {
+    const tag = data.ref.replace('refs/tags/', '')
 
-    attributes.tagVersion = commitTag.message.trim()
-    attributes.tagAuthor = commitTag.author.name
+    attributes.tagVersion = tag.trim()
+    attributes.tagAuthor = data.user_name
   }
 
   return attributes
@@ -88,7 +87,7 @@ const hook = (req, res) => {
       }
 
       // push tag
-      if (attributes.action === 'push') {
+      if (attributes.action === 'tag_push') {
         slackHookUrl = config.squads.tribo.slackChannel
         attributes.squadName = squadProject.squadName
         textTemplate = config.getTagMessage(attributes)
@@ -98,8 +97,6 @@ const hook = (req, res) => {
         }
       }
     }
-
-    // slackHookUrl = 'REMOVED
 
     if (request != null) {
       http.post(slackHookUrl, request).then(resp => {
@@ -124,7 +121,7 @@ const hook = (req, res) => {
       console.log('Hook não foi executado!')
       resolve({
         status: 400,
-        message: 'Request não enviada.'
+        message: 'Request não executada.'
       })
     }
   })
