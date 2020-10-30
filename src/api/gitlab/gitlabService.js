@@ -40,24 +40,15 @@ const getAttributes = data => {
 
 const getProjectById = projectId => {
   const projects = config.projects
-  // console.log('/////// inicio')
-  // console.log(projects)
-  // console.log('qtd projetos: ' + projects.length)
 
   for (let i = 0; i < projects.length; i++) {
     const project = projects[i]
-    // console.log('/// projeto')
-    // console.log(project)
 
     if (project.id === projectId) {
       const squadConfig = config.squads[project.squad]
 
       project.squadName = squadConfig.name
       project.slackChannel = squadConfig.slackChannel
-
-      console.log('//////////////////')
-      console.log('/// projeto escolhido')
-      console.log(project)
 
       return project
     }
@@ -75,12 +66,6 @@ const hook = (req, res) => {
     const body = req.body
     const attributes = getAttributes(body)
 
-    // console.log('##################')
-    // console.log(body)
-
-    console.log('$$$$$$$$$$$$$$$$$$')
-    console.log(attributes)
-
     if (attributes != null) {
       console.log('entrou no atribbuts');
       const squadProject = getProjectById(attributes.projectId)
@@ -89,9 +74,6 @@ const hook = (req, res) => {
         resolve('Projeto não disponível!')
       }
       slackHookUrl = squadProject.slackChannel
-
-      console.log('@@@@@@@@@@@@@@@@@@@@')
-      console.log(squadProject)
 
       // open merge request
       if (attributes.action === 'merge_request') {
@@ -102,9 +84,6 @@ const hook = (req, res) => {
           request = {
             text: textTemplate
           }
-
-          console.log('%%%%%%%%%%%%%%%%')
-          console.log(request)
         }
       }
 
@@ -121,9 +100,6 @@ const hook = (req, res) => {
     }
 
     // slackHookUrl = 'REMOVED
-
-    console.log('@@@@@@@@@@@@@@@@@@@@')
-    console.log(slackHookUrl)
 
     if (request != null) {
       http.post(slackHookUrl, request).then(resp => {
