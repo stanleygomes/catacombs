@@ -40,19 +40,22 @@ const getAttributes = data => {
 
 const getProjectById = projectId => {
   const projects = config.projects
-  console.log('/////// inicio')
-  console.log(projects)
-  console.log('qtd projetos: ' + projects.length)
+  // console.log('/////// inicio')
+  // console.log(projects)
+  // console.log('qtd projetos: ' + projects.length)
 
   for (let i = 0; i < projects.length; i++) {
     const project = projects[i]
-    console.log('/// projeto')
-    console.log(project)
+    // console.log('/// projeto')
+    // console.log(project)
 
     if (project.id === projectId) {
-      project.squad = config.squads[project.squad].name
-      project.slackChannel = config.squads[project.squad].slackChannel
+      const squadConfig = config.squads[project.squad]
 
+      project.squadName = squadConfig.name
+      project.slackChannel = squadConfig.slackChannel
+
+      console.log('//////////////////')
       console.log('/// projeto escolhido')
       console.log(project)
 
@@ -81,6 +84,10 @@ const hook = (req, res) => {
     if (attributes != null) {
       console.log('entrou no atribbuts');
       const squadProject = getProjectById(attributes.projectId)
+
+      if (squadProject == null) {
+        resolve('Projeto não disponível!')
+      }
       slackHookUrl = squadProject.slackChannel
 
       console.log('@@@@@@@@@@@@@@@@@@@@')
@@ -113,7 +120,7 @@ const hook = (req, res) => {
       }
     }
 
-    // slackHookUrl = 'REMOVED
+    slackHookUrl = 'REMOVED
 
     console.log('@@@@@@@@@@@@@@@@@@@@')
     console.log(slackHookUrl)
