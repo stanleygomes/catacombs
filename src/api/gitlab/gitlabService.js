@@ -57,7 +57,7 @@ const getProjectById = projectId => {
       console.log(project)
 
       if (project.id === projectId) {
-        delete squad.projects
+        // delete squad.projects
         squad.project = project
 
         console.log('/// squad escolhida')
