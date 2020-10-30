@@ -67,12 +67,12 @@ const hook = (req, res) => {
     const attributes = getAttributes(body)
 
     if (attributes != null) {
-      console.log('entrou no atribbuts');
       const squadProject = getProjectById(attributes.projectId)
 
       if (squadProject == null) {
         resolve('Projeto não disponível!')
       }
+
       slackHookUrl = squadProject.slackChannel
 
       // open merge request
@@ -89,8 +89,8 @@ const hook = (req, res) => {
 
       // push tag
       if (attributes.action === 'push') {
-        slackHookUrl = config.slackChannels.triboSolucoes
-        attributes.squadName = squadProject.squad
+        slackHookUrl = config.squads.tribo.slackChannel
+        attributes.squadName = squadProject.squadName
         textTemplate = config.getTagMessage(attributes)
 
         request = {
