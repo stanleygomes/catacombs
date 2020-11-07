@@ -1,56 +1,66 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { ScrollView, View } from 'react-native';
 import Header from '../../component/Header';
 import H1 from '../../component/H1';
 import Text from '../../component/Text';
-import global from '../../common/style/global';
 import RadioButton from '../../component/RadioButton';
+import configService from '../../service/config';
+import AppContext from '../../provider/appContext';
 import style from './style';
 
 const Theme = () => {
-  const [selectedValue, setSelectedValue] = useState('light');
-  const options = [
-    {
-      text: 'themeDark',
-      value: 'dark',
-    },
-    {
-      text: 'themeLight',
-      value: 'light',
-    },
-  ];
+  const themeList = configService.getThemeList();
+  const appContext = useContext(AppContext);
 
   const setTheme = theme => {
-    setSelectedValue(theme);
+    const newConfig = {
+      theme,
+    };
+
+    configService
+      .put(newConfig)
+      .then(() => {
+        appContext.setAppConfig(newConfig);
+      })
+      .catch(() => null);
   };
 
   return (
-    <View style={{ ...global.containerBackground }}>
-      <Header showBackButton="yes" />
-      <ScrollView
-        contentContainerStyle={style.scrollView}
-        style={{ ...global.containerBackground }}
-      >
-        <View style={{ ...global.container, ...style.containerTop }}>
-          <View>
-            <H1 text="theme" style={style.title} />
-            <Text textKey="themeDescription" style={style.description} />
-          </View>
-          <View style={{ flexGrow: 1, alignItems: 'flex-start', marginTop: 30 }}>
-            {options != null &&
-              options.map(item => (
-                <RadioButton
-                  key={item.value}
-                  textKey={item.text}
-                  value={item.value}
-                  selectedValue={selectedValue}
-                  onPress={() => setTheme(item.value)}
+    <AppContext.Consumer>
+      {({ appConfig }) => (
+        <View style={style(appConfig.theme).container}>
+          <Header showBackButton="yes" theme={appConfig.theme} />
+          <ScrollView
+            contentContainerStyle={style(appConfig.theme).scrollView}
+            style={style(appConfig.theme).container}
+          >
+            <View style={style(appConfig.theme).containerTop}>
+              <View>
+                <H1 text="theme" style={style(appConfig.theme).title} theme={appConfig.theme} />
+                <Text
+                  textKey="themeDescription"
+                  style={style(appConfig.theme).description}
+                  theme={appConfig.theme}
                 />
-              ))}
-          </View>
+              </View>
+              <View style={style(appConfig.theme).containerRadioButtons}>
+                {themeList != null &&
+                  themeList.map(item => (
+                    <RadioButton
+                      key={item.value}
+                      textKey={item.text}
+                      value={item.value}
+                      selectedValue={appConfig.theme}
+                      onPress={() => setTheme(item.value)}
+                      theme={appConfig.theme}
+                    />
+                  ))}
+              </View>
+            </View>
+          </ScrollView>
         </View>
-      </ScrollView>
-    </View>
+      )}
+    </AppContext.Consumer>
   );
 };
 

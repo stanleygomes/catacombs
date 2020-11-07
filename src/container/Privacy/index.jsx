@@ -7,8 +7,8 @@ import Header from '../../component/Header';
 import H1 from '../../component/H1';
 import Text from '../../component/Text';
 import privacySrc from '../../asset/image/privacy.png';
-import global from '../../common/style/global';
 import style from './style';
+import AppContext from '../../provider/appContext';
 
 const Privacy = () => {
   const { navigate } = useNavigation();
@@ -18,24 +18,38 @@ const Privacy = () => {
   };
 
   return (
-    <View style={{ ...global.containerBackground }}>
-      <Header showBackButton="yes" />
-      <ScrollView
-        contentContainerStyle={style.scrollView}
-        style={{ ...global.containerBackground }}
-      >
-        <View style={{ ...global.container, ...style.containerTop }}>
-          <Image source={privacySrc} width={70} height={70} style={{ borderRadius: 20 }} />
-          <H1 text="privacy" style={style.title} />
-          <Text textKey="privacyDescription" style={style.description} />
-          <Button
-            text="privacyButtonText"
-            style={style.button}
-            onPress={handleNavigateProfileEdit}
-          />
+    <AppContext.Consumer>
+      {({ appConfig }) => (
+        <View style={{ ...style(appConfig.theme).containerBackground }}>
+          <Header showBackButton="yes" theme={appConfig.theme} />
+          <ScrollView
+            contentContainerStyle={style(appConfig.theme).scrollView}
+            style={{ ...style(appConfig.theme).containerBackground }}
+          >
+            <View
+              style={{
+                ...style(appConfig.theme).container,
+                ...style(appConfig.theme).containerTop,
+              }}
+            >
+              <Image source={privacySrc} width={70} height={70} style={{ borderRadius: 20 }} />
+              <H1 text="privacy" style={style(appConfig.theme).title} theme={appConfig.theme} />
+              <Text
+                textKey="privacyDescription"
+                style={style(appConfig.theme).description}
+                theme={appConfig.theme}
+              />
+              <Button
+                text="privacyButtonText"
+                style={style(appConfig.theme).button}
+                onPress={handleNavigateProfileEdit}
+                theme={appConfig.theme}
+              />
+            </View>
+          </ScrollView>
         </View>
-      </ScrollView>
-    </View>
+      )}
+    </AppContext.Consumer>
   );
 };
 

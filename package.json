@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "start": "expo start",
+    "emulator": "/home/stanley/Android/Sdk/emulator/emulator -avd Nexus_S_API_22_-_Android_5.1",
     "studio": "/home/stanley/softwares/android-studio/bin/studio.sh",
     "android": "expo start --android",
     "ios": "expo start --ios",

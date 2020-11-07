@@ -8,9 +8,9 @@ import MenuContainer from '../../component/MenuContainer';
 import MenuItemIcon from '../../component/MenuItemIcon';
 import Button from '../../component/Button';
 import prayerSrc from '../../asset/image/prayer-avatar.png';
-import global from '../../common/style/global';
-import style from './style';
 import profileService from '../../service/profile';
+import AppContext from '../../provider/appContext';
+import style from './style';
 
 const Profile = () => {
   const { navigate } = useNavigation();
@@ -23,40 +23,65 @@ const Profile = () => {
   };
 
   return (
-    <ScrollView style={{ ...global.containerBackground }}>
-      <View style={{ ...global.container, ...style.containerTop }}>
-        <Image source={prayerSrc} width={100} height={100} style={{ borderRadius: 20 }} />
-        <H1 textPlain={user.name} style={style.title} />
-      </View>
-      <View style={{ ...global.container, ...style.containerResume }}>
-        {statsList != null &&
-          statsList.map(item => (
-            <View key={item.value} style={style.containerResumeBox}>
-              <Text textPlain={item.value} style={style.containerResumeBoxTitle} />
-              <Text textKey={item.title} style={style.containerResumeBoxValue} />
-            </View>
-          ))}
-      </View>
-      <MenuContainer>
-        {menuItems != null &&
-          menuItems.map(item => (
-            <MenuItemIcon
-              key={item.title}
-              textKey={item.title}
-              onPress={() => handleNavigate(item.to)}
+    <AppContext.Consumer>
+      {({ appConfig }) => (
+        <ScrollView style={{ ...style(appConfig.theme).containerBackground }}>
+          <View
+            style={{ ...style(appConfig.theme).container, ...style(appConfig.theme).containerTop }}
+          >
+            <Image source={prayerSrc} width={100} height={100} style={{ borderRadius: 20 }} />
+            <H1
+              textPlain={user.name}
+              style={style(appConfig.theme).title}
+              theme={appConfig.theme}
             />
-          ))}
-      </MenuContainer>
-      <View style={style.logoutContainer}>
-        <Button
-          variant="light"
-          style={style.logoutButton}
-          styleText={style.logoutButtonText}
-          onPress={() => console.log()}
-          text="logout"
-        />
-      </View>
-    </ScrollView>
+          </View>
+          <View
+            style={{
+              ...style(appConfig.theme).container,
+              ...style(appConfig.theme).containerResume,
+            }}
+          >
+            {statsList != null &&
+              statsList.map(item => (
+                <View key={item.value} style={style(appConfig.theme).containerResumeBox}>
+                  <Text
+                    textPlain={item.value}
+                    style={style(appConfig.theme).containerResumeBoxTitle}
+                    theme={appConfig.theme}
+                  />
+                  <Text
+                    textKey={item.title}
+                    style={style(appConfig.theme).containerResumeBoxValue}
+                    theme={appConfig.theme}
+                  />
+                </View>
+              ))}
+          </View>
+          <MenuContainer>
+            {menuItems != null &&
+              menuItems.map(item => (
+                <MenuItemIcon
+                  key={item.title}
+                  textKey={item.title}
+                  onPress={() => handleNavigate(item.to)}
+                  theme={appConfig.theme}
+                />
+              ))}
+          </MenuContainer>
+          <View style={style(appConfig.theme).logoutContainer}>
+            <Button
+              variant="light"
+              style={style(appConfig.theme).logoutButton}
+              styleText={style(appConfig.theme).logoutButtonText}
+              onPress={() => console.log()}
+              text="logout"
+              theme={appConfig.theme}
+            />
+          </View>
+        </ScrollView>
+      )}
+    </AppContext.Consumer>
   );
 };
 

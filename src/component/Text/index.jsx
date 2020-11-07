@@ -5,12 +5,12 @@ import customStyle from './style';
 import Translate from '../Translate';
 
 const Text = props => {
-  const { textKey, textPlain, style } = props;
+  const { textKey, textPlain, style, theme } = props;
 
   return textPlain != null ? (
-    <RNText style={{ ...customStyle.default, ...style }}>{textPlain}</RNText>
+    <RNText style={{ ...customStyle(theme).default, ...style }}>{textPlain}</RNText>
   ) : (
-    <Translate k={textKey} style={{ ...customStyle.default, ...style }} />
+    <Translate k={textKey} style={{ ...customStyle(theme).default, ...style }} />
   );
 };
 
@@ -21,6 +21,7 @@ Text.defaultProps = {
 };
 
 Text.propTypes = {
+  theme: PropTypes.string.isRequired,
   style: PropTypes.object,
   textKey: PropTypes.string,
   textPlain: PropTypes.string,

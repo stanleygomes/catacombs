@@ -1,11 +1,14 @@
 import { StyleSheet } from 'react-native';
-import theme from '../../common/style/theme';
+import themeStyle from '../../common/style/theme';
 
-const style = StyleSheet.create({
-  default: {
-    fontSize: 30,
-    fontFamily: theme.font.defaultFontFamilyBold,
-  },
-});
+const style = theme => {
+  return StyleSheet.create({
+    default: {
+      fontSize: 30,
+      color: themeStyle[theme].textPrimary,
+      fontFamily: themeStyle.font.defaultFontFamilyBold,
+    },
+  });
+};
 
 export default style;
