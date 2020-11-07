@@ -1,11 +1,12 @@
 import React from 'react';
+import { Text as RNText } from 'react-native';
 import PropTypes from 'prop-types';
 import { RectButton } from 'react-native-gesture-handler';
 import customStyle from './style';
 import Translate from '../Translate';
 
 const Button = props => {
-  const { content, text, style, styleText, variant, onPress, theme } = props;
+  const { textPlain, text, style, styleText, variant, onPress, theme } = props;
 
   return (
     <RectButton
@@ -22,7 +23,15 @@ const Button = props => {
           k={text}
         />
       ) : (
-        <>{content}</>
+        <RNText
+          style={{
+            ...customStyle(theme).defaultText,
+            ...customStyle(theme)[`${variant}Text`],
+            ...styleText,
+          }}
+        >
+          {textPlain}
+        </RNText>
       )}
     </RectButton>
   );
@@ -31,7 +40,7 @@ const Button = props => {
 Button.defaultProps = {
   style: {},
   variant: 'primary',
-  content: null,
+  textPlain: null,
   text: null,
   styleText: null,
   onPress: () => {},
@@ -40,7 +49,7 @@ Button.defaultProps = {
 Button.propTypes = {
   theme: PropTypes.string.isRequired,
   text: PropTypes.string,
-  content: PropTypes.element,
+  textPlain: PropTypes.string,
   style: PropTypes.object,
   styleText: PropTypes.object,
   variant: PropTypes.string,
