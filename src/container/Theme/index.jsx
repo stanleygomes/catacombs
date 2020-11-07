@@ -19,8 +19,8 @@ const Theme = () => {
 
     configService
       .put(newConfig)
-      .then(() => {
-        appContext.setAppConfig(newConfig);
+      .then(configUpdated => {
+        appContext.setAppConfig(configUpdated);
       })
       .catch(() => null);
   };

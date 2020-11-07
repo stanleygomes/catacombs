@@ -14,6 +14,7 @@ const theme = {
     terciary: '#b53d00',
     forth: '#777777',
     fifth: '#dddddd',
+    sixth: '#333333',
   },
   dark: {
     backgroundPrimary: '#333333',
@@ -25,7 +26,8 @@ const theme = {
     secondary: '#eba469',
     terciary: '#b53d00',
     forth: '#777777',
-    fifth: '#777777',
+    fifth: '#dddddd',
+    sixth: '#333333',
   },
 };
 

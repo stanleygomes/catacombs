@@ -28,8 +28,8 @@ const getMenuItems = () => {
       to: 'SavedVerses',
     },
     {
-      title: 'readingReminders',
-      to: 'ReadingReminders',
+      title: 'readingReminder',
+      to: 'ReadingReminder',
     },
     {
       title: 'theme',

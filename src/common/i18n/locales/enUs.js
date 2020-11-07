@@ -11,7 +11,8 @@ export default {
   logout: 'Logout',
   profileInformation: 'Profile information',
   savedVerses: 'Saved verses',
-  readingReminders: 'Reading reminders',
+  readingReminder: 'Reading reminders',
+  readingReminderDescription: 'Set a daily reminder to read the bible',
   theme: 'Theme',
   themeDescription: 'Theme changes background and text colors of the app.',
   themeDark: 'Dark theme',
@@ -25,4 +26,6 @@ export default {
   read: 'Read',
   quiz: 'Quiz',
   profile: 'Profile',
+  notificationsEnabled: 'Enabled notifications',
+  notificationsTime: 'Time of day',
 };

@@ -4,6 +4,7 @@ import About from '../About';
 import Profile from '../Profile';
 import Privacy from '../Privacy';
 import Theme from '../Theme';
+import ReadingReminder from '../ReadingReminder';
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -14,16 +15,20 @@ const NavigationProfile = () => {
       component: Profile,
     },
     {
-      name: 'About',
-      component: About,
+      name: 'ReadingReminder',
+      component: ReadingReminder,
+    },
+    {
+      name: 'Theme',
+      component: Theme,
     },
     {
       name: 'Privacy',
       component: Privacy,
     },
     {
-      name: 'Theme',
-      component: Theme,
+      name: 'About',
+      component: About,
     },
   ];
 

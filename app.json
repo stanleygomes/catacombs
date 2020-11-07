@@ -4,7 +4,7 @@
     "description": "",
     "owner": "Stanley Gomes",
     "privacy": "unlisted",
-    "sdkVersion": "38.0.8",
+    "sdkVersion": "38.0.0",
     "slug": "bible-app",
     "version": "2.0.0",
     "platforms": ["android", "ios"],
@@ -34,7 +34,8 @@
       "package": "com.abibliasagrada.app",
       "versionCode": 2,
       "permissions": [],
-      "allowBackup": true
+      "allowBackup": true,
+      "useNextNotificationsApi": true
     },
     "web": {
       "favicon": "./assets/favicon.png"
