@@ -17,7 +17,8 @@ const style = theme => {
       backgroundColor: themeStyle[theme].textInverse,
     },
     checkDefaultActive: {
-      backgroundColor: themeStyle[theme].primary,
+      marginRight: 20,
+      color: themeStyle[theme].primary,
     },
     textDefault: {
       fontSize: 17,
