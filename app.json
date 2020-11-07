@@ -1,11 +1,21 @@
 {
   "expo": {
     "name": "bible-app",
+    "description": "",
+    "owner": "Stanley Gomes",
+    "privacy": "unlisted",
+    "sdkVersion": "38.0.8",
     "slug": "bible-app",
-    "version": "1.0.0",
+    "version": "2.0.0",
+    "platforms": ["android", "ios"],
     "orientation": "portrait",
     "userInterfaceStyle": "automatic",
     "icon": "./assets/icon.png",
+    "notification": {
+      "icon": "./assets/notification.png",
+      "color": "#db4342"
+    },
+    "entryPoint": "./src/index.js",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
@@ -21,11 +31,13 @@
       "supportsTablet": true
     },
     "android": {
-      "package": "com.abibliasagrada.app"
+      "package": "com.abibliasagrada.app",
+      "versionCode": 2,
+      "permissions": [],
+      "allowBackup": true
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    },
-    "description": ""
+    }
   }
 }
