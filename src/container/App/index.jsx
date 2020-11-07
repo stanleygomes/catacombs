@@ -13,7 +13,10 @@ const App = () => {
   const [appConfig, setAppConfig] = useState(true);
   const [loading, setLoading] = useState(true);
   const [fontsLoaded] = useFonts(fontFamily);
-  const statusBarStyle = 'auto';
+  const statusBarStyleInvert = {
+    dark: 'light',
+    light: 'dark',
+  };
 
   const getAppConfig = () => {
     configService
@@ -35,8 +38,8 @@ const App = () => {
 
   return (
     <SafeAreaView style={style.container}>
-      <StatusBar style={statusBarStyle} />
       <AppContext.Provider value={{ appConfig, setAppConfig }}>
+        <StatusBar style={statusBarStyleInvert[appConfig.theme]} />
         <AppNavigation />
       </AppContext.Provider>
     </SafeAreaView>
