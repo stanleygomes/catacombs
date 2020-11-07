@@ -1,16 +1,26 @@
 import React from 'react';
 import { TouchableOpacity, View } from 'react-native';
 import PropTypes from 'prop-types';
+import { AntDesign } from '@expo/vector-icons';
 import customStyle from './style';
 import Text from '../Text';
 
 const RadioButton = props => {
   const { textKey, textPlain, style, value, selectedValue, onPress, theme } = props;
-  const styleState = value === selectedValue ? customStyle(theme).checkDefaultActive : {};
 
   return (
     <TouchableOpacity style={{ ...customStyle(theme).default, ...style }} onPress={onPress}>
-      <View style={{ ...customStyle(theme).checkDefault, ...styleState, ...style }} />
+      {value === selectedValue && (
+        <AntDesign
+          name="checkcircle"
+          size={30}
+          color="black"
+          style={{ ...customStyle(theme).checkDefaultActive, ...style }}
+        />
+      )}
+
+      {value !== selectedValue && <View style={{ ...customStyle(theme).checkDefault, ...style }} />}
+
       <Text
         textKey={textKey}
         textPlain={textPlain}
