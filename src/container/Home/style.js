@@ -1,10 +1,20 @@
 import { StyleSheet } from 'react-native';
+import themeStyle from '../../common/style/theme';
 
-const style = StyleSheet.create({
-  title: {
-    textAlign: 'center',
-    marginTop: 15,
-  },
-});
+const style = theme => {
+  return StyleSheet.create({
+    container: {
+      flex: 1,
+      alignItems: 'center',
+      justifyContent: 'space-around',
+      backgroundColor: themeStyle[theme].backgroundPrimary,
+      flexDirection: 'column',
+    },
+    title: {
+      textAlign: 'center',
+      marginTop: 15,
+    },
+  });
+};
 
 export default style;

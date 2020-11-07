@@ -1,7 +1,10 @@
 import { createContext } from 'react';
 
 const AppContext = createContext({
-  appConfig: {},
+  appConfig: {
+    theme: 'light',
+    signInChallenge: false,
+  },
   setAppConfig: () => {},
 });
 

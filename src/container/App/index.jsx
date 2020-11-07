@@ -13,6 +13,7 @@ const App = () => {
   const [appConfig, setAppConfig] = useState(true);
   const [loading, setLoading] = useState(true);
   const [fontsLoaded] = useFonts(fontFamily);
+  const statusBarStyle = 'auto';
 
   const getAppConfig = () => {
     configService
@@ -34,8 +35,8 @@ const App = () => {
 
   return (
     <SafeAreaView style={style.container}>
-      <StatusBar style="dark" />
-      <AppContext.Provider value={appConfig}>
+      <StatusBar style={statusBarStyle} />
+      <AppContext.Provider value={{ appConfig, setAppConfig }}>
         <AppNavigation />
       </AppContext.Provider>
     </SafeAreaView>

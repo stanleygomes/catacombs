@@ -5,12 +5,12 @@ import customStyle from './style';
 import Translate from '../Translate';
 
 const H3 = props => {
-  const { text, textPlain, style } = props;
+  const { text, textPlain, style, theme } = props;
 
   return textPlain != null ? (
-    <Text style={{ ...customStyle.default, ...style }}>{textPlain}</Text>
+    <Text style={{ ...customStyle(theme).default, ...style }}>{textPlain}</Text>
   ) : (
-    <Translate k={text} style={{ ...customStyle.default, ...style }} />
+    <Translate k={text} style={{ ...customStyle(theme).default, ...style }} />
   );
 };
 
@@ -21,6 +21,7 @@ H3.defaultProps = {
 };
 
 H3.propTypes = {
+  theme: PropTypes.string.isRequired,
   text: PropTypes.string,
   style: PropTypes.object,
   textPlain: PropTypes.string,

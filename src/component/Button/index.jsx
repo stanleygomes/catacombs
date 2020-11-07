@@ -5,16 +5,20 @@ import customStyle from './style';
 import Translate from '../Translate';
 
 const Button = props => {
-  const { content, text, style, styleText, variant, onPress } = props;
+  const { content, text, style, styleText, variant, onPress, theme } = props;
 
   return (
     <RectButton
-      style={{ ...customStyle.default, ...customStyle[variant], ...style }}
+      style={{ ...customStyle(theme).default, ...customStyle(theme)[variant], ...style }}
       onPress={onPress}
     >
       {text != null ? (
         <Translate
-          style={{ ...customStyle.defaultText, ...customStyle[`${variant}Text`], ...styleText }}
+          style={{
+            ...customStyle(theme).defaultText,
+            ...customStyle(theme)[`${variant}Text`],
+            ...styleText,
+          }}
           k={text}
         />
       ) : (
@@ -34,6 +38,7 @@ Button.defaultProps = {
 };
 
 Button.propTypes = {
+  theme: PropTypes.string.isRequired,
   text: PropTypes.string,
   content: PropTypes.element,
   style: PropTypes.object,

@@ -1,14 +1,14 @@
 import { StyleSheet } from 'react-native';
-import theme from '../../common/style/theme';
+import themeStyle from '../../common/style/theme';
 
-const activeTheme = 'light';
-
-const style = StyleSheet.create({
-  default: {},
-  iconDefault: {
-    fontSize: 40,
-    color: theme[activeTheme].textPrimary,
-  },
-});
+const style = theme => {
+  return StyleSheet.create({
+    default: {},
+    iconDefault: {
+      fontSize: 40,
+      color: themeStyle[theme].textPrimary,
+    },
+  });
+};
 
 export default style;

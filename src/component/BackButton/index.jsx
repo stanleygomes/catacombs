@@ -6,7 +6,7 @@ import { Feather } from '@expo/vector-icons';
 import customStyle from './style';
 
 const BackButton = props => {
-  const { style } = props;
+  const { style, theme } = props;
   const { goBack } = useNavigation();
 
   const handleBackButton = () => {
@@ -15,7 +15,7 @@ const BackButton = props => {
 
   return (
     <TouchableOpacity style={{ ...customStyle.default, ...style }} onPress={handleBackButton}>
-      <Feather name="chevron-left" style={{ ...customStyle.iconDefault, ...style }} />
+      <Feather name="chevron-left" style={{ ...customStyle(theme).iconDefault, ...style }} />
     </TouchableOpacity>
   );
 };
@@ -25,6 +25,7 @@ BackButton.defaultProps = {
 };
 
 BackButton.propTypes = {
+  theme: PropTypes.string.isRequired,
   style: PropTypes.object,
 };
 

@@ -5,16 +5,17 @@ import customStyle from './style';
 import Text from '../Text';
 
 const RadioButton = props => {
-  const { textKey, textPlain, style, value, selectedValue, onPress } = props;
-  const styleState = value === selectedValue ? customStyle.checkDefaultActive : {};
+  const { textKey, textPlain, style, value, selectedValue, onPress, theme } = props;
+  const styleState = value === selectedValue ? customStyle(theme).checkDefaultActive : {};
 
   return (
-    <TouchableOpacity style={{ ...customStyle.default, ...style }} onPress={onPress}>
-      <View style={{ ...customStyle.checkDefault, ...styleState, ...style }} />
+    <TouchableOpacity style={{ ...customStyle(theme).default, ...style }} onPress={onPress}>
+      <View style={{ ...customStyle(theme).checkDefault, ...styleState, ...style }} />
       <Text
         textKey={textKey}
         textPlain={textPlain}
-        style={{ ...customStyle.textDefault, ...style }}
+        style={{ ...customStyle(theme).textDefault, ...style }}
+        theme={theme}
       />
     </TouchableOpacity>
   );
@@ -30,6 +31,7 @@ RadioButton.defaultProps = {
 };
 
 RadioButton.propTypes = {
+  theme: PropTypes.string.isRequired,
   style: PropTypes.object,
   textPlain: PropTypes.string,
   textKey: PropTypes.string,
