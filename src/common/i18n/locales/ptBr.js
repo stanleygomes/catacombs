@@ -12,7 +12,9 @@ export default {
   logout: 'Sair',
   profileInformation: 'Minhas informações',
   savedVerses: 'Versos salvos',
-  readingReminders: 'Lembretes de leitura',
+  readingReminder: 'Lembretes de leitura',
+  readingReminderDescription:
+    'Configure um horário do dia para receber uma notificação com um lembrete de leitura',
   theme: 'Tema',
   themeDescription: 'O tema controla cores de fundo e das letras do aplicativo',
   themeDark: 'Modo escuro',
@@ -26,4 +28,6 @@ export default {
   read: 'Ler',
   quiz: 'Quiz',
   profile: 'Perfil',
+  notificationsEnabled: 'Notificações ativas',
+  notificationsTime: 'Horário',
 };

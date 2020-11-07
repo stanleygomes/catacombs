@@ -1,6 +1,4 @@
-// import { useContext } from 'react';
 import localStorage from './localStorage';
-// import AppContext from '../provider/appContext';
 
 const CONFIG_KEY = 'appConfig';
 const themeList = [
@@ -50,24 +48,18 @@ const put = configUpdate => {
   return new Promise((resolve, reject) => {
     get(CONFIG_KEY)
       .then(config => {
-        set({ ...config, ...configUpdate })
-          .then(() => resolve(true))
+        const newConfig = { ...config, ...configUpdate };
+        set(newConfig)
+          .then(() => resolve(newConfig))
           .catch(error => reject(error));
       })
       .catch(error => reject(error));
   });
 };
 
-// const getCurrentTheme = () => {
-//   const { appConfig } = useContext(AppContext);
-
-//   console.log(appConfig);
-// };
-
 export default {
   get,
   set,
   put,
   getThemeList,
-  // getCurrentTheme,
 };

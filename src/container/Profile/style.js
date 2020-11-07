@@ -38,10 +38,12 @@ const style = theme => {
     containerResumeBoxTitle: {
       fontSize: 30,
       fontFamily: themeStyle.font.defaultFontFamilyBold,
+      color: themeStyle[theme].sixth,
       textAlign: 'left',
     },
     containerResumeBoxValue: {
       fontFamily: themeStyle.font.defaultFontFamilyBold,
+      color: themeStyle[theme].sixth,
       textAlign: 'left',
     },
     logoutContainer: {
