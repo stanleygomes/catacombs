@@ -10,11 +10,13 @@ import configService from '../../service/config';
 import AppContext from '../../provider/appContext';
 import stringService from '../../service/string';
 import notificationService from '../../service/notification';
+import translateService from '../../service/translate';
 import style from './style';
 
 const ReadingReminder = () => {
   const appContext = useContext(AppContext);
   const [timePickerVisible, setTimePickerVisible] = useState(false);
+  const defaultTime = '07:30';
 
   const updateAppSettings = newConfig => {
     return new Promise((resolve, reject) => {
@@ -28,41 +30,67 @@ const ReadingReminder = () => {
     });
   };
 
-  const scheduleNotification = (title, body, repeat, time, appConfig) => {
+  const scheduleNotification = (notificationId, time, newConfig, action) => {
     return new Promise((resolve, reject) => {
-      notificationService.schedule(title, body, repeat, time).then(nid => {
-        const conf = appConfig;
-        conf.reminderNotificationId = nid;
+      const conf = { ...newConfig };
 
-        updateAppSettings(conf)
-          .then(() => resolve(true))
-          .catch(error => reject(error));
-      });
+      notificationService
+        .cancel(notificationId)
+        .then(() => {
+          conf.reminderNotificationId = null;
+
+          if (action === 'disable') {
+            resolve(conf);
+          }
+
+          const title = translateService.translate('readingReminderNotificationTitle');
+          const body = translateService.translate('readingReminderNotificationBody');
+
+          notificationService
+            .schedule(title, body, time)
+            .then(nid => {
+              conf.reminderNotificationId = nid;
+
+              resolve(conf);
+            })
+            .catch(error => reject(error));
+        })
+        .catch(error => reject(error));
     });
   };
 
-  const cancelNotification = (notificationId, appConfig) => {
-    return new Promise((resolve, reject) => {
-      notificationService.cancel(notificationId).then(() => {
-        const conf = appConfig;
-        conf.reminderNotificationId = null;
-
-        updateAppSettings(conf)
-          .then(() => resolve(true))
-          .catch(error => reject(error));
-      });
-    });
-  };
-
-  const setReminderActive = (status, notificationId) => {
+  const setReminderActive = (status, appConfig) => {
+    let { reminderTime } = appConfig;
     const newConfig = {
+      reminderTime,
       reminderActive: status,
     };
 
     if (status === true) {
-      scheduleNotification('Bom dia - titulo', 'ola - body', 'minute', ((new Date()).getTime() + 100), newConfig);
+      if (reminderTime == null) {
+        reminderTime = defaultTime;
+      }
+
+      const time = {
+        hour: stringService.getSplitTime(reminderTime, 'hour'),
+        minute: stringService.getSplitTime(reminderTime, 'minute'),
+      };
+
+      scheduleNotification(appConfig.reminderNotificationId, time, newConfig, 'enable').then(
+        conf => {
+          updateAppSettings(conf)
+            .then(() => {})
+            .catch(() => null);
+        },
+      );
     } else {
-      cancelNotification(notificationId, newConfig);
+      scheduleNotification(appConfig.reminderNotificationId, null, newConfig, 'disable').then(
+        conf => {
+          updateAppSettings(conf)
+            .then(() => {})
+            .catch(() => null);
+        },
+      );
     }
   };
 
@@ -74,7 +102,7 @@ const ReadingReminder = () => {
     setTimePickerVisible(false);
   };
 
-  const handleConfirmTime = date => {
+  const handleConfirmTime = (date, appConfig) => {
     const newDate = new Date(date);
     const hour = stringService.strPadLeft(newDate.getHours());
     const minute = stringService.strPadLeft(newDate.getMinutes());
@@ -83,8 +111,17 @@ const ReadingReminder = () => {
       reminderTime: `${hour}:${minute}`,
     };
 
-    updateAppSettings(newConfig).then(() => {
-      hideTimePicker();
+    const time = {
+      hour,
+      minute,
+    };
+
+    scheduleNotification(appConfig.reminderNotificationId, time, newConfig, 'enable').then(conf => {
+      updateAppSettings({ ...conf, ...newConfig })
+        .then(() => {
+          hideTimePicker();
+        })
+        .catch(() => null);
     });
   };
 
@@ -119,7 +156,7 @@ const ReadingReminder = () => {
                 <Toggle
                   isOn={appConfig.reminderActive}
                   theme={appConfig.theme}
-                  onToggle={isOn => setReminderActive(isOn, appConfig.reminderNotificationId)}
+                  onToggle={isOn => setReminderActive(isOn, appConfig)}
                 />
               </View>
               {appConfig.reminderActive === true && (
@@ -137,13 +174,15 @@ const ReadingReminder = () => {
                   <Button
                     variant="light"
                     styleText={style(appConfig.theme).containerItemValue}
-                    onPress={() => showTimePicker()}
-                    textPlain={appConfig.reminderTime != null ? appConfig.reminderTime : '07:00'}
+                    onPress={showTimePicker}
+                    textPlain={
+                      appConfig.reminderTime != null ? appConfig.reminderTime : defaultTime
+                    }
                     theme={appConfig.theme}
                   />
                   <TimePicker
                     isVisible={timePickerVisible}
-                    onConfirm={handleConfirmTime}
+                    onConfirm={date => handleConfirmTime(date, appConfig)}
                     onCancel={hideTimePicker}
                   />
                 </View>

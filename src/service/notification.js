@@ -1,4 +1,4 @@
-// import { Notifications } from 'expo';
+import { Notifications as N2 } from 'expo';
 import * as Permissions from 'expo-permissions';
 import * as Notifications from 'expo-notifications';
 
@@ -28,39 +28,33 @@ const askPermission = () => {
   });
 };
 
-const schedule = (title, body, repeat, time) => {
+const schedule = (title, body, time) => {
   return new Promise((resolve, reject) => {
+    Notifications.setNotificationHandler({
+      handleNotification: async () => ({
+        shouldShowAlert: true,
+        shouldPlaySound: false,
+        shouldSetBadge: false,
+      }),
+    });
 
-    Notifications.scheduleNotificationAsync({
+    // only daily notifications for now
+    const notification = {
       content: {
-        title: "Time's up!",
-        body: 'Change sides!',
+        title,
+        body,
       },
       trigger: {
-        seconds: 60,
+        hour: Number(time.hour),
+        minute: Number(time.minute),
         repeats: true,
+        // seconds: 5,
       },
-    }).then(response => {resolve(true); console.warn(response); });
+    };
 
-  //   const notification = {
-  //     title,
-  //     body,
-  //   };
-
-  //   const options = {
-  //     repeat,
-  //     time,
-  //   };
-
-  //   askPermission()
-  //     .then(response => {
-  //       if (response === true) {
-  //         Notifications.scheduleLocalNotificationAsync(notification, options)
-  //           .then(id => resolve(id))
-  //           .catch(error => reject(error));
-  //       }
-  //     })
-  //     .catch(error => reject(error));
+    Notifications.scheduleNotificationAsync(notification)
+      .then(id => resolve(id))
+      .catch(error => reject(error));
   });
 };
 
@@ -70,11 +64,9 @@ const cancel = notificationId => {
       resolve(true);
     }
 
-    resolve(true);
-
-  //   Notifications.cancelScheduledNotificationAsync(notificationId)
-  //     .then(() => resolve(true))
-  //     .catch(error => reject(error));
+    Notifications.cancelScheduledNotificationAsync(notificationId)
+      .then(() => resolve(true))
+      .catch(error => reject(error));
   });
 };
 
