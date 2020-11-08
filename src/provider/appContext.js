@@ -6,6 +6,7 @@ const AppContext = createContext({
     signInChallenge: false,
     reminderActive: false,
     reminderTime: '',
+    reminderNotificationId: null,
   },
   setAppConfig: () => {},
 });
