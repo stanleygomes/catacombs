@@ -28,4 +28,6 @@ export default {
   profile: 'Profile',
   notificationsEnabled: 'Enabled notifications',
   notificationsTime: 'Time of day',
+  readingReminderNotificationTitle: 'Time for reading',
+  readingReminderNotificationBody: "It's Time for your daily reading. How about take 5 minutes?",
 };

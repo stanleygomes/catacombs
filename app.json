@@ -4,10 +4,13 @@
     "description": "",
     "owner": "stanleygomes",
     "privacy": "unlisted",
-    "sdkVersion": "38.0.0",
+    "sdkVersion": "39.0.0",
     "slug": "bible-app",
     "version": "2.0.0",
-    "platforms": ["android", "ios"],
+    "platforms": [
+      "android",
+      "ios"
+    ],
     "orientation": "portrait",
     "userInterfaceStyle": "automatic",
     "icon": "./assets/icon.png",

@@ -30,4 +30,7 @@ export default {
   profile: 'Perfil',
   notificationsEnabled: 'Notificações ativas',
   notificationsTime: 'Horário',
+  readingReminderNotificationTitle: 'Hora de leitura',
+  readingReminderNotificationBody:
+    'Estou passando para te lembrar da sua leitura diária, que tal reservar uns 5 minutos para ler.',
 };
