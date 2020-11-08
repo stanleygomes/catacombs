@@ -9,6 +9,7 @@ import TimePicker from '../../component/TimePicker';
 import configService from '../../service/config';
 import AppContext from '../../provider/appContext';
 import stringService from '../../service/string';
+import notificationService from '../../service/notification';
 import style from './style';
 
 const ReadingReminder = () => {
@@ -27,12 +28,42 @@ const ReadingReminder = () => {
     });
   };
 
-  const setReminderActive = status => {
+  const scheduleNotification = (title, body, repeat, time, appConfig) => {
+    return new Promise((resolve, reject) => {
+      notificationService.schedule(title, body, repeat, time).then(nid => {
+        const conf = appConfig;
+        conf.reminderNotificationId = nid;
+
+        updateAppSettings(conf)
+          .then(() => resolve(true))
+          .catch(error => reject(error));
+      });
+    });
+  };
+
+  const cancelNotification = (notificationId, appConfig) => {
+    return new Promise((resolve, reject) => {
+      notificationService.cancel(notificationId).then(() => {
+        const conf = appConfig;
+        conf.reminderNotificationId = null;
+
+        updateAppSettings(conf)
+          .then(() => resolve(true))
+          .catch(error => reject(error));
+      });
+    });
+  };
+
+  const setReminderActive = (status, notificationId) => {
     const newConfig = {
       reminderActive: status,
     };
 
-    updateAppSettings(newConfig);
+    if (status === true) {
+      scheduleNotification('Bom dia - titulo', 'ola - body', 'minute', ((new Date()).getTime() + 100), newConfig);
+    } else {
+      cancelNotification(notificationId, newConfig);
+    }
   };
 
   const showTimePicker = () => {
@@ -88,7 +119,7 @@ const ReadingReminder = () => {
                 <Toggle
                   isOn={appConfig.reminderActive}
                   theme={appConfig.theme}
-                  onToggle={isOn => setReminderActive(isOn)}
+                  onToggle={isOn => setReminderActive(isOn, appConfig.reminderNotificationId)}
                 />
               </View>
               {appConfig.reminderActive === true && (
