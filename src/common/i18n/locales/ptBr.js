@@ -33,4 +33,7 @@ export default {
   readingReminderNotificationTitle: 'Hora de leitura',
   readingReminderNotificationBody:
     'Estou passando para te lembrar da sua leitura diária, que tal reservar uns 5 minutos para ler.',
+  instagram: 'Instagram',
+  shareApp: 'Compartilhar',
+  shareAppMessage: 'Oi! Vamos ler a bíblia usando esse app:',
 };
