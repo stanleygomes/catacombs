@@ -80,7 +80,9 @@ const ReadingReminder = () => {
         conf => {
           updateAppSettings(conf)
             .then(() => {})
-            .catch(() => null);
+            .catch(error => {
+              throw new Error(error);
+            });
         },
       );
     } else {
@@ -88,7 +90,9 @@ const ReadingReminder = () => {
         conf => {
           updateAppSettings(conf)
             .then(() => {})
-            .catch(() => null);
+            .catch(error => {
+              throw new Error(error);
+            });
         },
       );
     }
@@ -121,7 +125,9 @@ const ReadingReminder = () => {
         .then(() => {
           hideTimePicker();
         })
-        .catch(() => null);
+        .catch(error => {
+          throw new Error(error);
+        });
     });
   };
 

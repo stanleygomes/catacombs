@@ -1,7 +1,7 @@
 const sentry = {
   authToken: '5758d0693b90459fa5b84372ff05b2d2a6449ded4c274553b5cdae36ae6a6051',
   dsn: 'https://bf77795b85964fada75042a90cdf3405@o473223.ingest.sentry.io/5507971',
-  enableInExpoDevelopment: true,
+  enableInExpoDevelopment: false,
   debug: true,
   project: 'biblia-sagrada',
   organization: 'stanley-gomes',
