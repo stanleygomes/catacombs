@@ -48,7 +48,7 @@ https://play.google.com/store/apps/details?id=com.stanley.theholybible
                 <ExternalLink style={style(appConfig.theme).linkButton} link={instagramUrl}>
                   <AntDesign name="instagram" size={24} style={style(appConfig.theme).linkIcon} />
                   <Text
-                    textKey="instagram"
+                    textKey="followUs"
                     style={style(appConfig.theme).linkButtonText}
                     theme={appConfig.theme}
                   />
