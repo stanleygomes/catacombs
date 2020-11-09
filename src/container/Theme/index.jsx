@@ -22,7 +22,9 @@ const Theme = () => {
       .then(configUpdated => {
         appContext.setAppConfig(configUpdated);
       })
-      .catch(() => null);
+      .catch(error => {
+        throw new Error(error);
+      });
   };
 
   return (
