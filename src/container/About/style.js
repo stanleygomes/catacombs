@@ -59,7 +59,6 @@ const style = theme => {
     creditButtonText: {
       textAlign: 'center',
       fontSize: 16,
-      color: themeStyle[theme].textInverse,
     },
   });
 };
