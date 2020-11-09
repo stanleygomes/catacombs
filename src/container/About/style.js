@@ -28,6 +28,24 @@ const style = theme => {
       marginTop: 15,
       fontSize: 20,
     },
+    linksContainer: {
+      flexGrow: 1,
+      flexDirection: 'row',
+      justifyContent: 'space-evenly',
+      marginTop: 15,
+    },
+    linkButton: {
+      flexGrow: 1,
+      flexDirection: 'row',
+      justifyContent: 'space-evenly',
+    },
+    linkButtonText: {
+      marginLeft: 15,
+      fontSize: 16,
+    },
+    linkIcon: {
+      color: themeStyle[theme].textInverse,
+    },
     credit: {
       textAlign: 'center',
       marginTop: 50,
@@ -41,6 +59,7 @@ const style = theme => {
     creditButtonText: {
       textAlign: 'center',
       fontSize: 16,
+      color: themeStyle[theme].textInverse,
     },
   });
 };
