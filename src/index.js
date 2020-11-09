@@ -1,8 +1,11 @@
 import registerRootComponent from 'expo/build/launch/registerRootComponent';
-import * as firebase from 'firebase';
+import * as Firebase from 'firebase';
+import * as Sentry from 'sentry-expo';
 import App from './container/App';
-import { credentials } from './service/firebase';
+import config from './common/config';
 
-firebase.initializeApp(credentials);
+Sentry.init(config.sentry);
+
+Firebase.initializeApp(config.firebase.credentials);
 
 registerRootComponent(App);
