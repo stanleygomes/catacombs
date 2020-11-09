@@ -1,18 +1,16 @@
 import React from 'react';
-import { ScrollView, View, Linking, TouchableOpacity } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import Image from '../../component/Image';
 import Header from '../../component/Header';
 import H1 from '../../component/H1';
 import Text from '../../component/Text';
+import ExternalLink from '../../component/ExternalLink';
 import logoSrc from '../../asset/image/logo.png';
 import AppContext from '../../provider/appContext';
 import style from './style';
 
 const About = () => {
-  const handleOpenLink = () => {
-    const thiagoBodrukUrl = 'https://github.com/thiagobodruk/biblia';
-    Linking.openURL(thiagoBodrukUrl);
-  };
+  const thiagoBodrukUrl = 'https://github.com/thiagobodruk/biblia';
 
   return (
     <AppContext.Consumer>
@@ -41,16 +39,13 @@ const About = () => {
                 style={style(appConfig.theme).credit}
                 theme={appConfig.theme}
               />
-              <TouchableOpacity
-                style={style(appConfig.theme).creditButton}
-                onPress={handleOpenLink}
-              >
+              <ExternalLink style={style(appConfig.theme).creditButton} link={thiagoBodrukUrl}>
                 <Text
                   textKey="bibleCreditButton"
                   style={style(appConfig.theme).creditButtonText}
                   theme={appConfig.theme}
                 />
-              </TouchableOpacity>
+              </ExternalLink>
             </View>
           </ScrollView>
         </View>
