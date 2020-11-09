@@ -1,15 +1,5 @@
 // import firebase from 'firebase';
 
-export const credentials = {
-  apiKey: 'AIzaSyCSugAHlcMv18cKCfzIA7q9zgOAlftvaL4',
-  authDomain: 'bible-30469.firebaseapp.com',
-  databaseURL: 'https://bible-30469.firebaseio.com',
-  projectId: 'bible-30469',
-  storageBucket: 'bible-30469.appspot.com',
-  messagingSenderId: '1008791411753',
-  appId: '1:1008791411753:web:daf0206175f78352a4d038',
-};
-
 // const isUserEqual = (googleUser, firebaseUser) => {
 //   if (firebaseUser) {
 //     var providerData = firebaseUser.providerData;
@@ -109,7 +99,7 @@ export const credentials = {
 //   })
 // };
 
-export default {
-  credentials,
+// export default {
+//   credentials,
 
-};
+// };
