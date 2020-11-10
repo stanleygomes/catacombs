@@ -25,6 +25,7 @@ const firebase = {
     storageBucket: 'bible-30469.appspot.com',
     messagingSenderId: '1008791411753',
     appId: '1:1008791411753:web:daf0206175f78352a4d038',
+    measurementId: 'G-HWMZRNPPVY',
   },
 };
 
@@ -75,6 +76,9 @@ const expo = {
   },
   web: {
     favicon: './assets/favicon.png',
+    config: {
+      firebase: firebase.credentials,
+    },
   },
   hooks: {
     postPublish: [

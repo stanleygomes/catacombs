@@ -19,6 +19,9 @@ const style = theme => {
       paddingRight: 30,
       textAlign: 'center',
     },
+    loading: {
+      color: themeStyle[theme].primary,
+    },
     buttonSignInLater: {
       marginTop: 15,
     },
