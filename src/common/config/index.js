@@ -7,6 +7,15 @@ const sentry = {
   organization: 'stanley-gomes',
 };
 
+const google = {
+  auth: {
+    // androidClientIdOficial: '1008791411753-9oqk4opkprnqbgirbvraaq1is47d37rm.apps.googleusercontent.com',
+    androidClientId: '1008791411753-2ot7pk6c22cdnc4m0fbro8ipkio6bvfj.apps.googleusercontent.com',
+    scopes: ['profile', 'email'],
+    behavior: 'web',
+  },
+};
+
 const firebase = {
   credentials: {
     apiKey: 'AIzaSyCSugAHlcMv18cKCfzIA7q9zgOAlftvaL4',
@@ -47,6 +56,14 @@ const expo = {
   assetBundlePatterns: ['**/*'],
   ios: {
     supportsTablet: true,
+    bundleIdentifier: 'com',
+    config: {
+      googleSignIn: {
+        reservedClientId:
+          'com.googleusercontent.apps.1008791411753-v820tatu7as8p09jfaoh1f5gmc9gsvee',
+      },
+    },
+    googleServicesFile: './src/common/config/google.plist',
   },
   android: {
     package: 'com.abibliasagrada.app',
@@ -54,6 +71,7 @@ const expo = {
     permissions: [],
     allowBackup: true,
     useNextNotificationsApi: true,
+    googleServicesFile: './src/common/config/google.json',
   },
   web: {
     favicon: './assets/favicon.png',
@@ -75,5 +93,6 @@ const expo = {
 module.exports = {
   sentry,
   firebase,
+  google,
   expo,
 };

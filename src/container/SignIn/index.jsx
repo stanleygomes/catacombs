@@ -6,9 +6,11 @@ import Button from '../../component/Button';
 import H1 from '../../component/H1';
 import H3 from '../../component/H3';
 import theBibleSrc from '../../asset/image/the-bible.png';
-import style from './style';
 import AppContext from '../../provider/appContext';
 import configService from '../../service/config';
+import googleService from '../../service/google';
+import firebaseService from '../../service/firebase';
+import style from './style';
 
 const SignIn = () => {
   const { navigate } = useNavigation();
@@ -22,9 +24,25 @@ const SignIn = () => {
       signInChallenge: true,
     };
 
-    configService.put(configUpdateData).then(() => {
-      handleNavigateToTabs();
-    });
+    googleService
+      .signIn()
+      .then(googleReponse => {
+        firebaseService
+          .onSignIn(googleReponse)
+          .then(firebaseReponse => {
+
+          })
+          .catch(error => {
+            throw new Error(error);
+          });
+      })
+      .catch(error => {
+        throw new Error(error);
+      });
+
+    // configService.put(configUpdateData).then(() => {
+    //   handleNavigateToTabs();
+    // });
   };
 
   return (
@@ -49,7 +67,7 @@ const SignIn = () => {
             />
             <Button
               variant="light"
-              style={style.buttonSignInLater}
+              style={style(appConfig.theme).buttonSignInLater}
               onPress={handleSignWithGoogle}
               text="signInLater"
               theme={appConfig.theme}
