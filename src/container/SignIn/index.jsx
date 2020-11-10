@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { ActivityIndicator, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Image from '../../component/Image';
@@ -15,6 +15,7 @@ import style from './style';
 
 const SignIn = () => {
   const [loading, setLoading] = useState(false);
+  const { setAppConfig } = useContext(AppContext);
   const { navigate } = useNavigation();
 
   const handleNavigateToTabs = () => {
@@ -23,15 +24,23 @@ const SignIn = () => {
 
   const handleContinue = () => {
     const configUpdateData = {
-      signInChallenge: null,
+      signInChallenge: true,
     };
 
     configService
       .put(configUpdateData)
-      .then(() => {
-        analyticsService.logEvent('SKIP_SIGNIN').then(() => {
-          handleNavigateToTabs();
-        });
+      .then(response => {
+        analyticsService
+          .logEvent('SKIP_SIGNIN')
+          .then(() => {
+            setLoading(false);
+            setAppConfig(response);
+            handleNavigateToTabs();
+          })
+          .catch(() => {
+            setLoading(false);
+            handleNavigateToTabs();
+          });
       })
       .catch(error => {
         setLoading(false);
@@ -54,8 +63,9 @@ const SignIn = () => {
           .then(() => {
             configUpdateData.user = googleReponse.user;
 
-            configService.put(configUpdateData).then(() => {
+            configService.put(configUpdateData).then(response => {
               setLoading(false);
+              setAppConfig(response);
 
               analyticsService
                 .logEvent('SIGNIN')

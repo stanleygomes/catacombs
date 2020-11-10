@@ -1,5 +1,5 @@
-import React from 'react';
-import { ScrollView, View } from 'react-native';
+import React, { useContext, useState } from 'react';
+import { ActivityIndicator, ScrollView, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Image from '../../component/Image';
 import H1 from '../../component/H1';
@@ -9,10 +9,15 @@ import MenuItemIcon from '../../component/MenuItemIcon';
 import Button from '../../component/Button';
 import prayerSrc from '../../asset/image/prayer-avatar.png';
 import profileService from '../../service/profile';
+import firebaseService from '../../service/firebase';
+import configService from '../../service/config';
+import analyticsService from '../../service/analytics';
 import AppContext from '../../provider/appContext';
 import style from './style';
 
 const Profile = () => {
+  const [loading, setLoading] = useState(false);
+  const { setAppConfig } = useContext(AppContext);
   const { navigate } = useNavigation();
   const user = profileService.getUser();
   const statsList = profileService.getStatsList();
@@ -20,6 +25,53 @@ const Profile = () => {
 
   const handleNavigate = to => {
     navigate(to);
+  };
+
+  const showSignIn = () => {
+    const configUpdateData = {
+      signInChallenge: null,
+    };
+
+    setLoading(true);
+
+    configService
+      .put(configUpdateData)
+      .then(response => {
+        setLoading(false);
+        setAppConfig(response);
+      })
+      .catch(error => {
+        setLoading(false);
+        throw new Error(error);
+      });
+  };
+
+  const signOut = () => {
+    const configUpdateData = {
+      user: null,
+    };
+
+    setLoading(true);
+
+    firebaseService
+      .onSignOut()
+      .then(() => {
+        configService
+          .put(configUpdateData)
+          .then(response => {
+            setAppConfig(response);
+            analyticsService.logEvent('SIGNOUT');
+            setLoading(false);
+          })
+          .catch(error => {
+            setLoading(false);
+            throw new Error(error);
+          });
+      })
+      .catch(error => {
+        setLoading(false);
+        throw new Error(error);
+      });
   };
 
   return (
@@ -70,14 +122,29 @@ const Profile = () => {
               ))}
           </MenuContainer>
           <View style={style(appConfig.theme).logoutContainer}>
-            <Button
-              variant="light"
-              style={style(appConfig.theme).logoutButton}
-              styleText={style(appConfig.theme).logoutButtonText}
-              onPress={() => console.log()}
-              text="logout"
-              theme={appConfig.theme}
-            />
+            {loading === true && (
+              <ActivityIndicator size="large" color={style(appConfig.theme).loading.color} />
+            )}
+            {loading === false && appConfig.user != null && (
+              <Button
+                variant="light"
+                style={style(appConfig.theme).logoutButton}
+                styleText={style(appConfig.theme).logoutButtonText}
+                onPress={signOut}
+                text="logout"
+                theme={appConfig.theme}
+              />
+            )}
+            {loading === false && appConfig.user == null && (
+              <Button
+                variant="light"
+                style={style(appConfig.theme).logoutButton}
+                styleText={style(appConfig.theme).logoutButtonText}
+                onPress={showSignIn}
+                text="signInWithGoogle"
+                theme={appConfig.theme}
+              />
+            )}
           </View>
         </ScrollView>
       )}
