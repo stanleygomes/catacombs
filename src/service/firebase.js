@@ -50,6 +50,17 @@ const onSignIn = googleUser => {
   });
 };
 
+const onSignOut = () => {
+  return new Promise((resolve, reject) => {
+    firebase
+      .auth()
+      .signOut()
+      .then(() => resolve(true))
+      .catch(error => reject(error));
+  });
+};
+
 export default {
   onSignIn,
+  onSignOut,
 };
