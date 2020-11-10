@@ -53,7 +53,8 @@
     "react-native-screens": "~2.10.1",
     "react-native-web": "~0.13.7",
     "sentry-expo": "^3.0.3",
-    "toggle-switch-react-native": "^2.3.0"
+    "toggle-switch-react-native": "^2.3.0",
+    "expo-firebase-analytics": "~2.5.0"
   },
   "devDependencies": {
     "@babel/core": "^7.8.6",

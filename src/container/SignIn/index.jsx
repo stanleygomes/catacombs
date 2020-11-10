@@ -1,5 +1,5 @@
-import React from 'react';
-import { View } from 'react-native';
+import React, { useState } from 'react';
+import { ActivityIndicator, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Image from '../../component/Image';
 import Button from '../../component/Button';
@@ -10,13 +10,33 @@ import AppContext from '../../provider/appContext';
 import configService from '../../service/config';
 import googleService from '../../service/google';
 import firebaseService from '../../service/firebase';
+import analyticsService from '../../service/analytics';
 import style from './style';
 
 const SignIn = () => {
+  const [loading, setLoading] = useState(false);
   const { navigate } = useNavigation();
 
   const handleNavigateToTabs = () => {
     navigate('AppTabsNavigation');
+  };
+
+  const handleContinue = () => {
+    const configUpdateData = {
+      signInChallenge: null,
+    };
+
+    configService
+      .put(configUpdateData)
+      .then(() => {
+        analyticsService.logEvent('SKIP_SIGNIN').then(() => {
+          handleNavigateToTabs();
+        });
+      })
+      .catch(error => {
+        setLoading(false);
+        throw new Error(error);
+      });
   };
 
   const handleSignWithGoogle = () => {
@@ -24,25 +44,38 @@ const SignIn = () => {
       signInChallenge: true,
     };
 
+    setLoading(true);
+
     googleService
       .signIn()
       .then(googleReponse => {
         firebaseService
           .onSignIn(googleReponse)
-          .then(firebaseReponse => {
+          .then(() => {
+            configUpdateData.user = googleReponse.user;
 
+            configService.put(configUpdateData).then(() => {
+              setLoading(false);
+
+              analyticsService
+                .logEvent('SIGNIN')
+                .then(() => {
+                  handleNavigateToTabs();
+                })
+                .catch(() => {
+                  handleNavigateToTabs();
+                });
+            });
           })
           .catch(error => {
+            setLoading(false);
             throw new Error(error);
           });
       })
       .catch(error => {
+        setLoading(false);
         throw new Error(error);
       });
-
-    // configService.put(configUpdateData).then(() => {
-    //   handleNavigateToTabs();
-    // });
   };
 
   return (
@@ -59,19 +92,26 @@ const SignIn = () => {
             />
           </View>
           <View>
-            <Button
-              variant="primary"
-              onPress={handleSignWithGoogle}
-              text="signInWithGoogle"
-              theme={appConfig.theme}
-            />
-            <Button
-              variant="light"
-              style={style(appConfig.theme).buttonSignInLater}
-              onPress={handleSignWithGoogle}
-              text="signInLater"
-              theme={appConfig.theme}
-            />
+            {loading === true && (
+              <ActivityIndicator size="large" color={style(appConfig.theme).loading.color} />
+            )}
+            {loading === false && (
+              <>
+                <Button
+                  variant="primary"
+                  onPress={handleSignWithGoogle}
+                  text="signInWithGoogle"
+                  theme={appConfig.theme}
+                />
+                <Button
+                  variant="light"
+                  style={style(appConfig.theme).buttonSignInLater}
+                  onPress={handleContinue}
+                  text="signInLater"
+                  theme={appConfig.theme}
+                />
+              </>
+            )}
           </View>
         </View>
       )}
