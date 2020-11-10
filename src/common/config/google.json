@@ -1,0 +1,77 @@
+{
+  "project_info": {
+    "project_number": "1008791411753",
+    "firebase_url": "https://bible-30469.firebaseio.com",
+    "project_id": "bible-30469",
+    "storage_bucket": "bible-30469.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1008791411753:android:17736da73f03c469a4d038",
+        "android_client_info": {
+          "package_name": "com.abibliasagrada.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1008791411753-qq6j8qqssspks71ic58lgps1u8qbrplu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.abibliasagrada.app",
+            "certificate_hash": "0226ebcdee502bc796cf8eb0dbc1b65d156e2b4f"
+          }
+        },
+        {
+          "client_id": "1008791411753-bp44ulsbo5d93pupb357kh0oe13jc70k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_6r0lYcf0v2cJMdGqJvB3VO-o9GYm2SI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1008791411753-ok3sgrp7i0a192mbc0r53518ohrgk0jc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1008791411753:android:52fc2e6c99f814dd",
+        "android_client_info": {
+          "package_name": "com.bible"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1008791411753-bp44ulsbo5d93pupb357kh0oe13jc70k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_6r0lYcf0v2cJMdGqJvB3VO-o9GYm2SI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1008791411753-ok3sgrp7i0a192mbc0r53518ohrgk0jc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

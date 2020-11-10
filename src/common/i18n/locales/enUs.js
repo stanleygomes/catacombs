@@ -29,7 +29,7 @@ export default {
   notificationsEnabled: 'Enabled notifications',
   notificationsTime: 'Time of day',
   readingReminderNotificationTitle: 'Time for reading',
-  readingReminderNotificationBody: "It's Time for your daily reading. How about take 5 minutes?",
+  readingReminderNotificationBody: "It's time for your daily reading. How about take 5 minutes?",
   followUs: 'Follow',
   instagram: 'Instagram',
   shareApp: 'Share',
