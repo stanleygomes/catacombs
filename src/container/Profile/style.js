@@ -26,11 +26,16 @@ const style = theme => {
       paddingBottom: 20,
       paddingLeft: 30,
     },
-    title: {
+    titleLeft: {
       textAlign: 'center',
       marginTop: 15,
       fontSize: 25,
       marginLeft: 30,
+    },
+    title: {
+      textAlign: 'center',
+      marginTop: 15,
+      fontSize: 25,
     },
     containerResume: {
       flexDirection: 'row',
