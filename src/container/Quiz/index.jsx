@@ -5,7 +5,7 @@ import H1 from '../../component/H1';
 import AppContext from '../../provider/appContext';
 import style from './style';
 
-const Home = () => {
+const Read = () => {
   const { goBack } = useNavigation();
 
   const handleNavigateToTabs = () => {
@@ -17,7 +17,11 @@ const Home = () => {
       {({ appConfig }) => (
         <ScrollView>
           <View style={{ ...style(appConfig.theme).container, ...{ paddingTop: 100 } }}>
-            <H1 textPlain="Home" style={style(appConfig.theme).title} theme={appConfig.theme} />
+            <H1
+              textPlain="Quiz"
+              style={style(appConfig.theme).title}
+              theme={appConfig.theme}
+            />
             <Button onPress={handleNavigateToTabs} title="Bom dia" theme={appConfig.theme}>
               <Text>OLA</Text>
             </Button>
@@ -28,4 +32,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Read;
