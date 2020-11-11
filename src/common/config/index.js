@@ -27,6 +27,9 @@ const firebase = {
     appId: '1:1008791411753:web:daf0206175f78352a4d038',
     measurementId: 'G-HWMZRNPPVY',
   },
+  analytics: {
+    debug: false,
+  },
 };
 
 const expo = {
