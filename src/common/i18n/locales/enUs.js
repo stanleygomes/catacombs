@@ -10,6 +10,7 @@ export default {
   versesSaved: 'Verses saved',
   logout: 'Logout',
   profileInformation: 'Profile information',
+  profileInformationDescription: 'Your info right here',
   savedVerses: 'Saved verses',
   readingReminder: 'Reading reminders',
   readingReminderDescription: 'Set a daily reminder to read the bible',
@@ -34,4 +35,5 @@ export default {
   instagram: 'Instagram',
   shareApp: 'Share',
   shareAppMessage: 'Hi! Come to read bible using this app:',
+  save: 'Save',
 };

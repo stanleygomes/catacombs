@@ -15,7 +15,7 @@ const getMenuItems = () => {
   return [
     {
       title: 'profileInformation',
-      to: 'ProfileEdit',
+      to: 'ProfileInfo',
     },
     {
       title: 'savedVerses',
