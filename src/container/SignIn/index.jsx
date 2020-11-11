@@ -58,29 +58,33 @@ const SignIn = () => {
     googleService
       .signIn()
       .then(googleReponse => {
-        firebaseService
-          .onSignIn(googleReponse)
-          .then(() => {
-            configUpdateData.user = googleReponse.user;
+        if (googleReponse.type !== 'success') {
+          setLoading(false);
+        } else {
+          firebaseService
+            .onSignIn(googleReponse)
+            .then(() => {
+              configUpdateData.user = googleReponse.user;
 
-            configService.put(configUpdateData).then(response => {
+              configService.put(configUpdateData).then(response => {
+                setLoading(false);
+                setAppConfig(response);
+
+                analyticsService
+                  .logEvent('SIGNIN')
+                  .then(() => {
+                    handleNavigateToTabs();
+                  })
+                  .catch(() => {
+                    handleNavigateToTabs();
+                  });
+              });
+            })
+            .catch(error => {
               setLoading(false);
-              setAppConfig(response);
-
-              analyticsService
-                .logEvent('SIGNIN')
-                .then(() => {
-                  handleNavigateToTabs();
-                })
-                .catch(() => {
-                  handleNavigateToTabs();
-                });
+              throw new Error(error);
             });
-          })
-          .catch(error => {
-            setLoading(false);
-            throw new Error(error);
-          });
+        }
       })
       .catch(error => {
         setLoading(false);

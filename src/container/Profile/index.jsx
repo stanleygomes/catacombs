@@ -80,7 +80,7 @@ const Profile = () => {
           {appConfig.user == null && (
             <View style={style(appConfig.theme).containerLeft}>
               <Image source={logoSrc} width={70} height={70} style={{ borderRadius: 20 }} />
-              <H1 text="appName" style={style(appConfig.theme).title} theme={appConfig.theme} />
+              <H1 text="appName" style={style(appConfig.theme).titleLeft} theme={appConfig.theme} />
             </View>
           )}
           {appConfig.user != null && (
