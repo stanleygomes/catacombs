@@ -14,7 +14,7 @@ const Privacy = () => {
   const { navigate } = useNavigation();
 
   const handleNavigateProfileEdit = () => {
-    navigate('ProfileEdit');
+    navigate('ProfileInfo');
   };
 
   return (
