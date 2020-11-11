@@ -7,7 +7,7 @@ import Text from '../../component/Text';
 import MenuContainer from '../../component/MenuContainer';
 import MenuItemIcon from '../../component/MenuItemIcon';
 import Button from '../../component/Button';
-import prayerSrc from '../../asset/image/prayer-avatar.png';
+import logoSrc from '../../asset/image/logo.png';
 import profileService from '../../service/profile';
 import firebaseService from '../../service/firebase';
 import configService from '../../service/config';
@@ -19,7 +19,6 @@ const Profile = () => {
   const [loading, setLoading] = useState(false);
   const { setAppConfig } = useContext(AppContext);
   const { navigate } = useNavigation();
-  const user = profileService.getUser();
   const statsList = profileService.getStatsList();
   const menuItems = profileService.getMenuItems();
 
@@ -78,38 +77,56 @@ const Profile = () => {
     <AppContext.Consumer>
       {({ appConfig }) => (
         <ScrollView style={{ ...style(appConfig.theme).containerBackground }}>
-          <View
-            style={{ ...style(appConfig.theme).container, ...style(appConfig.theme).containerTop }}
-          >
-            <Image source={prayerSrc} width={100} height={100} style={{ borderRadius: 20 }} />
-            <H1
-              textPlain={user.name}
-              style={style(appConfig.theme).title}
-              theme={appConfig.theme}
-            />
-          </View>
-          <View
-            style={{
-              ...style(appConfig.theme).container,
-              ...style(appConfig.theme).containerResume,
-            }}
-          >
-            {statsList != null &&
-              statsList.map(item => (
-                <View key={item.value} style={style(appConfig.theme).containerResumeBox}>
-                  <Text
-                    textPlain={item.value}
-                    style={style(appConfig.theme).containerResumeBoxTitle}
-                    theme={appConfig.theme}
-                  />
-                  <Text
-                    textKey={item.title}
-                    style={style(appConfig.theme).containerResumeBoxValue}
-                    theme={appConfig.theme}
-                  />
-                </View>
-              ))}
-          </View>
+          {appConfig.user == null && (
+            <View style={style(appConfig.theme).containerLeft}>
+              <Image source={logoSrc} width={70} height={70} style={{ borderRadius: 20 }} />
+              <H1 text="appName" style={style(appConfig.theme).title} theme={appConfig.theme} />
+            </View>
+          )}
+          {appConfig.user != null && (
+            <>
+              <View
+                style={{
+                  ...style(appConfig.theme).container,
+                  ...style(appConfig.theme).containerTop,
+                }}
+              >
+                <Image
+                  uri={appConfig.user.photoUrl}
+                  width={100}
+                  height={100}
+                  style={{ borderRadius: 20 }}
+                />
+                <H1
+                  textPlain={appConfig.user.name}
+                  style={style(appConfig.theme).title}
+                  theme={appConfig.theme}
+                />
+              </View>
+              <View
+                style={{
+                  ...style(appConfig.theme).container,
+                  ...style(appConfig.theme).containerResume,
+                }}
+              >
+                {statsList != null &&
+                  statsList.map(item => (
+                    <View key={item.value} style={style(appConfig.theme).containerResumeBox}>
+                      <Text
+                        textPlain={item.value}
+                        style={style(appConfig.theme).containerResumeBoxTitle}
+                        theme={appConfig.theme}
+                      />
+                      <Text
+                        textKey={item.title}
+                        style={style(appConfig.theme).containerResumeBoxValue}
+                        theme={appConfig.theme}
+                      />
+                    </View>
+                  ))}
+              </View>
+            </>
+          )}
           <MenuContainer>
             {menuItems != null &&
               menuItems.map(item => (
