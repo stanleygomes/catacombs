@@ -1,10 +1,11 @@
 import React, { useContext, useState } from 'react';
-import { ActivityIndicator, View } from 'react-native';
+import { View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Image from '../../component/Image';
 import Button from '../../component/Button';
 import H1 from '../../component/H1';
 import H3 from '../../component/H3';
+import Loading from '../../component/Loading';
 import theBibleSrc from '../../asset/image/the-bible.png';
 import AppContext from '../../provider/appContext';
 import configService from '../../service/config';
@@ -106,9 +107,7 @@ const SignIn = () => {
             />
           </View>
           <View>
-            {loading === true && (
-              <ActivityIndicator size="large" color={style(appConfig.theme).loading.color} />
-            )}
+            {loading === true && <Loading theme={appConfig.theme} />}
             {loading === false && (
               <>
                 <Button
