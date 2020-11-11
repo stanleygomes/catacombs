@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { ActivityIndicator, ScrollView, View } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Image from '../../component/Image';
 import H1 from '../../component/H1';
@@ -7,6 +7,7 @@ import Text from '../../component/Text';
 import MenuContainer from '../../component/MenuContainer';
 import MenuItemIcon from '../../component/MenuItemIcon';
 import Button from '../../component/Button';
+import Loading from '../../component/Loading';
 import logoSrc from '../../asset/image/logo.png';
 import profileService from '../../service/profile';
 import firebaseService from '../../service/firebase';
@@ -139,9 +140,7 @@ const Profile = () => {
               ))}
           </MenuContainer>
           <View style={style(appConfig.theme).logoutContainer}>
-            {loading === true && (
-              <ActivityIndicator size="large" color={style(appConfig.theme).loading.color} />
-            )}
+            {loading === true && <Loading theme={appConfig.theme} />}
             {loading === false && appConfig.user != null && (
               <Button
                 variant="light"

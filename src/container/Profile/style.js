@@ -60,9 +60,6 @@ const style = theme => {
       color: themeStyle[theme].sixth,
       textAlign: 'left',
     },
-    loading: {
-      color: themeStyle[theme].primary,
-    },
     logoutContainer: {
       padding: 20,
       marginBottom: 15,

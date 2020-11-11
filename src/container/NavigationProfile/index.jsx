@@ -5,6 +5,7 @@ import Profile from '../Profile';
 import Privacy from '../Privacy';
 import Theme from '../Theme';
 import ReadingReminder from '../ReadingReminder';
+import ProfileInfo from '../ProfileInfo';
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -13,6 +14,10 @@ const NavigationProfile = () => {
     {
       name: 'Profile',
       component: Profile,
+    },
+    {
+      name: 'ProfileInfo',
+      component: ProfileInfo,
     },
     {
       name: 'ReadingReminder',

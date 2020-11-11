@@ -11,6 +11,7 @@ export default {
   versesSaved: 'Versos salvos',
   logout: 'Sair',
   profileInformation: 'Minhas informações',
+  profileInformationDescription: 'Suas informações logo aqui',
   savedVerses: 'Versos salvos',
   readingReminder: 'Lembretes de leitura',
   readingReminderDescription:
@@ -37,4 +38,5 @@ export default {
   instagram: 'Instagram',
   shareApp: 'Compartilhar',
   shareAppMessage: 'Oi! Vamos ler a bíblia usando esse app:',
+  save: 'Salvar',
 };
