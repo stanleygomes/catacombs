@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import { TextInput as TextInputRN } from 'react-native';
+import { TextInput as TextInputRN, View } from 'react-native';
 import PropTypes from 'prop-types';
+import Text from '../Text';
 import customStyle from './style';
 
 const TextInput = props => {
   const [isFocused, setIsFocused] = useState(false);
   const {
     style,
+    styleContainer,
     value,
     theme,
     onChangeText,
@@ -18,35 +20,40 @@ const TextInput = props => {
     onKeyPress,
     onSubmitEditing,
     placeholder,
+    name,
   } = props;
   const inputFocusedStyle = isFocused === true ? customStyle(theme).focused : {};
 
   return (
-    <TextInputRN
-      style={{ ...inputFocusedStyle, ...customStyle(theme).default, ...style }}
-      onChangeText={onChangeText}
-      value={value}
-      editable={editable}
-      keyboardType={keyboardType}
-      multiline={multiline}
-      onBlur={arg => {
-        setIsFocused(false);
-        onBlur(arg);
-      }}
-      onFocus={arg => {
-        setIsFocused(true);
-        onFocus(arg);
-      }}
-      onKeyPress={onKeyPress}
-      onSubmitEditing={onSubmitEditing}
-      placeholder={placeholder}
-    />
+    <View style={{ ...customStyle(theme).container, ...styleContainer }}>
+      <Text textKey={name} style={customStyle(theme).label} theme={theme} />
+      <TextInputRN
+        style={{ ...inputFocusedStyle, ...customStyle(theme).default, ...style }}
+        onChangeText={onChangeText}
+        value={value}
+        editable={editable}
+        keyboardType={keyboardType}
+        multiline={multiline}
+        onBlur={arg => {
+          setIsFocused(false);
+          onBlur(arg);
+        }}
+        onFocus={arg => {
+          setIsFocused(true);
+          onFocus(arg);
+        }}
+        onKeyPress={onKeyPress}
+        onSubmitEditing={onSubmitEditing}
+        placeholder={placeholder}
+      />
+    </View>
   );
 };
 
 TextInput.defaultProps = {
   value: null,
   style: {},
+  styleContainer: {},
   onChangeText: () => {},
   editable: true,
   keyboardType: 'default',
@@ -62,6 +69,7 @@ TextInput.propTypes = {
   theme: PropTypes.string.isRequired,
   value: PropTypes.any,
   style: PropTypes.object,
+  styleContainer: PropTypes.object,
   onChangeText: PropTypes.func,
   editable: PropTypes.bool,
   keyboardType: PropTypes.string, // default, number-pad, decimal-pad, numeric, email-address, phone-pad
@@ -71,6 +79,7 @@ TextInput.propTypes = {
   onKeyPress: PropTypes.func,
   onSubmitEditing: PropTypes.func,
   placeholder: PropTypes.string,
+  name: PropTypes.string.isRequired,
 };
 
 export default TextInput;

@@ -73,17 +73,19 @@ const ProfileInfo = () => {
                     />
                     <TextInput
                       theme={appConfig.theme}
-                      style={style(appConfig.theme).inputText}
+                      styleContainer={style(appConfig.theme).inputText}
                       value={appConfig.user.name}
                       onChangeText={() => {}}
                       editable={false}
+                      name="name"
                     />
                     <TextInput
                       theme={appConfig.theme}
-                      style={style(appConfig.theme).inputText}
+                      styleContainer={style(appConfig.theme).inputText}
                       value={appConfig.user.email}
                       onChangeText={() => {}}
                       editable={false}
+                      name="email"
                     />
                   </>
                 )}
