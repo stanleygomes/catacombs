@@ -36,4 +36,6 @@ export default {
   shareApp: 'Share',
   shareAppMessage: 'Hi! Come to read bible using this app:',
   save: 'Save',
+  email: 'Email',
+  name: 'Name',
 };

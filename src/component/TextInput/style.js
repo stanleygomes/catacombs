@@ -5,15 +5,18 @@ const style = theme => {
   return StyleSheet.create({
     default: {
       color: themeStyle[theme].sixth,
-      // backgroundColor: themeStyle[theme].fifth,
       padding: 15,
       borderColor: themeStyle[theme].fifth,
       borderWidth: 2,
-      borderRadius: 3,
+      borderRadius: 5,
     },
     focused: {
       backgroundColor: themeStyle[theme].fifth,
       borderColor: themeStyle[theme].fifth,
+    },
+    label: {
+      fontSize: 14,
+      fontFamily: themeStyle.font.defaultFontFamilyBold,
     },
   });
 };
