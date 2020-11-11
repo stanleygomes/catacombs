@@ -19,9 +19,18 @@ const style = theme => {
       paddingTop: 100,
       paddingBottom: 20,
     },
+    containerLeft: {
+      justifyContent: 'flex-start',
+      flexDirection: 'row',
+      paddingTop: 100,
+      paddingBottom: 20,
+      paddingLeft: 30,
+    },
     title: {
       textAlign: 'center',
       marginTop: 15,
+      fontSize: 25,
+      marginLeft: 30,
     },
     containerResume: {
       flexDirection: 'row',

@@ -1,9 +1,3 @@
-const getUser = () => {
-  return {
-    name: 'Luke Skywalker',
-  };
-};
-
 const getStatsList = () => {
   return [
     {
@@ -47,7 +41,6 @@ const getMenuItems = () => {
 };
 
 export default {
-  getUser,
   getStatsList,
   getMenuItems,
 };
