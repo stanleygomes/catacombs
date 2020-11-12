@@ -16,6 +16,7 @@ const style = theme => {
     },
     containerTop: {
       width: 300,
+      paddingTop: 10,
       paddingBottom: 30,
     },
     mainPhotoContainer: {
@@ -29,7 +30,7 @@ const style = theme => {
     text: {
       fontSize: 18,
       textAlign: 'left',
-      marginTop: 15,
+      marginTop: 30,
       marginBottom: 15,
     },
     linkButton: {
