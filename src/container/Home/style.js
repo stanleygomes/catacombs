@@ -26,7 +26,9 @@ const style = theme => {
     subtitle: {
       fontSize: 20,
     },
-    postContainer: {},
+    postContainer: {
+      paddingRight: 20,
+    },
     postItemContainer: {
       paddingTop: 20,
       paddingBottom: 20,
