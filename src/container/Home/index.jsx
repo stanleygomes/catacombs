@@ -9,6 +9,9 @@ import logoSrc from '../../asset/image/logo.png';
 import AppContext from '../../provider/appContext';
 import devotionalService from '../../service/devotional';
 import style from './style';
+import BoxShadow from '../../component/BoxShadow';
+import ClickShare from '../../component/ClickShare';
+import { AntDesign } from '@expo/vector-icons';
 
 const Home = () => {
   const [loading, setLoading] = useState(false);
@@ -22,6 +25,12 @@ const Home = () => {
   const showDevotional = params => {
     handleNavigate('Devotional', params);
   };
+
+  const verseOfDayText =
+    'Porque a promessa vos diz respeito a vós, a vossos filhos, e a todos os que estão longe, a tantos quantos Deus nosso Senhor chamar.';
+  const verseOfDayBook = 'Atos';
+  const verseOfDayVerseChapter = '2:39';
+  const verseOfDayShareMessage = `${verseOfDayText} ${verseOfDayBook} - ${verseOfDayVerseChapter}`;
 
   const getPosts = useCallback(() => {
     setLoading(true);
@@ -85,27 +94,68 @@ const Home = () => {
             onRefresh={getPosts}
           >
             {loading === false && postsList != null && (
-              <View style={style(appConfig.theme).postContainer}>
-                <ScrollView
-                  horizontal
-                  showsHorizontalScrollIndicator={false}
-                  style={style(appConfig.theme).container}
-                >
-                  {postsList.map(item => (
-                    <View style={style(appConfig.theme).postItemContainer} key={Math.random()}>
-                      <ImageClickable
-                        uri={item.thumbnail}
-                        width={250}
-                        height={250}
+              <>
+                <View>
+                  <BoxShadow
+                    theme={appConfig.theme}
+                    style={style(appConfig.theme).verseOfDayContainer}
+                  >
+                    <H1
+                      text="verseOfDay"
+                      style={style(appConfig.theme).verseOfDayTitle}
+                      theme={appConfig.theme}
+                    />
+                    <Text
+                      textPlain={verseOfDayText}
+                      style={style(appConfig.theme).verseOfDayText}
+                      theme={appConfig.theme}
+                    />
+                    <View style={style(appConfig.theme).verseOfDayActionbar}>
+                      <ClickShare
+                        style={style(appConfig.theme).linkButton}
+                        message={verseOfDayShareMessage}
+                      >
+                        <AntDesign
+                          name="sharealt"
+                          size={24}
+                          style={style(appConfig.theme).verseOfDayIcon}
+                        />
+                      </ClickShare>
+                      <Text
+                        textPlain={`${verseOfDayBook} - ${verseOfDayVerseChapter}`}
+                        style={style(appConfig.theme).verseOfDayInfo}
                         theme={appConfig.theme}
-                        styleContainer={style(appConfig.theme).postItemImageContainer}
-                        style={style(appConfig.theme).postItemImage}
-                        onPress={() => showDevotional(item)}
                       />
                     </View>
-                  ))}
-                </ScrollView>
-              </View>
+                  </BoxShadow>
+                </View>
+                <View style={style(appConfig.theme).postContainer}>
+                  <H1
+                    text="devotionals"
+                    style={style(appConfig.theme).pageTitle}
+                    theme={appConfig.theme}
+                  />
+                  <ScrollView
+                    horizontal
+                    showsHorizontalScrollIndicator={false}
+                    style={style(appConfig.theme).container}
+                  >
+                    {postsList.map(item => (
+                      <View style={style(appConfig.theme).postItemContainer} key={Math.random()}>
+                        <ImageClickable
+                          uri={item.thumbnail}
+                          width={250}
+                          height={250}
+                          theme={appConfig.theme}
+                          styleContainer={style(appConfig.theme).postItemImageContainer}
+                          style={style(appConfig.theme).postItemImage}
+                          onPress={() => showDevotional(item)}
+                        />
+                      </View>
+                    ))}
+                  </ScrollView>
+                </View>
+              </>
             )}
           </ScrollViewRefresh>
         </>

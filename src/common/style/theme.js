@@ -6,6 +6,7 @@ const theme = {
   light: {
     backgroundPrimary: '#ffffff',
     textPrimary: '#333333',
+    textSecondary: '#777777',
     textInverse: '#777777',
     primary: '#ef6c00',
     primaryText: '#ffffff',
@@ -19,6 +20,7 @@ const theme = {
   dark: {
     backgroundPrimary: '#333333',
     textPrimary: '#ffffff',
+    textSecondary: '#dddddd',
     textInverse: '#eeeeee',
     primary: '#ef6c00',
     primaryText: '#ffffff',
