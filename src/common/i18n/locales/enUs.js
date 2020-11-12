@@ -41,4 +41,6 @@ export default {
   name: 'Name',
   hello: 'Hello',
   loadingDevotional: 'Loading devotionals...',
+  devotionals: 'Devotionals',
+  verseOfDay: 'Verse of the day',
 };
