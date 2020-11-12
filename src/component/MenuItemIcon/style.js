@@ -12,14 +12,17 @@ const style = theme => {
       paddingBottom: 20,
       flexDirection: 'row',
       justifyContent: 'space-between',
+      alignItems: 'center',
     },
     menuItemTextDefault: {
       fontSize: 17,
-      fontFamily: themeStyle.font.defaultFontFamily,
+    },
+    menuItemTextDescriptionDefault: {
+      fontSize: 12,
     },
     menuItemIconDefault: {
       color: themeStyle[theme].forth,
-      fontSize: 25,
+      fontSize: 18,
     },
   });
 };
