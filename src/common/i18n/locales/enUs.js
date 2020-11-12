@@ -38,4 +38,6 @@ export default {
   save: 'Save',
   email: 'Email',
   name: 'Name',
+  hello: 'Hello',
+  loadingDevotional: 'Loading devotionals...',
 };

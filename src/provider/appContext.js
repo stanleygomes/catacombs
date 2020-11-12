@@ -7,7 +7,13 @@ const AppContext = createContext({
     reminderActive: false,
     reminderTime: '',
     reminderNotificationId: null,
-    user: {},
+    user: {
+      name: null,
+      email: null,
+      familyName: null,
+      givenName: null,
+      photoUrl: null,
+    },
   },
   setAppConfig: () => {},
 });

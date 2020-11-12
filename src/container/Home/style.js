@@ -5,14 +5,40 @@ const style = theme => {
   return StyleSheet.create({
     container: {
       flex: 1,
-      alignItems: 'center',
-      justifyContent: 'space-around',
       backgroundColor: themeStyle[theme].backgroundPrimary,
-      flexDirection: 'column',
+    },
+    containerTop: {
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      flexDirection: 'row',
+      paddingTop: 50,
+      paddingBottom: 30,
+      paddingLeft: 20,
+      paddingRight: 20,
+      backgroundColor: themeStyle[theme].backgroundPrimary,
+    },
+    profilePic: {
+      borderRadius: 20,
     },
     title: {
-      textAlign: 'center',
-      marginTop: 15,
+      fontSize: 25,
+    },
+    subtitle: {
+      fontSize: 20,
+    },
+    postContainer: {},
+    postItemContainer: {
+      paddingTop: 20,
+      paddingBottom: 20,
+      paddingLeft: 20,
+    },
+    postItemImageContainer: {
+      elevation: 5,
+      shadowRadius: 2,
+      borderRadius: 10,
+    },
+    postItemImage: {
+      borderRadius: 10,
     },
   });
 };
