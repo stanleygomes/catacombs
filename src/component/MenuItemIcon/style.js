@@ -4,8 +4,8 @@ import themeStyle from '../../common/style/theme';
 const style = theme => {
   return StyleSheet.create({
     menuItemContainerDefault: {
-      borderTopWidth: 1,
-      borderTopColor: themeStyle[theme].fifth,
+      borderBottomWidth: 1,
+      borderBottomColor: themeStyle[theme].fifth,
     },
     menuItemDefault: {
       paddingTop: 20,

@@ -77,92 +77,104 @@ const Profile = () => {
   return (
     <AppContext.Consumer>
       {({ appConfig }) => (
-        <ScrollView style={{ ...style(appConfig.theme).containerBackground }}>
-          {appConfig.user == null && (
-            <View style={style(appConfig.theme).containerLeft}>
-              <Image source={logoSrc} width={70} height={70} style={{ borderRadius: 20 }} />
-              <H1 text="appName" style={style(appConfig.theme).titleLeft} theme={appConfig.theme} />
+        <>
+          <View style={style(appConfig.theme).containerTop}>
+            {appConfig.user == null && (
+              <Image
+                source={logoSrc}
+                width={70}
+                height={70}
+                style={style(appConfig.theme).profilePic}
+              />
+            )}
+            {appConfig.user != null && (
+              <Image
+                uri={appConfig.user.photoUrl}
+                width={70}
+                height={70}
+                style={style(appConfig.theme).profilePic}
+              />
+            )}
+            <View>
+              {appConfig.user == null && (
+                <H1 text="appName" style={style(appConfig.theme).title} theme={appConfig.theme} />
+              )}
+              {appConfig.user != null && (
+                <>
+                  <H1
+                    textPlain={appConfig.user.name}
+                    style={style(appConfig.theme).title}
+                    theme={appConfig.theme}
+                  />
+                  <Text
+                    textPlain={appConfig.user.email}
+                    style={style(appConfig.theme).subtitle}
+                    theme={appConfig.theme}
+                  />
+                </>
+              )}
             </View>
-          )}
-          {appConfig.user != null && (
-            <>
-              <View
-                style={{
-                  ...style(appConfig.theme).container,
-                  ...style(appConfig.theme).containerTop,
-                }}
-              >
-                <Image
-                  uri={appConfig.user.photoUrl}
-                  width={100}
-                  height={100}
-                  style={{ borderRadius: 20 }}
-                />
-                <H1
-                  textPlain={appConfig.user.name}
-                  style={style(appConfig.theme).title}
-                  theme={appConfig.theme}
-                />
-              </View>
-              <View
-                style={{
-                  ...style(appConfig.theme).container,
-                  ...style(appConfig.theme).containerResume,
-                }}
-              >
-                {statsList != null &&
-                  statsList.map(item => (
-                    <View key={item.value} style={style(appConfig.theme).containerResumeBox}>
-                      <Text
-                        textPlain={item.value}
-                        style={style(appConfig.theme).containerResumeBoxTitle}
-                        theme={appConfig.theme}
-                      />
-                      <Text
-                        textKey={item.title}
-                        style={style(appConfig.theme).containerResumeBoxValue}
-                        theme={appConfig.theme}
-                      />
-                    </View>
-                  ))}
-              </View>
-            </>
-          )}
-          <MenuContainer>
-            {menuItems != null &&
-              menuItems.map(item => (
-                <MenuItemIcon
-                  key={item.title}
-                  textKey={item.title}
-                  onPress={() => handleNavigate(item.to)}
-                  theme={appConfig.theme}
-                />
-              ))}
-          </MenuContainer>
-          <View style={style(appConfig.theme).logoutContainer}>
-            {loading === true && <Loading theme={appConfig.theme} />}
-            {loading === false && appConfig.user != null && (
-              <Button
-                variant="light"
-                style={style(appConfig.theme).logoutButton}
-                styleText={style(appConfig.theme).logoutButtonText}
-                onPress={signOut}
-                text="logout"
-                theme={appConfig.theme}
-              />
+            {/*
+            {appConfig.user != null && (
+              <>
+                <View style={style(appConfig.theme).containerResume}>
+                  {statsList != null &&
+                    statsList.map(item => (
+                      <View key={item.value} style={style(appConfig.theme).containerResumeBox}>
+                        <Text
+                          textPlain={item.value}
+                          style={style(appConfig.theme).containerResumeBoxTitle}
+                          theme={appConfig.theme}
+                        />
+                        <Text
+                          textKey={item.title}
+                          style={style(appConfig.theme).containerResumeBoxValue}
+                          theme={appConfig.theme}
+                        />
+                      </View>
+                    ))}
+                </View>
+              </>
             )}
-            {loading === false && appConfig.user == null && (
-              <Button
-                variant="light"
-                style={style(appConfig.theme).logoutButton}
-                styleText={style(appConfig.theme).logoutButtonText}
-                onPress={showSignIn}
-                text="signInWithGoogle"
-                theme={appConfig.theme}
-              />
-            )}
+            */}
           </View>
-        </ScrollView>
+          <ScrollView style={{ ...style(appConfig.theme).containerBackground }}>
+            <MenuContainer>
+              {menuItems != null &&
+                menuItems.map(item => (
+                  <MenuItemIcon
+                    title={item.title}
+                    description={item.description}
+                    onPress={() => handleNavigate(item.to)}
+                    theme={appConfig.theme}
+                  />
+                ))}
+            </MenuContainer>
+            <View style={style(appConfig.theme).logoutContainer}>
+              {loading === true && <Loading theme={appConfig.theme} />}
+              {loading === false && appConfig.user != null && (
+                <Button
+                  variant="light"
+                  style={style(appConfig.theme).logoutButton}
+                  styleText={style(appConfig.theme).logoutButtonText}
+                  onPress={signOut}
+                  text="logout"
+                  theme={appConfig.theme}
+                />
+              )}
+              {loading === false && appConfig.user == null && (
+                <Button
+                  variant="light"
+                  style={style(appConfig.theme).logoutButton}
+                  styleText={style(appConfig.theme).logoutButtonText}
+                  onPress={showSignIn}
+                  text="signInWithGoogle"
+                  theme={appConfig.theme}
+                />
+              )}
+            </View>
+          </ScrollView>
+        </>
       )}
     </AppContext.Consumer>
   );

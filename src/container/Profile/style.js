@@ -15,27 +15,26 @@ const style = theme => {
       backgroundColor: themeStyle[theme].backgroundPrimary,
     },
     containerTop: {
-      justifyContent: 'center',
-      paddingTop: 100,
-      paddingBottom: 20,
-    },
-    containerLeft: {
       justifyContent: 'flex-start',
+      alignItems: 'center',
       flexDirection: 'row',
-      paddingTop: 100,
-      paddingBottom: 20,
-      paddingLeft: 30,
+      paddingTop: 50,
+      paddingBottom: 30,
+      paddingLeft: 20,
+      shadowOpacity: 0.1,
+      elevation: 2,
+      backgroundColor: themeStyle[theme].backgroundPrimary,
     },
-    titleLeft: {
-      textAlign: 'center',
-      marginTop: 15,
-      fontSize: 25,
-      marginLeft: 30,
+    profilePic: {
+      borderRadius: 20,
     },
     title: {
-      textAlign: 'center',
-      marginTop: 15,
+      marginLeft: 25,
       fontSize: 25,
+    },
+    subtitle: {
+      marginLeft: 25,
+      fontSize: 12,
     },
     containerResume: {
       flexDirection: 'row',
