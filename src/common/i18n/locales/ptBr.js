@@ -36,6 +36,7 @@ export default {
     'Estou passando para te lembrar da sua leitura diária, que tal reservar uns 5 minutos para ler.',
   followUs: 'Siga-nos',
   instagram: 'Instagram',
+  checkPostInstagram: 'Veja o post no Instagram',
   shareApp: 'Compartilhar',
   shareAppMessage: 'Oi! Vamos ler a bíblia usando esse app:',
   save: 'Salvar',

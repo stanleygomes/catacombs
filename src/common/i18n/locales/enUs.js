@@ -33,6 +33,7 @@ export default {
   readingReminderNotificationBody: "It's time for your daily reading. How about take 5 minutes?",
   followUs: 'Follow',
   instagram: 'Instagram',
+  checkPostInstagram: 'Check post on Instagram',
   shareApp: 'Share',
   shareAppMessage: 'Hi! Come to read bible using this app:',
   save: 'Save',

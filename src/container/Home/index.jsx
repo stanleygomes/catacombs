@@ -3,7 +3,6 @@ import { ScrollView, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import H1 from '../../component/H1';
 import ImageClickable from '../../component/ImageClickable';
-import Loading from '../../component/Loading';
 import Text from '../../component/Text';
 import ScrollViewRefresh from '../../component/ScrollViewRefresh';
 import logoSrc from '../../asset/image/logo.png';
@@ -16,8 +15,12 @@ const Home = () => {
   const [postsList, setPostsList] = useState([]);
   const { navigate } = useNavigation();
 
-  const handleNavigate = to => {
-    navigate(to);
+  const handleNavigate = (to, params = null) => {
+    navigate(to, params);
+  };
+
+  const showDevotional = params => {
+    handleNavigate('Devotional', params);
   };
 
   const getPosts = useCallback(() => {
@@ -97,12 +100,8 @@ const Home = () => {
                         theme={appConfig.theme}
                         styleContainer={style(appConfig.theme).postItemImageContainer}
                         style={style(appConfig.theme).postItemImage}
+                        onPress={() => showDevotional(item)}
                       />
-                      {/* <H1
-                        textPlain={item.text}
-                        style={style(appConfig.theme).title}
-                        theme={appConfig.theme}
-                      /> */}
                     </View>
                   ))}
                 </ScrollView>
