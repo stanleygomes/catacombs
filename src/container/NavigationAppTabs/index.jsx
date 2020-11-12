@@ -5,7 +5,7 @@ import Text from '../../component/Text';
 import Home from '../Home';
 import Read from '../Read';
 import Quiz from '../Quiz';
-import NavigationProfile from '../NavigationProfile';
+import Profile from '../Profile';
 import AppContext from '../../provider/appContext';
 import style from './style';
 
@@ -50,8 +50,8 @@ const NavigationAppTabs = () => {
         options: renderTab('quiz', 'questioncircleo', theme),
       },
       {
-        name: 'NavigationProfile',
-        component: NavigationProfile,
+        name: 'Profile',
+        component: Profile,
         options: renderTab('profile', 'user', theme),
       },
     ];
