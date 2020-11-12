@@ -6,6 +6,7 @@ import SignIn from '../SignIn';
 import Theme from '../Theme';
 import About from '../About';
 import Privacy from '../Privacy';
+import Devotional from '../Devotional';
 import ReadingReminder from '../ReadingReminder';
 import ProfileInfo from '../ProfileInfo';
 import AppContext from '../../provider/appContext';
@@ -21,6 +22,10 @@ const NavigationApp = () => {
     {
       name: 'ProfileInfo',
       component: ProfileInfo,
+    },
+    {
+      name: 'Devotional',
+      component: Devotional,
     },
     {
       name: 'ReadingReminder',

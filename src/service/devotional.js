@@ -13,6 +13,7 @@ const getPosts = () => {
         const returnPosts = posts.map(item => {
           return {
             id: item.node.id,
+            page: item.node.shortcode,
             thumbnail: item.node.thumbnail_src,
             photo: item.node.display_url,
             text: item.node.edge_media_to_caption.edges[0].node.text,

@@ -26,15 +26,12 @@ const style = theme => {
     subtitle: {
       fontSize: 20,
     },
-    postContainer: {
-      paddingRight: 20,
-    },
-    postItemContainer: {
-      paddingTop: 20,
-      paddingBottom: 20,
-      paddingLeft: 20,
-    },
+    postContainer: {},
+    postItemContainer: {},
     postItemImageContainer: {
+      marginTop: 20,
+      marginLeft: 20,
+      marginBottom: 20,
       elevation: 5,
       shadowRadius: 2,
       borderRadius: 10,
