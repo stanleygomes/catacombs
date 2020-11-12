@@ -4,22 +4,18 @@ import { ActivityIndicator } from 'react-native';
 import customStyle from './style';
 
 const Loading = props => {
-  const { style, theme, size } = props;
+  const { theme, size } = props;
 
-  return (
-    <ActivityIndicator size={size} style={{ ...customStyle(theme).default.color, ...style }} />
-  );
+  return <ActivityIndicator size={size} color={customStyle(theme).default.color} />;
 };
 
 Loading.defaultProps = {
   size: 'large',
-  style: {},
 };
 
 Loading.propTypes = {
   size: PropTypes.string,
   theme: PropTypes.string.isRequired,
-  style: PropTypes.object,
 };
 
 export default Loading;

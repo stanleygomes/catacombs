@@ -6,7 +6,7 @@ import Text from '../Text';
 import customStyle from './style';
 
 const MenuItemIcon = props => {
-  const { style, textKey, textPlain, onPress, theme } = props;
+  const { style, title, description, onPress, theme } = props;
 
   return (
     <View style={{ ...customStyle(theme).menuItemContainerDefault, ...style }}>
@@ -14,12 +14,20 @@ const MenuItemIcon = props => {
         style={{ ...customStyle(theme).menuItemDefault, ...style }}
         onPress={onPress}
       >
-        <Text
-          textKey={textKey}
-          textPlain={textPlain}
-          style={{ ...customStyle(theme).menuItemTextDefault, ...style }}
-          theme={theme}
-        />
+        <View>
+          <Text
+            textKey={title}
+            style={{ ...customStyle(theme).menuItemTextDefault, ...style }}
+            theme={theme}
+          />
+          {description != null && (
+            <Text
+              textKey={description}
+              style={{ ...customStyle(theme).menuItemTextDescriptionDefault, ...style }}
+              theme={theme}
+            />
+          )}
+        </View>
         <Feather
           name="chevron-right"
           style={{ ...customStyle(theme).menuItemIconDefault, ...style }}
@@ -31,15 +39,15 @@ const MenuItemIcon = props => {
 
 MenuItemIcon.defaultProps = {
   style: {},
-  textKey: null,
-  textPlain: null,
+  title: null,
+  description: null,
   onPress: () => {},
 };
 
 MenuItemIcon.propTypes = {
   theme: PropTypes.string.isRequired,
-  textKey: PropTypes.string,
-  textPlain: PropTypes.string,
+  title: PropTypes.string,
+  description: PropTypes.string,
   style: PropTypes.object,
   onPress: PropTypes.func,
 };
