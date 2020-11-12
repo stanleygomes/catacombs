@@ -41,4 +41,6 @@ export default {
   save: 'Salvar',
   email: 'Email',
   name: 'Nome',
+  hello: 'Olá',
+  loadingDevotional: 'Carregando devocionais...',
 };

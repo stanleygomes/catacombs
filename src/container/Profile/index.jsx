@@ -20,7 +20,7 @@ const Profile = () => {
   const [loading, setLoading] = useState(false);
   const { setAppConfig } = useContext(AppContext);
   const { navigate } = useNavigation();
-  const statsList = profileService.getStatsList();
+  // const statsList = profileService.getStatsList();
   const menuItems = profileService.getMenuItems();
 
   const handleNavigate = to => {
@@ -144,6 +144,7 @@ const Profile = () => {
                 menuItems.map(item => (
                   <MenuItemIcon
                     title={item.title}
+                    key={Math.random()}
                     description={item.description}
                     onPress={() => handleNavigate(item.to)}
                     theme={appConfig.theme}
