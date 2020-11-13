@@ -46,16 +46,16 @@ const folderExists = folder => {
 };
 
 const copyToFilesystem = (asset, folder, file) => {
-  return new Promise((resolve, reject) => {
-    const directory = `${root}${folder}/${file}`;
-    const requirePath = require('../asset/default.png');
+  // return new Promise((resolve, reject) => {
+  //   const directory = `${root}${folder}/${file}`;
+  //   const requirePath = require('../asset/default.png');
 
-    FileSystem.downloadAsync(Expo.Asset.fromModule(require('../asset/default.png')).uri, directory)
-      .then(() => {
-        // copiar o arquivo
-      })
-      .catch(error => reject(error));
-  });
+  //   FileSystem.downloadAsync(Expo.Asset.fromModule(require('../asset/default.png')).uri, directory)
+  //     .then(() => {
+  //       // copiar o arquivo
+  //     })
+  //     .catch(error => reject(error));
+  // });
 };
 
 const copyDbToFilesystem = pathToDatabaseFile => {

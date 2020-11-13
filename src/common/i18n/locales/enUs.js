@@ -43,4 +43,6 @@ export default {
   loadingDevotional: 'Loading devotionals...',
   devotionals: 'Devotionals',
   verseOfDay: 'Verse of the day',
+  books: 'Books',
+  typeHereSearch: 'Type here to search',
 };

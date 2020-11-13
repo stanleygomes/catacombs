@@ -46,4 +46,6 @@ export default {
   loadingDevotional: 'Carregando devocionais...',
   devotionals: 'Devocionais',
   verseOfDay: 'Verso do dia',
+  books: 'Livros',
+  typeHereSearch: 'Digite aqui para pesquisar',
 };
