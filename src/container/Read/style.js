@@ -5,9 +5,9 @@ const style = theme => {
   return StyleSheet.create({
     container: {
       flex: 1,
-      alignItems: 'center',
-      justifyContent: 'space-around',
-      backgroundColor: themeStyle[theme].backgroundPrimary,
+      // alignItems: 'center',
+      // justifyContent: 'space-around',
+      backgroundColor: themeStyle[theme].primary,
       flexDirection: 'column',
     },
     title: {
