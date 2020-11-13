@@ -143,9 +143,9 @@ const Profile = () => {
               {menuItems != null &&
                 menuItems.map(item => (
                   <MenuItemIcon
-                    title={item.title}
+                    titleKey={item.title}
                     key={Math.random()}
-                    description={item.description}
+                    descriptionKey={item.description}
                     onPress={() => handleNavigate(item.to)}
                     theme={appConfig.theme}
                   />

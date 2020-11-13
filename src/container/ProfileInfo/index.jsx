@@ -78,6 +78,7 @@ const ProfileInfo = () => {
                       onChangeText={() => {}}
                       editable={false}
                       name="name"
+                      label="name"
                     />
                     <TextInput
                       theme={appConfig.theme}
@@ -86,6 +87,7 @@ const ProfileInfo = () => {
                       onChangeText={() => {}}
                       editable={false}
                       name="email"
+                      label="email"
                     />
                   </>
                 )}

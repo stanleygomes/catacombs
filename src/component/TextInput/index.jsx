@@ -7,6 +7,7 @@ import customStyle from './style';
 const TextInput = props => {
   const [isFocused, setIsFocused] = useState(false);
   const {
+    ref,
     style,
     styleContainer,
     value,
@@ -21,13 +22,15 @@ const TextInput = props => {
     onSubmitEditing,
     placeholder,
     name,
+    label,
   } = props;
   const inputFocusedStyle = isFocused === true ? customStyle(theme).focused : {};
 
   return (
     <View style={{ ...customStyle(theme).container, ...styleContainer }}>
-      <Text textKey={name} style={customStyle(theme).label} theme={theme} />
+      {label != null && <Text textKey={label} style={customStyle(theme).label} theme={theme} />}
       <TextInputRN
+        ref={ref}
         style={{ ...inputFocusedStyle, ...customStyle(theme).default, ...style }}
         onChangeText={onChangeText}
         value={value}
@@ -42,6 +45,7 @@ const TextInput = props => {
           setIsFocused(true);
           onFocus(arg);
         }}
+        name={name}
         onKeyPress={onKeyPress}
         onSubmitEditing={onSubmitEditing}
         placeholder={placeholder}
@@ -51,7 +55,9 @@ const TextInput = props => {
 };
 
 TextInput.defaultProps = {
+  ref: null,
   value: null,
+  label: null,
   style: {},
   styleContainer: {},
   onChangeText: () => {},
@@ -66,8 +72,10 @@ TextInput.defaultProps = {
 };
 
 TextInput.propTypes = {
+  ref: PropTypes.any,
   theme: PropTypes.string.isRequired,
   value: PropTypes.any,
+  label: PropTypes.string,
   style: PropTypes.object,
   styleContainer: PropTypes.object,
   onChangeText: PropTypes.func,
