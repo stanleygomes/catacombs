@@ -4,7 +4,6 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Text from '../../component/Text';
 import Home from '../Home';
 import Read from '../Read';
-import Quiz from '../Quiz';
 import Profile from '../Profile';
 import AppContext from '../../provider/appContext';
 import style from './style';
@@ -43,11 +42,6 @@ const NavigationAppTabs = () => {
         name: 'Read',
         component: Read,
         options: renderTab('read', 'book', theme),
-      },
-      {
-        name: 'Quiz',
-        component: Quiz,
-        options: renderTab('quiz', 'questioncircleo', theme),
       },
       {
         name: 'Profile',
