@@ -28,7 +28,28 @@ const getTestaments = () => {
   return ['Antigo Testamento', 'Novo testamento'];
 };
 
+const getChapters = () => {
+  return [
+    { id: 1, name: 1, nameMin: '10 versículos' },
+    { id: 1, name: 2, nameMin: '10 versículos' },
+    { id: 1, name: 3, nameMin: '10 versículos' },
+    { id: 1, name: 4, nameMin: '10 versículos' },
+    { id: 1, name: 5, nameMin: '10 versículos' },
+    { id: 1, name: 6, nameMin: '10 versículos' },
+    { id: 1, name: 7, nameMin: '10 versículos' },
+    { id: 1, name: 8, nameMin: '10 versículos' },
+    { id: 1, name: 9, nameMin: '10 versículos' },
+    { id: 1, name: 10, nameMin: '10 versículos' },
+    { id: 1, name: 11, nameMin: '10 versículos' },
+    { id: 1, name: 12, nameMin: '10 versículos' },
+    { id: 1, name: 13, nameMin: '10 versículos' },
+    { id: 1, name: 14, nameMin: '10 versículos' },
+    { id: 1, name: 15, nameMin: '10 versículos' },
+  ];
+};
+
 export default {
   getBooks,
   getTestaments,
+  getChapters,
 };

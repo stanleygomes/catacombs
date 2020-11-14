@@ -14,7 +14,10 @@ const BackButton = props => {
   };
 
   return (
-    <TouchableOpacity style={{ ...customStyle.default, ...style }} onPress={handleBackButton}>
+    <TouchableOpacity
+      style={{ ...customStyle(theme).default, ...style }}
+      onPress={handleBackButton}
+    >
       <Feather name="chevron-left" style={{ ...customStyle(theme).iconDefault, ...style }} />
     </TouchableOpacity>
   );

@@ -2,6 +2,7 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import AppTabsNavigation from '../NavigationAppTabs';
+import Book from '../Book';
 import SignIn from '../SignIn';
 import Theme from '../Theme';
 import About from '../About';
@@ -22,6 +23,10 @@ const NavigationApp = () => {
     {
       name: 'ProfileInfo',
       component: ProfileInfo,
+    },
+    {
+      name: 'Book',
+      component: Book,
     },
     {
       name: 'Devotional',
