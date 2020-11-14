@@ -9,6 +9,7 @@ import About from '../About';
 import Privacy from '../Privacy';
 import Devotional from '../Devotional';
 import ReadingReminder from '../ReadingReminder';
+import Chapter from '../Chapter';
 import ProfileInfo from '../ProfileInfo';
 import AppContext from '../../provider/appContext';
 
@@ -27,6 +28,10 @@ const NavigationApp = () => {
     {
       name: 'Book',
       component: Book,
+    },
+    {
+      name: 'Chapter',
+      component: Chapter,
     },
     {
       name: 'Devotional',

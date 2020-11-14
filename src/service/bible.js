@@ -48,8 +48,29 @@ const getChapters = () => {
   ];
 };
 
+const getVerses = () => {
+  return [
+    { id: 1, name: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magnam molestias soluta necessitatibus, tempore enim ea consequatur doloremque, nam amet aliquid fuga laudantium exercitationem assumenda. Pariatur hic blanditiis est odit dolorum!' },
+    { id: 1, name: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magnam molestias soluta necessitatibus, tempore enim ea consequatur doloremque, nam amet aliquid fuga laudantium exercitationem assumenda. Pariatur hic blanditiis est odit dolorum!' },
+    { id: 1, name: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magnam molestias soluta necessitatibus, tempore enim ea consequatur doloremque, nam amet aliquid fuga laudantium exercitationem assumenda. Pariatur hic blanditiis est odit dolorum!' },
+    { id: 1, name: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magnam molestias soluta necessitatibus, tempore enim ea consequatur doloremque, nam amet aliquid fuga laudantium exercitationem assumenda. Pariatur hic blanditiis est odit dolorum!' },
+    { id: 1, name: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magnam molestias soluta necessitatibus, tempore enim ea consequatur doloremque, nam amet aliquid fuga laudantium exercitationem assumenda. Pariatur hic blanditiis est odit dolorum!' },
+    { id: 1, name: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magnam molestias soluta necessitatibus, tempore enim ea consequatur doloremque, nam amet aliquid fuga laudantium exercitationem assumenda. Pariatur hic blanditiis est odit dolorum!' },
+    { id: 1, name: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magnam molestias soluta necessitatibus, tempore enim ea consequatur doloremque, nam amet aliquid fuga laudantium exercitationem assumenda. Pariatur hic blanditiis est odit dolorum!' },
+    { id: 1, name: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magnam molestias soluta necessitatibus, tempore enim ea consequatur doloremque, nam amet aliquid fuga laudantium exercitationem assumenda. Pariatur hic blanditiis est odit dolorum!' },
+    { id: 1, name: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magnam molestias soluta necessitatibus, tempore enim ea consequatur doloremque, nam amet aliquid fuga laudantium exercitationem assumenda. Pariatur hic blanditiis est odit dolorum!' },
+    { id: 1, name: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magnam molestias soluta necessitatibus, tempore enim ea consequatur doloremque, nam amet aliquid fuga laudantium exercitationem assumenda. Pariatur hic blanditiis est odit dolorum!' },
+    { id: 1, name: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magnam molestias soluta necessitatibus, tempore enim ea consequatur doloremque, nam amet aliquid fuga laudantium exercitationem assumenda. Pariatur hic blanditiis est odit dolorum!' },
+    { id: 1, name: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magnam molestias soluta necessitatibus, tempore enim ea consequatur doloremque, nam amet aliquid fuga laudantium exercitationem assumenda. Pariatur hic blanditiis est odit dolorum!' },
+    { id: 1, name: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magnam molestias soluta necessitatibus, tempore enim ea consequatur doloremque, nam amet aliquid fuga laudantium exercitationem assumenda. Pariatur hic blanditiis est odit dolorum!' },
+    { id: 1, name: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magnam molestias soluta necessitatibus, tempore enim ea consequatur doloremque, nam amet aliquid fuga laudantium exercitationem assumenda. Pariatur hic blanditiis est odit dolorum!' },
+    { id: 1, name: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magnam molestias soluta necessitatibus, tempore enim ea consequatur doloremque, nam amet aliquid fuga laudantium exercitationem assumenda. Pariatur hic blanditiis est odit dolorum!' },
+  ];
+};
+
 export default {
   getBooks,
   getTestaments,
   getChapters,
+  getVerses,
 };
