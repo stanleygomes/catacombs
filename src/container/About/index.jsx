@@ -13,7 +13,7 @@ import style from './style';
 import translateService from '../../service/translate';
 
 const About = () => {
-  const thiagoBodrukUrl = 'https://github.com/thiagobodruk/biblia';
+  const creditUrl = 'http://www.sydney.eti.br/a-biblia-em-sql-mysql-em-13-versoes';
   const instagramUrl = 'https://instagram.com/bibliasagrada.app.br';
   const shareUrl = `${translateService.translate('shareAppMessage')}
 
@@ -70,7 +70,7 @@ https://play.google.com/store/apps/details?id=com.stanley.theholybible
               style={style(appConfig.theme).credit}
               theme={appConfig.theme}
             />
-            <ExternalLink style={style(appConfig.theme).creditButton} link={thiagoBodrukUrl}>
+            <ExternalLink style={style(appConfig.theme).creditButton} link={creditUrl}>
               <Text
                 textKey="bibleCreditButton"
                 style={style(appConfig.theme).creditButtonText}

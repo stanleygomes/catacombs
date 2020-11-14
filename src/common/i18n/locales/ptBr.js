@@ -2,7 +2,7 @@ export default {
   appName: 'A Bíblia Sagrada',
   appDescription: 'Nosso objetivo é espalhar a palavra de Deus',
   bibleCredit:
-    'Um agradecimento especial ao Thiago Bodruk, por disponibilizar a transcrição da bíblia',
+    'Um agradecimento especial ao Sydney Machado, por disponibilizar a transcrição da bíblia',
   bibleCreditButton: 'Conheça',
   appIntroDescription: 'Olá! Você pode fazer o login para ter acesso a diversos recursos',
   signInWithGoogle: 'Entrar com Google',
@@ -48,4 +48,6 @@ export default {
   verseOfDay: 'Verso do dia',
   books: 'Livros',
   typeHereSearch: 'Digite aqui para pesquisar',
+  bibleVersion: 'Versão da bíblia',
+  bibleVersionDescription: 'Aqui você pode escolher uma versão específica da Bíblia.',
 };

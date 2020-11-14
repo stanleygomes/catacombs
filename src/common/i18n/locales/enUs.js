@@ -1,7 +1,7 @@
 export default {
   appName: 'The Holy Bible',
   appDescription: "Our goal is to spread God's word",
-  bibleCredit: 'Special thanks to Thiago Bodruk, for making the Bible transcript available',
+  bibleCredit: 'Special thanks to Sydney Machado, for making the Bible transcript available',
   bibleCreditButton: 'Check it out',
   appIntroDescription: 'Hello! Sign in to have access to a lot of features',
   signInWithGoogle: 'Sign In with Google',
@@ -45,4 +45,6 @@ export default {
   verseOfDay: 'Verse of the day',
   books: 'Books',
   typeHereSearch: 'Type here to search',
+  bibleVersion: 'Bible version',
+  bibleVersionDescription: 'Here you can choose a specific version of Bible.',
 };
