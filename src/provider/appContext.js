@@ -7,6 +7,8 @@ const AppContext = createContext({
     reminderActive: false,
     reminderTime: '',
     reminderNotificationId: null,
+    bibleVersionsIdsAvailable: [],
+    bibleVersionIdActive: null,
     user: {
       name: null,
       email: null,

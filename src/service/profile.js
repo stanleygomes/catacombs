@@ -26,6 +26,10 @@ const getMenuItems = () => {
       to: 'ReadingReminder',
     },
     {
+      title: 'bibleVersion',
+      to: 'BibleVersion',
+    },
+    {
       title: 'theme',
       to: 'Theme',
     },

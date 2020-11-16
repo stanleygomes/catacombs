@@ -15,6 +15,18 @@ const readFolder = folder => {
   });
 };
 
+const deleteFile = (folder, filename, options) => {
+  return new Promise((resolve, reject) => {
+    const file = `${root}${folder}/${filename}}`;
+
+    FileSystem.deleteAsync(file, options)
+      .then(d => {
+        resolve(d);
+      })
+      .catch(error => reject(error));
+  });
+};
+
 const createFolder = folder => {
   return new Promise((resolve, reject) => {
     const directory = `${root}${folder}`;
@@ -41,6 +53,19 @@ const folderExists = folder => {
 
     FileSystem.getInfoAsync(directory)
       .then(r => resolve(r.exists))
+      .catch(error => reject(error));
+  });
+};
+
+const downloadRemoteFile = (remoteUrl, outputFolder, outputFile, callback) => {
+  return new Promise((resolve, reject) => {
+    const output = `${root}${outputFolder}/${outputFile}`;
+
+    const downloadResumable = FileSystem.createDownloadResumable(remoteUrl, output, {}, callback);
+
+    downloadResumable
+      .downloadAsync()
+      .then(file => resolve(file))
       .catch(error => reject(error));
   });
 };
@@ -103,4 +128,6 @@ export default {
   folderExists,
   copyDbToFilesystem,
   copyToFilesystem,
+  downloadRemoteFile,
+  deleteFile,
 };

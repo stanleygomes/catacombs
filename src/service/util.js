@@ -16,9 +16,25 @@ const getSplitTime = (time, type) => {
   if (type === 'minute') {
     return splitTime[1];
   }
+
+  return null;
+};
+
+const isInArray = (item, array) => {
+  if (Array.isArray(array) === false) {
+    return false;
+  }
+
+  return array.includes(item);
+};
+
+const removeItemFromArray = (item, array) => {
+  return array.filter(value => value !== item);
 };
 
 export default {
   strPadLeft,
   getSplitTime,
+  isInArray,
+  removeItemFromArray,
 };
