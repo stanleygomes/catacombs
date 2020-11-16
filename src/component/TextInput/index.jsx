@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { TextInput as TextInputRN, View } from 'react-native';
 import PropTypes from 'prop-types';
+import { AntDesign } from '@expo/vector-icons';
 import Text from '../Text';
 import customStyle from './style';
 
@@ -23,11 +24,21 @@ const TextInput = props => {
     placeholder,
     name,
     label,
+    iconName,
+    iconSize,
+    iconStyle,
   } = props;
   const inputFocusedStyle = isFocused === true ? customStyle(theme).focused : {};
 
   return (
     <View style={{ ...customStyle(theme).container, ...styleContainer }}>
+      {iconName != null && (
+        <AntDesign
+          name={iconName}
+          size={iconSize}
+          style={{ ...customStyle(theme).icon, ...iconStyle }}
+        />
+      )}
       {label != null && <Text textKey={label} style={customStyle(theme).label} theme={theme} />}
       <TextInputRN
         ref={ref}
@@ -69,6 +80,9 @@ TextInput.defaultProps = {
   onKeyPress: () => {},
   onSubmitEditing: () => {},
   placeholder: null,
+  iconName: null,
+  iconSize: null,
+  iconStyle: null,
 };
 
 TextInput.propTypes = {
@@ -88,6 +102,9 @@ TextInput.propTypes = {
   onSubmitEditing: PropTypes.func,
   placeholder: PropTypes.string,
   name: PropTypes.string.isRequired,
+  iconName: PropTypes.string,
+  iconSize: PropTypes.number,
+  iconStyle: PropTypes.object,
 };
 
 export default TextInput;

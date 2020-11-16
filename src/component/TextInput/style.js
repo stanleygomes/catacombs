@@ -3,20 +3,26 @@ import themeStyle from '../../common/style/theme';
 
 const style = theme => {
   return StyleSheet.create({
-    default: {
-      color: themeStyle[theme].sixth,
+    container: {
+      flexDirection: 'row',
+      alignItems: 'center',
       padding: 15,
       borderColor: themeStyle[theme].fifth,
-      borderWidth: 2,
+      borderWidth: 1,
       borderRadius: 5,
     },
-    focused: {
-      backgroundColor: themeStyle[theme].fifth,
-      borderColor: themeStyle[theme].fifth,
+    icon: {
+      marginRight: 10,
     },
+    default: {
+      color: themeStyle[theme].sixth,
+      flexGrow: 1,
+    },
+    focused: {},
     label: {
       fontSize: 14,
       fontFamily: themeStyle.font.defaultFontFamilyBold,
+      marginRight: 10,
     },
   });
 };

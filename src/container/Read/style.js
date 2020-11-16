@@ -12,11 +12,10 @@ const style = theme => {
       paddingTop: 50,
       paddingLeft: 20,
       paddingRight: 20,
-      paddingBottom: 10,
       flexDirection: 'row',
       justifyContent: 'space-between',
       alignItems: 'center',
-      backgroundColor: themeStyle[theme].backgroundSecondary,
+      backgroundColor: themeStyle[theme].backgroundPrimary,
     },
     headerSearchTitle: {
       marginTop: 10,
@@ -25,7 +24,10 @@ const style = theme => {
       backgroundColor: themeStyle[theme].color,
     },
     searchInputContainer: {
-      padding: 20,
+      paddingTop: 10,
+      paddingLeft: 20,
+      paddingRight: 20,
+      paddingBottom: 20,
       backgroundColor: themeStyle[theme].backgroundPrimary,
       borderBottomWidth: 1,
       borderBottomColor: themeStyle[theme].fifth,
@@ -34,6 +36,9 @@ const style = theme => {
       borderWidth: 0,
       padding: 10,
       backgroundColor: themeStyle[theme].backgroundSecondary,
+    },
+    searchInputIcon: {
+      color: themeStyle[theme].forth,
     },
     segmentContainer: {
       marginTop: 20,

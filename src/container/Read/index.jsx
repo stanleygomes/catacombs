@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { ScrollView, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { AntDesign } from '@expo/vector-icons';
 import H1 from '../../component/H1';
 import AppContext from '../../provider/appContext';
 import MenuContainer from '../../component/MenuContainer';
@@ -84,22 +83,20 @@ const Read = () => {
               style={style(appConfig.theme).headerSearchTitle}
               theme={appConfig.theme}
             />
-            <Clickable theme={appConfig.theme} onPress={showHideSearchBar}>
-              <AntDesign name="search1" size={30} style={style(appConfig.theme).headerSearchIcon} />
-            </Clickable>
           </View>
-          {isVisibleSearchBar === true && (
-            <View style={{ ...style(appConfig.theme).searchInputContainer }}>
-              <TextInput
-                theme={appConfig.theme}
-                style={style(appConfig.theme).searchInputText}
-                value={searchBarInputValue}
-                placeholder={inputPlaceholder}
-                onChangeText={handleSearchBarInput}
-                name="search"
-              />
-            </View>
-          )}
+          <View style={{ ...style(appConfig.theme).searchInputContainer }}>
+            <TextInput
+              theme={appConfig.theme}
+              styleContainer={style(appConfig.theme).searchInputText}
+              value={searchBarInputValue}
+              placeholder={inputPlaceholder}
+              onChangeText={handleSearchBarInput}
+              iconName="search1"
+              iconSize={20}
+              iconStyle={style(appConfig.theme).searchInputIcon}
+              name="search"
+            />
+          </View>
           <ScrollView style={{ ...style(appConfig.theme).container }}>
             <MenuContainer>
               {books != null &&
