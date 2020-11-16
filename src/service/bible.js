@@ -68,9 +68,82 @@ const getVerses = () => {
   ];
 };
 
+const getVersions = () => {
+  const versions = [
+    {
+      id: 1,
+      title: '2017 – Nova Almeida Atualizada',
+      size: '4.7Mb',
+    },
+    {
+      id: 2,
+      title: '2000 – Nova Tradução na Linguagem de Hoje',
+      size: '4.7Mb',
+    },
+    {
+      id: 3,
+      title: 'Nova Versão Internacional',
+      size: '4.7Mb',
+    },
+    {
+      id: 4,
+      title: 'Nova Versão Transformadora',
+      size: '4.7Mb',
+    },
+    {
+      id: 5,
+      title: '1848 – Almeida Antiga',
+      size: '4.7Mb',
+    },
+    {
+      id: 6,
+      title: 'Almeida Recebida',
+      size: '4.7Mb',
+    },
+    {
+      id: 7,
+      title: '1993 – Almeida Revisada e Atualizada',
+      size: '4.7Mb',
+    },
+    {
+      id: 8,
+      title: '1969 – Almeida Revisada e Corrigida',
+      size: '4.7Mb',
+    },
+    {
+      id: 9,
+      title: '2009 – Almeida Revisada e Corrigida',
+      size: '4.7Mb',
+    },
+    {
+      id: 10,
+      title: 'King James Atualizada',
+      size: '4.7Mb',
+    },
+    {
+      id: 11,
+      title: 'Basic English Bible',
+      size: '4.7Mb',
+    },
+    {
+      id: 12,
+      title: 'New International Version',
+      size: '4.7Mb',
+    },
+    {
+      id: 13,
+      title: 'American Standard Version',
+      size: '4.7Mb',
+    },
+  ];
+
+  return versions;
+};
+
 export default {
   getBooks,
   getTestaments,
   getChapters,
   getVerses,
+  getVersions,
 };

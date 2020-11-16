@@ -10,6 +10,8 @@ import Clickable from '../../component/Clickable';
 import TextInput from '../../component/TextInput';
 import bibleService from '../../service/bible';
 import translateService from '../../service/translate';
+import databaseService from '../../service/database';
+import filesystemService from '../../service/filesystem';
 import style from './style';
 
 const Read = () => {
@@ -44,8 +46,6 @@ const Read = () => {
 
 
   const connect = () => {
-// import databaseService from '../../service/database';
-// import filesystemService from '../../service/filesystem';
     // const db = databaseService.open('name2.db');
     // console.warn(db);
 
@@ -64,9 +64,9 @@ const Read = () => {
     // opcao para remover
 
     // filesystemService.createFolder('SQLite').then(a => {
-      // filesystemService.readFolder('SQLite').then(r => {
-      //   console.warn(r);
-      // }).catch(error => {console.warn(error)});
+      filesystemService.readFolder('SQLite').then(r => {
+        console.warn(r);
+      }).catch(error => {console.warn(error)});
     // }).catch(b => {console.warn(b)})
   };
 

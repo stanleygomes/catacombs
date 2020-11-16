@@ -11,6 +11,7 @@ import Devotional from '../Devotional';
 import ReadingReminder from '../ReadingReminder';
 import Chapter from '../Chapter';
 import ProfileInfo from '../ProfileInfo';
+import BibleVersion from '../BibleVersion';
 import AppContext from '../../provider/appContext';
 
 const { Navigator, Screen } = createStackNavigator();
@@ -44,6 +45,10 @@ const NavigationApp = () => {
     {
       name: 'Theme',
       component: Theme,
+    },
+    {
+      name: 'BibleVersion',
+      component: BibleVersion,
     },
     {
       name: 'Privacy',

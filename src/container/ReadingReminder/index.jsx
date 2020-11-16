@@ -8,7 +8,7 @@ import Button from '../../component/Button';
 import TimePicker from '../../component/TimePicker';
 import configService from '../../service/config';
 import AppContext from '../../provider/appContext';
-import stringService from '../../service/string';
+import utilService from '../../service/util';
 import notificationService from '../../service/notification';
 import translateService from '../../service/translate';
 import style from './style';
@@ -72,8 +72,8 @@ const ReadingReminder = () => {
       }
 
       const time = {
-        hour: stringService.getSplitTime(reminderTime, 'hour'),
-        minute: stringService.getSplitTime(reminderTime, 'minute'),
+        hour: utilService.getSplitTime(reminderTime, 'hour'),
+        minute: utilService.getSplitTime(reminderTime, 'minute'),
       };
 
       scheduleNotification(appConfig.reminderNotificationId, time, newConfig, 'enable').then(
@@ -108,8 +108,8 @@ const ReadingReminder = () => {
 
   const handleConfirmTime = (date, appConfig) => {
     const newDate = new Date(date);
-    const hour = stringService.strPadLeft(newDate.getHours());
-    const minute = stringService.strPadLeft(newDate.getMinutes());
+    const hour = utilService.strPadLeft(newDate.getHours());
+    const minute = utilService.strPadLeft(newDate.getMinutes());
 
     const newConfig = {
       reminderTime: `${hour}:${minute}`,
