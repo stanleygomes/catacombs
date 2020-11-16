@@ -11,6 +11,7 @@ import Loading from '../../component/Loading';
 import AppContext from '../../provider/appContext';
 import utilService from '../../service/util';
 import filesystemService from '../../service/filesystem';
+import config from '../../common/config';
 import style from './style';
 
 const BibleVersion = () => {
@@ -52,8 +53,8 @@ const BibleVersion = () => {
     setVersionDownloading(version.id);
     setDownloadProgress(0);
 
-    const remoteUrl = 'http://techslides.com/demos/sample-videos/small.mp4';
-    const filename = `bible-version-${version.id}.db`;
+    const filename = `thebibleversion-${version.id}.db`;
+    const remoteUrl = `${config.app.bible.urlRemoteSource}${filename}?alt=media&token=${config.app.bible.downloadToken}`;
     const ids = Array.isArray(availableVersionIds) === true ? availableVersionIds : [];
 
     const newConfig = {
@@ -83,9 +84,9 @@ const BibleVersion = () => {
   const removeVersion = (version, appConfig) => {
     setErrorMessage(null);
 
-    const filename = `bible-version-${version.id}.db`;
+    const filename = `bibleversion-${version.id}.db`;
     const options = {
-      idempotent: true,
+      idempotent: false,
     };
     const idsAvailable = appConfig.bibleVersionsIdsAvailable;
     const ids = Array.isArray(idsAvailable) === true ? idsAvailable : [];

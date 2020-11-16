@@ -2,6 +2,10 @@ const app = {
   api: {
     baseUrl: 'https://www.instagram.com',
   },
+  bible: {
+    urlRemoteSource: 'https://firebasestorage.googleapis.com/v0/b/bible-30469.appspot.com/o/',
+    downloadToken: '67baf761-e532-486a-aff7-962a6fa6e6ae',
+  },
 };
 
 const sentry = {

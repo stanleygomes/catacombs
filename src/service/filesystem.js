@@ -19,6 +19,8 @@ const deleteFile = (folder, filename, options) => {
   return new Promise((resolve, reject) => {
     const file = `${root}${folder}/${filename}}`;
 
+    console.warn(file);
+
     FileSystem.deleteAsync(file, options)
       .then(d => {
         resolve(d);
