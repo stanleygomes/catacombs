@@ -5,7 +5,9 @@ const theme = {
   },
   light: {
     backgroundPrimary: '#ffffff',
+    backgroundInverse: '#333333',
     backgroundSecondary: '#eeeeee',
+    backgroundTerciary: '#777777',
     textPrimary: '#333333',
     textSecondary: '#777777',
     textInverse: '#777777',
@@ -20,7 +22,9 @@ const theme = {
   },
   dark: {
     backgroundPrimary: '#333333',
+    backgroundInverse: '#ffffff',
     backgroundSecondary: '#555555',
+    backgroundTerciary: '#eeeeee',
     textPrimary: '#ffffff',
     textSecondary: '#dddddd',
     textInverse: '#eeeeee',
