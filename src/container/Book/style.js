@@ -17,6 +17,9 @@ const style = theme => {
       alignItems: 'center',
       backgroundColor: themeStyle[theme].backgroundPrimary,
     },
+    loadingContainer: {
+      padding: 20,
+    },
     headerSearchTitle: {
       marginTop: 10,
     },

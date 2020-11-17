@@ -45,6 +45,8 @@ export default {
   verseOfDay: 'Verse of the day',
   books: 'Books',
   chapters: 'Chapters',
+  chapter: 'Chapter',
+  verses: 'Verses',
   typeHereSearch: 'Type here to search',
   bibleVersion: 'Bible version',
   bibleVersionDescription: 'Here you can choose a specific version of Bible.',

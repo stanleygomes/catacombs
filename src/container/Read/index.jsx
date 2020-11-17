@@ -6,12 +6,14 @@ import AppContext from '../../provider/appContext';
 import MenuContainer from '../../component/MenuContainer';
 import MenuItemIcon from '../../component/MenuItemIcon';
 import TextInput from '../../component/TextInput';
+import Loading from '../../component/Loading';
 import bibleService from '../../service/bible';
 import translateService from '../../service/translate';
 import style from './style';
 
 const Read = () => {
   const [bookList, setBookList] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [searchBarInputValue, setSearchBarInputValue] = useState(null);
   const { navigate } = useNavigation();
   const inputPlaceholder = translateService.translate('typeHereSearch');
@@ -22,19 +24,22 @@ const Read = () => {
     navigate(to, params);
   };
 
-  const handleNavigateBook = book => {
+  const handleNavigateBook = bookId => {
     handleNavigate('Book', {
-      book,
+      bookId,
     });
   };
 
   const getBooks = (bibleVersionId, params) => {
+    setLoading(true);
     bibleService
       .getBooks(bibleVersionId, params)
       .then(response => {
         setBookList(response);
+        setLoading(false);
       })
       .catch(error => {
+        setLoading(false);
         throw new Error(error);
       });
   };
@@ -84,6 +89,11 @@ const Read = () => {
             />
           </View>
           <ScrollView style={{ ...style(appConfig.theme).container }}>
+            {loading === true && (
+              <View style={style(appConfig.theme).loadingContainer}>
+                <Loading theme={appConfig.theme} />
+              </View>
+            )}
             <MenuContainer>
               {bookList != null &&
                 bookList.map(item => (

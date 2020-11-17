@@ -48,6 +48,8 @@ export default {
   verseOfDay: 'Verso do dia',
   books: 'Livros',
   chapters: 'Capítulos',
+  chapter: 'Capítulo',
+  verses: 'Versículos',
   typeHereSearch: 'Digite aqui para pesquisar',
   bibleVersion: 'Versão da bíblia',
   bibleVersionDescription: 'Aqui você pode escolher uma versão específica da Bíblia.',
