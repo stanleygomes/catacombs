@@ -10,27 +10,52 @@ import SwipeablePanel from '../../component/SwipeablePanel';
 import MenuContainer from '../../component/MenuContainer';
 import MenuItemIcon from '../../component/MenuItemIcon';
 import ClickShare from '../../component/ClickShare';
+import Text from '../../component/Text';
 import Button from '../../component/Button';
+import ColorSelector from '../../component/ColorSelector';
 import bibleService from '../../service/bible';
+import firebaseService from '../../service/firebase';
 import translateService from '../../service/translate';
 import style from './style';
-import Text from '../../component/Text';
 
 const Chapter = ({ route }) => {
   const [loading, setLoading] = useState(false);
   const [verseList, setVerseList] = useState([]);
+  const [selectedColor, setSelectedColor] = useState(null);
   const [chapterSelected, setChapterSelected] = useState(null);
   const [isPanelActive, setIsPanelActive] = useState(false);
   const [selectedVerse, setSelectedVerse] = useState(null);
   const [searchBarInputValue, setSearchBarInputValue] = useState(null);
+  const [saveInputValue, setSaveInputValue] = useState(null);
   const inputPlaceholder = translateService.translate('typeHereSearch');
+  const inputSavePlaceholder = translateService.translate('observation');
   const appContext = useContext(AppContext);
   const chapterText = translateService.translate('chapter');
   const { params } = route;
 
   const openPanel = data => {
     setSelectedVerse(data);
+
+    const collection = appContext.appConfig.user.id;
+    const document = `${data.book_name}-${data.chapter}-${data.verse}`;
+
+    console.warn(document);
+
+    setSelectedColor(null);
+    setSaveInputValue(null);
     setIsPanelActive(true);
+
+    firebaseService
+      .getFirestoreDocument(collection, document)
+      .then(response => {
+        if (response != null) {
+          setSelectedColor(response.color);
+          setSaveInputValue(response.obs);
+        }
+      })
+      .catch(error => {
+        throw new Error(error);
+      });
   };
 
   const closePanel = () => {
@@ -72,6 +97,29 @@ const Chapter = ({ route }) => {
     };
 
     getVerses(bibleVersionId, bookId, chapter, extra);
+  };
+
+  const handleSaveVerse = () => {
+    setLoading(true);
+    const data = {
+      text: selectedVerse.text,
+      bookName: selectedVerse.book_name,
+      chapter: selectedVerse.chapter,
+      verse: selectedVerse.verse,
+      color: selectedColor,
+      obs: saveInputValue,
+    };
+
+    const collection = appContext.appConfig.user.id;
+    const document = `${data.book_name}-${data.chapter}-${data.verse}`;
+
+    firebaseService
+      .saveFirestore(collection, document, data)
+      .then(() => setLoading(false))
+      .catch(error => {
+        setLoading(false);
+        throw new Error(error);
+      });
   };
 
   useEffect(() => {
@@ -139,7 +187,36 @@ const Chapter = ({ route }) => {
             theme={appConfig.theme}
           >
             <View style={style(appConfig.theme).panelContainer}>
-              <H1 text="save" style={style(appConfig.theme).title} theme={appConfig.theme} />
+              <View style={style(appConfig.theme).panelContainerForm}>
+                <H1 text="save" style={style(appConfig.theme).title} theme={appConfig.theme} />
+                <Text
+                  textKey="saveToFavorites"
+                  style={style(appConfig.theme).panelContainerText}
+                  theme={appConfig.theme}
+                />
+                <ColorSelector
+                  theme={appConfig.theme}
+                  colorSelected={selectedColor}
+                  onPress={setSelectedColor}
+                />
+                <TextInput
+                  theme={appConfig.theme}
+                  styleContainer={style(appConfig.theme).panelContainerInput}
+                  value={saveInputValue}
+                  placeholder={inputSavePlaceholder}
+                  onChangeText={setSaveInputValue}
+                  multiline
+                  name="search"
+                />
+                <Button
+                  variant="primary"
+                  text={loading === true ? 'saving' : 'save'}
+                  theme={appConfig.theme}
+                  style={style(appConfig.theme).panelContainerSaveButton}
+                  styleText={style(appConfig.theme).panelContainerSaveButtonText}
+                  onPress={handleSaveVerse}
+                />
+              </View>
               <H1 text="share" style={style(appConfig.theme).title} theme={appConfig.theme} />
               {selectedVerse != null && (
                 <>

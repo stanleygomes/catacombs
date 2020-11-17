@@ -1,4 +1,18 @@
-import firebase from 'firebase';
+import * as Firebase from 'firebase';
+import 'firebase/firestore';
+import { firebase } from '../common/config';
+
+const { credentials } = firebase;
+
+if (Firebase.apps.length === 0) {
+  Firebase.initializeApp(credentials);
+}
+
+const firestore = Firebase.firestore();
+
+Firebase.firestore().settings({
+  cacheSizeBytes: Firebase.firestore.CACHE_SIZE_UNLIMITED,
+});
 
 const isUserEqual = (googleUser, firebaseUser) => {
   if (firebaseUser != null) {
@@ -60,7 +74,55 @@ const onSignOut = () => {
   });
 };
 
+const saveFirestore = (collection, document, data) => {
+  return new Promise((resolve, reject) => {
+    firestore
+      .collection(collection)
+      .doc(document)
+      .set(data)
+      .then(() => resolve(true))
+      .catch(error => reject(error));
+  });
+};
+
+const getFirestoreCollection = collection => {
+  return new Promise((resolve, reject) => {
+    firestore
+      .collection(collection)
+      .get()
+      .then(response => {
+        const responseData = [];
+
+        response.forEach(doc => {
+          responseData.push([
+            {
+              document: doc.id,
+              data: doc.data(),
+            },
+          ]);
+        });
+
+        resolve(responseData);
+      })
+      .catch(error => reject(error));
+  });
+};
+
+const getFirestoreDocument = (collection, document) => {
+  return new Promise((resolve, reject) => {
+    firestore
+      .collection(collection)
+      .doc(document)
+      .get()
+      .then(response => resolve(response.data()))
+      .catch(error => reject(error));
+  });
+};
+
 export default {
   onSignIn,
   onSignOut,
+  saveFirestore,
+  getFirestoreCollection,
+  getFirestoreDocument,
 };

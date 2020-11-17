@@ -47,6 +47,24 @@ const style = theme => {
     panelContainerTitle: {
       marginTop: 15,
     },
+    panelContainerForm: {
+      paddingBottom: 30,
+    },
+    panelContainerSaveButton: {
+      marginTop: 15,
+      backgroundColor: themeStyle[theme].primaryLight,
+    },
+    panelContainerSaveButtonText: {
+      color: themeStyle[theme].terciary,
+      fontFamily: themeStyle.font.defaultFontFamilyBold,
+    },
+    panelContainerInput: {
+      borderWidth: 0,
+      backgroundColor: themeStyle[theme].backgroundSecondary,
+    },
+    panelContainerText: {
+      fontSize: 16,
+    },
     panelContainerShareText: {
       marginTop: 10,
       fontSize: 16,

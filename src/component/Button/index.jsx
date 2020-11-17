@@ -1,7 +1,6 @@
 import React from 'react';
-import { Text as RNText } from 'react-native';
+import { TouchableOpacity, Text as RNText } from 'react-native';
 import PropTypes from 'prop-types';
-import { RectButton } from 'react-native-gesture-handler';
 import customStyle from './style';
 import Translate from '../Translate';
 
@@ -9,7 +8,7 @@ const Button = props => {
   const { textPlain, text, style, styleText, variant, onPress, theme } = props;
 
   return (
-    <RectButton
+    <TouchableOpacity
       style={{ ...customStyle(theme).default, ...customStyle(theme)[variant], ...style }}
       onPress={onPress}
     >
@@ -33,7 +32,7 @@ const Button = props => {
           {textPlain}
         </RNText>
       )}
-    </RectButton>
+    </TouchableOpacity>
   );
 };
 
