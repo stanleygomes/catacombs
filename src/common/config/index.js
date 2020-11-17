@@ -1,3 +1,5 @@
+const enabledDebugging = true;
+
 const app = {
   api: {
     baseUrl: 'https://www.instagram.com',
@@ -7,15 +9,15 @@ const app = {
     downloadToken: '67baf761-e532-486a-aff7-962a6fa6e6ae',
   },
   sqlite: {
-    showCompiled: true,
+    showCompiled: enabledDebugging,
   },
 };
 
 const sentry = {
   authToken: '5758d0693b90459fa5b84372ff05b2d2a6449ded4c274553b5cdae36ae6a6051',
   dsn: 'https://bf77795b85964fada75042a90cdf3405@o473223.ingest.sentry.io/5507971',
-  enableInExpoDevelopment: false,
-  debug: true,
+  enableInExpoDevelopment: !enabledDebugging,
+  debug: enabledDebugging,
   project: 'biblia-sagrada',
   organization: 'stanley-gomes',
 };
@@ -41,7 +43,7 @@ const firebase = {
     measurementId: 'G-HWMZRNPPVY',
   },
   analytics: {
-    debug: false,
+    debug: enabledDebugging,
   },
 };
 
