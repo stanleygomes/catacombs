@@ -1,4 +1,5 @@
 import * as SQLite from 'expo-sqlite';
+import mustacheService from './mustache';
 
 const webSqlVersion = '1.0';
 
@@ -22,7 +23,29 @@ const execute = (dbInstance, query) => {
   });
 };
 
+const select = (db, query, params) => {
+  return new Promise((resolve, reject) => {
+    mustacheService
+      .getQuery(query, params)
+      .then(queryCompiled => {
+        db.transaction(tx => {
+          tx.executeSql(
+            queryCompiled,
+            params,
+            (_, { rows: { _array } }) => {
+              const response = _array;
+              resolve(response);
+            },
+            error => reject(error),
+          );
+        });
+      })
+      .catch(error => reject(error));
+  });
+};
+
 export default {
   open,
   execute,
+  select,
 };

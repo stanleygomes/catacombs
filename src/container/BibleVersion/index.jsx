@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { ScrollView, View } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import Header from '../../component/Header';
@@ -53,8 +53,8 @@ const BibleVersion = () => {
     setVersionDownloading(version.id);
     setDownloadProgress(0);
 
-    const filename = `thebibleversion-${version.id}.db`;
-    const remoteUrl = `${config.app.bible.urlRemoteSource}${filename}?alt=media&token=${config.app.bible.downloadToken}`;
+    const filename = `bibleversion-${version.id}.db`;
+    const remoteUrl = `${config.app.bible.urlRemoteSource}${filename}?alt=media&token=${version.downloadToken}`;
     const ids = Array.isArray(availableVersionIds) === true ? availableVersionIds : [];
 
     const newConfig = {
@@ -86,7 +86,7 @@ const BibleVersion = () => {
 
     const filename = `bibleversion-${version.id}.db`;
     const options = {
-      idempotent: false,
+      idempotent: true,
     };
     const idsAvailable = appConfig.bibleVersionsIdsAvailable;
     const ids = Array.isArray(idsAvailable) === true ? idsAvailable : [];
@@ -225,7 +225,7 @@ const BibleVersion = () => {
                               <AntDesign
                                 name="clouddownload"
                                 size={30}
-                                style={style(appConfig.theme).listIcon}
+                                style={style(appConfig.theme).listIconChecked}
                               />
                             </Clickable>
                           )}
