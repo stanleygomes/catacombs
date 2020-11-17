@@ -35,6 +35,8 @@ export default {
   instagram: 'Instagram',
   checkPostInstagram: 'Check post on Instagram',
   shareApp: 'Share',
+  share: 'Share',
+  shareThisVerse: 'Share this verse',
   shareAppMessage: 'Hi! Come to read bible using this app:',
   save: 'Save',
   email: 'Email',

@@ -1,10 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { SwipeablePanel } from 'rn-swipeable-panel';
 import customStyle from './style';
+import { ScrollView } from 'react-native-gesture-handler';
 
 const Loading = props => {
-  const { theme, openLarge, showCloseButton, onClose, isActive } = props;
+  const {
+    theme,
+    openLarge,
+    showCloseButton,
+    onClose,
+    isActive,
+    children,
+    closeOnTouchOutside,
+  } = props;
 
   return (
     <SwipeablePanel
@@ -13,13 +22,21 @@ const Loading = props => {
       showCloseButton={showCloseButton}
       onClose={onClose}
       isActive={isActive}
-    />
+      closeOnTouchOutside={closeOnTouchOutside}
+      style={customStyle(theme).style}
+      barStyle={customStyle(theme).barStyle}
+      closeRootStyle={customStyle(theme).closeRootStyle}
+    >
+      <ScrollView>{children}</ScrollView>
+    </SwipeablePanel>
   );
 };
 
 Loading.defaultProps = {
   showCloseButton: false,
   openLarge: false,
+  children: null,
+  closeOnTouchOutside: true,
 };
 
 Loading.propTypes = {
@@ -28,6 +45,8 @@ Loading.propTypes = {
   theme: PropTypes.string.isRequired,
   onClose: PropTypes.func.isRequired,
   isActive: PropTypes.bool.isRequired,
+  children: PropTypes.any,
+  closeOnTouchOutside: PropTypes.bool,
 };
 
 export default Loading;

@@ -1,50 +1,35 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { ScrollView, View } from 'react-native';
-import { AntDesign } from '@expo/vector-icons';
 import PropTypes from 'prop-types';
 import H1 from '../../component/H1';
 import AppContext from '../../provider/appContext';
-import Clickable from '../../component/Clickable';
 import TextInput from '../../component/TextInput';
 import Header from '../../component/Header';
 import Loading from '../../component/Loading';
 import SwipeablePanel from '../../component/SwipeablePanel';
 import MenuContainer from '../../component/MenuContainer';
 import MenuItemIcon from '../../component/MenuItemIcon';
+import ClickShare from '../../component/ClickShare';
+import Button from '../../component/Button';
 import bibleService from '../../service/bible';
 import translateService from '../../service/translate';
 import style from './style';
+import Text from '../../component/Text';
 
 const Chapter = ({ route }) => {
   const [loading, setLoading] = useState(false);
   const [verseList, setVerseList] = useState([]);
   const [chapterSelected, setChapterSelected] = useState(null);
   const [isPanelActive, setIsPanelActive] = useState(false);
-  const [isVisibleSearchBar, setIsVisibleShowSearchBar] = useState(false);
+  const [selectedVerse, setSelectedVerse] = useState(null);
   const [searchBarInputValue, setSearchBarInputValue] = useState(null);
   const inputPlaceholder = translateService.translate('typeHereSearch');
   const appContext = useContext(AppContext);
   const chapterText = translateService.translate('chapter');
   const { params } = route;
 
-  // import SwipeablePanel from '../../component/SwipeablePanel';
-
-  // <View style={{ ...style(appConfig.theme).segmentContainer }}>
-  //   <Segment theme={appConfig.theme}>
-  //     {testaments.map((testament, index) => (
-  //       <SegmentTab
-  //         key={Math.random()}
-  //         value={testament}
-  //         tabIndex={index}
-  //         tabActiveIndex={activeTestament}
-  //         onPress={() => setActiveTestament(index)}
-  //         theme={appConfig.theme}
-  //       />
-  //     ))}
-  //   </Segment>
-  // </View>
-
   const openPanel = data => {
+    setSelectedVerse(data);
     setIsPanelActive(true);
   };
 
@@ -147,8 +132,41 @@ const Chapter = ({ route }) => {
               </MenuContainer>
             </View>
           </ScrollView>
-          <SwipeablePanel onClose={closePanel} isActive={isPanelActive} theme={appConfig.theme}>
-            <H1 textPlain="Home" style={style(appConfig.theme).title} theme={appConfig.theme} />
+          <SwipeablePanel
+            openLarge
+            onClose={closePanel}
+            isActive={isPanelActive}
+            theme={appConfig.theme}
+          >
+            <View style={style(appConfig.theme).panelContainer}>
+              <H1 text="save" style={style(appConfig.theme).title} theme={appConfig.theme} />
+              <H1 text="share" style={style(appConfig.theme).title} theme={appConfig.theme} />
+              {selectedVerse != null && (
+                <>
+                  <Text
+                    textPlain={selectedVerse.text}
+                    style={style(appConfig.theme).panelContainerShareText}
+                    theme={appConfig.theme}
+                  />
+                  <Text
+                    textPlain={`${selectedVerse.book_name} - ${selectedVerse.chapter} : ${selectedVerse.verse}`}
+                    style={style(appConfig.theme).panelContainerShareTextMin}
+                    theme={appConfig.theme}
+                  />
+                  <ClickShare
+                    style={style(appConfig.theme).shareButton}
+                    message={`${selectedVerse.text} ${selectedVerse.book_name} - ${selectedVerse.chapter}:${selectedVerse.verse}`}
+                  >
+                    <Button
+                      variant="primary"
+                      text="shareThisVerse"
+                      theme={appConfig.theme}
+                      style={style(appConfig.theme).panelContainerShareButton}
+                    />
+                  </ClickShare>
+                </>
+              )}
+            </View>
           </SwipeablePanel>
         </View>
       )}

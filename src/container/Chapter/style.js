@@ -41,6 +41,23 @@ const style = theme => {
       color: themeStyle[theme].forth,
     },
     listContainer: {},
+    panelContainer: {
+      padding: 20,
+    },
+    panelContainerTitle: {
+      marginTop: 15,
+    },
+    panelContainerShareText: {
+      marginTop: 10,
+      fontSize: 16,
+    },
+    panelContainerShareTextMin: {
+      marginTop: 10,
+      fontFamily: themeStyle.font.defaultFontFamilyBold,
+    },
+    panelContainerShareButton: {
+      marginTop: 20,
+    },
   });
 };
 

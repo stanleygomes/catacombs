@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { ScrollView, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { AntDesign } from '@expo/vector-icons';
 import H1 from '../../component/H1';
 import ImageClickable from '../../component/ImageClickable';
 import Text from '../../component/Text';
@@ -8,10 +9,9 @@ import ScrollViewRefresh from '../../component/ScrollViewRefresh';
 import logoSrc from '../../asset/image/logo.png';
 import AppContext from '../../provider/appContext';
 import devotionalService from '../../service/devotional';
-import style from './style';
 import BoxShadow from '../../component/BoxShadow';
 import ClickShare from '../../component/ClickShare';
-import { AntDesign } from '@expo/vector-icons';
+import style from './style';
 
 const Home = () => {
   const [loading, setLoading] = useState(false);
