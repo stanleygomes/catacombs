@@ -1,55 +1,67 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { ScrollView, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import PropTypes from 'prop-types';
 import H1 from '../../component/H1';
 import AppContext from '../../provider/appContext';
 import Header from '../../component/Header';
 import MenuContainer from '../../component/MenuContainer';
 import MenuItemIcon from '../../component/MenuItemIcon';
+import Loading from '../../component/Loading';
+import translateService from '../../service/translate';
 import bibleService from '../../service/bible';
 import style from './style';
 
-const Book = () => {
+const Book = ({ route }) => {
+  const [loading, setLoading] = useState(false);
+  const [chapterList, setChapterList] = useState([]);
+  const [bookSelected, setBookSelected] = useState(null);
   const { navigate } = useNavigation();
-  const chapters = bibleService.getChapters();
+  const appContext = useContext(AppContext);
+  const verseText = translateService.translate('verses');
+  const chapterText = translateService.translate('chapter');
+  const { params } = route;
 
-  const handleNavigate = (to, params = null) => {
-    navigate(to, params);
+  const handleNavigate = (to, paramsRoute = null) => {
+    navigate(to, paramsRoute);
   };
 
   const handleNavigateChapter = chapter => {
+    const { bookId } = params;
+
     handleNavigate('Chapter', {
       chapter,
+      bookId,
     });
   };
 
-  const connect = () => {
-    // const db = databaseService.open('name2.db');
-    // console.warn(db);
+  const getChapters = (bibleVersionId, bookId) => {
+    const paramsQuery = {
+      book_id: bookId,
+    };
 
-    // databaseService.execute(db, 'create table if not exists items (id integer primary key not null, done int, value text);').then(r => {
-    //   console.warn('deu certo')
-    //   console.warn(r)
-    // }).catch(error => {
-    //   console.warn('deu errado')
-    //   console.warn(error)
-    // })
+    setLoading(true);
 
-    // separar as versoes
-    // hospedar as versoes no firebase storage
-    // criar view para download das versoes
-    // baixar versao dentro da pasta SQLite
-    // opcao para remover
-
-    // filesystemService.createFolder('SQLite').then(a => {
-      // filesystemService.readFolder('SQLite').then(r => {
-      //   console.warn(r);
-      // }).catch(error => {console.warn(error)});
-    // }).catch(b => {console.warn(b)})
+    bibleService
+      .getChapters(bibleVersionId, paramsQuery)
+      .then(response => {
+        setBookSelected(response[0].book_name);
+        setChapterList(response);
+        setLoading(false);
+      })
+      .catch(error => {
+        setLoading(false);
+        throw new Error(error);
+      });
   };
 
   useEffect(() => {
-    connect();
+    const bibleVersionId = appContext.appConfig.bibleVersionIdActive;
+    const { bookId } = params;
+
+    if (bibleVersionId != null) {
+      getChapters(bibleVersionId, bookId);
+    }
   }, []);
 
   return (
@@ -58,22 +70,29 @@ const Book = () => {
         <View style={style(appConfig.theme).container}>
           <Header showBackButton="yes" theme={appConfig.theme} />
           <View style={{ ...style(appConfig.theme).header }}>
-            <H1
-              textPlain="Gênesis"
-              style={style(appConfig.theme).headerSearchTitle}
-              theme={appConfig.theme}
-            />
+            {bookSelected != null && (
+              <H1
+                textPlain={bookSelected}
+                style={style(appConfig.theme).headerSearchTitle}
+                theme={appConfig.theme}
+              />
+            )}
           </View>
           <ScrollView style={{ ...style(appConfig.theme).container }}>
+            {loading === true && (
+              <View style={style(appConfig.theme).loadingContainer}>
+                <Loading theme={appConfig.theme} />
+              </View>
+            )}
             <View style={{ ...style(appConfig.theme).listContainer }}>
               <MenuContainer>
-                {chapters != null &&
-                  chapters.map(item => (
+                {chapterList != null &&
+                  chapterList.map(item => (
                     <MenuItemIcon
-                      titlePlain={`Capítulo ${item.name}`}
+                      titlePlain={`${chapterText} ${item.chapter}`}
                       key={Math.random()}
-                      descriptionPlain={item.nameMin}
-                      onPress={() => handleNavigateChapter(item.id)}
+                      descriptionPlain={`${item.qty_verse} ${verseText}`}
+                      onPress={() => handleNavigateChapter(item.chapter)}
                       theme={appConfig.theme}
                     />
                   ))}
@@ -84,6 +103,14 @@ const Book = () => {
       )}
     </AppContext.Consumer>
   );
+};
+
+Book.defaultProps = {
+  route: {},
+};
+
+Book.propTypes = {
+  route: PropTypes.object,
 };
 
 export default Book;

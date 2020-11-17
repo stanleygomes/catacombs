@@ -9,6 +9,9 @@ const style = theme => {
       backgroundColor: themeStyle[theme].backgroundPrimary,
       flexDirection: 'column',
     },
+    loadingContainer: {
+      padding: 20,
+    },
     header: {
       paddingLeft: 20,
       paddingRight: 20,
@@ -20,11 +23,11 @@ const style = theme => {
     headerSearchTitle: {
       marginTop: 10,
     },
-    headerSearchIcon: {
-      backgroundColor: themeStyle[theme].color,
-    },
     searchInputContainer: {
-      padding: 20,
+      paddingTop: 10,
+      paddingLeft: 20,
+      paddingRight: 20,
+      paddingBottom: 20,
       backgroundColor: themeStyle[theme].backgroundPrimary,
       borderBottomWidth: 1,
       borderBottomColor: themeStyle[theme].fifth,
@@ -33,6 +36,9 @@ const style = theme => {
       borderWidth: 0,
       padding: 10,
       backgroundColor: themeStyle[theme].backgroundSecondary,
+    },
+    searchInputIcon: {
+      color: themeStyle[theme].forth,
     },
     listContainer: {},
   });

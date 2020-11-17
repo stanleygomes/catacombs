@@ -8,6 +8,9 @@ const style = theme => {
       backgroundColor: themeStyle[theme].backgroundPrimary,
       flexDirection: 'column',
     },
+    loadingContainer: {
+      padding: 20,
+    },
     header: {
       paddingTop: 50,
       paddingLeft: 20,
@@ -39,11 +42,6 @@ const style = theme => {
     },
     searchInputIcon: {
       color: themeStyle[theme].forth,
-    },
-    segmentContainer: {
-      marginTop: 20,
-      paddingLeft: 20,
-      paddingRight: 20,
     },
   });
 };

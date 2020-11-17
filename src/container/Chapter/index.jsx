@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { ScrollView, View } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 import { AntDesign } from '@expo/vector-icons';
+import PropTypes from 'prop-types';
 import H1 from '../../component/H1';
 import AppContext from '../../provider/appContext';
 import Clickable from '../../component/Clickable';
 import TextInput from '../../component/TextInput';
 import Header from '../../component/Header';
+import Loading from '../../component/Loading';
 import SwipeablePanel from '../../component/SwipeablePanel';
 import MenuContainer from '../../component/MenuContainer';
 import MenuItemIcon from '../../component/MenuItemIcon';
@@ -14,30 +15,17 @@ import bibleService from '../../service/bible';
 import translateService from '../../service/translate';
 import style from './style';
 
-const Chapter = () => {
+const Chapter = ({ route }) => {
+  const [loading, setLoading] = useState(false);
+  const [verseList, setVerseList] = useState([]);
+  const [chapterSelected, setChapterSelected] = useState(null);
   const [isPanelActive, setIsPanelActive] = useState(false);
   const [isVisibleSearchBar, setIsVisibleShowSearchBar] = useState(false);
   const [searchBarInputValue, setSearchBarInputValue] = useState(null);
-  const { navigate } = useNavigation();
   const inputPlaceholder = translateService.translate('typeHereSearch');
-  const verses = bibleService.getVerses();
-
-  const handleNavigate = (to, params = null) => {
-    navigate(to, params);
-  };
-
-  const handleNavigateChapter = chapter => {
-    handleNavigate('Chapter', {
-      chapter,
-    });
-  };
-
-  // import databaseService from '../../service/database';
-  // import filesystemService from '../../service/filesystem';
-  // const [activeTestament, setActiveTestament] = useState(0);
-  // const testaments = bibleService.getTestaments();
-  // import Segment from '../../component/Segment';
-  // import SegmentTab from '../../component/SegmentTab';
+  const appContext = useContext(AppContext);
+  const chapterText = translateService.translate('chapter');
+  const { params } = route;
 
   // import SwipeablePanel from '../../component/SwipeablePanel';
 
@@ -56,19 +44,6 @@ const Chapter = () => {
   //   </Segment>
   // </View>
 
-  const showHideSearchBar = () => {
-    if (isVisibleSearchBar === true) {
-      setSearchBarInputValue(null);
-      setIsVisibleShowSearchBar(false);
-    } else {
-      setIsVisibleShowSearchBar(true);
-    }
-  };
-
-  const handleSearchBarInput = e => {
-    setSearchBarInputValue(e);
-  };
-
   const openPanel = data => {
     setIsPanelActive(true);
   };
@@ -77,33 +52,50 @@ const Chapter = () => {
     setIsPanelActive(false);
   };
 
-  const connect = () => {
-    // const db = databaseService.open('name2.db');
-    // console.warn(db);
+  const getVerses = (bibleVersionId, bookId, chapter, extra) => {
+    const paramsQuery = {
+      ...{
+        book_id: bookId,
+        chapter,
+      },
+      ...extra,
+    };
 
-    // databaseService.execute(db, 'create table if not exists items (id integer primary key not null, done int, value text);').then(r => {
-    //   console.warn('deu certo')
-    //   console.warn(r)
-    // }).catch(error => {
-    //   console.warn('deu errado')
-    //   console.warn(error)
-    // })
+    setLoading(true);
 
-    // separar as versoes
-    // hospedar as versoes no firebase storage
-    // criar view para download das versoes
-    // baixar versao dentro da pasta SQLite
-    // opcao para remover
+    bibleService
+      .getVerses(bibleVersionId, paramsQuery)
+      .then(response => {
+        setChapterSelected(response[0].chapter);
+        setVerseList(response);
+        setLoading(false);
+      })
+      .catch(error => {
+        setLoading(false);
+        throw new Error(error);
+      });
+  };
 
-    // filesystemService.createFolder('SQLite').then(a => {
-      // filesystemService.readFolder('SQLite').then(r => {
-      //   console.warn(r);
-      // }).catch(error => {console.warn(error)});
-    // }).catch(b => {console.warn(b)})
+  const handleSearchBarInput = e => {
+    setSearchBarInputValue(e);
+
+    const bibleVersionId = appContext.appConfig.bibleVersionIdActive;
+    const { bookId, chapter } = params;
+
+    const extra = {
+      text: e,
+    };
+
+    getVerses(bibleVersionId, bookId, chapter, extra);
   };
 
   useEffect(() => {
-    connect();
+    const bibleVersionId = appContext.appConfig.bibleVersionIdActive;
+    const { bookId, chapter } = params;
+
+    if (bibleVersionId != null) {
+      getVerses(bibleVersionId, bookId, chapter);
+    }
   }, []);
 
   return (
@@ -112,36 +104,42 @@ const Chapter = () => {
         <View style={style(appConfig.theme).container}>
           <Header showBackButton="yes" theme={appConfig.theme} />
           <View style={{ ...style(appConfig.theme).header }}>
-            <H1
-              textPlain="Cap. 1"
-              style={style(appConfig.theme).headerSearchTitle}
-              theme={appConfig.theme}
-            />
-            <Clickable theme={appConfig.theme} onPress={showHideSearchBar}>
-              <AntDesign name="search1" size={30} style={style(appConfig.theme).headerSearchIcon} />
-            </Clickable>
+            {chapterSelected != null && (
+              <H1
+                textPlain={`${chapterText} ${chapterSelected}`}
+                style={style(appConfig.theme).headerSearchTitle}
+                theme={appConfig.theme}
+              />
+            )}
           </View>
-          {isVisibleSearchBar === true && (
+          {chapterSelected != null && (
             <View style={{ ...style(appConfig.theme).searchInputContainer }}>
               <TextInput
                 theme={appConfig.theme}
-                style={style(appConfig.theme).searchInputText}
+                styleContainer={style(appConfig.theme).searchInputText}
                 value={searchBarInputValue}
                 placeholder={inputPlaceholder}
                 onChangeText={handleSearchBarInput}
+                iconName="search1"
+                iconSize={20}
+                iconStyle={style(appConfig.theme).searchInputIcon}
                 name="search"
               />
             </View>
           )}
           <ScrollView style={{ ...style(appConfig.theme).container }}>
+            {loading === true && (
+              <View style={style(appConfig.theme).loadingContainer}>
+                <Loading theme={appConfig.theme} />
+              </View>
+            )}
             <View style={{ ...style(appConfig.theme).listContainer }}>
               <MenuContainer>
-                {verses != null &&
-                  verses.map(item => (
+                {verseList != null &&
+                  verseList.map(item => (
                     <MenuItemIcon
-                      titlePlain={`Capítulo ${item.name}`}
+                      titlePlain={`${item.verse}. ${item.text}`}
                       key={Math.random()}
-                      descriptionPlain={item.nameMin}
                       onPress={() => openPanel(item)}
                       theme={appConfig.theme}
                     />
@@ -156,6 +154,14 @@ const Chapter = () => {
       )}
     </AppContext.Consumer>
   );
+};
+
+Chapter.defaultProps = {
+  route: {},
+};
+
+Chapter.propTypes = {
+  route: PropTypes.object,
 };
 
 export default Chapter;
