@@ -1,24 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { ScrollView, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import H1 from '../../component/H1';
 import AppContext from '../../provider/appContext';
 import MenuContainer from '../../component/MenuContainer';
 import MenuItemIcon from '../../component/MenuItemIcon';
-import Clickable from '../../component/Clickable';
 import TextInput from '../../component/TextInput';
 import bibleService from '../../service/bible';
 import translateService from '../../service/translate';
-import databaseService from '../../service/database';
-import filesystemService from '../../service/filesystem';
 import style from './style';
 
 const Read = () => {
-  const [isVisibleSearchBar, setIsVisibleShowSearchBar] = useState(false);
+  const [bookList, setBookList] = useState([]);
   const [searchBarInputValue, setSearchBarInputValue] = useState(null);
   const { navigate } = useNavigation();
   const inputPlaceholder = translateService.translate('typeHereSearch');
-  const books = bibleService.getBooks();
+  const chapterText = translateService.translate('chapters');
+  const appContext = useContext(AppContext);
 
   const handleNavigate = (to, params = null) => {
     navigate(to, params);
@@ -30,47 +28,35 @@ const Read = () => {
     });
   };
 
-  const showHideSearchBar = () => {
-    if (isVisibleSearchBar === true) {
-      setSearchBarInputValue(null);
-      setIsVisibleShowSearchBar(false);
-    } else {
-      setIsVisibleShowSearchBar(true);
-    }
+  const getBooks = (bibleVersionId, params) => {
+    bibleService
+      .getBooks(bibleVersionId, params)
+      .then(response => {
+        setBookList(response);
+      })
+      .catch(error => {
+        throw new Error(error);
+      });
   };
 
   const handleSearchBarInput = e => {
     setSearchBarInputValue(e);
-  };
 
+    const bibleVersionId = appContext.appConfig.bibleVersionIdActive;
+    const params = {
+      name: e,
+    };
 
-  const connect = () => {
-    // const db = databaseService.open('name2.db');
-    // console.warn(db);
-
-    // databaseService.execute(db, 'create table if not exists items (id integer primary key not null, done int, value text);').then(r => {
-    //   console.warn('deu certo')
-    //   console.warn(r)
-    // }).catch(error => {
-    //   console.warn('deu errado')
-    //   console.warn(error)
-    // })
-
-    // separar as versoes
-    // hospedar as versoes no firebase storage
-    // criar view para download das versoes
-    // baixar versao dentro da pasta SQLite
-    // opcao para remover
-
-    // filesystemService.createFolder('SQLite').then(a => {
-      filesystemService.readFolder('SQLite').then(r => {
-        console.warn(r);
-      }).catch(error => {console.warn(error)});
-    // }).catch(b => {console.warn(b)})
+    getBooks(bibleVersionId, params);
   };
 
   useEffect(() => {
-    connect();
+    const bibleVersionId = appContext.appConfig.bibleVersionIdActive;
+
+    if (bibleVersionId === null) {
+    } else {
+      getBooks(bibleVersionId, {});
+    }
   }, []);
 
   return (
@@ -99,12 +85,12 @@ const Read = () => {
           </View>
           <ScrollView style={{ ...style(appConfig.theme).container }}>
             <MenuContainer>
-              {books != null &&
-                books.map(item => (
+              {bookList != null &&
+                bookList.map(item => (
                   <MenuItemIcon
                     titlePlain={item.name}
                     key={Math.random()}
-                    descriptionPlain={item.nameMin}
+                    descriptionPlain={`${item.qty_chapter} ${chapterText}`}
                     onPress={() => handleNavigateBook(item.id)}
                     theme={appConfig.theme}
                   />

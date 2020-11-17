@@ -86,6 +86,9 @@ const style = theme => {
       marginRight: 20,
       color: themeStyle[theme].primary,
     },
+    listIconChecked: {
+      color: themeStyle[theme].primary,
+    },
   });
 };
 

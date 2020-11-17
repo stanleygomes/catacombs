@@ -6,6 +6,9 @@ const app = {
     urlRemoteSource: 'https://firebasestorage.googleapis.com/v0/b/bible-30469.appspot.com/o/',
     downloadToken: '67baf761-e532-486a-aff7-962a6fa6e6ae',
   },
+  sqlite: {
+    showCompiled: true,
+  },
 };
 
 const sentry = {
