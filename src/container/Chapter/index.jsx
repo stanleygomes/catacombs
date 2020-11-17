@@ -39,8 +39,6 @@ const Chapter = ({ route }) => {
     const collection = appContext.appConfig.user.id;
     const document = `${data.book_name}-${data.chapter}-${data.verse}`;
 
-    console.warn(document);
-
     setSelectedColor(null);
     setSaveInputValue(null);
     setIsPanelActive(true);

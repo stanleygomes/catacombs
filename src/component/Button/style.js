@@ -5,6 +5,7 @@ const style = theme => {
   return StyleSheet.create({
     default: {
       borderWidth: 0,
+      borderColor: 'transparent',
       padding: 10,
       borderRadius: 5,
     },
