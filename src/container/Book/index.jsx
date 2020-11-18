@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import * as Sentry from 'sentry-expo';
 import { ScrollView, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import PropTypes from 'prop-types';
@@ -51,7 +52,7 @@ const Book = ({ route }) => {
       })
       .catch(error => {
         setLoading(false);
-        throw new Error(error);
+        Sentry.Native.captureMessage(error.message);
       });
   };
 

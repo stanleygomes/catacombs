@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import * as Sentry from 'sentry-expo';
 import { ScrollView, View } from 'react-native';
 import PropTypes from 'prop-types';
 import H1 from '../../component/H1';
@@ -55,7 +56,7 @@ const Chapter = ({ route }) => {
           }
         })
         .catch(error => {
-          throw new Error(error);
+          Sentry.Native.captureMessage(error.message);
         });
     }
   };
@@ -84,7 +85,7 @@ const Chapter = ({ route }) => {
       })
       .catch(error => {
         setLoading(false);
-        throw new Error(error);
+        Sentry.Native.captureMessage(error.message);
       });
   };
 
@@ -120,7 +121,7 @@ const Chapter = ({ route }) => {
       .then(() => setLoading(false))
       .catch(error => {
         setLoading(false);
-        throw new Error(error);
+        Sentry.Native.captureMessage(error.message);
       });
   };
 

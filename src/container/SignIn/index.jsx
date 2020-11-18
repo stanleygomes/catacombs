@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import * as Sentry from 'sentry-expo';
 import { View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Image from '../../component/Image';
@@ -35,7 +36,7 @@ const SignIn = () => {
           .logEvent('SKIP_SIGNIN')
           .then(() => {})
           .catch(error => {
-            throw new Error(error);
+            Sentry.Native.captureMessage(error.message);
           })
           .finally(() => {
             setLoading(false);
@@ -45,7 +46,7 @@ const SignIn = () => {
       })
       .catch(error => {
         setLoading(false);
-        throw new Error(error);
+        Sentry.Native.captureMessage(error.message);
       });
   };
 
@@ -83,13 +84,13 @@ const SignIn = () => {
             })
             .catch(error => {
               setLoading(false);
-              throw new Error(error);
+              Sentry.Native.captureMessage(error.message);
             });
         }
       })
       .catch(error => {
         setLoading(false);
-        throw new Error(error);
+        Sentry.Native.captureMessage(error.message);
       });
   };
 

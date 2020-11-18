@@ -42,7 +42,7 @@ const BibleVersion = props => {
           appContext.setAppConfig(configUpdated);
         })
         .catch(error => {
-          throw new Error(error);
+          Sentry.Native.captureMessage(error.message);
         });
     }
   };
@@ -80,7 +80,7 @@ const BibleVersion = props => {
           })
           .catch(error => {
             setVersionDownloading(null);
-            throw new Error(error);
+            Sentry.Native.captureMessage(error.message);
           });
       })
       .catch(error => {
@@ -115,11 +115,11 @@ const BibleVersion = props => {
               appContext.setAppConfig(configUpdated);
             })
             .catch(error => {
-              throw new Error(error);
+              Sentry.Native.captureMessage(error.message);
             });
         })
         .catch(error => {
-          throw new Error(error);
+          Sentry.Native.captureMessage(error.message);
         });
     }
   };

@@ -1,4 +1,5 @@
 import React, { useCallback, useContext, useEffect, useState } from 'react';
+import * as Sentry from 'sentry-expo';
 import { ScrollView, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { AntDesign } from '@expo/vector-icons';
@@ -61,13 +62,13 @@ const Home = () => {
                 setVerseOfDay(v);
               })
               .catch(error => {
-                throw new Error(error);
+                Sentry.Native.captureMessage(error.message);
               });
           }
         })
         .catch(error => {
-          throw new Error(error);
-        });
+          Sentry.Native.captureMessage(error.message);
+      });
     } else {
       setVerseOfDay(verseOfDayContext);
     }
@@ -84,7 +85,7 @@ const Home = () => {
       })
       .catch(error => {
         setLoading(false);
-        throw new Error(error);
+        Sentry.Native.captureMessage(error.message);
       });
   });
 
