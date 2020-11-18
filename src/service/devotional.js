@@ -2,7 +2,7 @@ import http from './http';
 
 const getPosts = () => {
   return new Promise((resolve, reject) => {
-    const endpoint = 'versos.biblia_/?__a=1';
+    const endpoint = 'bibliadevocionais/?__a=1';
 
     http
       .get(endpoint, {})
