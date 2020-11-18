@@ -2,6 +2,7 @@ import databaseService from './database';
 import getBooksQuery from '../common/query/getBook';
 import getChapterQuery from '../common/query/getChapter';
 import getVerseQuery from '../common/query/getVerse';
+import getVerseRandomQuery from '../common/query/getVerseRandom';
 
 const getTestaments = () => {
   return ['Antigo Testamento', 'Novo testamento'];
@@ -131,6 +132,22 @@ const getChapters = (versionId, params) => {
   });
 };
 
+const getVerseRandomVerse = (versionId, params) => {
+  return new Promise((resolve, reject) => {
+    if (versionId == null) {
+      resolve([]);
+    }
+
+    const db = connectDb(versionId);
+    const query = getVerseRandomQuery;
+
+    databaseService
+      .select(db, query, params)
+      .then(response => resolve(response))
+      .catch(error => reject(error));
+  });
+};
+
 const getVerses = (versionId, params) => {
   return new Promise((resolve, reject) => {
     if (versionId == null) {
@@ -153,4 +170,5 @@ export default {
   getChapters,
   getVerses,
   getVersions,
+  getVerseRandomVerse,
 };

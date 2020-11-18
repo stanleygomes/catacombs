@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
 import { ScrollView, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { AntDesign } from '@expo/vector-icons';
@@ -6,17 +6,22 @@ import H1 from '../../component/H1';
 import ImageClickable from '../../component/ImageClickable';
 import Text from '../../component/Text';
 import ScrollViewRefresh from '../../component/ScrollViewRefresh';
-import logoSrc from '../../asset/image/logo.png';
-import AppContext from '../../provider/appContext';
-import devotionalService from '../../service/devotional';
 import BoxShadow from '../../component/BoxShadow';
 import ClickShare from '../../component/ClickShare';
+import logoSrc from '../../asset/image/logo.png';
+import AppContext from '../../provider/appContext';
+import bibleService from '../../service/bible';
+import utilService from '../../service/util';
+import configService from '../../service/config';
+import devotionalService from '../../service/devotional';
 import style from './style';
 
 const Home = () => {
   const [loading, setLoading] = useState(false);
+  const [verseOfDay, setVerseOfDay] = useState(null);
   const [postsList, setPostsList] = useState([]);
   const { navigate } = useNavigation();
+  const appContext = useContext(AppContext);
 
   const handleNavigate = (to, params = null) => {
     navigate(to, params);
@@ -26,11 +31,46 @@ const Home = () => {
     handleNavigate('Devotional', params);
   };
 
-  const verseOfDayText =
-    'Porque a promessa vos diz respeito a vós, a vossos filhos, e a todos os que estão longe, a tantos quantos Deus nosso Senhor chamar.';
-  const verseOfDayBook = 'Atos';
-  const verseOfDayVerseChapter = '2:39';
-  const verseOfDayShareMessage = `${verseOfDayText} ${verseOfDayBook} - ${verseOfDayVerseChapter}`;
+  const getRandomPost = (bibleVersionId, params) => {
+    const verseOfDayContext = appContext.appConfig.verseOfDay;
+    const today = utilService.getToday();
+
+    if (verseOfDayContext == null || verseOfDayContext.date !== today) {
+      bibleService
+        .getVerseRandomVerse(bibleVersionId, params)
+        .then(response => {
+          if (response != null) {
+            const verseResponse = response[0];
+            const v = {
+              bookName: verseResponse.book_name,
+              chapter: verseResponse.chapter,
+              verse: verseResponse.verse,
+              text: verseResponse.text,
+              date: today,
+            };
+
+            const newConfig = {
+              verseOfDay: v,
+            };
+
+            configService
+              .put(newConfig)
+              .then(configUpdated => {
+                appContext.setAppConfig(configUpdated);
+                setVerseOfDay(v);
+              })
+              .catch(error => {
+                throw new Error(error);
+              });
+          }
+        })
+        .catch(error => {
+          throw new Error(error);
+        });
+    } else {
+      setVerseOfDay(verseOfDayContext);
+    }
+  };
 
   const getPosts = useCallback(() => {
     setLoading(true);
@@ -48,7 +88,10 @@ const Home = () => {
   });
 
   useEffect(() => {
+    const bibleVersionId = appContext.appConfig.bibleVersionIdActive;
+
     getPosts();
+    getRandomPost(bibleVersionId, {});
   }, []);
 
   return (
@@ -96,38 +139,40 @@ const Home = () => {
             {loading === false && postsList != null && (
               <>
                 <View>
-                  <BoxShadow
-                    theme={appConfig.theme}
-                    style={style(appConfig.theme).verseOfDayContainer}
-                  >
-                    <H1
-                      text="verseOfDay"
-                      style={style(appConfig.theme).verseOfDayTitle}
+                  {verseOfDay != null && (
+                    <BoxShadow
                       theme={appConfig.theme}
-                    />
-                    <Text
-                      textPlain={verseOfDayText}
-                      style={style(appConfig.theme).verseOfDayText}
-                      theme={appConfig.theme}
-                    />
-                    <View style={style(appConfig.theme).verseOfDayActionbar}>
-                      <ClickShare
-                        style={style(appConfig.theme).linkButton}
-                        message={verseOfDayShareMessage}
-                      >
-                        <AntDesign
-                          name="sharealt"
-                          size={24}
-                          style={style(appConfig.theme).verseOfDayIcon}
-                        />
-                      </ClickShare>
-                      <Text
-                        textPlain={`${verseOfDayBook} - ${verseOfDayVerseChapter}`}
-                        style={style(appConfig.theme).verseOfDayInfo}
+                      style={style(appConfig.theme).verseOfDayContainer}
+                    >
+                      <H1
+                        text="verseOfDay"
+                        style={style(appConfig.theme).verseOfDayTitle}
                         theme={appConfig.theme}
                       />
-                    </View>
-                  </BoxShadow>
+                      <Text
+                        textPlain={verseOfDay.text}
+                        style={style(appConfig.theme).verseOfDayText}
+                        theme={appConfig.theme}
+                      />
+                      <View style={style(appConfig.theme).verseOfDayActionbar}>
+                        <ClickShare
+                          style={style(appConfig.theme).linkButton}
+                          message={`${verseOfDay.text} ${verseOfDay.bookName} - ${verseOfDay.chapter}:${verseOfDay.verse}`}
+                        >
+                          <AntDesign
+                            name="sharealt"
+                            size={24}
+                            style={style(appConfig.theme).verseOfDayIcon}
+                          />
+                        </ClickShare>
+                        <Text
+                          textPlain={`${verseOfDay.bookName} - ${verseOfDay.chapter}:${verseOfDay.verse}`}
+                          style={style(appConfig.theme).verseOfDayInfo}
+                          theme={appConfig.theme}
+                        />
+                      </View>
+                    </BoxShadow>
+                  )}
                 </View>
                 <View style={style(appConfig.theme).postContainer}>
                   <H1
