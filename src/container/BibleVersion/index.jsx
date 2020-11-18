@@ -1,4 +1,5 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
+import PropTypes from 'prop-types';
 import { ScrollView, View } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import Header from '../../component/Header';
@@ -14,7 +15,8 @@ import filesystemService from '../../service/filesystem';
 import config from '../../common/config';
 import style from './style';
 
-const BibleVersion = () => {
+const BibleVersion = props => {
+  const { showBackButton, afterSelectVersion } = props;
   const [errorMessage, setErrorMessage] = useState(null);
   const [downloadProgress, setDownloadProgress] = useState(0);
   const [versionDownloading, setVersionDownloading] = useState(null);
@@ -61,6 +63,10 @@ const BibleVersion = () => {
       bibleVersionsIdsAvailable: [...ids, ...[version.id]],
     };
 
+    if (appContext.appConfig.bibleVersionIdActive == null) {
+      newConfig.bibleVersionIdActive = version.id;
+    }
+
     filesystemService
       .downloadRemoteFile(remoteUrl, 'SQLite', filename, countProgress)
       .then(() => {
@@ -69,6 +75,7 @@ const BibleVersion = () => {
           .then(configUpdated => {
             appContext.setAppConfig(configUpdated);
             setVersionDownloading(null);
+            afterSelectVersion(configUpdated);
           })
           .catch(error => {
             setVersionDownloading(null);
@@ -120,7 +127,7 @@ const BibleVersion = () => {
     <AppContext.Consumer>
       {({ appConfig }) => (
         <View style={style(appConfig.theme).container}>
-          <Header showBackButton="yes" theme={appConfig.theme} />
+          <Header showBackButton={showBackButton === true ? 'yes' : 'no'} theme={appConfig.theme} />
           <View style={style(appConfig.theme).containerTop}>
             <View>
               <H1
@@ -255,6 +262,16 @@ const BibleVersion = () => {
       )}
     </AppContext.Consumer>
   );
+};
+
+BibleVersion.defaultProps = {
+  showBackButton: true,
+  afterSelectVersion: () => {},
+};
+
+BibleVersion.propTypes = {
+  showBackButton: PropTypes.bool,
+  afterSelectVersion: PropTypes.func,
 };
 
 export default BibleVersion;
