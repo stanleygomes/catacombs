@@ -7,12 +7,14 @@ import Header from '../../component/Header';
 import Text from '../../component/Text';
 import ExternalLink from '../../component/ExternalLink';
 import AppContext from '../../provider/appContext';
+import deviceService from '../../service/device';
 import style from './style';
 
 const Devotional = props => {
   const { route } = props;
   const { params } = route;
   const instagramPostUrl = `https://instagram.com/p/${params.page}`;
+  const screenWidth = deviceService.getDimention().width - 60;
 
   return (
     <AppContext.Consumer>
@@ -27,8 +29,8 @@ const Devotional = props => {
               <View style={style(appConfig.theme).containerTop}>
                 <ImageClickable
                   uri={params.thumbnail}
-                  width={300}
-                  height={300}
+                  width={screenWidth}
+                  height={screenWidth}
                   theme={appConfig.theme}
                   styleContainer={style(appConfig.theme).mainPhotoContainer}
                   style={style(appConfig.theme).mainPhoto}

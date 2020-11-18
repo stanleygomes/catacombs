@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
 import themeStyle from '../../common/style/theme';
+import deviceService from '../../service/device';
 
 const style = theme => {
   return StyleSheet.create({
@@ -15,7 +16,7 @@ const style = theme => {
       backgroundColor: themeStyle[theme].backgroundPrimary,
     },
     containerTop: {
-      width: 300,
+      width: deviceService.getDimention().width - 60,
       paddingTop: 10,
       paddingBottom: 30,
     },
