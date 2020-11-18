@@ -9,6 +9,7 @@ import ScrollViewRefresh from '../../component/ScrollViewRefresh';
 import BoxShadow from '../../component/BoxShadow';
 import ClickShare from '../../component/ClickShare';
 import logoSrc from '../../asset/image/logo.png';
+import BibleVersion from '../BibleVersion';
 import AppContext from '../../provider/appContext';
 import bibleService from '../../service/bible';
 import utilService from '../../service/util';
@@ -87,124 +88,147 @@ const Home = () => {
       });
   });
 
+  const afterSelectVersion = appConfigUpdated => {
+    const bibleVersionId = appConfigUpdated.bibleVersionIdActive;
+
+    getPosts();
+
+    if (bibleVersionId != null) {
+      getRandomPost(bibleVersionId, {});
+    }
+  };
+
   useEffect(() => {
     const bibleVersionId = appContext.appConfig.bibleVersionIdActive;
 
     getPosts();
-    getRandomPost(bibleVersionId, {});
+
+    if (bibleVersionId != null) {
+      getRandomPost(bibleVersionId, {});
+    }
   }, []);
 
   return (
     <AppContext.Consumer>
       {({ appConfig }) => (
         <>
-          <View style={style(appConfig.theme).containerTop}>
-            <View>
-              <H1 text="hello" style={style(appConfig.theme).title} theme={appConfig.theme} />
-              {appConfig.user != null && (
-                <Text
-                  textPlain={appConfig.user.givenName}
-                  style={style(appConfig.theme).subtitle}
-                  theme={appConfig.theme}
-                />
-              )}
-            </View>
-            {appConfig.user == null && (
-              <ImageClickable
-                source={logoSrc}
-                width={50}
-                height={50}
-                theme={appConfig.theme}
-                style={style(appConfig.theme).profilePic}
-                onPress={() => handleNavigate('Profile')}
-              />
-            )}
-            {appConfig.user != null && (
-              <ImageClickable
-                uri={appConfig.user.photoUrl}
-                width={50}
-                height={50}
-                theme={appConfig.theme}
-                style={style(appConfig.theme).profilePic}
-                onPress={() => handleNavigate('Profile')}
-              />
-            )}
-          </View>
-          <ScrollViewRefresh
-            style={style(appConfig.theme).container}
-            isRefreshing={loading}
-            theme={appConfig.theme}
-            onRefresh={getPosts}
-          >
-            {loading === false && postsList != null && (
-              <>
+          {appConfig.bibleVersionIdActive == null && (
+            <BibleVersion showBackButton={false} afterSelectVersion={afterSelectVersion} />
+          )}
+          {appConfig.bibleVersionIdActive != null && (
+            <>
+              <View style={style(appConfig.theme).containerTop}>
                 <View>
-                  {verseOfDay != null && (
-                    <BoxShadow
-                      theme={appConfig.theme}
-                      style={style(appConfig.theme).verseOfDayContainer}
-                    >
-                      <H1
-                        text="verseOfDay"
-                        style={style(appConfig.theme).verseOfDayTitle}
-                        theme={appConfig.theme}
-                      />
-                      <Text
-                        textPlain={verseOfDay.text}
-                        style={style(appConfig.theme).verseOfDayText}
-                        theme={appConfig.theme}
-                      />
-                      <View style={style(appConfig.theme).verseOfDayActionbar}>
-                        <ClickShare
-                          style={style(appConfig.theme).linkButton}
-                          message={`${verseOfDay.text} ${verseOfDay.bookName} - ${verseOfDay.chapter}:${verseOfDay.verse}`}
-                        >
-                          <AntDesign
-                            name="sharealt"
-                            size={24}
-                            style={style(appConfig.theme).verseOfDayIcon}
-                          />
-                        </ClickShare>
-                        <Text
-                          textPlain={`${verseOfDay.bookName} - ${verseOfDay.chapter}:${verseOfDay.verse}`}
-                          style={style(appConfig.theme).verseOfDayInfo}
-                          theme={appConfig.theme}
-                        />
-                      </View>
-                    </BoxShadow>
-                  )}
-                </View>
-                <View style={style(appConfig.theme).postContainer}>
-                  {postsList != null && (
-                    <H1
-                      text="devotionals"
-                      style={style(appConfig.theme).pageTitle}
+                  <H1 text="hello" style={style(appConfig.theme).title} theme={appConfig.theme} />
+                  {appConfig.user != null && (
+                    <Text
+                      textPlain={appConfig.user.givenName}
+                      style={style(appConfig.theme).subtitle}
                       theme={appConfig.theme}
                     />
                   )}
-                  <ScrollView
-                    horizontal
-                    showsHorizontalScrollIndicator={false}
-                    style={style(appConfig.theme).container}
-                  >
-                    {postsList.map(item => (
-                      <View style={style(appConfig.theme).postItemContainer} key={Math.random()}>
-                        <ImageClickable
-                          uri={item.thumbnail}
-                          width={250}
-                          height={250}
-                          theme={appConfig.theme}
-                          styleContainer={style(appConfig.theme).postItemImageContainer}
-                          style={style(appConfig.theme).postItemImage}
-                          onPress={() => showDevotional(item)}
-                        />
-                      </View>
-                    ))}
-                  </ScrollView>
                 </View>
-              </>
-            )}
-          </ScrollViewRefresh>
+                {appConfig.user == null && (
+                  <ImageClickable
+                    source={logoSrc}
+                    width={50}
+                    height={50}
+                    theme={appConfig.theme}
+                    style={style(appConfig.theme).profilePic}
+                    onPress={() => handleNavigate('Profile')}
+                  />
+                )}
+                {appConfig.user != null && (
+                  <ImageClickable
+                    uri={appConfig.user.photoUrl}
+                    width={50}
+                    height={50}
+                    theme={appConfig.theme}
+                    style={style(appConfig.theme).profilePic}
+                    onPress={() => handleNavigate('Profile')}
+                  />
+                )}
+              </View>
+              <ScrollViewRefresh
+                style={style(appConfig.theme).container}
+                isRefreshing={loading}
+                theme={appConfig.theme}
+                onRefresh={getPosts}
+              >
+                {loading === false && postsList != null && (
+                  <>
+                    <View>
+                      {verseOfDay != null && (
+                        <BoxShadow
+                          theme={appConfig.theme}
+                          style={style(appConfig.theme).verseOfDayContainer}
+                        >
+                          <H1
+                            text="verseOfDay"
+                            style={style(appConfig.theme).verseOfDayTitle}
+                            theme={appConfig.theme}
+                          />
+                          <Text
+                            textPlain={verseOfDay.text}
+                            style={style(appConfig.theme).verseOfDayText}
+                            theme={appConfig.theme}
+                          />
+                          <View style={style(appConfig.theme).verseOfDayActionbar}>
+                            <ClickShare
+                              style={style(appConfig.theme).linkButton}
+                              message={`${verseOfDay.text} ${verseOfDay.bookName} - ${verseOfDay.chapter}:${verseOfDay.verse}`}
+                            >
+                              <AntDesign
+                                name="sharealt"
+                                size={24}
+                                style={style(appConfig.theme).verseOfDayIcon}
+                              />
+                            </ClickShare>
+                            <Text
+                              textPlain={`${verseOfDay.bookName} - ${verseOfDay.chapter}:${verseOfDay.verse}`}
+                              style={style(appConfig.theme).verseOfDayInfo}
+                              theme={appConfig.theme}
+                            />
+                          </View>
+                        </BoxShadow>
+                      )}
+                    </View>
+                    <View style={style(appConfig.theme).postContainer}>
+                      {postsList != null && (
+                        <H1
+                          text="devotionals"
+                          style={style(appConfig.theme).pageTitle}
+                          theme={appConfig.theme}
+                        />
+                      )}
+                      <ScrollView
+                        horizontal
+                        showsHorizontalScrollIndicator={false}
+                        style={style(appConfig.theme).container}
+                      >
+                        {postsList.map(item => (
+                          <View
+                            style={style(appConfig.theme).postItemContainer}
+                            key={Math.random()}
+                          >
+                            <ImageClickable
+                              uri={item.thumbnail}
+                              width={250}
+                              height={250}
+                              theme={appConfig.theme}
+                              styleContainer={style(appConfig.theme).postItemImageContainer}
+                              style={style(appConfig.theme).postItemImage}
+                              onPress={() => showDevotional(item)}
+                            />
+                          </View>
+                        ))}
+                      </ScrollView>
+                    </View>
+                  </>
+                )}
+              </ScrollViewRefresh>
+            </>
+          )}
         </>
       )}
     </AppContext.Consumer>

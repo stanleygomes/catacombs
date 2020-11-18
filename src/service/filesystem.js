@@ -61,13 +61,21 @@ const folderExists = folder => {
 
 const downloadRemoteFile = (remoteUrl, outputFolder, outputFile, callback) => {
   return new Promise((resolve, reject) => {
-    const output = `${root}${outputFolder}/${outputFile}`;
+    createFolder(outputFolder)
+      .then(() => {
+        const output = `${root}${outputFolder}/${outputFile}`;
+        const downloadResumable = FileSystem.createDownloadResumable(
+          remoteUrl,
+          output,
+          {},
+          callback,
+        );
 
-    const downloadResumable = FileSystem.createDownloadResumable(remoteUrl, output, {}, callback);
-
-    downloadResumable
-      .downloadAsync()
-      .then(file => resolve(file))
+        downloadResumable
+          .downloadAsync()
+          .then(file => resolve(file))
+          .catch(error => reject(error));
+      })
       .catch(error => reject(error));
   });
 };

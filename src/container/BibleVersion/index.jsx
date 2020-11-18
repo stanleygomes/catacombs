@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import * as Sentry from 'sentry-expo';
 import PropTypes from 'prop-types';
 import { ScrollView, View } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
@@ -84,7 +85,7 @@ const BibleVersion = props => {
       })
       .catch(error => {
         setVersionDownloading(null);
-        throw new Error(error);
+        Sentry.Native.captureMessage(error.message);
       });
   };
 
