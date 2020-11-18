@@ -19,6 +19,12 @@ const style = theme => {
     primaryText: {
       color: themeStyle[theme].primaryText,
     },
+    danger: {
+      backgroundColor: themeStyle[theme].terciary,
+    },
+    dangerText: {
+      color: themeStyle[theme].primaryText,
+    },
     outline: {
       borderWidth: 1,
     },

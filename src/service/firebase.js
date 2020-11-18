@@ -85,6 +85,17 @@ const saveFirestore = (collection, document, data) => {
   });
 };
 
+const deleteFirestoreDocument = (collection, document) => {
+  return new Promise((resolve, reject) => {
+    firestore
+      .collection(collection)
+      .doc(document)
+      .delete()
+      .then(() => resolve(true))
+      .catch(error => reject(error));
+  });
+};
+
 const getFirestoreCollection = collection => {
   return new Promise((resolve, reject) => {
     firestore
@@ -94,12 +105,7 @@ const getFirestoreCollection = collection => {
         const responseData = [];
 
         response.forEach(doc => {
-          responseData.push([
-            {
-              document: doc.id,
-              data: doc.data(),
-            },
-          ]);
+          responseData.push({ ...{ id: doc.id }, ...doc.data() });
         });
 
         resolve(responseData);
@@ -125,4 +131,5 @@ export default {
   saveFirestore,
   getFirestoreCollection,
   getFirestoreDocument,
+  deleteFirestoreDocument,
 };

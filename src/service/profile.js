@@ -19,7 +19,7 @@ const getMenuItems = () => {
     },
     {
       title: 'savedVerses',
-      to: 'SavedVerses',
+      to: 'SavedVerse',
     },
     {
       title: 'readingReminder',

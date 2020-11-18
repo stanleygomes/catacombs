@@ -12,6 +12,7 @@ import ReadingReminder from '../ReadingReminder';
 import Chapter from '../Chapter';
 import ProfileInfo from '../ProfileInfo';
 import BibleVersion from '../BibleVersion';
+import SavedVerse from '../SavedVerse';
 import AppContext from '../../provider/appContext';
 
 const { Navigator, Screen } = createStackNavigator();
@@ -25,6 +26,10 @@ const NavigationApp = () => {
     {
       name: 'ProfileInfo',
       component: ProfileInfo,
+    },
+    {
+      name: 'SavedVerse',
+      component: SavedVerse,
     },
     {
       name: 'Book',
