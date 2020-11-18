@@ -7,7 +7,7 @@ const style = theme => {
       flexDirection: 'row',
       alignItems: 'center',
       padding: 15,
-      borderColor: themeStyle[theme].fifth,
+      borderColor: themeStyle[theme].seventh,
       borderWidth: 1,
       borderRadius: 5,
     },
@@ -15,7 +15,7 @@ const style = theme => {
       marginRight: 10,
     },
     default: {
-      color: themeStyle[theme].sixth,
+      color: themeStyle[theme].textInverse,
       flexGrow: 1,
     },
     focused: {},

@@ -8,6 +8,7 @@ const theme = {
     backgroundInverse: '#333333',
     backgroundSecondary: '#eeeeee',
     backgroundTerciary: '#777777',
+    backgroundForth: '#ffffff',
     textPrimary: '#333333',
     textSecondary: '#777777',
     textInverse: '#777777',
@@ -19,12 +20,14 @@ const theme = {
     forth: '#777777',
     fifth: '#dddddd',
     sixth: '#333333',
+    seventh: '#dddddd',
   },
   dark: {
     backgroundPrimary: '#333333',
     backgroundInverse: '#ffffff',
     backgroundSecondary: '#555555',
     backgroundTerciary: '#eeeeee',
+    backgroundForth: '#555555',
     textPrimary: '#ffffff',
     textSecondary: '#dddddd',
     textInverse: '#eeeeee',
@@ -36,6 +39,7 @@ const theme = {
     forth: '#777777',
     fifth: '#dddddd',
     sixth: '#333333',
+    seventh: '#555555',
   },
 };
 

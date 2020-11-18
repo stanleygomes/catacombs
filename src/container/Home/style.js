@@ -29,6 +29,7 @@ const style = theme => {
     verseOfDayContainer: {
       margin: 20,
       padding: 20,
+      backgroundColor: themeStyle[theme].backgroundForth,
     },
     verseOfDayTitle: {
       textAlign: 'center',

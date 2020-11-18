@@ -5,7 +5,7 @@ const style = theme => {
   return StyleSheet.create({
     menuItemContainerDefault: {
       borderBottomWidth: 1,
-      borderBottomColor: themeStyle[theme].fifth,
+      borderBottomColor: themeStyle[theme].seventh,
     },
     menuItemDefault: {
       paddingTop: 20,
