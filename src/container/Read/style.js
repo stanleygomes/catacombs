@@ -33,7 +33,7 @@ const style = theme => {
       paddingBottom: 20,
       backgroundColor: themeStyle[theme].backgroundPrimary,
       borderBottomWidth: 1,
-      borderBottomColor: themeStyle[theme].fifth,
+      borderBottomColor: themeStyle[theme].seventh,
     },
     searchInputText: {
       borderWidth: 0,
