@@ -3,16 +3,16 @@ import localStorage from './localStorage';
 const CONFIG_KEY = 'appConfig';
 const themeList = [
   {
-    text: 'themeDark',
-    value: 'dark',
-  },
-  {
     text: 'themeLight',
     value: 'light',
   },
+  {
+    text: 'themeDark',
+    value: 'dark',
+  },
 ];
 const defaultConfig = {
-  theme: 'dark',
+  theme: 'light',
   signInChallenge: false,
 };
 

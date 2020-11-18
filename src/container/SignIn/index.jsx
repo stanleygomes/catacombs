@@ -33,13 +33,13 @@ const SignIn = () => {
       .then(response => {
         analyticsService
           .logEvent('SKIP_SIGNIN')
-          .then(() => {
+          .then(() => {})
+          .catch(error => {
+            throw new Error(error);
+          })
+          .finally(() => {
             setLoading(false);
             setAppConfig(response);
-            handleNavigateToTabs();
-          })
-          .catch(() => {
-            setLoading(false);
             handleNavigateToTabs();
           });
       })

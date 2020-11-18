@@ -39,7 +39,7 @@ const Home = () => {
       bibleService
         .getVerseRandomVerse(bibleVersionId, params)
         .then(response => {
-          if (response != null) {
+          if (response != null && response.length > 0) {
             const verseResponse = response[0];
             const v = {
               bookName: verseResponse.book_name,
