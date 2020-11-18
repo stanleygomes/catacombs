@@ -16,6 +16,13 @@ const AppContext = createContext({
       givenName: null,
       photoUrl: null,
     },
+    verseOfDay: {
+      bookName: null,
+      chapter: null,
+      verse: null,
+      text: null,
+      date: null,
+    },
   },
   setAppConfig: () => {},
 });

@@ -48,7 +48,7 @@ const style = theme => {
       paddingLeft: 30,
       paddingRight: 30,
       borderBottomWidth: 1,
-      borderBottomColor: themeStyle[theme].fifth,
+      borderBottomColor: themeStyle[theme].seventh,
     },
     listItemContainerLeft: {
       width: 50,
@@ -85,6 +85,9 @@ const style = theme => {
     listCheckTrue: {
       marginRight: 20,
       color: themeStyle[theme].primary,
+    },
+    listIcon: {
+      color: themeStyle[theme].textPrimary,
     },
     listIconChecked: {
       color: themeStyle[theme].primary,

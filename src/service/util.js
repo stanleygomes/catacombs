@@ -32,9 +32,20 @@ const removeItemFromArray = (item, array) => {
   return array.filter(value => value !== item);
 };
 
+const getToday = () => {
+  const date = new Date();
+
+  const day = date.getDate();
+  const month = date.getMonth();
+  const year = date.getFullYear();
+
+  return `${year}-${month}-${day}`;
+};
+
 export default {
   strPadLeft,
   getSplitTime,
   isInArray,
   removeItemFromArray,
+  getToday,
 };
