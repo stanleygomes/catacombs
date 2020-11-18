@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import * as Sentry from 'sentry-expo';
 import { ScrollView, View } from 'react-native';
 import Header from '../../component/Header';
 import H1 from '../../component/H1';
@@ -81,7 +82,7 @@ const ReadingReminder = () => {
           updateAppSettings(conf)
             .then(() => {})
             .catch(error => {
-              throw new Error(error);
+              Sentry.Native.captureMessage(error.message);
             });
         },
       );
@@ -91,7 +92,7 @@ const ReadingReminder = () => {
           updateAppSettings(conf)
             .then(() => {})
             .catch(error => {
-              throw new Error(error);
+              Sentry.Native.captureMessage(error.message);
             });
         },
       );
@@ -126,7 +127,7 @@ const ReadingReminder = () => {
           hideTimePicker();
         })
         .catch(error => {
-          throw new Error(error);
+          Sentry.Native.captureMessage(error.message);
         });
     });
   };

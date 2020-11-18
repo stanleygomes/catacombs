@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import * as Sentry from 'sentry-expo';
 import { ScrollView, View } from 'react-native';
 // import Button from '../../component/Button';
 import Header from '../../component/Header';
@@ -32,14 +33,14 @@ const ProfileInfo = () => {
             })
             .catch(error => {
               setLoading(false);
-              throw new Error(error);
+              Sentry.Native.captureMessage(error.message);
             });
         } else {
           setLoading(false);
         }
       })
       .catch(error => {
-        throw new Error(error);
+        Sentry.Native.captureMessage(error.message);
       });
   };
 

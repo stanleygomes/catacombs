@@ -1,4 +1,5 @@
 import React, { useCallback, useContext, useEffect, useState } from 'react';
+import * as Sentry from 'sentry-expo';
 import { ScrollView, View } from 'react-native';
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import H1 from '../../component/H1';
@@ -41,7 +42,7 @@ const Read = () => {
       })
       .catch(error => {
         setLoading(false);
-        throw new Error(error);
+        Sentry.Native.captureMessage(error.message);
       });
   };
 

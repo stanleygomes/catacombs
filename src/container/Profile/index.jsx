@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import * as Sentry from 'sentry-expo';
 import { ScrollView, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Image from '../../component/Image';
@@ -42,7 +43,7 @@ const Profile = () => {
       })
       .catch(error => {
         setLoading(false);
-        throw new Error(error);
+        Sentry.Native.captureMessage(error.message);
       });
   };
 
@@ -65,12 +66,12 @@ const Profile = () => {
           })
           .catch(error => {
             setLoading(false);
-            throw new Error(error);
+            Sentry.Native.captureMessage(error.message);
           });
       })
       .catch(error => {
         setLoading(false);
-        throw new Error(error);
+        Sentry.Native.captureMessage(error.message);
       });
   };
 

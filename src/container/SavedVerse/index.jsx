@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import * as Sentry from 'sentry-expo';
 import { ScrollView, View } from 'react-native';
 import Header from '../../component/Header';
 import H1 from '../../component/H1';
@@ -49,7 +50,7 @@ const SavedVerse = () => {
         }
       })
       .catch(error => {
-        throw new Error(error);
+        Sentry.Native.captureMessage(error.message);
       });
   };
 
@@ -66,7 +67,7 @@ const SavedVerse = () => {
       })
       .catch(error => {
         setLoading(false);
-        throw new Error(error);
+        Sentry.Native.captureMessage(error.message);
       });
   };
 
@@ -90,7 +91,7 @@ const SavedVerse = () => {
         getSavedVerses();
       })
       .catch(error => {
-        throw new Error(error);
+        Sentry.Native.captureMessage(error.message);
       });
   };
 
@@ -114,7 +115,7 @@ const SavedVerse = () => {
         getSavedVerses();
       })
       .catch(error => {
-        throw new Error(error);
+        Sentry.Native.captureMessage(error.message);
       });
   };
 
@@ -132,7 +133,7 @@ const SavedVerse = () => {
           appContext.setAppConfig(r);
         })
         .catch(error => {
-          throw new Error(error);
+          Sentry.Native.captureMessage(error.message);
         });
     } else {
       getSavedVerses();
