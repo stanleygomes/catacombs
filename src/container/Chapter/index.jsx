@@ -35,25 +35,29 @@ const Chapter = ({ route }) => {
 
   const openPanel = data => {
     setSelectedVerse(data);
+    const loggedUser = appContext.appConfig.user;
 
-    const collection = appContext.appConfig.user.id;
-    const document = `${data.book_name}-${data.chapter}-${data.verse}`;
-
-    setSelectedColor(null);
-    setSaveInputValue(null);
     setIsPanelActive(true);
 
-    firebaseService
-      .getFirestoreDocument(collection, document)
-      .then(response => {
-        if (response != null) {
-          setSelectedColor(response.color);
-          setSaveInputValue(response.obs);
-        }
-      })
-      .catch(error => {
-        throw new Error(error);
-      });
+    if (loggedUser != null) {
+      const collection = appContext.appConfig.user.id;
+      const document = `${data.book_name}-${data.chapter}-${data.verse}`;
+
+      setSelectedColor(null);
+      setSaveInputValue(null);
+
+      firebaseService
+        .getFirestoreDocument(collection, document)
+        .then(response => {
+          if (response != null) {
+            setSelectedColor(response.color);
+            setSaveInputValue(response.obs);
+          }
+        })
+        .catch(error => {
+          throw new Error(error);
+        });
+    }
   };
 
   const closePanel = () => {
@@ -185,36 +189,38 @@ const Chapter = ({ route }) => {
             theme={appConfig.theme}
           >
             <View style={style(appConfig.theme).panelContainer}>
-              <View style={style(appConfig.theme).panelContainerForm}>
-                <H1 text="save" style={style(appConfig.theme).title} theme={appConfig.theme} />
-                <Text
-                  textKey="saveToFavorites"
-                  style={style(appConfig.theme).panelContainerText}
-                  theme={appConfig.theme}
-                />
-                <ColorSelector
-                  theme={appConfig.theme}
-                  colorSelected={selectedColor}
-                  onPress={setSelectedColor}
-                />
-                <TextInput
-                  theme={appConfig.theme}
-                  styleContainer={style(appConfig.theme).panelContainerInput}
-                  value={saveInputValue}
-                  placeholder={inputSavePlaceholder}
-                  onChangeText={setSaveInputValue}
-                  multiline
-                  name="search"
-                />
-                <Button
-                  variant="primary"
-                  text={loading === true ? 'saving' : 'save'}
-                  theme={appConfig.theme}
-                  style={style(appConfig.theme).panelContainerSaveButton}
-                  styleText={style(appConfig.theme).panelContainerSaveButtonText}
-                  onPress={handleSaveVerse}
-                />
-              </View>
+              {appConfig.user != null && (
+                <View style={style(appConfig.theme).panelContainerForm}>
+                  <H1 text="save" style={style(appConfig.theme).title} theme={appConfig.theme} />
+                  <Text
+                    textKey="saveToFavorites"
+                    style={style(appConfig.theme).panelContainerText}
+                    theme={appConfig.theme}
+                  />
+                  <ColorSelector
+                    theme={appConfig.theme}
+                    colorSelected={selectedColor}
+                    onPress={setSelectedColor}
+                  />
+                  <TextInput
+                    theme={appConfig.theme}
+                    styleContainer={style(appConfig.theme).panelContainerInput}
+                    value={saveInputValue}
+                    placeholder={inputSavePlaceholder}
+                    onChangeText={setSaveInputValue}
+                    multiline
+                    name="search"
+                  />
+                  <Button
+                    variant="primary"
+                    text={loading === true ? 'saving' : 'save'}
+                    theme={appConfig.theme}
+                    style={style(appConfig.theme).panelContainerSaveButton}
+                    styleText={style(appConfig.theme).panelContainerSaveButtonText}
+                    onPress={handleSaveVerse}
+                  />
+                </View>
+              )}
               <H1 text="share" style={style(appConfig.theme).title} theme={appConfig.theme} />
               {selectedVerse != null && (
                 <>

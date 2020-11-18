@@ -175,11 +175,13 @@ const Home = () => {
                   )}
                 </View>
                 <View style={style(appConfig.theme).postContainer}>
-                  <H1
-                    text="devotionals"
-                    style={style(appConfig.theme).pageTitle}
-                    theme={appConfig.theme}
-                  />
+                  {postsList != null && (
+                    <H1
+                      text="devotionals"
+                      style={style(appConfig.theme).pageTitle}
+                      theme={appConfig.theme}
+                    />
+                  )}
                   <ScrollView
                     horizontal
                     showsHorizontalScrollIndicator={false}
