@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
 import { ScrollView, View } from 'react-native';
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import H1 from '../../component/H1';
@@ -64,15 +64,23 @@ const Read = () => {
     }
   };
 
-  useFocusEffect(
-    useCallback(() => {
-      const bibleVersionId = appContext.appConfig.bibleVersionIdActive;
+  // useFocusEffect(
+  //   useCallback(() => {
+  //     const bibleVersionId = appContext.appConfig.bibleVersionIdActive;
 
-      if (bibleVersionId != null) {
-        getBooks(bibleVersionId, {});
-      }
-    }, []),
-  );
+  //     if (bibleVersionId != null) {
+  //       getBooks(bibleVersionId, {});
+  //     }
+  //   }, []),
+  // );
+
+  useEffect(() => {
+    const bibleVersionId = appContext.appConfig.bibleVersionIdActive;
+
+    if (bibleVersionId != null) {
+      getBooks(bibleVersionId, {});
+    }
+  }, []);
 
   return (
     <AppContext.Consumer>

@@ -21,7 +21,7 @@ const isUserEqual = (googleUser, firebaseUser) => {
     for (let i = 0; i < providerData.length; i += 1) {
       const { providerId } = providerData[i];
       const providerUid = providerData[i].uid;
-      const googleProviderId = firebase.auth.GoogleAuthProvider.PROVIDER_ID;
+      const googleProviderId = Firebase.auth.GoogleAuthProvider.PROVIDER_ID;
       const googleId = googleUser.user.id;
 
       if (providerId === googleProviderId && providerUid === googleId) {
@@ -37,20 +37,19 @@ const isUserEqual = (googleUser, firebaseUser) => {
 const onSignIn = googleUser => {
   return new Promise((resolve, reject) => {
     // we need to register an observer on firebase auth to make sure auth is initialized.
-    firebase.auth().onAuthStateChanged(firebaseUser => {
+    Firebase.auth().onAuthStateChanged(firebaseUser => {
       const isSignedInUser = isUserEqual(googleUser, firebaseUser);
 
       // check if we are already signed-in Firebase with the correct user.
       if (isSignedInUser === false) {
         // build firebase credential with the Google ID token.
-        const credential = firebase.auth.GoogleAuthProvider.credential(
+        const credential = Firebase.auth.GoogleAuthProvider.credential(
           googleUser.idToken,
           googleUser.accessToken,
         );
 
         // sign in with credential from the Google user.
-        firebase
-          .auth()
+        Firebase.auth()
           .signInWithCredential(credential)
           .then(() => resolve(googleUser))
           .catch(error => {
@@ -66,8 +65,7 @@ const onSignIn = googleUser => {
 
 const onSignOut = () => {
   return new Promise((resolve, reject) => {
-    firebase
-      .auth()
+    Firebase.auth()
       .signOut()
       .then(() => resolve(true))
       .catch(error => reject(error));

@@ -13,6 +13,7 @@ import ColorSelector from '../../component/ColorSelector';
 import AppContext from '../../provider/appContext';
 import firebaseService from '../../service/firebase';
 import translateService from '../../service/translate';
+import configService from '../../service/config';
 import style from './style';
 
 const SavedVerse = () => {
@@ -117,8 +118,29 @@ const SavedVerse = () => {
       });
   };
 
+  const startScreen = () => {
+    const loggedUser = appContext.appConfig.user;
+
+    if (loggedUser == null) {
+      const configUpdateData = {
+        signInChallenge: null,
+      };
+
+      configService
+        .put(configUpdateData)
+        .then(r => {
+          appContext.setAppConfig(r);
+        })
+        .catch(error => {
+          throw new Error(error);
+        });
+    } else {
+      getSavedVerses();
+    }
+  };
+
   useEffect(() => {
-    getSavedVerses();
+    startScreen();
   }, []);
 
   return (
