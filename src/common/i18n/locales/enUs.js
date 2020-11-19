@@ -3,7 +3,7 @@ export default {
   appDescription: "Our goal is to spread God's word",
   bibleCredit: 'Special thanks to Sydney Machado, for making the Bible transcript available',
   bibleCreditButton: 'Check it out',
-  appIntroDescription: 'Hello! Sign in to have access to a lot of features',
+  appIntroDescription: 'Hello! Sign in to save your favorite verses',
   signInWithGoogle: 'Sign In with Google',
   signInLater: 'Not now',
   daysStreak: 'Days streak',

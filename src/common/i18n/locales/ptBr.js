@@ -4,7 +4,7 @@ export default {
   bibleCredit:
     'Um agradecimento especial ao Sydney Machado, por disponibilizar a transcrição da bíblia',
   bibleCreditButton: 'Conheça',
-  appIntroDescription: 'Olá! Você pode fazer o login para ter acesso a diversos recursos',
+  appIntroDescription: 'Olá! Você pode fazer o login para salvar seus versículos favoritos',
   signInWithGoogle: 'Entrar com Google',
   signInLater: 'Agora não',
   daysStreak: 'Dias seguidos',
