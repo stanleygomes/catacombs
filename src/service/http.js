@@ -1,11 +1,11 @@
 import axios from 'axios';
-import { app } from '../common/config';
+import config from '../common/config';
 
-const basePath = app.api.baseUrl;
+const basePath = config.app.api.baseUrl;
 
 const call = (method, endpoint, params, headers = []) => {
   return new Promise((resolve, reject) => {
-    const config = {
+    const axiosConfig = {
       method,
       url: `${basePath}/${endpoint}`,
       data: params,
@@ -15,7 +15,7 @@ const call = (method, endpoint, params, headers = []) => {
       },
     };
 
-    axios(config)
+    axios(axiosConfig)
       .then(response => resolve(response))
       .catch(error => reject(error));
   });

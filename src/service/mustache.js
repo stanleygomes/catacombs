@@ -1,7 +1,7 @@
 import Mustache from 'mustache';
-import { app } from '../common/config';
+import config from '../common/config';
 
-const showCompiledTemplateDefault = app.sqlite.showCompiled;
+const showCompiledTemplateDefault = config.app.sqlite.showCompiled;
 
 const getAllIndexes = (arr, val) => {
   let indexes = [];
