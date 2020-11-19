@@ -10,12 +10,12 @@ import ClickShare from '../../component/ClickShare';
 import logoSrc from '../../asset/image/logo.png';
 import AppContext from '../../provider/appContext';
 import translateService from '../../service/translate';
-import { app } from '../../common/config';
+import config from '../../common/config';
 import style from './style';
 
 const About = () => {
   const creditUrl = 'http://www.sydney.eti.br/a-biblia-em-sql-mysql-em-13-versoes';
-  const instagramUrl = `https://instagram.com/${app.instagramUser}`;
+  const instagramUrl = `https://instagram.com/${config.app.instagramUser}`;
   const shareUrl = `${translateService.translate('shareAppMessage')}
 
 https://play.google.com/store/apps/details?id=com.stanley.theholybible
