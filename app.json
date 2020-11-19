@@ -41,7 +41,13 @@
       "permissions": [],
       "allowBackup": true,
       "useNextNotificationsApi": true,
-      "googleServicesFile": "./src/common/config/google.json"
+      "googleServicesFile": "./src/common/config/google.json",
+      "config": {
+        "googleSignIn": {
+          "apiKey": "AIzaSyA_6r0lYcf0v2cJMdGqJvB3VO-o9GYm2SI",
+          "certificateHash": "0226EBCDEE502BC796CF8EB0DBC1B65D156E2B4F"
+        }
+      }
     },
     "web": {
       "favicon": "./assets/favicon.png",
