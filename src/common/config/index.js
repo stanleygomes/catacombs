@@ -45,7 +45,7 @@ const firebase = {
 
 const { expo } = appConfig;
 
-module.exports = {
+export default {
   app,
   sentry,
   firebase,
