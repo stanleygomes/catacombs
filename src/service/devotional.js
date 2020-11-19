@@ -1,9 +1,9 @@
 import http from './http';
-import { app } from '../common/config';
+import config from '../common/config';
 
 const getPosts = () => {
   return new Promise((resolve, reject) => {
-    const endpoint = `${app.instagramUser}/?__a=1`;
+    const endpoint = `${config.app.instagramUser}/?__a=1`;
 
     http
       .get(endpoint, {})

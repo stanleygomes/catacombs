@@ -1,9 +1,9 @@
 import * as Google from 'expo-google-app-auth';
-import { google } from '../common/config';
+import config from '../common/config';
 
 const signIn = () => {
   return new Promise((resolve, reject) => {
-    Google.logInAsync(google.auth)
+    Google.logInAsync(config.google.auth)
       .then(response => {
         if (response.type === 'success') {
           const data = {

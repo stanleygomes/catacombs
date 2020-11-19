@@ -1,8 +1,8 @@
 import * as Firebase from 'firebase';
 import 'firebase/firestore';
-import { firebase } from '../common/config';
+import config from '../common/config';
 
-const { credentials } = firebase;
+const { credentials } = config.firebase;
 
 if (Firebase.apps.length === 0) {
   Firebase.initializeApp(credentials);
