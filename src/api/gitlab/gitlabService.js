@@ -77,7 +77,8 @@ const hook = (req, res) => {
       // open merge request
       if (attributes.action === 'merge_request') {
         // open merge request
-        if (attributes.mergeStatus === 'unchecked' && attributes.branchTarget === 'develop') {
+        const branchTarget = attributes.branchTarget
+        if (attributes.mergeStatus === 'unchecked' && (branchTarget === 'develop' || branchTarget === 'projetos')) {
           textTemplate = config.getPrMessage(attributes)
 
           request = {
