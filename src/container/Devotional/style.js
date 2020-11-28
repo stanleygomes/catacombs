@@ -21,11 +21,15 @@ const style = theme => {
       paddingBottom: 30,
     },
     mainPhotoContainer: {
+      maxWidth: 300,
+      maxHeight: 300,
       elevation: 5,
       shadowRadius: 2,
       borderRadius: 10,
     },
     mainPhoto: {
+      maxWidth: 300,
+      maxHeight: 300,
       borderRadius: 10,
     },
     text: {
