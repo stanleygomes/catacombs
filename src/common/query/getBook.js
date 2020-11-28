@@ -19,6 +19,9 @@ const query = `
     {{#name}}
     and b.name like '%:name%'
     {{/name}}
+    {{#testament_id}}
+    and b.testament_id = :testament_id
+    {{/testament_id}}
   group by
     b.id
     , b.name

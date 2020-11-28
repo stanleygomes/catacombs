@@ -30,7 +30,6 @@ const style = theme => {
       paddingTop: 10,
       paddingLeft: 20,
       paddingRight: 20,
-      paddingBottom: 20,
       backgroundColor: themeStyle[theme].backgroundPrimary,
       borderBottomWidth: 1,
       borderBottomColor: themeStyle[theme].seventh,

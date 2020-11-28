@@ -57,6 +57,8 @@ export default {
   chapters: 'Chapters',
   chapter: 'Chapter',
   verses: 'Verses',
+  newTestament: 'New testament',
+  oldTestament: 'Old testament',
   typeHereSearch: 'Type here to search',
   bibleVersion: 'Bible version',
   bibleVersionDescription: 'Here you can choose a specific version of Bible.',

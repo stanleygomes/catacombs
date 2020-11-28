@@ -8,6 +8,7 @@ import MenuContainer from '../../component/MenuContainer';
 import MenuItemIcon from '../../component/MenuItemIcon';
 import TextInput from '../../component/TextInput';
 import Loading from '../../component/Loading';
+import Tabs from '../../component/Tabs';
 import BibleVersion from '../BibleVersion';
 import bibleService from '../../service/bible';
 import translateService from '../../service/translate';
@@ -21,6 +22,17 @@ const Read = () => {
   const inputPlaceholder = translateService.translate('typeHereSearch');
   const chapterText = translateService.translate('chapters');
   const appContext = useContext(AppContext);
+  const [testamentActiveId, setTestamentActiveId] = useState(1);
+  const testaments = [
+    {
+      id: 1,
+      text: 'oldTestament',
+    },
+    {
+      id: 2,
+      text: 'newTestament',
+    },
+  ];
 
   const handleNavigate = (to, params = null) => {
     navigate(to, params);
@@ -52,6 +64,7 @@ const Read = () => {
     const bibleVersionId = appContext.appConfig.bibleVersionIdActive;
     const params = {
       name: e,
+      testament_id: testamentActiveId,
     };
 
     getBooks(bibleVersionId, params);
@@ -63,6 +76,18 @@ const Read = () => {
     if (bibleVersionId != null) {
       getBooks(bibleVersionId, {});
     }
+  };
+
+  const handleChangeTestament = testament => {
+    setTestamentActiveId(testament.id);
+
+    const bibleVersionId = appContext.appConfig.bibleVersionIdActive;
+    const params = {
+      name: searchBarInputValue,
+      testament_id: testament.id,
+    };
+
+    getBooks(bibleVersionId, params);
   };
 
   // useFocusEffect(
@@ -79,7 +104,11 @@ const Read = () => {
     const bibleVersionId = appContext.appConfig.bibleVersionIdActive;
 
     if (bibleVersionId != null) {
-      getBooks(bibleVersionId, {});
+      const params = {
+        testament_id: testamentActiveId,
+      };
+
+      getBooks(bibleVersionId, params);
     }
   }, []);
 
@@ -110,6 +139,12 @@ const Read = () => {
                   iconSize={20}
                   iconStyle={style(appConfig.theme).searchInputIcon}
                   name="search"
+                />
+                <Tabs
+                  theme={appConfig.theme}
+                  data={testaments}
+                  itemActive={testamentActiveId}
+                  onTabSelect={handleChangeTestament}
                 />
               </View>
               <ScrollView style={{ ...style(appConfig.theme).container }}>
