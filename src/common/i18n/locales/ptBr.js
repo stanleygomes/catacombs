@@ -60,6 +60,8 @@ export default {
   chapters: 'Capítulos',
   chapter: 'Capítulo',
   verses: 'Versículos',
+  newTestament: 'Novo testamento',
+  oldTestament: 'Antigo testamento',
   typeHereSearch: 'Digite aqui para pesquisar',
   bibleVersion: 'Versão da bíblia',
   bibleVersionDescription: 'Aqui você pode escolher uma versão específica da Bíblia.',
