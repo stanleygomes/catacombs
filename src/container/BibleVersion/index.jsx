@@ -203,6 +203,13 @@ const BibleVersion = props => {
                         style={style(appConfig.theme).listSubtitle}
                         theme={appConfig.theme}
                       />
+                      {version.id === appConfig.bibleVersionIdActive && (
+                        <Text
+                          textKey="bibleVersionSelected"
+                          style={style(appConfig.theme).listSubtitleActive}
+                          theme={appConfig.theme}
+                        />
+                      )}
                     </View>
                     <View
                       style={{
