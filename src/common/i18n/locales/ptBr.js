@@ -63,5 +63,6 @@ export default {
   typeHereSearch: 'Digite aqui para pesquisar',
   bibleVersion: 'Versão da bíblia',
   bibleVersionDescription: 'Aqui você pode escolher uma versão específica da Bíblia.',
+  bibleVersionSelected: 'Versão selecionada',
   errorRemoveBibleVersionActive: 'Você não pode remover a versão selecionada.',
 };

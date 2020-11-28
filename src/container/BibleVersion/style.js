@@ -71,6 +71,10 @@ const style = theme => {
       fontSize: 12,
       color: themeStyle[theme].forth,
     },
+    listSubtitleActive: {
+      fontSize: 12,
+      color: themeStyle[theme].primary,
+    },
     downloadProgress: {
       marginTop: 10,
       fontFamily: themeStyle.font.defaultFontFamilyBold,
