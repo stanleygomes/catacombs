@@ -21,6 +21,7 @@ const style = theme => {
       paddingTop: 50,
       paddingBottom: 30,
       paddingLeft: 20,
+      paddingRight: 20,
       shadowOpacity: 0.1,
       elevation: 2,
       backgroundColor: themeStyle[theme].backgroundPrimary,
