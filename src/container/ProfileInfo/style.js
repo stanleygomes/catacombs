@@ -28,6 +28,9 @@ const style = theme => {
     },
     inputText: {
       marginTop: 15,
+      flexDirection: 'column',
+      alignItems: 'flex-start',
+      backgroundColor: themeStyle[theme].fifth,
     },
     button: {
       marginTop: 30,

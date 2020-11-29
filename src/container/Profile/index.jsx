@@ -96,7 +96,7 @@ const Profile = () => {
                 style={style(appConfig.theme).profilePic}
               />
             )}
-            <View>
+            <ScrollView>
               {appConfig.user == null && (
                 <H1 text="appName" style={style(appConfig.theme).title} theme={appConfig.theme} />
               )}
@@ -114,7 +114,7 @@ const Profile = () => {
                   />
                 </>
               )}
-            </View>
+            </ScrollView>
             {/*
             {appConfig.user != null && (
               <>

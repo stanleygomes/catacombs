@@ -86,7 +86,6 @@ const ProfileInfo = () => {
                       styleContainer={style(appConfig.theme).inputText}
                       value={appConfig.user.email}
                       onChangeText={() => {}}
-                      editable={false}
                       name="email"
                       label="email"
                     />
