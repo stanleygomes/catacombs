@@ -9,7 +9,11 @@ const RadioButton = props => {
   const { textKey, textPlain, style, value, selectedValue, onPress, theme } = props;
 
   return (
-    <TouchableOpacity style={{ ...customStyle(theme).default, ...style }} onPress={onPress}>
+    <TouchableOpacity
+      hitSlop={{ top: 20, bottom: 20, left: 20, right: 20 }}
+      style={{ ...customStyle(theme).default, ...style }}
+      onPress={onPress}
+    >
       {value === selectedValue && (
         <AntDesign
           name="checkcircle"

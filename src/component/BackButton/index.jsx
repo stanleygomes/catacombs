@@ -15,6 +15,7 @@ const BackButton = props => {
 
   return (
     <TouchableOpacity
+      hitSlop={{ top: 20, bottom: 20 }}
       style={{ ...customStyle(theme).default, ...style }}
       onPress={handleBackButton}
     >
