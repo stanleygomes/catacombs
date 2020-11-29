@@ -7,7 +7,11 @@ const Clickable = props => {
   const { style, children, onPress, theme } = props;
 
   return (
-    <TouchableOpacity style={{ ...customStyle(theme).default, ...style }} onPress={onPress}>
+    <TouchableOpacity
+      hitSlop={{ top: 20, bottom: 20, left: 20, right: 20 }}
+      style={{ ...customStyle(theme).default, ...style }}
+      onPress={onPress}
+    >
       {children}
     </TouchableOpacity>
   );
