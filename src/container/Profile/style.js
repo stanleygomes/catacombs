@@ -27,7 +27,7 @@ const style = theme => {
       backgroundColor: themeStyle[theme].backgroundPrimary,
     },
     profilePic: {
-      borderRadius: 20,
+      borderRadius: 100,
     },
     title: {
       marginLeft: 25,

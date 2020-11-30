@@ -65,8 +65,8 @@ const SignIn = () => {
         } else {
           firebaseService
             .onSignIn(googleReponse)
-            .then(() => {
-              configUpdateData.user = googleReponse.user;
+            .then(loggedUser => {
+              configUpdateData.user = loggedUser.user;
 
               configService.put(configUpdateData).then(response => {
                 setLoading(false);

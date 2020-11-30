@@ -32,9 +32,8 @@ const SavedVerse = () => {
     setIsPanelActive(false);
   };
 
-  const getVerse = verseId => {
-    const collection = appContext.appConfig.user.id;
-    const document = verseId;
+  const getVerse = document => {
+    const collection = appContext.appConfig.user.uid;
 
     setSelectedColor(null);
     setSaveInputValue(null);
@@ -55,7 +54,7 @@ const SavedVerse = () => {
   };
 
   const getSavedVerses = () => {
-    const collection = appContext.appConfig.user.id;
+    const collection = appContext.appConfig.user.uid;
 
     setLoading(true);
 
@@ -81,7 +80,7 @@ const SavedVerse = () => {
       obs: saveInputValue,
     };
 
-    const collection = appContext.appConfig.user.id;
+    const collection = appContext.appConfig.user.uid;
     const document = `${data.bookName}-${data.chapter}-${data.verse}`;
 
     firebaseService
@@ -99,13 +98,15 @@ const SavedVerse = () => {
     const data = {
       text: selectedVerse.text,
       bookName: selectedVerse.bookName,
+      bookId: selectedVerse.bookId,
       chapter: selectedVerse.chapter,
       verse: selectedVerse.verse,
+      bibleVersion: appContext.appConfig.bibleVersionIdActive,
       color: selectedColor,
       obs: saveInputValue,
     };
 
-    const collection = appContext.appConfig.user.id;
+    const collection = appContext.appConfig.user.uid;
     const document = `${data.bookName}-${data.chapter}-${data.verse}`;
 
     firebaseService

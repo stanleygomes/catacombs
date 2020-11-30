@@ -38,6 +38,10 @@ const onSignIn = googleUser => {
   return new Promise((resolve, reject) => {
     // we need to register an observer on firebase auth to make sure auth is initialized.
     Firebase.auth().onAuthStateChanged(firebaseUser => {
+      const { uid } = firebaseUser;
+      const firebaseAuthResponse = { ...googleUser };
+      firebaseAuthResponse.user.uid = uid;
+
       const isSignedInUser = isUserEqual(googleUser, firebaseUser);
 
       // check if we are already signed-in Firebase with the correct user.
@@ -51,7 +55,7 @@ const onSignIn = googleUser => {
         // sign in with credential from the Google user.
         Firebase.auth()
           .signInWithCredential(credential)
-          .then(() => resolve(googleUser))
+          .then(() => resolve(firebaseAuthResponse))
           .catch(error => {
             const errorReject = `Error code: ${error.code}. Error message: ${error.message}. Error email: ${error.email}. Error credential: ${error.credential}`;
             reject(errorReject);

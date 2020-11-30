@@ -10,6 +10,8 @@ const AppContext = createContext({
     bibleVersionsIdsAvailable: [],
     bibleVersionIdActive: null,
     user: {
+      id: null,
+      uid: null,
       name: null,
       email: null,
       familyName: null,

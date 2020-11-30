@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect, useState } from 'react';
+import React, { useCallback, useContext, useState } from 'react';
 import * as Sentry from 'sentry-expo';
 import { ScrollView, View } from 'react-native';
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
@@ -90,27 +90,19 @@ const Read = () => {
     getBooks(bibleVersionId, params);
   };
 
-  // useFocusEffect(
-  //   useCallback(() => {
-  //     const bibleVersionId = appContext.appConfig.bibleVersionIdActive;
+  useFocusEffect(
+    useCallback(() => {
+      const bibleVersionId = appContext.appConfig.bibleVersionIdActive;
 
-  //     if (bibleVersionId != null) {
-  //       getBooks(bibleVersionId, {});
-  //     }
-  //   }, []),
-  // );
+      if (bibleVersionId != null) {
+        const params = {
+          testament_id: testamentActiveId,
+        };
 
-  useEffect(() => {
-    const bibleVersionId = appContext.appConfig.bibleVersionIdActive;
-
-    if (bibleVersionId != null) {
-      const params = {
-        testament_id: testamentActiveId,
-      };
-
-      getBooks(bibleVersionId, params);
-    }
-  }, []);
+        getBooks(bibleVersionId, params);
+      }
+    }, []),
+  );
 
   return (
     <AppContext.Consumer>

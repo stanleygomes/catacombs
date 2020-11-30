@@ -29,7 +29,7 @@ const Tabs = props => {
           }
 
           return (
-            <Clickable onPress={() => onTabSelect(item)} theme={theme}>
+            <Clickable key={Math.random()} onPress={() => onTabSelect(item)} theme={theme}>
               <Text textKey={item.text} style={style} theme={theme} />
             </Clickable>
           );
