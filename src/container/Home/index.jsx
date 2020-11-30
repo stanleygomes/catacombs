@@ -68,7 +68,7 @@ const Home = () => {
         })
         .catch(error => {
           Sentry.Native.captureMessage(error.message);
-      });
+        });
     } else {
       setVerseOfDay(verseOfDayContext);
     }

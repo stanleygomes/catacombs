@@ -41,7 +41,7 @@ const Chapter = ({ route }) => {
     setIsPanelActive(true);
 
     if (loggedUser != null) {
-      const collection = appContext.appConfig.user.id;
+      const collection = appContext.appConfig.user.uid;
       const document = `${data.book_name}-${data.chapter}-${data.verse}`;
 
       setSelectedColor(null);
@@ -106,15 +106,17 @@ const Chapter = ({ route }) => {
     setLoading(true);
     const data = {
       text: selectedVerse.text,
+      bookId: selectedVerse.book_id,
       bookName: selectedVerse.book_name,
       chapter: selectedVerse.chapter,
       verse: selectedVerse.verse,
+      bibleVersion: appContext.appConfig.bibleVersionIdActive,
       color: selectedColor,
       obs: saveInputValue,
     };
 
-    const collection = appContext.appConfig.user.id;
-    const document = `${data.book_name}-${data.chapter}-${data.verse}`;
+    const collection = appContext.appConfig.user.uid;
+    const document = `${data.bookName}-${data.chapter}-${data.verse}`;
 
     firebaseService
       .saveFirestore(collection, document, data)
