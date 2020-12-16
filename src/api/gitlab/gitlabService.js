@@ -24,7 +24,8 @@ const getAttributes = data => {
     iid: data.object_attributes != null ? data.object_attributes.iid : '',
     mergeStatus: data.object_attributes != null ? data.object_attributes.merge_status : '',
     title: data.object_attributes != null ? data.object_attributes.title : '',
-    userName: data.user != null ? data.user.name : ''
+    userName: data.user != null ? data.user.name : '',
+    message: data.message != null ? data.message : ''
   }
 
   if (data.ref != null) {
@@ -100,6 +101,8 @@ const hook = (req, res) => {
     }
 
     if (request != null) {
+      slackHookUrl = 'REMOVED
+
       http.post(slackHookUrl, request).then(resp => {
         console.log('Hook executado com sucesso!')
 

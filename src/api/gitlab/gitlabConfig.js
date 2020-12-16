@@ -91,7 +91,13 @@ Tem merge request aberto por *${data.userName}* para revisão no projeto *${data
 }
 
 const getTagMessage = data => {
-  return `:rocket: Deploy do projeto *${data.projectName}* em *Produção* - Tag: *${data.tagVersion}*. Responsável: *${data.tagAuthor}* [${data.squadName}]`
+  const message = `:rocket: Deploy do projeto *${data.projectName}* em *Produção* - Tag: *${data.tagVersion}*. Responsável: *${data.tagAuthor}* [${data.squadName}]`
+
+  if (data.message != null) {
+    return `${message}. Relacionado aos cards: ${data.message}`
+  }
+
+  return message
 }
 
 module.exports = {
