@@ -84,15 +84,10 @@ const projects = [
 
 const getPrMessage = data => {
   return `
-:chocolate_bar: Tem merge request novo para aprovar no projeto *${data.projectName}*, dá uma olhada aqui nesse link:
-
-${data.repositoryUrl}/merge_requests/${data.iid}
-
-Branch origem: *${data.branchSource}*
-Branch destino: *${data.branchTarget}*
-Mensagem: *${data.title}*
-Quem solicitou: *${data.userName}*
+Tem merge request aberto por *${data.userName}* para revisão no projeto *${data.projectName}*, da branch origem *${data.branchSource}* para a branch destino *${data.branchTarget}*. Dá uma olhada aqui nesse link:
+:chocolate_bar: ${data.repositoryUrl}/merge_requests/${data.iid}
 `
+  // Resumo: *${data.title}*
 }
 
 const getTagMessage = data => {
