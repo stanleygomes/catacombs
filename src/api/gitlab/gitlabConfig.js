@@ -94,7 +94,7 @@ const getTagMessage = data => {
   const message = `:rocket: Deploy do projeto *${data.projectName}* em *Produção* - Tag: *${data.tagVersion}*. Responsável: *${data.tagAuthor}* [${data.squadName}]`
 
   if (data.message != null) {
-    return `${message}. Relacionado aos cards: ${data.message}`
+    return `${message}. Card(s): *${data.message}*`
   }
 
   return message
