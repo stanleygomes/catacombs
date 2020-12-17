@@ -112,7 +112,7 @@ const hook = (req, res) => {
         const pipelineBranch = attributes.pipelineBranch
         const pipelineStatus = attributes.pipelineStatus
 
-        if (pipelineBranch === 'automacao/restoredb' && pipelineStatus !== 'skipped') {
+        if (pipelineBranch === 'automacao/restoredb' && pipelineStatus !== 'skipped' && pipelineStatus !== 'pending') {
           if (attributes.build != null && attributes.build.finished_at == null) {
             // started
             textTemplate = config.getPipelineStartMessage(attributes)
