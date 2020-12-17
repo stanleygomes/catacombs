@@ -28,11 +28,30 @@ const getAttributes = data => {
     message: data.message != null ? data.message : ''
   }
 
+  // tag push action
   if (data.ref != null) {
     const tag = data.ref.replace('refs/tags/', '')
 
     attributes.tagVersion = tag.trim()
     attributes.tagAuthor = data.user_name
+  }
+
+  // pipeline action
+  if (attributes.action === 'pipeline') {
+    attributes.pipelineBranch = data.object_attributes.ref
+    attributes.pipelineStatus = data.object_attributes.status
+    if (data.builds != null && data.builds.length > 0) {
+      const build = data.builds[0]
+
+      attributes.build = {
+        id: build.id,
+        stage: build.stage,
+        stageName: build.name,
+        status: build.status,
+        started_at: build.started_at,
+        finished_at: build.finished_at
+      }
+    }
   }
 
   return attributes
@@ -88,8 +107,31 @@ const hook = (req, res) => {
         }
       }
 
+      // pipeline execution (expecific for restore database)
+      if (attributes.action === 'pipeline') {
+        const pipelineBranch = attributes.pipelineBranch
+        const pipelineStatus = attributes.pipelineStatus
+
+        if (pipelineBranch === 'automacao/restoredb' && pipelineStatus !== 'skipped') {
+          if (attributes.build != null && attributes.build.finished_at == null) {
+            // started
+            textTemplate = config.getPipelineStartMessage(attributes)
+          } else if (attributes.build != null && attributes.build.finished_at != null) {
+            // ended
+            textTemplate = config.getPipelineEndMessage(attributes)
+          } else {
+            resolve('Pipeline não executada')
+          }
+
+          request = {
+            text: textTemplate
+          }
+        }
+      }
+
       // push tag
       if (attributes.action === 'tag_push') {
+        // change channel to push the message
         slackHookUrl = config.squads.tribo.slackChannel
         attributes.squadName = squadProject.squadName
         textTemplate = config.getTagMessage(attributes)

@@ -100,9 +100,19 @@ const getTagMessage = data => {
   return message
 }
 
+const getPipelineStartMessage = data => {
+  return `:rocket: Iniciando restore de banco de dados via pipeline *${data.build.stageName}* para o projeto *${data.projectName}*. Responsável: *${data.userName}*`
+}
+
+const getPipelineEndMessage = data => {
+  return `:flat-check: Restore de banco de dados via pipeline *${data.build.stageName}* finalizado para o projeto *${data.projectName}*. Responsável: *${data.userName}*`
+}
+
 module.exports = {
   projects,
   squads,
   getPrMessage,
-  getTagMessage
+  getTagMessage,
+  getPipelineStartMessage,
+  getPipelineEndMessage
 }
