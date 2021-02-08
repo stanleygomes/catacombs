@@ -36,8 +36,15 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1008791411753-ok3sgrp7i0a192mbc0r53518ohrgk0jc.apps.googleusercontent.com",
+              "client_id": "1008791411753-bp44ulsbo5d93pupb357kh0oe13jc70k.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "1008791411753-v820tatu7as8p09jfaoh1f5gmc9gsvee.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.abibliasagrada.app"
+              }
             }
           ]
         }
@@ -65,8 +72,15 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1008791411753-ok3sgrp7i0a192mbc0r53518ohrgk0jc.apps.googleusercontent.com",
+              "client_id": "1008791411753-bp44ulsbo5d93pupb357kh0oe13jc70k.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "1008791411753-v820tatu7as8p09jfaoh1f5gmc9gsvee.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.abibliasagrada.app"
+              }
             }
           ]
         }

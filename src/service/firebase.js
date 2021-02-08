@@ -38,9 +38,11 @@ const onSignIn = googleUser => {
   return new Promise((resolve, reject) => {
     // we need to register an observer on firebase auth to make sure auth is initialized.
     Firebase.auth().onAuthStateChanged(firebaseUser => {
-      const { uid } = firebaseUser;
       const firebaseAuthResponse = { ...googleUser };
-      firebaseAuthResponse.user.uid = uid;
+      if (firebaseUser != null) {
+        const { uid } = firebaseUser;
+        firebaseAuthResponse.user.uid = uid;
+      }
 
       const isSignedInUser = isUserEqual(googleUser, firebaseUser);
 
