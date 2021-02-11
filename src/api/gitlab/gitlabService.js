@@ -1,5 +1,7 @@
-const http = require('../../utils/http')
-const config = require('./gitlabConfig')
+const config = require('../../config')
+const slackConfig = config.slack
+const gitlabConfig = config.gitlab
+const slackService = require('../slack/slackService')
 
 /*
   App slack:
@@ -58,13 +60,13 @@ const getAttributes = data => {
 }
 
 const getProjectById = projectId => {
-  const projects = config.projects
+  const projects = gitlabConfig.projects
 
   for (let i = 0; i < projects.length; i++) {
     const project = projects[i]
 
     if (project.id === projectId) {
-      const squadConfig = config.squads[project.squad]
+      const squadConfig = slackConfig.squads[project.squad]
 
       project.squadName = squadConfig.name
       project.slackChannel = squadConfig.slackChannel
@@ -99,7 +101,7 @@ const hook = (req, res) => {
         // open merge request
         const branchTarget = attributes.branchTarget
         if (attributes.mergeStatus === 'unchecked' && (branchTarget === 'develop' || branchTarget === 'projetos')) {
-          textTemplate = config.getPrMessage(attributes)
+          textTemplate = slackService.getPrMessage(attributes)
 
           request = {
             text: textTemplate
@@ -115,10 +117,10 @@ const hook = (req, res) => {
         if (pipelineBranch === 'automacao/restoredb' && pipelineStatus !== 'skipped' && pipelineStatus !== 'pending') {
           if (attributes.build != null && attributes.build.finished_at == null) {
             // started
-            textTemplate = config.getPipelineStartMessage(attributes)
+            textTemplate = slackService.getPipelineStartMessage(attributes)
           } else if (attributes.build != null && attributes.build.finished_at != null) {
             // ended
-            textTemplate = config.getPipelineEndMessage(attributes)
+            textTemplate = slackService.getPipelineEndMessage(attributes)
           } else {
             resolve('Pipeline não executada')
           }
@@ -132,9 +134,9 @@ const hook = (req, res) => {
       // push tag
       if (attributes.action === 'tag_push') {
         // change channel to push the message
-        slackHookUrl = config.squads.tribo.slackChannel
+        slackHookUrl = slackConfig.squads.tribo.slackChannel
         attributes.squadName = squadProject.squadName
-        textTemplate = config.getTagMessage(attributes)
+        textTemplate = slackService.getTagMessage(attributes)
 
         request = {
           text: textTemplate
@@ -142,25 +144,15 @@ const hook = (req, res) => {
       }
     }
 
-    if (request != null) {
-      http.post(slackHookUrl, request).then(resp => {
-        console.log('Hook executado com sucesso!')
+    slackHookUrl = 'REMOVED
 
-        resolve({
-          status: resp.status,
-          statusText: resp.statusText,
-          headers: resp.headers,
-          config: {
-            url: resp.config.url,
-            post: resp.config.post,
-            data: resp.config.data
-          },
-          message: 'Hook executado com sucesso',
-          slackHookUrl: slackHookUrl,
-          attributes: attributes,
-          request: request
-        })
-      }).catch(err => reject(err))
+    // boardId: 1628485
+
+    if (request != null) {
+      slackService
+        .pushMessage(slackHookUrl, request, attributes)
+        .then(r => resolve(r))
+        .catch(error => reject(error))
     } else {
       console.log('Hook não foi executado!')
       resolve({

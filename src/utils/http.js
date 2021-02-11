@@ -25,6 +25,7 @@ const get = (url, params) => {
 const request = (method, endpoint, body, headers = {}) => {
   return new Promise((resolve, reject) => {
     const baseURL = config.request.baseUrl
+
     const h = Object.assign({}, headers, config.request.defaultHeaders)
     const defaultParams = {
       method: method,
