@@ -1,7 +1,9 @@
 const config = require('../../config')
+const slackService = require('../slack/slackService')
+const swiftKanbanService = require('../swiftKanban/swiftKanbanService')
+
 const slackConfig = config.slack
 const gitlabConfig = config.gitlab
-const slackService = require('../slack/slackService')
 
 /*
   App slack:
@@ -27,7 +29,8 @@ const getAttributes = data => {
     mergeStatus: data.object_attributes != null ? data.object_attributes.merge_status : '',
     title: data.object_attributes != null ? data.object_attributes.title : '',
     userName: data.user != null ? data.user.name : '',
-    message: data.message != null ? data.message : ''
+    message: data.message != null ? data.message : '',
+    cards: []
   }
 
   // tag push action
@@ -136,6 +139,13 @@ const hook = (req, res) => {
         // change channel to push the message
         slackHookUrl = slackConfig.squads.tribo.slackChannel
         attributes.squadName = squadProject.squadName
+
+        if (attributes.message != null && attributes.message !== '') {
+          // get an array of cards
+          attributes.cards = attributes.message.split(',')
+          attributes.cards = attributes.cards.map(item => item.trim())
+        }
+
         textTemplate = slackService.getTagMessage(attributes)
 
         request = {
@@ -144,14 +154,22 @@ const hook = (req, res) => {
       }
     }
 
-    slackHookUrl = 'REMOVED
-
-    // boardId: 1628485
-
     if (request != null) {
       slackService
         .pushMessage(slackHookUrl, request, attributes)
-        .then(r => resolve(r))
+        .then(r => {
+          if (attributes.cards != null && attributes.cards.length > 0) {
+            const cards = attributes.cards.map(cardCode => {
+              return swiftKanbanService
+                .transferCardToDelivered(cardCode)
+            })
+
+            Promise.all(cards)
+              .then(values => resolve(values))
+          } else {
+            resolve(r)
+          }
+        })
         .catch(error => reject(error))
     } else {
       console.log('Hook não foi executado!')

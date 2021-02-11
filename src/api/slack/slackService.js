@@ -34,8 +34,8 @@ Tem merge request aberto por *${data.userName}* para revisão no projeto *${data
 const getTagMessage = data => {
   const message = `:rocket: Deploy do projeto *${data.projectName}* em *Produção* - Tag: *${data.tagVersion}*. Responsável: *${data.tagAuthor}* [${data.squadName}]`
 
-  if (data.message != null && data.message !== '') {
-    return `${message}. Card(s): *${data.message}*`
+  if (data.cards != null && data.cards.length > 0) {
+    return `${message}. Card(s): *${data.cards.join(',')}*`
   }
 
   return message

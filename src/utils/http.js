@@ -2,9 +2,9 @@ const axios = require('axios')
 const i18nUtils = require('./i18n')
 const config = require('../config')
 
-const post = (url, params) => {
+const post = (url, params, headers = {}) => {
   return new Promise((resolve, reject) => {
-    request('post', url, params).then((response) => {
+    request('post', url, params, headers).then((response) => {
       resolve(response)
     }).catch((error) => {
       reject(error)
@@ -12,9 +12,19 @@ const post = (url, params) => {
   })
 }
 
-const get = (url, params) => {
+const put = (url, params, headers = {}) => {
   return new Promise((resolve, reject) => {
-    request('get', url, params).then((response) => {
+    request('put', url, params, headers).then((response) => {
+      resolve(response)
+    }).catch((error) => {
+      reject(error)
+    })
+  })
+}
+
+const get = (url, params, headers = {}) => {
+  return new Promise((resolve, reject) => {
+    request('get', url, params, headers).then((response) => {
       resolve(response)
     }).catch((error) => {
       reject(error)
@@ -36,7 +46,7 @@ const request = (method, endpoint, body, headers = {}) => {
       responseType: config.request.responseType
     }
 
-    axios(defaultParams).then((response) => {
+    axios(defaultParams).then(response => {
       resolve(response)
     }).catch((error) => {
       reject(error)
@@ -66,5 +76,6 @@ module.exports = {
   error,
   json,
   post,
+  put,
   get
 }

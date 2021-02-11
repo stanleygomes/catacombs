@@ -29,7 +29,7 @@ const appConfig = {
   privateKey: process.env.APP_KEY,
   request: {
     baseUrl: '',
-    timeout: 1000,
+    timeout: 60000,
     responseType: 'json',
     defaultHeaders: {
       'Content-Type': 'application/json'
@@ -122,7 +122,11 @@ const appConfig = {
     }
   },
   swiftKanban: {
-    baseURL: 'https://login.swiftkanban.com/restapi/'
+    baseURL: 'https://login.swiftkanban.com/restapi',
+    authorizationToken: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJwZXJzb25JZCI6MTQ3NTg2MSwiYXBwQWNjb3VudElkIjoxNTkwNzY3fQ.c7pvlcb-X6y5HliEdlF2tfTxynz-IpJVkOdXs_K8ZbQ',
+    boardId: 1628485,
+    lineToId: 1704022,
+    columnToId: 2827389
   }
 }
 
