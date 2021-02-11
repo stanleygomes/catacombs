@@ -154,18 +154,21 @@ const hook = (req, res) => {
       }
     }
 
+    // slackHookUrl = 'REMOVED
+
     if (request != null) {
       slackService
         .pushMessage(slackHookUrl, request, attributes)
         .then(r => {
           if (attributes.cards != null && attributes.cards.length > 0) {
-            const cards = attributes.cards.map(cardCode => {
-              return swiftKanbanService
-                .transferCardToDelivered(cardCode)
-            })
+            // const cards = attributes.cards.map(cardCode => {
+            //   return swiftKanbanService
+            //     .transferCardToDelivered(cardCode)
+            // })
 
-            Promise.all(cards)
-              .then(values => resolve(values))
+            // Promise.all(cards)
+            //   .then(values => resolve(values))
+            resolve(r)
           } else {
             resolve(r)
           }
