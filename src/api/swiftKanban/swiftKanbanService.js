@@ -2,17 +2,36 @@ const config = require('../../config')
 const http = require('../../utils/http')
 
 const swiftKanbanConfig = config.swiftKanban
-const swiftKanbanHeaders = {
-  AuthorizationToken: swiftKanbanConfig.authorizationToken,
-  boardId: swiftKanbanConfig.boardId
+
+const getConfig = squad => {
+  if (swiftKanbanConfig == null || swiftKanbanConfig.squads == null || swiftKanbanConfig.squads[squad] == null) {
+    return null
+  }
+
+  return {
+    authorizationToken: swiftKanbanConfig.squads[squad].authorizationToken,
+    boardId: swiftKanbanConfig.squads[squad].boardId,
+    lineToId: swiftKanbanConfig.squads[squad].lineToId,
+    columnToId: swiftKanbanConfig.squads[squad].columnToId,
+    headers: {
+      AuthorizationToken: swiftKanbanConfig.squads[squad].authorizationToken,
+      boardId: swiftKanbanConfig.squads[squad].boardId
+    }
+  }
 }
 
-const getCard = cardCode => {
+const getCard = (squad, cardCode) => {
   return new Promise((resolve, reject) => {
-    const endpoint = `${swiftKanbanConfig.baseURL}/card-operations/boards/${swiftKanbanConfig.boardId}/cards?search=${cardCode}`
+    const skConfig = getConfig(squad)
+
+    if (skConfig == null) {
+      resolve(null)
+    }
+
+    const endpoint = `${swiftKanbanConfig.baseURL}/card-operations/boards/${skConfig.boardId}/cards?search=${cardCode}`
 
     http
-      .get(endpoint, '', swiftKanbanHeaders)
+      .get(endpoint, '', skConfig.headers)
       .then(r => {
         if (r.data && r.data.Response && r.data.Response.details && r.data.Response.details.cardDetails) {
           const { cardDetails } = r.data.Response.details
@@ -26,14 +45,20 @@ const getCard = cardCode => {
   })
 }
 
-const transferCard = (cardId, lineToId, columnToId) => {
+const transferCard = (squad, card, lineToId, columnToId) => {
   return new Promise((resolve, reject) => {
-    const endpoint = `${swiftKanbanConfig.baseURL}/card-operations/boards/${swiftKanbanConfig.boardId}/cards/move/board`
+    const skConfig = getConfig(squad)
+
+    if (skConfig == null) {
+      resolve(null)
+    }
+
+    const endpoint = `${swiftKanbanConfig.baseURL}/card-operations/boards/${skConfig.boardId}/cards/move/board`
     const data = {
       cardDetails: [
         {
-          cardType: 'STK',
-          cardUniqueId: cardId,
+          cardType: card.code.substr(0, 3),
+          cardUniqueId: card.id,
           toSwimId: lineToId,
           toQkeyId: columnToId
         }
@@ -41,19 +66,28 @@ const transferCard = (cardId, lineToId, columnToId) => {
     }
 
     http
-      .put(endpoint, data, swiftKanbanHeaders)
+      .put(endpoint, data, skConfig.headers)
       .then(r => resolve(r))
       .catch(error => reject(error))
   })
 }
 
-const transferCardToDelivered = cardCode => {
+const transferCardToDelivered = (squad, cardCode) => {
   return new Promise((resolve, reject) => {
-    getCard(cardCode)
+    getCard(squad, cardCode)
       .then(cardData => {
-        const cardId = Number(cardData.id)
+        const card = {
+          id: Number(cardData.id),
+          code: cardCode
+        }
 
-        transferCard(cardId, swiftKanbanConfig.lineToId, swiftKanbanConfig.columnToId)
+        const skConfig = getConfig(squad)
+
+        if (skConfig == null) {
+          resolve(null)
+        }
+
+        transferCard(squad, card, skConfig.lineToId, skConfig.columnToId)
           .then(r => resolve(r))
           .catch(error => reject(error))
       })

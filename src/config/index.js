@@ -123,10 +123,20 @@ const appConfig = {
   },
   swiftKanban: {
     baseURL: 'https://login.swiftkanban.com/restapi',
-    authorizationToken: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJwZXJzb25JZCI6MTQ3NTg2MSwiYXBwQWNjb3VudElkIjoxNTkwNzY3fQ.c7pvlcb-X6y5HliEdlF2tfTxynz-IpJVkOdXs_K8ZbQ',
-    boardId: 1628485,
-    lineToId: 1704022,
-    columnToId: 2827389
+    squads: {
+      planejamento: {
+        authorizationToken: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJwZXJzb25JZCI6MTQ3NTg2MSwiYXBwQWNjb3VudElkIjoxNTkwNzY3fQ.c7pvlcb-X6y5HliEdlF2tfTxynz-IpJVkOdXs_K8ZbQ',
+        boardId: 1628485,
+        lineToId: 1704022,
+        columnToId: 2827389
+      },
+      comercial: {
+        authorizationToken: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJwZXJzb25JZCI6MTQ3NTg2MCwiYXBwQWNjb3VudElkIjoxNTkwNzY3fQ.9U_0LXNKkOplMa0i92_e7UU8As5ahiorwG0CXhQWWq8',
+        boardId: 1628483,
+        lineToId: 1706762,
+        columnToId: 2825588
+      }
+    }
   }
 }
 
