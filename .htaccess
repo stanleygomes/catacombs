@@ -1,0 +1,22 @@
+# htaccess
+
+<IfModule mod_rewrite.c>
+
+	RewriteBase /
+
+	RewriteEngine On
+
+	RewriteCond %{SCRIPT_FILENAME} !-d
+	RewriteCond %{SCRIPT_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !\.(css|js|txt|swf|pdf|jpg|gif|png|ico|zip|rar|html?)$
+
+	AddOutputFilterByType DEFLATE  text/javascript text/css application/javascript
+	
+	RewriteRule	^(.*)$ index.php?pg=$1
+
+	Options -Indexes
+	
+	errorDocument 404 /404
+	errorDocument 403 /403
+
+</IfModule>
