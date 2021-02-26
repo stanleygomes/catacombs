@@ -1,0 +1,375 @@
+/*--------------------------RESETAR CSS--------------------------*/
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video,span{border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0}
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}
+body{line-height:1}
+ol,ul,li{list-style:none}
+blockquote,q{quotes:none}
+blockquote:before,blockquote:after,q:before,q:after{content:none}
+table{border-collapse:collapse;border-spacing:0}
+html,body{height:100%}
+::selection{background:#2d89ef;color:#fff;}
+@font-face{font-family:'titillium-reg';src:url('/link/fonte/titillium-reg.eot');src:url('/link/fonte/titillium-reg.ttf') format('truetype');font-weight:normal;font-style:normal}
+@font-face{font-family:'titillium-bold';src:url('/link/fonte/titillium-bold.eot');src:url('/link/fonte/titillium-bold.ttf') format('truetype');font-weight:normal;font-style:normal}
+body{font:75%/1.4 "titillium-reg",arial,sans-serif;text-align:center;margin:0;padding:0;background-color:#f2f2f2;background-repeat:no-repeat;background-position:center center;background-size:100% 100%}
+:focus{outline:0}
+strong{font-weight:700}
+a:link,a:visited{text-decoration:none;color:#2d89ef}
+a:hover{text-decoration:none;color:#333}
+img{border:none}
+input[type=text],input[type=password],input[type=submit],input[type=button],textarea,select{-webkit-appearance:none;-webkit-border-radius:0}
+select{background:#fff url(/imagens/select.png) no-repeat 98% center}
+.clear{clear:both}
+/*-----------------------PADRAO--------------------------------*/
+.img{background:#f2f2f2;border:1px solid #ddd}
+.flash{width:100%;height:100%;background:#333}
+.txt{min-height:30px;font-size:14px;color:#555;padding-left:5px;border:2px solid #ddd}
+.txt:hover{background-color:#fcfcfc;border-color:#aaa}
+.txt:focus{background-color:#fcfcfc;border-color:#2d89ef}
+textarea{font-size:16px;resize:none;background:#fff url(/imagens/quotes.png) 10px 10px no-repeat;padding:5px}
+.btn{height:35px;text-align:center;font-size:18px;color:#fff;line-height:25px;background-color:#2d89ef;border:2px solid #2d89ef;padding:0 10px}
+.btn:hover{background-color:#0072c6;border:2px solid #0072c6}
+.btn:active{background-color:#2d89ef;border:2px solid #0072c6}
+.uploadarea .btnupload{position:relative;top:40px;left:-200px;width:200px;height:30px;float:left;filter:alpha(opacity:0);-moz-opacity:0;opacity:0;cursor:pointer}
+.uploadarea .btnuploadaux{width:200px;height:60px;float:left;margin:20px 0 20px 10%;color:#fff;text-align:right;font-size:16px;background:#2d89fe url(/imagens/adm-upl.png) no-repeat 10px 5px}
+.uploadarea .btnuploadaux.btnuploadauxarq{background-image:url(/imagens/adm-arq.png)}
+.uploadarea:hover .btnuploadaux{background-color:#555}
+.uploadarea:active .btnuploadaux{background-color:#333}
+.uploadarea .btnupload,.uploadarea .btnuploadaux{border:none}
+.pretobranco:hover{filter:grayscale(100%);-webkit-filter:grayscale(100%);-moz-filter:grayscale(100%);-ms-filter:grayscale(100%);-o-filter:grayscale(100%)}
+.moldura{position:relative;display:inline-block;padding:10px;background:#fff;border:1px solid #ddd}
+.moldura::before,.moldura::after{position:absolute;content:"";top:10px;bottom:15px;left:10px;width:50%;box-shadow:0 15px 10px rgba(0,0,0,0.5);-webkit-transform:rotate(-3deg);-moz-transform:rotate(-3deg);-o-transform:rotate(-3deg);-ms-transform:rotate(-3deg);transform:rotate(-3deg);z-index:-1;behavior:url(/link/css3-ie.htc)}
+.moldura::after{right:10px;left:auto;-webkit-transform:rotate(3deg);-moz-transform:rotate(3deg);-o-transform:rotate(3deg);-ms-transform:rotate(3deg);transform:rotate(3deg);behavior:url(/link/css3-ie.htc)}
+.area3d{-webkit-perspective:600px;-moz-perspective:600px;-o-perspective:600px;perspective:600px}
+.area3d .item:active{transform:rotateY(30deg);-o-transform:rotateY(30deg);-moz-transform:rotateY(30deg);-webkit-transform:rotateY(30deg)}
+/*--------------------------JQUERY--------------------------*/
+/*BOTAO IR PARA O TOPO*/
+#irtopo{position:fixed;width:55px;height:60px;right:5px;bottom:30px;cursor:pointer;display:none;background:url(/imagens/irtopo.png) no-repeat 0 0}
+#irtopo:hover{background-position:0px -61px}
+/*AUTOCOMPLETE*/
+.ac_results{padding:0px;border:none;margin:0;margin:0;background:#fff;border-top:none;border-bottom:none;overflow:hidden;z-index:999999999999999;box-shadow:2px 1px 2px rgba(20,20,20,0.5);-moz-box-shadow:2px 1px 3px rgba(20,20,20,0.5);-webkit-box-shadow:2px 2px 3px rgba(20,20,20,0.5);behavior:url(/link/css3-ie.htc)}
+.ac_results ul{width:100%;list-style-position:outside;list-style:none;padding:0;margin:0}
+.ac_results li{height:45px;margin:0px;color:#555;cursor:default;display:block;font:menu;line-height:30px;overflow:hidden;border-bottom:1px solid #ddd}
+.ac_results li .item{height:100%;margin:5px 10px;float:left;font-family:"titillium-reg";font-size:22px;line-height:40px;color:#777;letter-spacing:-1px}
+.ac_results li .formula{width:60px;height:45px;float:left;margin-left:0px;line-height:45px;background:#e5e5e5 !important;color:#777;font-size:28px;border-right:3px solid transparent}
+.ac_results li .triang{width:0;height:0;float:left;border-left:22px solid #e5e5e5 !important;border-top:22px solid transparent;border-bottom:23px solid transparent}
+.ac_results li .busca{width:40px;height:40px;float:left;margin-left:10px;background-position:center center;background-repeat:no-repeat}
+.ac_results li .sppaginas{background-image:url(/imagens/acpaginas.png)}
+.ac_results li .splab{background-image:url(/imagens/aclab.png)}
+.ac_loading{background:url('/imagens/loading.gif') right center no-repeat}
+.ac_odd{background:transparent}
+.ac_over{background:#e5e5e5}
+/*-------------------------APLICATIVOS-------------------------*/
+.app{position:fixed;top:0px;left:0;width:100%;height:100%;margin:0px}
+.app .topo{width:100%;height:110px;float:left}
+.app .topo .titulo{float:left;margin:25px 0 0 0;font-size:50px;color:#fff}
+.app .topo #voltar{float:left;height:50px;margin:30px 10px 0 50px}
+.app .topo #voltar:hover .imagem{background-position:-60px 0}
+.app .topo #voltar:hover .texto{float:left;visibility:visible}
+.app .topo #voltar .imagem{width:55px;height:55px;float:left;margin-right:10px;background:url(/imagens/app-voltar.png) no-repeat 0 0}
+.app .topo #voltar .texto{font-size:30px;color:#fff;line-height:55px;visibility:hidden}
+.azul{background-color:#2d89ef}
+.azul2{background-color:#0173c7}
+.azul3{background-color:#00709e}
+.verde{background-color:#088a68}
+.verde2{background-color:#008a00}
+.laranja{background-color:#f7941d}
+.laranja2{background-color:#f25822}
+.vermelho{background-color:#e51400}
+.vermelho2{background-color:#ba151d}
+.roxo{background-color:#662079}
+/*------------------------PRINCIPAL-------------------------------*/
+#tudo{width:100%;float:left}
+#topo{position:fixed;z-index:999;width:100%;float:left;background:#f2f2f2}
+#topo #meio{width:100%;height:100%;float:left;margin:0 auto 0 0;padding-bottom:20px;border-bottom:1px solid #ddd;box-shadow:0 2px 1px -1px rgba(0,0,0,.1);-moz-box-shadow:0 2px 1px -1px rgba(0,0,0,.1);-webkit-box-shadow:0 2px 1px -1px rgba(0,0,0,.1)}
+#topo #meio #conteudo{width:100%;max-width:1200px;height:50px;margin:0 auto}
+#topo #meio #conteudo #logo{width:40%;float:left}
+#topo #meio #conteudo #logo .logo{width:90%;max-width:300px;float:left;margin:20px 0 0 40%}
+#topo #meio #conteudo #busca{width:45%;float:right;margin:30px 5% 0 0}
+#menu{width:100%;height:40px;float:left;background:#2d89ef}
+#menu #conteudo{width:100%;max-width:1300px;margin:0 auto}
+#menu #conteudo .item{height:36px;float:right;padding:0 15px;color:#fff;line-height:40px;font-size:22px;border-bottom:4px solid transparent}
+#menu #conteudo .item:hover{border-color:#555}
+#menu #conteudo .item:active{background:#555}
+#menu #conteudo .item.atual{background:#2d70ef}
+#menu #conteudo .tabela{position:relative;z-index:99999999;width:110px;height:100%;cursor:pointer;float:left;margin-left:20px}
+#menu #conteudo .tabela .retang{width:100%;height:75px;float:left;background:#004050 url(/imagens/tb.png) no-repeat center 20px;transition:all 0.3s;-o-transition:all 0.3s;-moz-transition:all 0.3s;-webkit-transition:all 0.5s}
+#menu #conteudo .tabela .triang{width:0;height:0;float:left;border-top:30px solid #004050;border-left:55px solid transparent;border-right:55px solid transparent}
+#menu #conteudo .tabela:hover .retang{height:90px;background-position:center 35px}
+#menu .tooltip .conteudo{position:absolute;top:60px;z-index:99999999;padding:5px 10px;float:right;margin:60px 10px 0 -;font-size:16px;color:#fff;background:#2d89ef;display:none}
+#menu .tooltip .triang{width:0;height:0;float:right;margin-top:-37px;border-bottom:10px solid #2d89ef;border-left:10px solid transparent;border-right:10px solid transparent}
+#busca{width:100%;height:100%;margin:0 auto}
+#busca #txt{width:100%;height:33px;max-width:650px;float:left;font-size:16px;color:#555;background:#fff url(/imagens/busca.png) no-repeat 100% 5px}
+#busca #txt:focus{background-position-y:-30px}
+/*------BASE---------*/
+#centro{width:100%;height:100%;float:left;margin-top:190px}
+.almeio{width:95%;max-width:1200px;margin:0 auto}
+.altotal{width:100%;height:100%;float:left}
+.pagina{width:100%;height:100%;margin:0 auto}
+.sombra{box-shadow:1px 1px 100px #777;-moz-box-shadow:1px 1px 100px #777;-webkit-box-shadow:1px 1px 100px #777;behavior:url(/link/css3-ie.htc)}
+.pagina .topo{width:100%;float:left}
+.pagina.animado{position:fixed;z-index:99999;top:50%}
+.pagina .titulo{float:left;font-size:50px;color:#fff;margin:30px 0 0 40px}
+.pagina .fechar{width:45px;height:45px;float:right;margin-right:-2px;background:url(/imagens/fechar.png) no-repeat 0 0}
+.pagina .fechar:hover{background-position:0 -51px}
+.pagina .conteudo{width:100%;height:100%;float:left;margin-top:30px}
+.pagina .esquerda{width:50%;height:100%;float:left}
+.pagina .info{color:#fff;font-size:25px}
+.pagina .imagem{float:right}
+.pagina .direita{width:50%;height:100%;float:left}
+.pagina .btn-branco{padding:0 10px;border:none;background:#fff}
+.pagina .btn-branco:hover{background:#ddd}
+.pagina .btn-branco:active{background:#555}
+/*------PAGINA INICIAL------*/
+#home{max-width:960px;min-height:100%;margin:30px auto 0;padding-bottom:50px}
+#home #eco-home{position:absolute;top:70px;right:0;z-index:999999999;width:50px;height:55px;background:#e51400 url(/imagens/eco-home.png) no-repeat right 8px}
+#home #eco-home .texto{width:200px;font-size:18px;color:#fff;float:left;margin:2px 0 0 20px;display:none}
+#home #eco-home:hover{width:280px}
+#home #eco-home:hover .texto{display:block}
+#home #conteudo{width:90%;max-width:600px;height:100%;margin:10px auto 20px}
+#home #conteudo #logo{width:100%;height:80px;float:left;margin-bottom:20px}
+#home #conteudo #logo .logo{max-width:450px;margin:0 auto}
+#home #busca .txt{max-width:100%}
+#home .linha{position:absolute;left:0;bottom:0;width:100%;height:10px;float:left}
+#home .linha .item{width:10%;height:100%;float:left}
+/*------RESULTADOS DA BUSCA------*/
+#resultados{width:100%;max-width:1200px;float:left;margin-top:-50px;padding-top:70px;background:#fff;border:1px solid #ddd}
+#resultados .bloco{width:100%;height:100%;float:left}
+#resultados .link{width:100%;float:left;margin-top:10px;color:#378cc8}
+#resultados .link:hover{color:#333}
+#resultados .negrito{font-weight:700}
+#resultados .aldireita{float:right}
+#resultados .alesquerda{float:left}
+#resultados #direita{width:75%;height:100%;float:left;background:url(/imagens/bg-lateral.jpg) repeat-y left 0}
+#resultados #direita .bloco{margin-bottom:30px}
+#resultados #direita .blocotitulo{margin-bottom:0}
+#resultados #direita #titulo{min-width:40%;height:70px;font-size:50px;line-height:70px;color:#fff;text-align:left;margin:0 0 40px;padding:0 5% 0 2%}
+#resultados #direita .titulo{width:98%;height:30px;margin:0 0 10px 4%;font-size:38px;text-align:left;color:#555}
+#resultados #direita .ferramentas{width:120px;height:35px;margin:0 0 -10px 0;float:right;border-bottom:2px solid #2d89ef}
+#resultados #direita .ferramentas .item{width:40%;height:100%;cursor:pointer;font-size:25px;text-align:center;color:#555;padding-left:10%;float:left}
+#resultados #direita .ferramentas .item:hover{color:#fff;background:#2d89ef}
+#resultados #direita .areaimagem{width:30%;height:100%;margin:10px 2%}
+#resultados #direita .areaimagem .img{width:90%;margin:10px 2%}
+#resultados #direita .texto{width:60%;height:100%;padding-left:5%;font-size:20px;color:#777;text-align:left;margin-top:10px}
+#resultados #direita .texto:first-letter{font-size:24px;margin-left:25px}
+#resultados #direita .textototal{width:92%}
+#resultados #direita .fontes{min-height:100px}
+#resultados #direita .fontes li:hover{text-decoration:underline}
+#resultados #direita .autor{width:98%;text-align:right;float:right;font-size:16px;margin-right:2%}
+#resultados #direita .autor strong{color:#2d89ef}
+#resultados #direita .texto .descobridor{width:30%;margin:10px 2%}
+#resultados #direita #video{width:80%;height:450px;margin:20px auto;background:#888 url(/imagens/busca-video.png) no-repeat center center;border:1px solid #777}
+#resultados #direita .listarel{width:95%;float:left;margin:30px 0 0 3%}
+#resultados #direita .listarel .item{width:220px;height:150px;float:left;margin:5px;border:5px solid #555}
+#resultados #direita .listarel .item .imagemrel{width:100%;height:120px;float:left}
+#resultados #direita .listarel .item .titulorel{width:100%;height:30px;float:left;color:#fff;font-size:22px;text-align:left;background:#555}
+#resultados #direita .listarel .item:hover{border-color:#2d89ef}
+#resultados #direita .listarel .item:hover .titulorel{background:#2d89ef}
+#resultados #direita .blocoautor{padding-top:10px;border-top:1px solid #ddd}
+#resultados #esquerda{width:25%;height:100%;float:left}
+#resultados #esquerda #img{width:100%;height:100%;float:left;margin-top:20px}
+#resultados #esquerda #img .img{width:90%;border:none}
+#resultados #esquerda .titulo{width:90%;height:30px;float:right;padding-top:5px;margin-top:20px;padding-left:2%;font-size:18px;font-weight:700;text-align:left;color:#fff;background:#4d90fe}
+#resultados #esquerda .titulo.quest{background:#f7941d}
+#resultados #esquerda .titulo.quest .ico{width:30px;height:30px;float:left;margin:-3px 10px 0 0;background:url(/imagens/menu-quest.png) no-repeat 0 0}
+#resultados #esquerda .quest .btn{float:right;margin-right:20px}
+#resultados #esquerda .quest .questresult{margin-top:30px;padding:5px 10px;text-align:center;font-size:20px;color:#fff;background:#2d89ef;display:none}
+#resultados #esquerda .bloco{width:90%;height:100%;float:right;padding-left:2%;padding-top:5px}
+#resultados #esquerda .bloco .item{width:100%;float:right;margin-bottom:10px;font-size:16px;text-align:left}
+#resultados #esquerda .bloco .imagembanner{width:80%;margin:5px auto;padding:2px}
+#resultados #esquerda .bloco{width:90%;height:100%;float:right;padding-left:2%;padding-top:5px}
+#resultados #esquerda .bloco .externo{line-height:30px;color:#777}
+#resultados #esquerda .bloco .caracteristicas{text-align:left !important;font-size:16px !important;color:#333 !important}
+#resultados #esquerda .bloco .caracteristicas b{font-weight:bold !important}
+#resultados #esquerda .bloco .curiosidades{text-align:left !important;font-size:16px !important;color:#333 !important}
+#resultados #esquerda .bloco .externo:hover{color:#4d90fe;text-decoration:underline}
+#resultados #esquerda .bloco .externo .wiki{background:url(/imagens/link-wiki.png) no-repeat center 0}
+#resultados #esquerda .bloco .externo .ch{background:url(/imagens/link-ch.png) no-repeat center 0}
+#resultados #esquerda .bloco .externo .imglink,#resultados #esquerda .bloco .item img{width:30px;height:30px;float:left;margin:0 4%}
+#resultados #esquerda .bloco .externo:hover .imglink{background-position:center -30px}
+#resultados #esquerda .social .item{width:100px;height:35px;float:right !important;margin:10px 10px 0 10px}
+#resultados #esquerda .social .item .fcompartilhar{width:130px;height:25px;float:right}
+#resultados #esquerda .social .fbox{width:98%;float:right;margin:30px 2% 0 0}
+#resbusca{width:90%;float:left;margin-left:5%;margin-top:-50px}
+#resbusca #lista{width:100%;height:100%;float:left;margin:20px 0}
+#resbusca #lista .conteudo{width:31%;height:140px;float:left;padding:5px}
+#resbusca #lista .conteudo:hover{background:#333}
+#resbusca #lista .item{width:97%;height:100%;float:left;text-align:left;color:#fff;padding-left:3%}
+#resbusca #lista .item.bgbusca{background:#2d89ef}
+#resbusca #lista .item.bglab{background:#088a68}
+#resbusca #lista .item.bgvideos{background:#b81b1b}
+#resbusca #lista .item .titulo{font-size:35px}
+#resbusca #lista .item .imagem{width:40px;height:35px;float:left;margin:10px 10px 0 5px;background-image:url(/imagens/ac.png);background-repeat:no-repeat}
+#resbusca #lista .item .imagem.imlab{background-position:0 -3px}
+#resbusca #lista .item .imagem.imbusca{background-position:0 -43px}
+#resbusca #lista .item .imagem.imvideos{background-position:0 -82px}
+#resbusca #lista .item .texto{font-size:14px;margin-top:10px}
+#resbusca #imgerro{float:left;margin:40px 2% 0 5%}
+#resbusca #titulo{float:left;margin-top:75px;color:#777;font-size:60px}
+#resbusca #info{width:100%;height:80px;float:left;text-align:left;font-size:25px}
+/*-----------TABELA PERIODICA--------------*/
+#tabela-load{left:-1200px;width:1000px;height:630px;margin:-315px -500px;background:#004050}
+#tabela-load .carregando{position:absolute;top:50%;left:50%;width:40px;height:40px;margin:-20px -20px}
+#tabela-load .titulo{margin-top:10px}
+#tabela-load #conteudo{width:100%;float:left}
+#tabela-load a{width:49px;height:49px;float:left;border:3px solid transparent}
+#tabela-load a:hover{border-color:#fff}
+#tabela-load a:active .link-area{color:#555;background:#fff}
+#tabela-load .link-area{width:100%;height:100%;color:#fff}
+#tabela-load .link-area .num{width:100%;font-size:14px;text-align:right;margin-right:4px;float:right}
+#tabela-load .link-area .simb{width:100%;font-size:22px;text-align:left;margin:-1px 0 0 4px;float:left}
+#tabela-load table{width:900px;height:480px;margin:10px auto}
+#tabela-load .legenda{width:100px;height:40px;margin:3px;float:left;text-align:center;padding-top:5px;color:#fff}
+.hidrogenio{color:#555 !important;background:#fff}
+.alcalinos{background:#2d89ef}
+.alcalinos-terrosos{background:#f25822}
+.transicao{background:#f68121}
+.latanidios{background:#555}
+.actinidios{background:#b81b1b}
+.outros{background:#088a68}
+.nao-metais{background:#96c93e}
+.gases-nobres{background:#7d3f8a}
+/*-----------FORMULARIO DE LOGIN-------------*/
+#login-load{left:-1200px;width:800px;height:400px;margin:-200px -400px;background:#f2f2f2}
+#login-load .titulo{color:#2d89ef}
+#login-load .esquerda{width:40%}
+#login-load .linha{width:92%;float:left;text-align:left;font-size:18px;padding-left:10px;margin:15px auto 5px 3%}
+#login-load .txt{width:90%;height:30px;font-size:16px;color:#555}
+#login-load .btn{height:40px;float:right;margin:0px 30px;padding:0px 10px;font-size:20px}
+#login-load .cadastrar{width:100%;height:100%;float:left;margin-top:30px;padding-top:30px;border-top:2px solid #2d89ef;display:none}
+#login-load .cadastrar .linha{width:45%;float:right}
+/*---------PAGINA DE PROJETO----------*/
+#projeto{width:100%;height:100%;margin-top:-60px;float:left;padding-bottom:30px}
+#projeto .wall{width:100%;height:420px;float:left;background:#555 url(/imagens/proj-wall.gif) no-repeat center 0}
+#projeto .conteudo{width:100%;max-width:960px;height:100%;margin:450px auto 0 auto;color:#333;text-align:left}
+#projeto .linha{width:100%;float:left;margin-bottom:50px}
+#projeto .linha .ale{width:50%;float:left}
+#projeto .linha .ald{width:48%;float:right}
+#projeto .linha .alfull{width:100%;float:left}
+#projeto .linha .imagemdir{float:right;margin:50px 30px 0 30px}
+#projeto .linha .imagemesq{float:left;margin:30px 20px 0 50px}
+#projeto .linha .img{border:2px solid #333}
+#projeto .linha .titulo{font-size:30px;float:left;font-size:25px}
+#projeto .linha .titulo strong{color:#2d89ef}
+#projeto .linha .texto{width:95%;float:left;font-size:18px;margin:15px 0}
+#projeto .linha .texto p:first-letter{margin-left:25px}
+#projeto .conteudo .area{width:100%;height:100%;float:left;margin:30px 0}
+#projeto .conteudo .area .item{height:300px;}
+#projeto .conteudo .area .item1{width:50%;float:left;background:#2d89ef}
+#projeto .conteudo .area .item2{width:45%;float:right;background:#555}
+#projeto .conteudo .area .titulo{width:100%;margin:30px 0 20px 30px;color:#fff}
+#projeto .conteudo .area .texto{width:50%;margin:15px 0 20px 40px;color:#fff}
+#projeto .conteudo .area .ico{margin:30px 50px 0 0;float:right;color:#fff}
+#sobre{width:100%;max-width:960px;height:100%;margin:0 auto}
+#sobre .item{width:25%;height:350px;float:left;font-size:20px;color:#fff}
+#sobre .azul{background:#0072c6}
+#sobre .verde{background:#088a68}
+#sobre .vermelho{background:#ba151d}
+#sobre .laranja{background:#f68121}
+#sobre .item .perfil{margin:20px auto}
+#sobre .item .nome{width:90%;float:left;font-size:25px;margin:10px 5%}
+#sobre .item .form{width:90%;float:left;font-size:16px;margin:0px 5%}
+#sobre .item .social{width:135px;height:40px;float:right;margin-right:5px;padding-bottom:20px}
+#sobre .item .social .sc{width:45px;height:40px;float:left;background-image:url(/imagens/spsocial.png);background-repeat:no-repeat;transition:all 0.3s;-o-transition:all 0.3s;-moz-transition:all 0.3s;-webkit-transition:all linear 0.3s}
+#sobre .item .social .sc:hover{height:60px}
+#sobre .item .social .li{background-position:10px center;background-color:#007099}
+#sobre .item .social .fb{background-position:-40px center;background-color:#3b4998}
+#sobre .item .social .gp{background-position:-80px center;background-color:#e51400}
+/*---------PAGINA DE CONSCIENCIA----------*/
+#consciencia #lista .item{color:#fff;text-align:left;margin-bottom:30px}
+#consciencia #lista .vermelho{background:#b81b1b}
+#consciencia #lista .preto{background:#333}
+#consciencia #lista .verde{background:#088a68}
+#consciencia #lista .item .esquerda{width:60%;float:left;margin-top:30px}
+#consciencia #lista .item .direita{width:35%;float:right}
+#consciencia #lista .item .imagem{width:100%;height:300px;float:right;background:#fff}
+#consciencia #lista .item .titulo{font-size:40px}
+#consciencia #lista .item .altotal{width:95%;margin-left:5%}
+#consciencia #lista .item .texto{font-size:20px;margin-top:10px}
+#consciencia #lista .item .texto:first-letter{margin-left:20px}
+#consciencia #lista .item .btn{float:right;margin:20px 30px;line-height:30px}
+.consciencia{width:100%;height:100%;margin-top:-60px;float:left;padding-bottom:30px}
+.consciencia .wall{width:100%;height:430px;float:left;background-color:#555;background-repeat:no-repeat;background-position:center 0}
+#eco .wall{background-image:url(/db/consciencia/eco/wall.jpg)}
+.consciencia .conteudo{width:100%;max-width:960px;height:100%;margin:480px auto 0 auto;color:#333;text-align:left}
+.consciencia .conteudo .linha{width:100%;float:left;margin-bottom:50px}
+.consciencia .conteudo .linha .ale{width:50%;float:left}
+.consciencia .conteudo .linha .ald{width:48%;float:right}
+.consciencia .conteudo .linha .imagem{float:right;margin-top:50px}
+.consciencia .conteudo .linha .imagemesq{float:left;margin-left:40px}
+.consciencia .conteudo .linha .imagemdir{float:right;margin-right:40px}
+.consciencia .conteudo .linha .titulo{font-size:30px;float:left;font-size:25px}
+.consciencia .conteudo .linha .texto{width:90%;float:left;font-size:18px;margin:15px 0}
+.consciencia .conteudo .linha .texto p:first-letter{margin-left:25px}
+.consciencia .linhafinal{width:100%;float:left;margin:100px 0 -50px 0;background:#333}
+.consciencia .linhafinal .conteudo{width:100%;max-width:960px;height:80px;margin:0 auto}
+.consciencia .linhafinal .arvore{margin:-100px 0 0 20px}
+.consciencia .linhafinal .frase{float:right;font-size:18px;color:#fff;margin:40px 20px 0 0}
+#doacao .wall{background-image:url(/db/consciencia/doacao/wall.jpg)}
+#desperdicio .wall{background-image:url(/db/consciencia/desperdicio/wall.jpg)}
+/*---------LABS----------*/
+#lab{margin-top:-50px;background:#f2f2f2}
+#lab #wall{width:100%;height:450px;float:left;background:#333 url(/imagens/lab-wall.gif) no-repeat center 0}
+#lab #titulo{width:30%;height:100px;float:left;margin-top:-170px;color:#088a68;text-align:right;font-size:70px;padding-right:20px;background:#fff;border:1px solid #ddd;border-left:none}
+#lab #titulo:hover{color:#fff;background:#088a68;border-color:#088a68}
+#lab #info{width:100%;height:80px;float:left;text-align:left;font-size:25px}
+#lab #lista{width:100%;height:100%;float:left;margin:80px 0}
+#lab #lista .item{width:32%;height:130px;float:left;padding-bottom:5px;text-align:left;color:#fff;background-size:100% 100% !important;border:5px solid #f2f2f2}
+#lab #lista .item:hover{border-color:#333}
+#lab #lista .item .titulo{width:95%;height:30px;float:left;font-size:22px;margin:95px 0 -10px 0;padding:5px 0 5px 5%;background:#088a68}
+#lab #erro{margin-top:40px}
+#lab .detalhes{padding-bottom:30px}
+#lab .voltar{width:55px;height:55px;float:left;margin:0 30px;background:url(/imagens/lab-voltar.png) no-repeat 0 0}
+#lab .voltar:hover{background-position-x:-61px}
+#lab .desc{width:100%;height:100%;color:#fff;margin-top:80px;padding:50px 0 10px 0;font-size:16px;float:left;background-color:#088a68}
+#lab .linha{width:90%;float:left;margin-bottom:10px;text-align:left}
+#lab .desc .titulo{width:100%;float:left;font-size:20px}
+#lab .desc .tit{font-size:30px}
+#lab .desc .aut{font-weight:bold}
+#lab .desc .texto{width:95%;font-size:16px}
+#lab .desc .texto p:first-letter{margin-left:25px}
+#lab .formulario{width:100%;float:left;margin-top:30px}
+#lab .formulario .titulo{color:#333;font-size:30px;margin:0 10px}
+#lab .formulario .tit{color:#333;font-size:16px;margin:0 10px}
+#lab .resultado{float:left;padding:10px 20px;margin:30px auto;font-size:20px;color:#fff;text-align:center;background:#2d89ef}
+#lab .titulores{color:#fff;font-size:40px;padding:10px 20px;background:#333}
+#lab .tab{font-size:28px;color:#333}
+#lab .maior{width:100%;height:100%}
+#lab #todas{width:100%;background-color:#1919ff;margin-left:0}
+#lab #todas .cada{width:215px;height:100%;padding:5px;background-color:#333;float:left;margin-left:10px;margin-top:20px;color:#14140a;font-size:14px}
+#lab #todas .cada img{width:100%;height:200px}
+#lab #todas .cada .titulo{text-align:center;margin-top:5px}
+#lab .percent{width:100%;float:left;color:#fff;font-size:20px}
+#lab .nro_percent{width:100%;float:left;color:#e51400;font-size:30px}
+/*---------VIDEOS----------*/
+#videos #wall{width:100%;height:450px;float:left;margin-top:-50px;background:#333 url(/imagens/busca-video.png) no-repeat center center;}
+#videos #wall #video{width:100%;max-width:920px;height:100%;margin:0 auto}
+#videos .titulovideo{width:100%;height:40px;float:left;margin-bottom:10px;background:#222}
+#videos .titulovideo .texto{color:#fff;font-size:25px;margin-left:20px}
+#videos .lista{max-width:950px}
+#videos #lista{margin:50px 20px}
+#videos #lista .item{width:280px;height:150px;float:left;margin:5px;background-color:#333;background-position:center center;background-repeat:no-repeat;border:5px solid #f2f2f2}
+#videos #lista .item:hover{border-color:#333}
+#videos #lista .item .ico{width:100%;height:100%;float:left;background:url(/imagens/videos-ico.png) no-repeat center center}
+#videos #lista .item .titulo{float:left;margin:120px 0 0 10px;color:#fff;font-size:18px}
+/*no-repeat center 0*/
+/*---------FORMULARIO DE CONTATO----------*/
+#contato{max-width:960px;height:400px !important;background:#0072c6}
+#contato .topo .perfil{width:120px;height:90px;float:left;margin-left:30px}
+#contato .topo .nome{width:200px;float:left;margin-top:50px;font-size:22px;color:#fff}
+#contato #mensagem{width:85%;height:150px;float:left;margin:10px 0 0}
+#contato .txt{width:90%;max-width:400px;height:32px;font-size:16px;text-align:left;float:left;margin-top:5px;border-color:#fff}
+#contato .campo{width:95%;float:left;margin:10px 0 0 5%}
+#contato .btn{width:100px;float:right;font-weight:700;margin:80px 10% 10px 0;color:#0072c6}
+.sobrecontato{margin-top:-80px;padding-bottom:30px}
+/*-------PAGINA DE ERRO--------*/
+#erro{max-width:960px;height:400px !important;background:#ba151d}
+#erro .conteudo{margin-top:60px !important}
+#erro .esquerda{width:40% !important}
+#erro .direita{margin:30px 0 0 5%}
+#erro .direita .info{color:#fff;font-size:25px}
+#erro .btn{padding:3px 15px;font-size:22px}
+#alerta{position:fixed;top:70px;right:0;width:280px;height:100px;background:#e51400;border:2px solid #ba151d;border-right:none}
+#alerta:hover{background:#ba151d}
+#alerta .titulo{width:250px;text-align:left;font-size:17px;color:#fff;float:left;margin:10px 0 0 20px}
+#alerta .titulo .link{margin:5px 30px 0 0;text-align:right}
+.erro405{min-height:500px}
