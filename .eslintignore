@@ -1,0 +1,8 @@
+# Folders
+.github
+docs
+node_modules
+public
+.cache
+
+# Files
