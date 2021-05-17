@@ -5,14 +5,6 @@ const swiftKanbanService = require('../swiftKanban/swiftKanbanService')
 const slackConfig = config.slack
 const gitlabConfig = config.gitlab
 
-/*
-  App slack:
-  https://api.slack.com/apps/A019JLAD24W/install-on-team
-
-  Slack test channel (gitlab-integration-test):
-  REMOVED
-*/
-
 const getAttributes = data => {
   if (data == null) {
     return null
@@ -154,8 +146,6 @@ const hook = (req, res) => {
         }
       }
     }
-
-    // slackHookUrl = 'REMOVED
 
     if (request != null) {
       slackService
