@@ -5,43 +5,49 @@ const conn = 'projectbox'
 
 const hook = (req, res) => {
   return new Promise((resolve, reject) => {
-    const params = getParams()
+    const params = getParams(req.body)
 
-    crudBasic.get(req, res, 'getPrlResumeByPeriod', params, conn).then(response => {
-      const countMonth = response.count_mes
-      const countYear = Math.round(response.count_ano / params.monthIndex)
+    const slackChannelMessage = 'Hello world!!!'
 
-      const messageMonth = getMessageByCount(countMonth)
-      const messageYear = getMessageByCount(countYear)
+    sendSlackMessage(slackChannelMessage, params.channelUrl)
+      .then(resp => resolve(resp))
+      .catch(error => reject(error))
 
-      const slackChannelMessage = `
-:morumbi:  Opa! Como vai? Vou te passar como está nosso status de chamados.
+//     crudBasic.get(req, res, 'getPrlResumeByPeriod', params, conn).then(response => {
+//       const countMonth = response.count_mes
+//       const countYear = Math.round(response.count_ano / params.monthIndex)
 
-*Para este mês de ${params.monthName}:* Estamos com *(${countMonth})* chamados
-${messageMonth}
+//       const messageMonth = getMessageByCount(countMonth)
+//       const messageYear = getMessageByCount(countYear)
 
-*Para o ano de ${params.year}:* Estamos com média de *(${countYear})* chamados por mês
-${messageYear}
+//       const slackChannelMessage = `
+// :morumbi:  Opa! Como vai? Vou te passar como está nosso status de chamados.
 
-Só para lembrar:
+// *Para este mês de ${params.monthName}:* Estamos com *(${countMonth})* chamados
+// ${messageMonth}
 
-Meta ideal (120%): *100 chamados*
-Meta alvo (100%): *150 chamados*
-Meta limite (80%): *200 chamados*
+// *Para o ano de ${params.year}:* Estamos com média de *(${countYear})* chamados por mês
+// ${messageYear}
 
-Antes de voltar ao morumbi, preciso te avisar: *Este é um valor baseado nos dados atuais. Alguns cards podem ser convertidos para outros tipos e os debitos técnicos ainda podem alterar esse resultado.*
-      `
+// Só para lembrar:
 
-      sendSlackMessage(slackChannelMessage, params.channelUrl)
-        .then(resp => resolve(resp))
-        .catch(error => reject(error))
-    }).catch(error => {
-      reject(error)
-    })
+// Meta ideal (120%): *100 chamados*
+// Meta alvo (100%): *150 chamados*
+// Meta limite (80%): *200 chamados*
+
+// Antes de voltar ao morumbi, preciso te avisar: *Este é um valor baseado nos dados atuais. Alguns cards podem ser convertidos para outros tipos e os debitos técnicos ainda podem alterar esse resultado.*
+//       `
+
+//       sendSlackMessage(slackChannelMessage, params.channelUrl)
+//         .then(resp => resolve(resp))
+//         .catch(error => reject(error))
+//     }).catch(error => {
+//       reject(error)
+//     })
   })
 }
 
-const getParams = () => {
+const getParams = body => {
   const today = new Date()
   var lastDayOfMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0)
   const month = String(lastDayOfMonth.getMonth() + 1).padStart(2, '0')
@@ -60,7 +66,8 @@ const getParams = () => {
     monthName: monthName,
     monthIndex: monthIndex,
     year: year,
-    channelUrl: 'REMOVED
+    channelUrl: body.response_url
+    // channelUrl: 'REMOVED
   }
 }
 
