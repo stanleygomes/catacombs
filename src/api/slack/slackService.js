@@ -1,6 +1,6 @@
 const http = require('../../utils/http')
 
-const pushMessage = (hookUrl, request, attributes) => {
+const pushMessage = (hookUrl, request, attributes = {}) => {
   return new Promise((resolve, reject) => {
     http.post(hookUrl, request).then(resp => {
       console.log('Hook executado com sucesso!')

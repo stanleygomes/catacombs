@@ -2,6 +2,8 @@ const path = require('path')
 const dotenv = require('dotenv')
 dotenv.config()
 
+const templatesFolder = './src/templates'
+
 const appConfig = {
   server: {
     port: process.env.HTTP_PORT || process.env.PORT || 5000,
@@ -11,6 +13,44 @@ const appConfig = {
     maxSize: 5242880 // 5 * 1024 * 1024 = no larger than 5mb, you can change as needed.
   },
   baseEndpoint: '/',
+  template: {
+    showCompiled: process.env.SHOW_COMPILED_TEMPLATE || true,
+    sql: {
+      dir: templatesFolder + '/sql',
+      ext: '.sql'
+    },
+    smtp: {
+      dir: templatesFolder + '/smtp',
+      ext: '.html'
+    }
+  },
+  databases: {
+    /* you can define multiple connections here */
+    projectbox: {
+      /*
+        ** you can choose db client here ('mysql' / 'pg')
+        Install postgres connector:
+        $ npm install --save pg
+        Install mysql connector:
+        $ npm install --save mysql2
+      */
+      client: process.env.DB_CLIENT,
+      connection: {
+        host: process.env.DB_HOST,
+        user: process.env.DB_USERNAME,
+        password: process.env.DB_PASSWORD,
+        database: process.env.DB_DATABASE,
+        schema: process.env.DB_SCHEMA
+      },
+      debug: false,
+      maxChunkSize: 2000,
+      pool: {
+        min: 0,
+        max: 15
+      },
+      acquireConnectionTimeout: 10000
+    }
+  },
   cors: {
     origin: '*',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',

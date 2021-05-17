@@ -6,5 +6,6 @@
 	"field_required %s": "Por favor, informe o parâmetro [%s].",
 	"none_private_key": "Por favor, informe uma chave privada no arquivo [.env].",
 	"string.empty %s": "O campo %s não pode ficar vazio.",
-  "string.email %s": "O campo %s não é um email válido."
+	"string.email %s": "O campo %s não é um email válido.",
+	"record_not_found": "record_not_found"
 }
