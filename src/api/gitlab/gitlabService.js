@@ -96,7 +96,7 @@ const hook = (req, res) => {
       if (attributes.action === 'merge_request') {
         // open merge request
         const branchTarget = attributes.branchTarget
-        if (attributes.mergeStatus === 'unchecked' && (branchTarget === 'develop' || branchTarget === 'projetos' || branchTarget === 'kubernetes')) {
+        if (attributes.mergeStatus === 'unchecked' && (branchTarget === 'develop' || branchTarget === 'projetos' || branchTarget === 'spring_master')) {
           textTemplate = slackService.getPrMessage(attributes)
 
           request = {
