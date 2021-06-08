@@ -7,43 +7,37 @@ const hook = (req, res) => {
   return new Promise((resolve, reject) => {
     const params = getParams(req.body)
 
-    const slackChannelMessage = 'Hello world!!!'
+    crudBasic.get(req, res, 'getPrlResumeByPeriod', params, conn).then(response => {
+      const countMonth = response.count_mes
+      const countYear = Math.round(response.count_ano / params.monthIndex)
 
-    sendSlackMessage(slackChannelMessage, params.channelUrl)
-      .then(resp => resolve(resp))
-      .catch(error => reject(error))
+      const messageMonth = getMessageByCount(countMonth)
+      const messageYear = getMessageByCount(countYear)
 
-//     crudBasic.get(req, res, 'getPrlResumeByPeriod', params, conn).then(response => {
-//       const countMonth = response.count_mes
-//       const countYear = Math.round(response.count_ano / params.monthIndex)
+      const slackChannelMessage = `
+:morumbi:  Opa! Como vai? Vou te passar como está nosso status de chamados.
 
-//       const messageMonth = getMessageByCount(countMonth)
-//       const messageYear = getMessageByCount(countYear)
+*Para este mês de ${params.monthName}:* Estamos com *(${countMonth})* chamados
+${messageMonth}
 
-//       const slackChannelMessage = `
-// :morumbi:  Opa! Como vai? Vou te passar como está nosso status de chamados.
+*Para o ano de ${params.year}:* Estamos com média de *(${countYear})* chamados por mês
+${messageYear}
 
-// *Para este mês de ${params.monthName}:* Estamos com *(${countMonth})* chamados
-// ${messageMonth}
+Só para lembrar:
 
-// *Para o ano de ${params.year}:* Estamos com média de *(${countYear})* chamados por mês
-// ${messageYear}
+Meta ideal (120%): *100 chamados*
+Meta alvo (100%): *150 chamados*
+Meta limite (80%): *200 chamados*
 
-// Só para lembrar:
+Antes de voltar ao morumbi, preciso te avisar: *Este é um valor baseado nos dados atuais. Alguns cards podem ser convertidos para outros tipos e os debitos técnicos ainda podem alterar esse resultado.*
+      `
 
-// Meta ideal (120%): *100 chamados*
-// Meta alvo (100%): *150 chamados*
-// Meta limite (80%): *200 chamados*
-
-// Antes de voltar ao morumbi, preciso te avisar: *Este é um valor baseado nos dados atuais. Alguns cards podem ser convertidos para outros tipos e os debitos técnicos ainda podem alterar esse resultado.*
-//       `
-
-//       sendSlackMessage(slackChannelMessage, params.channelUrl)
-//         .then(resp => resolve(resp))
-//         .catch(error => reject(error))
-//     }).catch(error => {
-//       reject(error)
-//     })
+      sendSlackMessage(slackChannelMessage, params.channelUrl)
+        .then(resp => resolve(resp))
+        .catch(error => reject(error))
+    }).catch(error => {
+      reject(error)
+    })
   })
 }
 
