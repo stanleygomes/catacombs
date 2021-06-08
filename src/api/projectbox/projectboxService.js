@@ -29,7 +29,7 @@ Meta ideal (120%): *100 chamados*
 Meta alvo (100%): *150 chamados*
 Meta limite (80%): *200 chamados*
 
-Antes de voltar ao morumbi, preciso te avisar: *Este é um valor baseado nos dados atuais. Alguns cards podem ser convertidos para outros tipos e os debitos técnicos ainda podem alterar esse resultado.*
+Antes de voltar ao morumbi, preciso te avisar uma coisa: *Este é um valor baseado nos dados deste momento. Alguns cards podem ser convertidos para outros tipos e os débitos técnicos ainda podem alterar esse resultado.*
       `
 
       sendSlackMessage(slackChannelMessage, params.channelUrl)
