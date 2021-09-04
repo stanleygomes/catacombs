@@ -24,7 +24,7 @@ const SocialNetwork = (props) => {
       >
         github
       </a>
-      {' '}
+      {/* {' '}
       &bull;
       {' '}
       <a
@@ -33,7 +33,7 @@ const SocialNetwork = (props) => {
         rel="noopener noreferrer"
       >
         instagram
-      </a>
+      </a> */}
     </React.Fragment>
   )
 

@@ -8,6 +8,11 @@
     "url": "https://github.com/stanleygomes/from-tatooine/issues"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.36",
+    "@fortawesome/free-brands-svg-icons": "^5.15.4",
+    "@fortawesome/free-regular-svg-icons": "^5.15.4",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "@fortawesome/react-fontawesome": "^0.1.15",
     "gatsby": "^2.0.76",
     "gatsby-plugin-catch-links": "^2.0.9",
     "gatsby-plugin-feed": "^2.0.8",
@@ -36,6 +41,7 @@
     "react-dom": "^16.8.2",
     "react-helmet": "^5.2.0",
     "react-typography": "^0.16.13",
+    "styled-components": "^5.3.1",
     "typography": "^0.16.17",
     "typography-theme-wordpress-2016": "^0.15.10"
   },
