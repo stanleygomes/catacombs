@@ -3,6 +3,7 @@ title: Increase code quality with Github Actions
 date: '2020-06-20'
 spoiler: We are always writing, every day, tons of lines of code…
 tags: CI/CD, github actions, code quality
+published: true
 ---
 
 ![](https://firebasestorage.googleapis.com/v0/b/from-tatooine.appspot.com/o/increase-code-quality-github-actions%2F0_PxKtXQ9gla_nvBCQ.jpg?alt=media&token=b1d2cee1-b8c6-4fbd-a8a2-cbfde2afe62f)

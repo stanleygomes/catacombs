@@ -3,6 +3,7 @@ title: My first steps with kubernetes
 date: '2020-01-05'
 spoiler: Everyone is talking about kubernetes.
 tags: kubernetes, devops
+published: true
 ---
 
 Everyone is talking about kubernetes. Every time I visit<span class="notranslate">&nbsp;medium</span> website or read <span class="notranslate">newsletter</span> in my emails, even in google articles recomendations.

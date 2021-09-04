@@ -3,6 +3,7 @@ title: 7 Steps to SQL Optimization Mastery
 date: '2019-12-28'
 spoiler: Today, i’ll show you some query optmization tricks to write better SQL queries
 tags: sql
+published: true
 ---
 
 Today, i’ll show you some query optmization tricks to write better SQL queries. By the way, I'm not gonna make you an actual Jedi SQL master by reading this article, but you're on the way. 😬
