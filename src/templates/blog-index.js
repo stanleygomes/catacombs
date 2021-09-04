@@ -26,6 +26,10 @@ class BlogIndexTemplate extends React.Component {
         </aside>
         <main>
           {posts.map(({ node }) => {
+            if (!node.frontmatter.published) {
+              return false
+            }
+
             const title = get(node, 'frontmatter.title') || node.fields.slug
             return (
               <article key={node.fields.slug}>
@@ -86,6 +90,7 @@ export const pageQuery = graphql`
             title
             spoiler
             tags
+            published
           }
         }
       }

@@ -3,6 +3,7 @@ title: BrazilJS Conf 2019 Highlights
 date: '2019-09-04'
 spoiler: Durante o evento foram ministradas diversas palestras.
 tags: javascript, braziljs
+published: true
 ---
 
 A BrazilJS é um dos maiores eventos de Javascript do Brasil e todos os anos junta centenas de pessoas de todo o brasil para discutir temas relativos a linguagem e outras tecnologias relativas ao desenvolvimento web.

@@ -3,6 +3,7 @@ title: Our first official release is out!!
 date: '2019-11-30'
 spoiler: Today I’m thrilled to announce the first official release of nodevader
 tags: nodevader, nodejs, boilerplate
+published: true
 ---
 
 Today I’m thrilled to announce the first official release of [nodevader](https://github.com/stanleygomes/nodevader/releases/tag/v1.0.0), a nodeJS boilerplate to get your backend API started in few minutes.

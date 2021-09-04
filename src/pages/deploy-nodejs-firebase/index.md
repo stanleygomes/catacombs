@@ -3,6 +3,7 @@ title: Deploy to firebase functions
 date: '2019-11-02'
 spoiler: Deploy your first express app to a firebase cloud function, with a snap of fingers.
 tags: javascript, nodejs, firebase, functions
+published: true
 ---
 
 <p align="center">

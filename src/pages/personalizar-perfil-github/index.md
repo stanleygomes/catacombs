@@ -3,6 +3,7 @@ title: Personalize seu perfil no Github
 date: '2020-09-25'
 spoiler: Um dica para deixar seu perfil mais completo e atrativo…
 tags: github
+published: true
 ---
 
 O perfil do github é uma das mais importantes vitrines de promoção do próprio trabalho e também usado como portifólio de trabalho. O time do github lançou recentemente uma nova funcionalidade que permite aos desenvolvedores personalizar seu perfil, por meio de uma área aberta para escrita usando markdown.
