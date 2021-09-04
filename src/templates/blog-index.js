@@ -9,7 +9,7 @@ import Layout from '../components/Layout'
 import React from 'react'
 import SEO from '../components/SEO'
 import get from 'lodash/get'
-import Typography from '../utils/typography'
+import { ListItemTitleStyled } from '../style/custom'
 
 class BlogIndexTemplate extends React.Component {
   render () {
@@ -30,13 +30,7 @@ class BlogIndexTemplate extends React.Component {
             return (
               <article key={node.fields.slug}>
                 <header>
-                  <h3
-                    style={{
-                      fontFamily: 'Montserrat, sans-serif',
-                      fontSize: Typography.rhythm(1),
-                      marginBottom: Typography.rhythm(1 / 4)
-                    }}
-                  >
+                  <ListItemTitleStyled>
                     <Link
                       style={{ boxShadow: 'none' }}
                       to={node.fields.slug}
@@ -44,7 +38,7 @@ class BlogIndexTemplate extends React.Component {
                     >
                       {title}
                     </Link>
-                  </h3>
+                  </ListItemTitleStyled>
                   <small>
                     {formatPostDate(node.frontmatter.date, langKey)}
                     {` • ${formatReadingTime(node.timeToRead)}`}
