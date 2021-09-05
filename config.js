@@ -1,6 +1,6 @@
 const config = {
   googleAnalytics : {
-    code: 'UA-108678079-4'
+    code: 'G-ZSEG5MCV2Y'
   },
   colorTheme: {
     light: {
