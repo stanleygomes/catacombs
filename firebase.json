@@ -20,7 +20,7 @@
     "redirects": [
       {
         "source": "/wallpapers",
-        "destination": "https: //lightroom.adobe.com/shares/31e9598c1c4a4a77b3271a7ff11a43ed",
+        "destination": "https://lightroom.adobe.com/shares/31e9598c1c4a4a77b3271a7ff11a43ed",
         "type": 301
       }
     ]
