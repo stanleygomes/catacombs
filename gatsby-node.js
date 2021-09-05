@@ -6,13 +6,6 @@ const { supportedLanguages } = require('./i18n')
 exports.createPages = ({ graphql, actions }) => {
   const { createPage, createRedirect } = actions
 
-  createRedirect({
-    fromPath: '/wallpapers',
-    toPath: 'http://lightroom.adobe.com/shares/31e9598c1c4a4a77b3271a7ff11a43ed',
-    isPermanent: true,
-    redirectInBrowser: true
-  })
-
   // Oops
   createRedirect({
     fromPath: '/url-incorrect/',
