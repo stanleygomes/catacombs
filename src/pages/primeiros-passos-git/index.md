@@ -32,7 +32,7 @@ Já o versionamento de código te garante uma rastreabilidade das mudanças que 
 
 Antes de mais nada, você precisa criar um repositório (que nada mais é do que um projeto). Escolha uma pasta do seu computador.
 
-```sh
+```bash
 mkdir meu-projeto
 cd meu-projeto
 git init
@@ -40,13 +40,13 @@ git init
 
 Quando você cria um repositório em um dos serviços apresentados anteriormente, eles fornecem uma URL para hospedar seu projeto. Nesse momento, vamos adicionar a URL do projeto no repositório local.
 
-```sh
+```bash
 git remote add origin http://urlDoServico.com/seuProjeto
 ```
 
 O próximo passo é adicionar seus arquivos dentro dessa pasta. Para em seguida, fazer o primeiro commit (que é forma como o git grava uma versão de alteração no seu código). Primeiro, vamos adicionar os arquivos que queremos commitar.
 
-```sh
+```bash
 # adicionar todos os arquivos da pasta
 git add .
 
@@ -56,7 +56,7 @@ git commit -m "Criando meu primeiro commit"
 
 O último passo agora é enviar o código para o repositório online.
 
-```sh
+```bash
 git push origin master
 ```
 
