@@ -143,7 +143,7 @@ class BlogPostTemplate extends React.Component {
               <h1 style={{ color: 'var(--textTitle)' }}>
                 {post.frontmatter.title}
               </h1>
-              <p
+              <div
                 style={{
                   ...Typography.scale(-1 / 5),
                   display: 'block',
@@ -156,7 +156,7 @@ class BlogPostTemplate extends React.Component {
                 <div>
                   <small>Tags: {post.frontmatter.tags}</small>
                 </div>
-              </p>
+              </div>
               {translations.length > 0 && (
                 <Translations
                   translations={translations}
