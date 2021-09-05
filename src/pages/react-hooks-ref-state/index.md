@@ -20,7 +20,7 @@ Vamos começar com o `ref`. Podemos utilizar o hook `useRef` para acessar os ele
 
 No exemplo abaixo, vamos o usar o hook para que quando o botão for clicado, o campo de input seja focado para digitação.
 
-```react
+```javascript
 import React, { useRef } from "react";
 
 export default App = () => {
@@ -44,7 +44,7 @@ O `useRef` foi criado com objetivo de ser uma proposta de hook como alternativa 
 
 Nesse exemplo abaixo, eu utilizei o mesmo código do exemplo anterior, porém desta vez criando a referencia com o `createRef`. O resultado será o mesmo.
 
-```react
+```javascript
 import React, { createRef } from "react";
 
 export default App = () => {
@@ -73,7 +73,7 @@ O próximo hook que vamos ver é uma solução para gerenciamento de estado do c
 
 Nesse exemplo abaixo, é possível armazenar no estado do componente, o número de vezes que o botão foi clicado.
 
-```react
+```javascript
 import React, { useState } from 'react'
  
 export default App = () => {
@@ -100,7 +100,7 @@ O [useReducer](https://reactjs.org/docs/hooks-reference.html#usereducer) é mais
 
 Nesse exemplo abaixo (retirado da documentação do react), vou utilizar uma função de contador com as opções de incrementar e decrementar o valor.
 
-```react
+```javascript
 const initialState = { count: 0 };
 
 const reducer(state, action) {
