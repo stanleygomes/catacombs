@@ -11,11 +11,11 @@ class Footer extends React.Component {
           paddingTop: Typography.rhythm(1)
         }}
       >
-        <div style={{ float: 'right' }}>
+        {/* <div style={{ float: 'right' }}>
           <a href="/rss.xml" target="_blank" rel="noopener noreferrer">
             rss
           </a>
-        </div>
+        </div> */}
         <SocialNetwork />
       </footer>
     )
