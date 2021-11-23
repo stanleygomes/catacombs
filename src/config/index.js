@@ -1,3 +1,11 @@
+/*
+  App slack:
+  https://api.slack.com/apps/A019JLAD24W/install-on-team
+
+  Slack test channel (gitlab-integration-test):
+  REMOVED
+*/
+
 const path = require('path')
 const dotenv = require('dotenv')
 dotenv.config()
@@ -142,6 +150,18 @@ const appConfig = {
         name: 'solucao-certa',
         url: 'https://gitlab.softbox.com.br/solucao_certa/solucao-certa',
         squad: 'comercial'
+      },
+      {
+        id: 750,
+        name: 'gpc2',
+        url: 'https://gitlab.softbox.com.br/tradelinks/gpc2',
+        squad: 'trademarketing'
+      },
+      {
+        id: 1167,
+        name: 'gpc-frontend',
+        url: 'https://gitlab.softbox.com.br/tradelinks/gpc-frontend',
+        squad: 'trademarketing'
       }
     ]
   },
@@ -153,6 +173,10 @@ const appConfig = {
       },
       comercial: {
         name: 'Squad Comercial Indústria',
+        slackChannel: 'REMOVED
+      },
+      trademarketing: {
+        name: 'Squad Trade Marketing',
         slackChannel: 'REMOVED
       },
       tribo: {
