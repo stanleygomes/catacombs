@@ -129,7 +129,7 @@ const hook = (req, res) => {
       }
 
       // push tag
-      if (attributes.action === 'tag_push' || attributes.action === 'push') {
+      if (attributes.action === 'tag_push') {
         // change channel to push the message
         slackHookUrl = slackConfig.squads.tribo.slackChannel
         attributes.squadName = squadProject.squadName

@@ -1,11 +1,3 @@
-/*
-  App slack:
-  https://api.slack.com/apps/A019JLAD24W/install-on-team
-
-  Slack test channel (gitlab-integration-test):
-  REMOVED
-*/
-
 const path = require('path')
 const dotenv = require('dotenv')
 dotenv.config()
