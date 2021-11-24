@@ -154,6 +154,24 @@ const appConfig = {
         name: 'gpc-frontend',
         url: 'https://gitlab.softbox.com.br/tradelinks/gpc-frontend',
         squad: 'trademarketing'
+      },
+      {
+        id: 1278,
+        name: 'tradelinks_suzano',
+        url: 'https://gitlab.softbox.com.br/tradelinks_produto/tradelinks_suzano',
+        squad: 'tradelinks'
+      },
+      {
+        id: 334,
+        name: 'tradelinks_produto',
+        url: 'https://gitlab.softbox.com.br/tradelinks_produto/tradelinks_produto',
+        squad: 'tradelinks'
+      },
+      {
+        id: 1007,
+        name: 'tradelinks_produto',
+        url: 'https://gitlab.softbox.com.br/tradelinks_produto/tradelinks_magalu',
+        squad: 'tradelinks'
       }
     ]
   },
@@ -173,6 +191,10 @@ const appConfig = {
       },
       tribo: {
         name: 'Tribo Soluções para o Mercado',
+        slackChannel: 'REMOVED
+      },
+      tradelinks: {
+        name: 'Squad Tradelinks',
         slackChannel: 'REMOVED
       }
     }
