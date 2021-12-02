@@ -81,97 +81,129 @@ const appConfig = {
         id: 851,
         name: 'ms-operacao',
         url: 'https://gitlab.softbox.com.br/papaleguas/ms-operacao',
-        squad: 'planejamento'
+        squad: 'planejamento',
+        enabledHookDeploy: true,
+        enabledHookMr: true
       },
       {
         id: 837,
         name: 'ms-cadastro',
         url: 'https://gitlab.softbox.com.br/papaleguas/ms-cadastro',
-        squad: 'planejamento'
+        squad: 'planejamento',
+        enabledHookDeploy: true,
+        enabledHookMr: true
       },
       {
         id: 690,
         name: 'Cashlink Indústria',
         url: 'https://gitlab.softbox.com.br/tribo-financeiro/cashlink-industria',
-        squad: 'planejamento'
+        squad: 'planejamento',
+        enabledHookDeploy: true,
+        enabledHookMr: true
       },
       {
         id: 836,
         name: 'papaleguas-gateway',
         url: 'https://gitlab.softbox.com.br/papaleguas/papaleguas-gateway',
-        squad: 'planejamento'
+        squad: 'planejamento',
+        enabledHookDeploy: true,
+        enabledHookMr: true
       },
       {
         id: 91,
         name: 'cashlink_war',
         url: 'https://gitlab.softbox.com.br/cashlink/cashlink_war',
-        squad: 'planejamento'
+        squad: 'planejamento',
+        enabledHookDeploy: true,
+        enabledHookMr: true
       },
       {
         id: 989,
         name: 'pricing',
         url: 'https://gitlab.softbox.com.br/PRICING/pricing',
-        squad: 'comercial'
+        squad: 'comercial',
+        enabledHookDeploy: true,
+        enabledHookMr: true
       },
       {
         id: 259,
         name: 'portal-execucao',
         url: 'https://gitlab.softbox.com.br/portal-execucao/portal-execucao',
-        squad: 'comercial'
+        squad: 'comercial',
+        enabledHookDeploy: true,
+        enabledHookMr: true
       },
       {
         id: 1000,
         name: 'produtos-clientes',
         url: 'https://gitlab.softbox.com.br/PRICING/produtos-clientes',
-        squad: 'comercial'
+        squad: 'comercial',
+        enabledHookDeploy: true,
+        enabledHookMr: true
       },
       {
         id: 1066,
         name: 'vortex-java',
         url: 'https://gitlab.softbox.com.br/vortex/vortex-java',
-        squad: 'comercial'
+        squad: 'comercial',
+        enabledHookDeploy: true,
+        enabledHookMr: true
       },
       {
         id: 196,
         name: 'vortex-frontend',
         url: 'https://gitlab.softbox.com.br/vortex/vortex-frontend',
-        squad: 'comercial'
+        squad: 'comercial',
+        enabledHookDeploy: true,
+        enabledHookMr: true
       },
       {
         id: 358,
         name: 'solucao-certa',
         url: 'https://gitlab.softbox.com.br/solucao_certa/solucao-certa',
-        squad: 'comercial'
+        squad: 'comercial',
+        enabledHookDeploy: true,
+        enabledHookMr: true
       },
       {
         id: 750,
         name: 'gpc2',
         url: 'https://gitlab.softbox.com.br/tradelinks/gpc2',
-        squad: 'trademarketing'
+        squad: 'trademarketing',
+        enabledHookDeploy: true,
+        enabledHookMr: true
       },
       {
         id: 1167,
         name: 'gpc-frontend',
         url: 'https://gitlab.softbox.com.br/tradelinks/gpc-frontend',
-        squad: 'trademarketing'
+        squad: 'trademarketing',
+        enabledHookDeploy: true,
+        enabledHookMr: true
       },
       {
         id: 1278,
         name: 'tradelinks_suzano',
         url: 'https://gitlab.softbox.com.br/tradelinks_produto/tradelinks_suzano',
-        squad: 'tradelinks'
+        squad: 'tradelinks',
+        enabledHookDeploy: true,
+        enabledHookMr: false
       },
       {
         id: 334,
         name: 'tradelinks_produto',
         url: 'https://gitlab.softbox.com.br/tradelinks_produto/tradelinks_produto',
-        squad: 'tradelinks'
+        squad: 'tradelinks',
+        enabledHookDeploy: true,
+        enabledHookMr: false
       },
       {
         id: 1007,
         name: 'tradelinks_produto',
         url: 'https://gitlab.softbox.com.br/tradelinks_produto/tradelinks_magalu',
-        squad: 'tradelinks'
+        squad: 'tradelinks',
+        enabledHookDeploy: true,
+        enabledHookMr: false
       }
     ]
   },

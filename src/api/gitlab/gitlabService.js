@@ -93,7 +93,7 @@ const hook = (req, res) => {
       slackHookUrl = squadProject.slackChannel
 
       // open merge request
-      if (attributes.action === 'merge_request') {
+      if (squadProject.enabledHookMr === true && attributes.action === 'merge_request') {
         // open merge request
         // const branchTarget = attributes.branchTarget
         // if (attributes.mergeStatus === 'unchecked' && (branchTarget === 'develop' || branchTarget === 'projetos' || branchTarget === 'spring_master' || branchTarget === 'spring_homologacao')) {
@@ -129,7 +129,7 @@ const hook = (req, res) => {
       }
 
       // push tag
-      if (attributes.action === 'tag_push') {
+      if (squadProject.enabledHookDeploy === true && attributes.action === 'tag_push') {
         // change channel to push the message
         slackHookUrl = slackConfig.squads.tribo.slackChannel
         attributes.squadName = squadProject.squadName
