@@ -204,6 +204,22 @@ const appConfig = {
         squad: 'tradelinks',
         enabledHookDeploy: true,
         enabledHookMr: false
+      },
+      {
+        id: 1288,
+        name: 'food-solution-app',
+        url: 'https://gitlab.softbox.com.br/unilever/food-solution-app',
+        squad: 'comercial',
+        enabledHookDeploy: true,
+        enabledHookMr: true
+      },
+      {
+        id: 1281,
+        name: 'food-solution',
+        url: 'https://gitlab.softbox.com.br/unilever/food-solution',
+        squad: 'comercial',
+        enabledHookDeploy: true,
+        enabledHookMr: true
       }
     ]
   },
