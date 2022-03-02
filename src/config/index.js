@@ -226,11 +226,11 @@ const appConfig = {
   slack: {
     squads: {
       planejamento: {
-        name: 'Squad Planejamento Indústria',
+        name: 'Squad Demandas Táticas',
         slackChannel: 'REMOVED
       },
       comercial: {
-        name: 'Squad Comercial Indústria',
+        name: 'Squad Demandas Táticas',
         slackChannel: 'REMOVED
       },
       trademarketing: {
