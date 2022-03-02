@@ -1,5 +1,5 @@
 ---
-title: Escalonando aplicações frontend
+title: Sobre Micro Front-ends
 date: '2021-12-18'
 spoiler: Modinha ou padrão de projeto?
 tags: javascript, microservices, microfrontend, webdev
