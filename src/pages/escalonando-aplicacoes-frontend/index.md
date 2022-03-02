@@ -2,7 +2,7 @@
 title: Escalonando aplicações frontend
 date: '2021-10-20'
 spoiler: Escalonar é preciso
-tags: amp, html, web
+tags: frontend, performance, web
 published: true
 ---
 
