@@ -148,7 +148,7 @@ const hook = (req, res) => {
       }
     }
 
-    // slackHookUrl = 'REMOVED
+    slackHookUrl = 'REMOVED
 
     if (request != null) {
       slackService

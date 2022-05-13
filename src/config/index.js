@@ -220,6 +220,14 @@ const appConfig = {
         squad: 'comercial',
         enabledHookDeploy: true,
         enabledHookMr: true
+      },
+      {
+        id: 7591,
+        name: 'middleware-hubsales',
+        url: 'https://gitlab.luizalabs.com/luizalabs/solucoes-mercado/comercial-industria/middleware-hubsales',
+        squad: 'comercial',
+        enabledHookDeploy: true,
+        enabledHookMr: true
       }
     ]
   },
