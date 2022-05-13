@@ -21,3 +21,19 @@ REMOVED
 Configuração dos comandos especificos via mensagem
 
 https://api.slack.com/apps/A019JLAD24W/slash-commands?saved=1
+
+## Adicionar origin remota do heroku
+
+Rodar o comando abaixo no terminal
+
+```
+heroku git:remote -a gitlab-slack-automate
+```
+
+## Deploy heroku
+
+Rodar o comando abaixo para fazer o deploy no heroku
+
+```
+git push heroku master
+```
