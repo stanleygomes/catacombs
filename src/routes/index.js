@@ -8,7 +8,7 @@ const loggerUtils = require('../utils/logger')
 const config = require('../config')
 
 /* non auth routes */
-router.use('/', welcomeRest)
+router.use('/welcome', welcomeRest)
 router.use('/gitlab', gitlabRest)
 router.use('/projectbox', projectboxRest)
 
