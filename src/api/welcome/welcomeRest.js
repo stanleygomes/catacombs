@@ -11,7 +11,8 @@ welcomeRest.post('/json', (req, res) => {
   console.log(req.body)
 
   res.json({
-    message: 'Hi!'
+    message: 'Receive request!',
+    json: req.body
   })
 })
 
