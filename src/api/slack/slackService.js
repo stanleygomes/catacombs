@@ -25,14 +25,26 @@ const pushMessage = (hookUrl, request, attributes = {}) => {
 
 const getPrMessage = data => {
   return `
-Tem merge request aberto por *${data.userName}* para revisão no projeto *${data.projectName}*, da branch origem *${data.branchSource}* para a branch destino *${data.branchTarget}*. Dá uma olhada aqui nesse link:
-:chocolate_bar: ${data.repositoryUrl}/merge_requests/${data.iid}
+:beach_with_umbrella: Novo merge request:
+
+Solicitante: *${data.userName}*
+Projeto: *${data.projectName}*
+Branch origem: *${data.branchSource}*
+Branch destino: *${data.branchTarget}*
+
+Validação:
+${data.repositoryUrl}/merge_requests/${data.iid}
 `
   // Resumo: *${data.title}*
 }
 
 const getTagMessage = data => {
-  const message = `:rocket: Deploy do projeto *${data.projectName}* em *Produção* - Tag: *${data.tagVersion}*. Responsável: *${data.tagAuthor}* [${data.squadName}]`
+  const message = `
+:rocket: Deploy iniciado em *Produção* para o projeto *${data.projectName}*
+
+Tag: *${data.tagVersion}*
+Responsável: *${data.tagAuthor}* [${data.squadName}]
+`
 
   if (data.cards != null && data.cards.length > 0) {
     return `${message}. Card(s): *${data.cards.join(',')}*`

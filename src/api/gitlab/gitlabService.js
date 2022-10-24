@@ -64,7 +64,7 @@ const getProjectById = projectId => {
       const squadConfig = slackConfig.squads[project.squad]
 
       project.squadName = squadConfig.name
-      project.slackChannel = squadConfig.slackChannel
+      project.slackChannelMergeRequest = squadConfig.slackChannelMergeRequest
 
       return project
     }
@@ -90,7 +90,7 @@ const hook = (req, res) => {
         resolve('Projeto não disponível!')
       }
 
-      slackHookUrl = squadProject.slackChannel
+      slackHookUrl = squadProject.slackChannelMergeRequest
 
       // open merge request
       if (squadProject.enabledHookMr === true && attributes.action === 'merge_request') {
@@ -131,7 +131,8 @@ const hook = (req, res) => {
       // push tag
       if (squadProject.enabledHookDeploy === true && attributes.action === 'tag_push') {
         // change channel to push the message
-        slackHookUrl = slackConfig.squads.tribo.slackChannel
+        // slackHookUrl = slackConfig.squads.tribo.slackChannelTag
+        slackHookUrl = squadProject.slackChannelTag
         attributes.squadName = squadProject.squadName
 
         if (attributes.message != null && attributes.message !== '') {
