@@ -65,6 +65,7 @@ const getProjectById = projectId => {
 
       project.squadName = squadConfig.name
       project.slackChannelMergeRequest = squadConfig.slackChannelMergeRequest
+      project.slackChannelTag = squadConfig.slackChannelTag
 
       return project
     }
@@ -132,6 +133,7 @@ const hook = (req, res) => {
       if (squadProject.enabledHookDeploy === true && attributes.action === 'tag_push') {
         // change channel to push the message
         // slackHookUrl = slackConfig.squads.tribo.slackChannelTag
+        console.log(squadProject);
         slackHookUrl = squadProject.slackChannelTag
         attributes.squadName = squadProject.squadName
 
@@ -152,6 +154,12 @@ const hook = (req, res) => {
     // slackHookUrl = 'REMOVED
 
     if (request != null) {
+      console.log('// Inicio request')
+      console.log(`URL: ${slackHookUrl}`)
+      console.log(`request: ${JSON.stringify(request)}`)
+      console.log(`Attributes: ${JSON.stringify(attributes)}`)
+      console.log('// Fim request')
+
       slackService
         .pushMessage(slackHookUrl, request, attributes)
         .then(r => {
