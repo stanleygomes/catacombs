@@ -44,13 +44,16 @@ const getTagMessage = data => {
 
 Tag: *${data.tagVersion}*
 Responsável: *${data.tagAuthor}* [${data.squadName}]
+Detalhes: *${data.cards.join(',')}*
 `
 
-  if (data.cards != null && data.cards.length > 0) {
-    return `${message}. Card(s): *${data.cards.join(',')}*`
-  }
-
   return message
+
+  // if (data.cards != null && data.cards.length > 0) {
+  //   return `${message}. Card(s): *${data.cards.join(',')}*`
+  // }
+
+  // return message
 }
 
 const getPipelineStartMessage = data => {

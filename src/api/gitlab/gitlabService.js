@@ -156,13 +156,13 @@ const hook = (req, res) => {
         .pushMessage(slackHookUrl, request, attributes)
         .then(r => {
           if (attributes.cards != null && attributes.cards.length > 0) {
-            const cards = attributes.cards.map(cardCode => {
-              return swiftKanbanService
-                .transferCardToDelivered(squadProject.squad, cardCode)
-            })
+            // const cards = attributes.cards.map(cardCode => {
+            //   return swiftKanbanService
+            //     .transferCardToDelivered(squadProject.squad, cardCode)
+            // })
 
-            Promise.all(cards)
-              .then(values => resolve(values))
+            // Promise.all(cards)
+            //   .then(values => resolve(values))
             resolve(r)
           } else {
             resolve(r)
