@@ -81,7 +81,7 @@ const appConfig = {
         id: 851,
         name: 'ms-operacao',
         url: 'https://gitlab.softbox.com.br/papaleguas/ms-operacao',
-        squad: 'planejamento',
+        squad: 'industria',
         enabledHookDeploy: true,
         enabledHookMr: true
       },
@@ -89,7 +89,7 @@ const appConfig = {
         id: 837,
         name: 'ms-cadastro',
         url: 'https://gitlab.softbox.com.br/papaleguas/ms-cadastro',
-        squad: 'planejamento',
+        squad: 'industria',
         enabledHookDeploy: true,
         enabledHookMr: true
       },
@@ -97,7 +97,7 @@ const appConfig = {
         id: 690,
         name: 'Cashlink Indústria',
         url: 'https://gitlab.softbox.com.br/tribo-financeiro/cashlink-industria',
-        squad: 'planejamento',
+        squad: 'industria',
         enabledHookDeploy: true,
         enabledHookMr: true
       },
@@ -105,7 +105,7 @@ const appConfig = {
         id: 836,
         name: 'papaleguas-gateway',
         url: 'https://gitlab.softbox.com.br/papaleguas/papaleguas-gateway',
-        squad: 'planejamento',
+        squad: 'industria',
         enabledHookDeploy: true,
         enabledHookMr: true
       },
@@ -113,7 +113,7 @@ const appConfig = {
         id: 91,
         name: 'cashlink_war',
         url: 'https://gitlab.softbox.com.br/cashlink/cashlink_war',
-        squad: 'planejamento',
+        squad: 'industria',
         enabledHookDeploy: true,
         enabledHookMr: true
       },
@@ -121,7 +121,7 @@ const appConfig = {
         id: 989,
         name: 'pricing',
         url: 'https://gitlab.softbox.com.br/PRICING/pricing',
-        squad: 'comercial',
+        squad: 'industria',
         enabledHookDeploy: true,
         enabledHookMr: true
       },
@@ -129,7 +129,7 @@ const appConfig = {
         id: 259,
         name: 'portal-execucao',
         url: 'https://gitlab.softbox.com.br/portal-execucao/portal-execucao',
-        squad: 'comercial',
+        squad: 'industria',
         enabledHookDeploy: true,
         enabledHookMr: true
       },
@@ -137,7 +137,7 @@ const appConfig = {
         id: 1000,
         name: 'produtos-clientes',
         url: 'https://gitlab.softbox.com.br/PRICING/produtos-clientes',
-        squad: 'comercial',
+        squad: 'industria',
         enabledHookDeploy: true,
         enabledHookMr: true
       },
@@ -145,7 +145,7 @@ const appConfig = {
         id: 1066,
         name: 'vortex-java',
         url: 'https://gitlab.softbox.com.br/vortex/vortex-java',
-        squad: 'comercial',
+        squad: 'industria',
         enabledHookDeploy: true,
         enabledHookMr: true
       },
@@ -153,7 +153,7 @@ const appConfig = {
         id: 196,
         name: 'vortex-frontend',
         url: 'https://gitlab.softbox.com.br/vortex/vortex-frontend',
-        squad: 'comercial',
+        squad: 'industria',
         enabledHookDeploy: true,
         enabledHookMr: true
       },
@@ -161,7 +161,7 @@ const appConfig = {
         id: 358,
         name: 'solucao-certa',
         url: 'https://gitlab.softbox.com.br/solucao_certa/solucao-certa',
-        squad: 'comercial',
+        squad: 'industria',
         enabledHookDeploy: true,
         enabledHookMr: true
       },
@@ -169,7 +169,7 @@ const appConfig = {
         id: 750,
         name: 'gpc2',
         url: 'https://gitlab.softbox.com.br/tradelinks/gpc2',
-        squad: 'trademarketing',
+        squad: 'industria',
         enabledHookDeploy: true,
         enabledHookMr: true
       },
@@ -177,7 +177,7 @@ const appConfig = {
         id: 1167,
         name: 'gpc-frontend',
         url: 'https://gitlab.softbox.com.br/tradelinks/gpc-frontend',
-        squad: 'trademarketing',
+        squad: 'industria',
         enabledHookDeploy: true,
         enabledHookMr: true
       },
@@ -209,7 +209,7 @@ const appConfig = {
         id: 1288,
         name: 'food-solution-app',
         url: 'https://gitlab.softbox.com.br/unilever/food-solution-app',
-        squad: 'comercial',
+        squad: 'industria',
         enabledHookDeploy: true,
         enabledHookMr: true
       },
@@ -217,15 +217,47 @@ const appConfig = {
         id: 1281,
         name: 'food-solution',
         url: 'https://gitlab.softbox.com.br/unilever/food-solution',
-        squad: 'comercial',
+        squad: 'industria',
         enabledHookDeploy: true,
         enabledHookMr: true
       },
       {
         id: 7591,
         name: 'middleware-hubsales',
-        url: 'https://gitlab.luizalabs.com/luizalabs/solucoes-mercado/comercial-industria/middleware-hubsales',
+        url: 'https://gitlab.luizalabs.com/luizalabs/solucoes-mercado/industria-industria/middleware-hubsales',
         squad: 'hubsales',
+        enabledHookDeploy: true,
+        enabledHookMr: true
+      },
+      {
+        id: 986,
+        name: 'gestao-amostras',
+        url: 'https://gitlab.softbox.com.br/unilever-fabrica/gestao-amostras',
+        squad: 'industria',
+        enabledHookDeploy: true,
+        enabledHookMr: true
+      },
+      {
+        id: 158,
+        name: 'serd',
+        url: 'https://gitlab.softbox.com.br/tradelinks/serd',
+        squad: 'industria',
+        enabledHookDeploy: true,
+        enabledHookMr: true
+      },
+      {
+        id: 762,
+        name: 'tradelinks/serd-core',
+        url: 'https://gitlab.softbox.com.br/tradelinks/tradelinks/serd-core',
+        squad: 'industria',
+        enabledHookDeploy: true,
+        enabledHookMr: true
+      },
+      {
+        id: 1030,
+        name: 'tradelinks/novo-serd',
+        url: 'https://gitlab.softbox.com.br/tradelinks/tradelinks/novo-serd',
+        squad: 'industria',
         enabledHookDeploy: true,
         enabledHookMr: true
       }
@@ -233,26 +265,26 @@ const appConfig = {
   },
   slack: {
     squads: {
-      planejamento: {
-        name: 'Squad Demandas Táticas',
-        slackChannelMergeRequest: 'REMOVED
-        slackChannelTag: 'REMOVED
-      },
+      // planejamento: {
+      //   name: 'Squad Demandas Táticas',
+      //   slackChannelMergeRequest: 'REMOVED
+      //   slackChannelTag: 'REMOVED
+      // },
       hubsales: {
         name: 'Squad Demandas Táticas',
         slackChannelMergeRequest: 'REMOVED
         slackChannelTag: 'REMOVED
       },
-      comercial: {
-        name: 'Squad Demandas Táticas',
+      industria: {
+        name: 'Squad Indústria',
         slackChannelMergeRequest: 'REMOVED
         slackChannelTag: 'REMOVED
       },
-      trademarketing: {
-        name: 'Squad Trade Marketing',
-        slackChannelMergeRequest: 'REMOVED
-        slackChannelTag: 'REMOVED
-      },
+      // trademarketing: {
+      //   name: 'Squad Trade Marketing',
+      //   slackChannelMergeRequest: 'REMOVED
+      //   slackChannelTag: 'REMOVED
+      // },
       tribo: {
         name: 'Tribo Soluções para o Mercado',
         slackChannelMergeRequest: 'REMOVED
@@ -268,13 +300,7 @@ const appConfig = {
   swiftKanban: {
     baseURL: 'https://login.swiftkanban.com/restapi',
     squads: {
-      planejamento: {
-        authorizationToken: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJwZXJzb25JZCI6MTQ3NTg2MSwiYXBwQWNjb3VudElkIjoxNTkwNzY3fQ.c7pvlcb-X6y5HliEdlF2tfTxynz-IpJVkOdXs_K8ZbQ',
-        boardId: 1628485,
-        lineToId: 1704022,
-        columnToId: 2827389
-      },
-      comercial: {
+      industria: {
         authorizationToken: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJwZXJzb25JZCI6MTQ3NTg2MCwiYXBwQWNjb3VudElkIjoxNTkwNzY3fQ.9U_0LXNKkOplMa0i92_e7UU8As5ahiorwG0CXhQWWq8',
         boardId: 1628483,
         lineToId: 1706762,
