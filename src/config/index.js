@@ -225,7 +225,7 @@ const appConfig = {
         id: 7591,
         name: 'middleware-hubsales',
         url: 'https://gitlab.luizalabs.com/luizalabs/solucoes-mercado/industria-industria/middleware-hubsales',
-        squad: 'hubsales',
+        squad: 'demandasTaticas',
         enabledHookDeploy: true,
         enabledHookMr: true
       },
@@ -260,6 +260,14 @@ const appConfig = {
         squad: 'industria',
         enabledHookDeploy: true,
         enabledHookMr: true
+      },
+      {
+        id: 1307,
+        name: 'tradelinks_produto/tradelinks_ads',
+        url: 'https://gitlab.softbox.com.br/tradelinks_produto/tradelinks_ads',
+        squad: 'demandasTaticas',
+        enabledHookDeploy: true,
+        enabledHookMr: true
       }
     ]
   },
@@ -270,7 +278,7 @@ const appConfig = {
       //   slackChannelMergeRequest: 'REMOVED
       //   slackChannelTag: 'REMOVED
       // },
-      hubsales: {
+      demandasTaticas: {
         name: 'Squad Demandas Táticas',
         slackChannelMergeRequest: 'REMOVED
         slackChannelTag: 'REMOVED

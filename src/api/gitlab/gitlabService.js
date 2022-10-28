@@ -133,7 +133,6 @@ const hook = (req, res) => {
       if (squadProject.enabledHookDeploy === true && attributes.action === 'tag_push') {
         // change channel to push the message
         // slackHookUrl = slackConfig.squads.tribo.slackChannelTag
-        console.log(squadProject);
         slackHookUrl = squadProject.slackChannelTag
         attributes.squadName = squadProject.squadName
 
