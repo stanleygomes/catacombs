@@ -1,6 +1,6 @@
 const config = require('../../config')
 const slackService = require('../slack/slackService')
-const swiftKanbanService = require('../swiftKanban/swiftKanbanService')
+// const swiftKanbanService = require('../swiftKanban/swiftKanbanService')
 
 const slackConfig = config.slack
 const gitlabConfig = config.gitlab
@@ -88,7 +88,11 @@ const hook = (req, res) => {
       squadProject = getProjectById(attributes.projectId)
 
       if (squadProject == null) {
-        resolve('Projeto não disponível!')
+        resolve({
+          status: 400,
+          message: 'Projeto não disponível!',
+          body: body
+        })
       }
 
       slackHookUrl = squadProject.slackChannelMergeRequest
@@ -120,7 +124,11 @@ const hook = (req, res) => {
             // ended
             textTemplate = slackService.getPipelineEndMessage(attributes)
           } else {
-            resolve('Pipeline não executada')
+            resolve({
+              status: 400,
+              message: 'Pipeline não executada',
+              body: body
+            })
           }
 
           request = {
