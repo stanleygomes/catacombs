@@ -180,7 +180,8 @@ const hook = (req, res) => {
       console.log('Hook não foi executado!')
       resolve({
         status: 400,
-        message: 'Request não executada.'
+        message: 'Request não executada.',
+        body: body
       })
     }
   })
