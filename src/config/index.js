@@ -279,7 +279,7 @@ const appConfig = {
       //   slackChannelTag: 'REMOVED
       // },
       demandasTaticas: {
-        name: 'Squad Demandas Táticas',
+        name: 'Squad Trade Ads & Hubsales',
         slackChannelMergeRequest: 'REMOVED
         slackChannelTag: 'REMOVED
       },
