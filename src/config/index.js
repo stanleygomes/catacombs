@@ -268,6 +268,30 @@ const appConfig = {
         squad: 'demandasTaticas',
         enabledHookDeploy: true,
         enabledHookMr: true
+      },
+       {
+        id: 10900,
+        name: 'brand-protection/sm-brandprotection-core',
+        url: 'https://gitlab.luizalabs.com/luizalabs/solucoes-mercado/brand-protection/sm-brandprotection-core',
+        squad: 'tradeMarcas',
+        enabledHookDeploy: true,
+        enabledHookMr: true
+      },
+       {
+        id: 11037,
+        name: 'brand-protection/sm-brandprotection-worker',
+        url: 'https://gitlab.luizalabs.com/luizalabs/solucoes-mercado/brand-protection/sm-brandprotection-worker',
+        squad: 'tradeMarcas',
+        enabledHookDeploy: true,
+        enabledHookMr: true
+      },
+       {
+        id: 10899,
+        name: 'brand-protection/sm-brandprotection-ui',
+        url: 'https://gitlab.luizalabs.com/luizalabs/solucoes-mercado/brand-protection/sm-brandprotection-ui',
+        squad: 'tradeMarcas',
+        enabledHookDeploy: true,
+        enabledHookMr: true
       }
     ]
   },
@@ -280,6 +304,11 @@ const appConfig = {
       // },
       demandasTaticas: {
         name: 'Squad Trade Ads & Hubsales',
+        slackChannelMergeRequest: 'REMOVED
+        slackChannelTag: 'REMOVED
+      },
+      tradeMarcas: {
+        name: 'Squad Trade Marcas',
         slackChannelMergeRequest: 'REMOVED
         slackChannelTag: 'REMOVED
       },
