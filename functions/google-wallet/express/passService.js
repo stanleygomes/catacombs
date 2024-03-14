@@ -142,27 +142,50 @@ const getUrlAddToGoogleWallet = async (email) => {
     hexBackgroundColor: "#4285f4",
     logo: {
       sourceUri: {
-        uri: "https://i.imgur.com/kXaImK2.png",
+        uri: "https://lh3.googleusercontent.com/ogw/AF2bZyhl9bpyR0MjKVb7mGgiX4ZWY1RQy5ufq_YiavMxj9Y=s32-c-mo",
+      },
+      contentDescription: {
+        defaultValue: {
+          language: "en-US",
+          value: "LOGO_IMAGE_DESCRIPTION",
+        },
       },
     },
     cardTitle: {
       defaultValue: {
-        language: "en",
-        value: "Sindicato dos Bancários de Uberlândia",
+        language: "en-US",
+        value: "Stanley Gomes",
       },
     },
     subheader: {
       defaultValue: {
-        language: "en",
-        value: "Associado",
+        language: "en-US",
+        value: "Sindicato",
       },
     },
     header: {
       defaultValue: {
-        language: "en",
-        value: "Pablo morumbi",
+        language: "en-US",
+        value: "Bancários de Uberlândia",
       },
     },
+    textModulesData: [
+      {
+        id: "cpf",
+        header: "CPF",
+        body: "111.111.111-11",
+      },
+      {
+        id: "celular",
+        header: "Celular",
+        body: "34 99999.9999",
+      },
+      {
+        id: "email",
+        header: "Email",
+        body: "stanleygomesdasilva@gmail.com",
+      },
+    ],
     barcode: {
       type: "QR_CODE",
       // 'value': `${objectId}`
@@ -170,21 +193,9 @@ const getUrlAddToGoogleWallet = async (email) => {
     },
     heroImage: {
       sourceUri: {
-        uri: "https://images.pexels.com/photos/358482/pexels-photo-358482.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        uri: "https://i.imgur.com/uC8b8qB.png",
       },
     },
-    textModulesData: [
-      {
-        header: "Email",
-        body: "pablodomorumbi@gmail.com",
-        id: "email",
-      },
-      {
-        header: "Telefone",
-        body: "(34) 99999.9999",
-        id: "phone",
-      },
-    ],
   };
 
   const credentials = getCredentials();
