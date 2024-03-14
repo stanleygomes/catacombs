@@ -1,39 +1,30 @@
-/*
- * Copyright 2022 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const { GoogleAuth } = require('google-auth-library');
 const jwt = require('jsonwebtoken');
 
-// TODO: Define Issuer ID
-const issuerId = 'ISSUER_ID';
+// // TODO: Define Issuer ID
+const issuerId = "3388000000022326214";
 
 // TODO: Define Class ID
 const classId = `${issuerId}.codelab_class`;
 
 const baseUrl = 'https://walletobjects.googleapis.com/walletobjects/v1';
 
-const credentials = require(process.env.GOOGLE_APPLICATION_CREDENTIALS);
+const credentials = require('./service-account.json');
 
 const httpClient = new GoogleAuth({
   credentials: credentials,
   scopes: 'https://www.googleapis.com/auth/wallet_object.issuer'
 });
+
+const exec = async () => {
+  var token = await httpClient.getAccessToken();
+  console.log("token", token);
+}
+
+exec()
 
 async function createPassClass(req, res) {
   // TODO: Create a Generic pass class
@@ -180,46 +171,47 @@ async function createPassObject(req, res) {
     'hexBackgroundColor': '#4285f4',
     'logo': {
       'sourceUri': {
-        'uri': 'https://storage.googleapis.com/wallet-lab-tools-codelab-artifacts-public/pass_google_logo.jpg'
+        'uri': 'https://i.imgur.com/kXaImK2.png'
       }
     },
     'cardTitle': {
       'defaultValue': {
         'language': 'en',
-        'value': 'Google I/O \'22'
+        'value': 'Sindicato dos Bancários de Uberlândia'
       }
     },
     'subheader': {
       'defaultValue': {
         'language': 'en',
-        'value': 'Attendee'
+        'value': 'Associado'
       }
     },
     'header': {
       'defaultValue': {
         'language': 'en',
-        'value': 'Alex McJacobs'
+        'value': 'Pablo morumbi'
       }
     },
     'barcode': {
       'type': 'QR_CODE',
-      'value': `${objectId}`
+      // 'value': `${objectId}`
+      'value': `http://google.com`
     },
     'heroImage': {
       'sourceUri': {
-        'uri': 'https://storage.googleapis.com/wallet-lab-tools-codelab-artifacts-public/google-io-hero-demo-only.jpg'
+        'uri': 'https://images.pexels.com/photos/358482/pexels-photo-358482.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
       }
     },
     'textModulesData': [
       {
-        'header': 'POINTS',
-        'body': '1234',
-        'id': 'points'
+        'header': 'Email',
+        'body': 'pablodomorumbi@gmail.com',
+        'id': 'email'
       },
       {
-        'header': 'CONTACTS',
-        'body': '20',
-        'id': 'contacts'
+        'header': 'Telefone',
+        'body': '(34) 99999.9999',
+        'id': 'phone'
       }
     ]
   };
@@ -247,8 +239,16 @@ const app = express();
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('public'));
-app.post('/', async (req, res) => {
+
+app.post('/create', async (req, res) => {
   await createPassClass(req, res);
   await createPassObject(req, res);
 });
-app.listen(3000);
+
+app.post("/teste", async (req, res) => {
+  res.send('Bom dia!')
+});
+
+app.listen(4000, () => {
+  console.log('Server started!');
+});
