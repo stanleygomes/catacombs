@@ -21,8 +21,8 @@ jobs:
     - name: Build
       run: npm run build
     - name: Set GOOGLE_APPLICATION_CREDENTIALS
-      run: |
-        echo "${{ secrets.GOOGLE_APPLICATION_CREDENTIALS_JSON }}" > ${GITHUB_WORKSPACE}/gcloud-key.json
-        export GOOGLE_APPLICATION_CREDENTIALS=${GITHUB_WORKSPACE}/gcloud-key.json
+      run: echo "${{ secrets.GOOGLE_APPLICATION_CREDENTIALS_JSON }}" > ${{ github.workspace }}/gcloud-key.json
     - name: Deploy
+      env:
+        GOOGLE_APPLICATION_CREDENTIALS: ${{ github.workspace }}/gcloud-key.json
       run: firebase deploy
