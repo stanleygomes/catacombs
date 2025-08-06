@@ -19,7 +19,7 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-npm run lint
+npm run lint:check
 if [ $? -ne 0 ]; then
     echo "❌ Linting check failed!"
     echo "Run 'npm run lint:fix' to fix linting issues."
