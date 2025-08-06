@@ -14,7 +14,7 @@ const compat = new FlatCompat({
 
 const eslintConfig = [
   {
-    ignores: ['.docusaurus/**'],
+    ignores: ['.docusaurus/**', 'build/**'],
   },
   ...compat.extends(
     'eslint:recommended',
