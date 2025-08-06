@@ -22,3 +22,6 @@ yarn-error.log*
 # Ignore editor/project files
 .vscode/
 .idea/
+
+# husky
+.husky/_
