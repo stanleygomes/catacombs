@@ -12,7 +12,7 @@ fi
 
 echo "🔍 Running pre-push checks..."
 
-npm run format:check
+npm run style:check
 if [ $? -ne 0 ]; then
     echo "❌ Code formatting check failed!"
     echo "Run 'npm run format' to fix formatting issues."

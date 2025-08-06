@@ -17,7 +17,7 @@ Esse projeto é uma documentação interativa sobre a vida e os ensinamentos de 
 
 - **Framework**: [Docusaurus](https://docusaurus.io/)
 - **Linguagem**: TypeScript
-- **Node.js**: >= 22.x
+- **Node.js**: >= 18.x (recomendado 22.x)
 
 ## 🚦 Como Executar o projeto
 
