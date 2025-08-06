@@ -50,4 +50,6 @@ jobs:
           base: master
           add-paths: |
             CHANGELOG.md
+            package.json
+            package-lock.json
           delete-branch: true
