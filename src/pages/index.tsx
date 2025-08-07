@@ -23,7 +23,7 @@ function HomepageHeader() {
             className='button button--secondary button--lg'
             to='/docs/intro'
           >
-            Docusaurus Tutorial - 5min ⏱️
+            Comece por aqui
           </Link>
         </div>
       </div>
@@ -32,13 +32,14 @@ function HomepageHeader() {
 }
 
 export default function Home(): ReactNode {
-  const { siteConfig } = useDocusaurusContext();
   return (
     <Layout
-      title={`Hello from ${siteConfig.title}`}
-      description='Description will go into a meta tag in <head />'
+      title={`A Graça, o perdão e o sacrifício`}
+      description='Embarque nessa jornada de aprendizado sobre a história Daquele que dividiu a história em antes e depois.'
     >
       <HomepageHeader />
+      Embarque nessa jornada de aprendizado sobre a história Daquele que dividiu
+      a história em antes e depois.
       <main>
         <HomepageFeatures />
       </main>
