@@ -81,9 +81,11 @@ const config: Config = {
           type: 'docSidebar',
           sidebarId: 'tutorialSidebar',
           position: 'left',
-          label: 'Tutorial',
+          label: 'Histórias',
         },
-        { to: '/blog', label: 'Blog', position: 'left' },
+        { to: '/principles', label: 'Princípios', position: 'right' },
+        { to: '/purpose', label: 'Propósito', position: 'right' },
+        // { to: '/blog', label: 'Blog', position: 'left' },
         /*
         {
           href: 'https://github.com/stanleygomes/the-lamb',
