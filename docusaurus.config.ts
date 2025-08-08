@@ -79,8 +79,20 @@ const config: Config = {
   ],
 
   themeConfig: {
-    // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
+    algolia: {
+      appId: 'IFHV34RV37',
+      apiKey: '91b78fc50ec992b5e00592801c15fe6c',
+      indexName: 'o_cordeiro_vercel_app_ifhv34rv37_pages',
+      contextualSearch: true,
+      // Optional: Replace parts of the item URLs from Algolia. Useful when using the same search index for multiple deployments using a different baseUrl. You can use regexp or string in the `from` param. For example: localhost:3000 vs myCompany.com/docs
+      // replaceSearchResultPathname: {
+      //   from: '/docs/', // or as RegExp: /\/docs\//
+      //   to: '/',
+      // },
+      searchPagePath: false,
+      insights: true,
+    },
     navbar: {
       title: 'O Cordeiro de Deus',
       logo: {
