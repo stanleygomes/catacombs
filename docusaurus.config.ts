@@ -41,8 +41,9 @@ const config: Config = {
       'classic',
       {
         docs: {
-          sidebarPath: './sidebars.ts',
-          // Please change this to your repo.
+          path: 'pages/stories',
+          routeBasePath: 'stories',
+          sidebarPath: './src/config/sidebars.ts',
           // Remove this to remove the "edit this page" links.
           /*
           editUrl:
