@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/stanleygomes/the-lamb/compare/v1.1.0...v1.2.0) (2025-08-08)
+
+
+### Features
+
+* configurando busca com algolia ([8d3c422](https://github.com/stanleygomes/the-lamb/commit/8d3c4224106875cec14179f32e47818a433f6d5b))
+
 # [1.1.0](https://github.com/stanleygomes/the-lamb/compare/v1.0.1...v1.1.0) (2025-08-07)
 
 
