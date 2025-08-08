@@ -9,6 +9,16 @@ const config: Config = {
   tagline: 'A Graça, o perdão e o sacrifício',
   favicon: 'img/favicon-16x16.png',
 
+  headTags: [
+    {
+      tagName: 'meta',
+      attributes: {
+        name: 'algolia-site-verification',
+        content: '812E0A58C849270E',
+      },
+    },
+  ],
+
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
     v4: true, // Improve compatibility with the upcoming Docusaurus v4
@@ -84,8 +94,8 @@ const config: Config = {
           position: 'left',
           label: 'Histórias',
         },
-        { to: '/principles', label: 'Princípios', position: 'right' },
-        { to: '/purpose', label: 'Propósito', position: 'right' },
+        { to: '/principles', label: 'Princípios', position: 'left' },
+        { to: '/purpose', label: 'Propósito', position: 'left' },
         // { to: '/blog', label: 'Blog', position: 'left' },
         /*
         {
