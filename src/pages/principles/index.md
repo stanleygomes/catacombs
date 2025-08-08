@@ -16,7 +16,7 @@ A Bíblia é a palavra de Deus e a fonte primária de autoridade para entender a
 
 ## 2. Jesus Cristo
 
-Toda história bíblica está centrada na figura de Jesus Cristo. Nele foram cumpridas as promessas feitas por Deus no antigo testamento e a revelação de Deus como um novo pacto com a humanidade foi estabelecida em sua vinda a este mundo.
+Toda história bíblica está centrada na figura de Jesus Cristo, o filho de Deus. Nele foram cumpridas as promessas feitas por Deus no antigo testamento e a revelação de Deus como um novo pacto com a humanidade foi estabelecida em sua vinda a este mundo.
 
 > "Porque todas as promessas de Deus se cumpriram nele. Por isso, por meio dele dizemos 'Amém', para a glória de Deus." - 2 Coríntios 1:20
 
