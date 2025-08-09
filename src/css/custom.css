@@ -30,5 +30,6 @@
 }
 
 .footer {
-  background-color: var(--ifm-color-primary-darkest);
+  color: var(--ifm-color-primary-darkest);
+  background-color: var(--docusaurus-highlighted-code-line-bg);
 }
