@@ -1,3 +1,13 @@
+# [1.3.0](https://github.com/stanleygomes/the-lamb/compare/v1.2.0...v1.3.0) (2025-08-09)
+
+
+### Features
+
+* configurando gtag ([9657df0](https://github.com/stanleygomes/the-lamb/commit/9657df09c651c790d6139e039aa0c5700b4d23bd))
+* imagens para a pagina de principios e proposito ([614cb54](https://github.com/stanleygomes/the-lamb/commit/614cb544a33683e3e9d8e86e0b34a5a95e5af45d))
+* logo do app ([7726c24](https://github.com/stanleygomes/the-lamb/commit/7726c242f1d8f6cc90e2a1ca5e04fdea60b02d5e))
+* suporte pwa ([16624b4](https://github.com/stanleygomes/the-lamb/commit/16624b4130bbf673a9da87ef9ceb69274d0512fa))
+
 # [1.2.0](https://github.com/stanleygomes/the-lamb/compare/v1.1.0...v1.2.0) (2025-08-08)
 
 
