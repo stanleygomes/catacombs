@@ -4,6 +4,8 @@ title: O propósito
 
 # O propósito
 
+![Purpose](/img/pages/purpose.png)
+
 Ideializei este projeto com o propósito de estudar e conhecer sobre as escrituras, histórias e ensinamentos de Jesus cristo. Desta forma, espero poder servir a Deus compartilhando aquilo que aprendi de forma simples e acessível, para que outras pessoas também possam despertar o interesse em aprender mais sobre Ele.
 
 ## Metodologia

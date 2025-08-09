@@ -4,6 +4,8 @@ title: Princípios base
 
 # Princípios base
 
+![Principles](/img/pages/principles.png)
+
 Para mim, é fundamental seguir princípios que garantam a confiabilidade do conteúdo e a intenção do autor, quando estudamos e compartilhamos conhecimento sobre as Escrituras e suas histórias.
 
 O mundo está cheio de intenções e interpretações que tem o objetivo de distorcer a verdade, para que atendam seus desejos e interesses pessoais.
