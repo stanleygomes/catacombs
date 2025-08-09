@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/stanleygomes/the-lamb/compare/v1.3.0...v1.4.0) (2025-08-09)
+
+
+### Features
+
+* componente de link para pagina ([63ffd60](https://github.com/stanleygomes/the-lamb/commit/63ffd600302924fc8084089e0ff73ad3938e79c5))
+
 # [1.3.0](https://github.com/stanleygomes/the-lamb/compare/v1.2.0...v1.3.0) (2025-08-09)
 
 
