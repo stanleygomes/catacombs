@@ -51,14 +51,9 @@ const config: Config = {
       '@docusaurus/preset-classic',
       {
         gtag: {
-          trackingID: 'G-QV8ZLXVXRM',
+          trackingID: 'G-999X9XX9XX',
           anonymizeIP: true,
         },
-      },
-    ],
-    [
-      'classic',
-      {
         docs: {
           path: 'pages/stories',
           routeBasePath: 'stories',
