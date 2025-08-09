@@ -7,7 +7,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 const config: Config = {
   title: 'O Cordeiro de Deus',
   tagline: 'A Graça, o perdão e o sacrifício',
-  favicon: 'img/favicon-16x16.png',
+  favicon: 'img/logo-v2.png',
 
   headTags: [
     {
@@ -97,7 +97,7 @@ const config: Config = {
       title: 'O Cordeiro de Deus',
       logo: {
         alt: 'Website Logo',
-        src: 'img/logo.png',
+        src: 'img/logo-v2.png',
       },
       items: [
         {
