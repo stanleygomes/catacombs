@@ -1,0 +1,51 @@
+{
+  "id": "/?source=pwa",
+  "short_name": "O Cordeiro de Deus",
+  "description": "A graça, o perdão e o sacrifício",
+  "name": "O cordeiro de Deus",
+  "start_url": "/?source=pwa",
+  "background_color": "#b89c7a",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#b89c7a",
+  "icons": [
+    {
+      "src": "/img/pwa/512x512.png",
+      "type": "image/svg+xml",
+      "sizes": "512x512"
+    },
+    {
+      "src": "/img/pwa/192x192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/img/pwa/512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Princípios",
+      "short_name": "Princípios",
+      "description": "A bússola usada para criar esse projeto.",
+      "url": "/principles?source=pwa",
+      "icons": [{ "src": "/img/pwa/192x192.png", "sizes": "192x192" }]
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/img/pwa/screenshot1.png",
+      "type": "image/png",
+      "sizes": "540x720",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "/img/pwa/screenshot2.png",
+      "type": "image/png",
+      "sizes": "540x720",
+      "form_factor": "narrow"
+    }
+  ]
+}
