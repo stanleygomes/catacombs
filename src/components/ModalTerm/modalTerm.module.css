@@ -1,0 +1,17 @@
+.trigger {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: var(--ifm-color-primary);
+  cursor: pointer;
+  text-decoration: underline;
+}
+.trigger:hover,
+.trigger:focus-visible {
+  color: var(--ifm-color-primary-darker);
+}
+.noUnderline {
+  text-decoration: none;
+}
