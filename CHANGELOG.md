@@ -1,3 +1,16 @@
+# [1.5.0](https://github.com/stanleygomes/the-lamb/compare/v1.4.0...v1.5.0) (2025-08-16)
+
+
+### Bug Fixes
+
+* comentar imagens removidas ([058e3bd](https://github.com/stanleygomes/the-lamb/commit/058e3bd456b6260c47ea8485d31d4399431d2e76))
+
+
+### Features
+
+* componente de modal ([5ea4989](https://github.com/stanleygomes/the-lamb/commit/5ea49896299b928d601ce0e48fe1476b7d868ee4))
+* criar pagina de genealogia ([f5dc7b7](https://github.com/stanleygomes/the-lamb/commit/f5dc7b76fc6d3fe7114aae0bb4909194bfc1f041))
+
 # [1.4.0](https://github.com/stanleygomes/the-lamb/compare/v1.3.0...v1.4.0) (2025-08-09)
 
 
