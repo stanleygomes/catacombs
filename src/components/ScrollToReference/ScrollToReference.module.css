@@ -1,0 +1,5 @@
+.scrollToRef {
+  color: var(--ifm-color-primary);
+  text-decoration: underline;
+  cursor: pointer;
+}
