@@ -1,6 +1,6 @@
 import React, { useState, ReactNode } from 'react';
 import Modal from '@site/src/components/Modal';
-import styles from './modalTerm.module.css';
+import styles from './modalContainer.module.css';
 
 export interface ModalTermProps {
   label: ReactNode;
