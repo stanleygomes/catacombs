@@ -1,3 +1,11 @@
+# [1.6.0](https://github.com/stanleygomes/the-lamb/compare/v1.5.0...v1.6.0) (2025-08-18)
+
+
+### Features
+
+* componente de imagem ([86458ce](https://github.com/stanleygomes/the-lamb/commit/86458cedddd1a3ce811ea6cf203ffb011c200c67))
+* componente de scroll para referencia ([a34e3f0](https://github.com/stanleygomes/the-lamb/commit/a34e3f07fac9b227632ee85c699bbde9e9ca667e))
+
 # [1.5.0](https://github.com/stanleygomes/the-lamb/compare/v1.4.0...v1.5.0) (2025-08-16)
 
 
