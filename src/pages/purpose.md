@@ -28,8 +28,8 @@ Não foi utilizada para gerar o conteúdo das histórias ou para interpretar as 
 
 ## Entre em contato
 
-Se você tiver sugestões, correções ou quiser compartilhar seu ponto de vista, envie um e-mail para:
+Se você tiver sugestões, correções ou quiser compartilhar seu ponto de vista:
 
-**nazarethlabs@gmail.com**
+[Entre em contato](/contact)
 
 Será um prazer receber seu contato!
