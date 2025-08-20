@@ -125,33 +125,46 @@ const config: Config = {
     footer: {
       style: 'dark',
       links: [
+        {
+          title: 'Histórias',
+          items: [
+            {
+              label: 'Comece aqui',
+              to: '/stories/intro',
+            },
+          ],
+        },
+        {
+          title: 'O Projeto',
+          items: [
+            {
+              label: 'Propósito',
+              to: '/purpose',
+            },
+            {
+              label: 'Princípios',
+              to: '/principles',
+            },
+          ],
+        },
+        {
+          title: 'Legal',
+          items: [
+            {
+              label: 'Termos de Uso',
+              to: '/terms-of-use',
+            },
+            {
+              label: 'Privacidade',
+              to: '/privacy-policy',
+            },
+            {
+              label: 'Contato',
+              to: '/contact',
+            },
+          ],
+        },
         /*
-        {
-          title: 'Docs',
-          items: [
-            {
-              label: 'Tutorial',
-              to: '/docs/intro',
-            },
-          ],
-        },
-        {
-          title: 'Community',
-          items: [
-            {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-            },
-            {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
-            },
-            {
-              label: 'X',
-              href: 'https://x.com/docusaurus',
-            },
-          ],
-        },
         {
           title: 'More',
           items: [
