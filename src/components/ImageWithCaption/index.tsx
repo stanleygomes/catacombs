@@ -3,7 +3,7 @@ import styles from './styles.module.css';
 
 export type ImageAlign = 'left' | 'center' | 'right';
 
-interface ImageWithCaptionProps {
+export interface ImageWithCaptionProps {
   src: string;
   alt?: string;
   caption?: string;
@@ -18,9 +18,9 @@ export default function ImageWithCaption({
   maxWidth = 400,
   align = 'center',
 }: ImageWithCaptionProps) {
-  let justifyContent: React.CSSProperties['justifyContent'] = 'center';
-  if (align === 'left') justifyContent = 'flex-start';
-  if (align === 'right') justifyContent = 'flex-end';
+  let imageAlign: React.CSSProperties['alignSelf'] = 'center';
+  if (align === 'left') imageAlign = 'flex-start';
+  if (align === 'right') imageAlign = 'flex-end';
 
   return (
     <figure
@@ -29,13 +29,7 @@ export default function ImageWithCaption({
         maxWidth: typeof maxWidth === 'number' ? `${maxWidth}px` : maxWidth,
         display: 'flex',
         flexDirection: 'column',
-        alignItems:
-          align === 'center'
-            ? 'center'
-            : align === 'left'
-              ? 'flex-start'
-              : 'flex-end',
-        justifyContent,
+        alignItems: 'center',
       }}
     >
       <img
@@ -46,6 +40,7 @@ export default function ImageWithCaption({
           maxWidth: '100%',
           width: '100%',
           display: 'block',
+          alignSelf: imageAlign,
         }}
       />
       {caption && <figcaption className={styles.caption}>{caption}</figcaption>}
