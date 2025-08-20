@@ -1,3 +1,12 @@
+# [1.7.0](https://github.com/stanleygomes/the-lamb/compare/v1.6.0...v1.7.0) (2025-08-20)
+
+
+### Features
+
+* melhorias na pagina intro ([a781bd5](https://github.com/stanleygomes/the-lamb/commit/a781bd59d1cc5aa387af53b970df5f302dea9afe))
+* pagina de contato ([a6448bb](https://github.com/stanleygomes/the-lamb/commit/a6448bbf1f6b02f4fb6a9707942835fdaeb3c0c8))
+* paginas de termos de uso e politica de privacidade ([715957a](https://github.com/stanleygomes/the-lamb/commit/715957a9f1f661b7fd09e77a37064ceccf3a3757))
+
 # [1.6.0](https://github.com/stanleygomes/the-lamb/compare/v1.5.0...v1.6.0) (2025-08-18)
 
 
