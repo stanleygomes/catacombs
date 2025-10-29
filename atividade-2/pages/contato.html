@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contato - Via Veritas Vita">
+  <title>Contato - Via Veritas Vita</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;700&family=Geist+Mono:wght@400;700&display=swap">
+  <link rel="stylesheet" href="../style/style.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1>Contato</h1>
+      <input type="checkbox" id="menu-hamburger" class="menu-hamburger" />
+      <label for="menu-hamburger" class="menu-toggle-label" aria-label="Abrir menu" tabindex="0">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+      <nav class="menu">
+        <a href="../index.html">Início</a>
+        <a href="projetos.html">Projetos</a>
+        <a href="cadastro.html">Cadastro</a>
+        <a href="contato.html">Contato</a>
+        <div class="menu-item">
+          <a href="#" class="menu-link" tabindex="0">Conteúdo ▼</a>
+          <div class="dropdown">
+            <a href="estudos.html">Estudos Bíblicos</a>
+            <a href="artigos.html">Artigos</a>
+            <a href="materiais.html">Materiais</a>
+          </div>
+        </div>
+      </nav>
+      <img src="../images/contato.jpg" alt="Contato" class="header-img">
+    </header>
+    <main>
+      <section>
+        <h2 style="text-align:center;">Fale Conosco</h2>
+        <div class="contato-box">
+          <div class="contato-info">
+            <p>Entre em contato com a equipe da ONG Via Veritas Vita para dúvidas, sugestões, parcerias ou informações sobre nossos projetos.</p>
+            <ul>
+              <li><strong>Email:</strong> contato@viaveritasvita.org</li>
+              <li><strong>Telefone:</strong> (11) 99999-9999</li>
+              <li><strong>Endereço:</strong> Rua Esperança, 123, São Paulo - SP</li>
+            </ul>
+            <p>Você também pode nos enviar uma mensagem pelo formulário abaixo:</p>
+          </div>
+          <form autocomplete="on" class="formulario">
+            <fieldset>
+              <legend>Mensagem</legend>
+              <label for="nome">Nome:</label>
+              <input type="text" id="nome" name="nome" required class="input-campo">
+              <label for="email">E-mail:</label>
+              <input type="email" id="email" name="email" required class="input-campo">
+              <label for="assunto">Assunto:</label>
+              <input type="text" id="assunto" name="assunto" required class="input-campo">
+              <label for="mensagem">Mensagem:</label>
+              <textarea id="mensagem" name="mensagem" required rows="5" class="input-campo"></textarea>
+              <button type="submit" class="btn">Enviar</button>
+            </fieldset>
+            <div style="margin-top:20px;">
+              <span class="badge badge-info">Fale Conosco</span>
+              <span class="badge badge-success">Equipe Pronta</span>
+              <span class="badge badge-danger">Resposta Rápida</span>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+  </div>
+    <footer class="footer">
+    <p>&copy; 2025 Via Veritas Vita. Todos os direitos reservados.</p>
+  </footer>
+</body>
+</html>
