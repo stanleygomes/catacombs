@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Cadastro de voluntários e apoiadores da ONG Via Veritas Vita">
+  <title>Cadastro - Via Veritas Vita</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;700&family=Geist+Mono:wght@400;700&display=swap">
+  <link rel="stylesheet" href="../style/style.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1>Cadastro</h1>
+      <input type="checkbox" id="menu-hamburger" class="menu-hamburger" />
+      <label for="menu-hamburger" class="menu-toggle-label" aria-label="Abrir menu" tabindex="0">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+      <nav class="menu">
+        <a href="../index.html">Início</a>
+        <a href="projetos.html">Projetos</a>
+        <a href="cadastro.html">Cadastro</a>
+        <a href="contato.html">Contato</a>
+        <div class="menu-item">
+          <a href="#" class="menu-link" tabindex="0">Conteúdo ▼</a>
+          <div class="dropdown">
+            <a href="estudos.html">Estudos Bíblicos</a>
+            <a href="artigos.html">Artigos</a>
+            <a href="materiais.html">Materiais</a>
+          </div>
+        </div>
+      </nav>
+      <img src="../images/cadastro.jpg" alt="Motivação para participar" class="header-img">
+    </header>
+    <main>
+      <section class="cadastro-box">
+        <h2>Formulário de Cadastro</h2>
+        <div style="display:flex;flex-wrap:wrap;gap:32px;align-items:flex-start;">
+          <div style="flex:1;min-width:220px;">
+            <p><strong>Junte-se a nós e faça parte da transformação!</strong></p>
+            <p>Acreditamos que cada pessoa pode ser instrumento de mudança na vida de jovens e famílias. Seja voluntário ou apoiador e contribua para espalhar a Palavra de Deus e valores cristãos na sociedade.</p>
+            <div style="display:flex;gap:16px;flex-wrap:wrap;">
+              <div style="flex:1;min-width:120px;">
+                <h3>Quero ser Voluntário</h3>
+                <p>Como voluntário, você participa diretamente dos projetos, eventos e ações sociais, ajudando jovens a crescerem na fé e no conhecimento bíblico. Receba capacitação, faça parte de uma equipe engajada e seja exemplo de amor ao próximo.</p>
+              </div>
+              <div style="flex:1;min-width:120px;">
+                <h3>Quero ser Apoiador</h3>
+                <p>Como apoiador, você contribui para a sustentabilidade dos projetos, seja com doações, divulgação ou apoio institucional. Sua participação é fundamental para que mais jovens sejam alcançados e transformados.</p>
+              </div>
+            </div>
+          </div>
+          <form id="cadastroForm" autocomplete="on" class="formulario" style="flex:1;min-width:220px;">
+            <fieldset>
+              <legend>Dados Pessoais</legend>
+              <label for="nome">Nome Completo:</label>
+              <input type="text" id="nome" name="nome" required placeholder="Ex: João da Silva" class="input-campo">
+
+              <label for="email">E-mail:</label>
+              <input type="email" id="email" name="email" required placeholder="Ex: joao@email.com" class="input-campo">
+
+              <label for="cpf">CPF:</label>
+              <input type="text" id="cpf" name="cpf" required maxlength="14" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" placeholder="Ex: 000.000.000-00" class="input-campo">
+
+              <label for="telefone">Telefone:</label>
+              <input type="tel" id="telefone" name="telefone" required maxlength="15" pattern="\(\d{2}\) \d{5}-\d{4}" placeholder="Ex: (11) 91234-5678" class="input-campo">
+
+              <label for="nascimento">Data de Nascimento:</label>
+              <input type="date" id="nascimento" name="nascimento" required class="input-campo">
+            </fieldset>
+            <fieldset>
+              <legend>Endereço</legend>
+              <label for="endereco">Endereço:</label>
+              <input type="text" id="endereco" name="endereco" required placeholder="Ex: Rua Esperança, 123" class="input-campo">
+
+              <label for="cep">CEP:</label>
+              <input type="text" id="cep" name="cep" required maxlength="9" pattern="\d{5}-\d{3}" placeholder="Ex: 00000-000" class="input-campo">
+
+              <label for="cidade">Cidade:</label>
+              <input type="text" id="cidade" name="cidade" required placeholder="Ex: São Paulo" class="input-campo">
+
+              <label for="estado">Estado:</label>
+              <input type="text" id="estado" name="estado" required maxlength="2" pattern="[A-Za-z]{2}" placeholder="Ex: SP" class="input-campo">
+            </fieldset>
+            <fieldset>
+              <legend>Tipo de Participação</legend>
+              <label><input type="radio" name="tipo" value="voluntario" required> Voluntário</label>
+              <label><input type="radio" name="tipo" value="apoiador" required> Apoiador</label>
+            </fieldset>
+            <button type="submit" class="btn">Enviar</button>
+            <div style="margin-top:30px;">
+              <span class="badge badge-success">Novo Voluntário</span>
+              <span class="badge badge-warning">Apoiador</span>
+              <span class="badge badge-secondary">Cadastro Aberto</span>
+            </div>
+          </form>
+        </div>
+        <section style="margin-top:32px;">
+          <h3>Instruções</h3>
+          <ul>
+            <li>Após o envio, nossa equipe entrará em contato por e-mail.</li>
+            <li>Voluntários recebem certificado digital de participação.</li>
+            <li>Apoiadores recebem relatórios de transparência anuais.</li>
+          </ul>
+        </section>
+      </section>
+    </main>
+    <footer class="footer">
+      <p>&copy; 2025 Via Veritas Vita. Todos os direitos reservados.</p>
+    </footer>
+  </div>
+</body>
+</html>
