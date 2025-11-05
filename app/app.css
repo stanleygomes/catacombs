@@ -56,7 +56,6 @@
   cursor: pointer;
   font-family: var(--font-family);
   font-weight: bold;
-  box-shadow: 0 2px 8px var(--color-success);
   transition: background 0.2s, box-shadow 0.2s, outline 0.2s;
   outline: none;
   position: relative;
