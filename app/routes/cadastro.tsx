@@ -17,10 +17,11 @@ export default function CadastroPage() {
   }, []);
 
   return (
-    <div>
-      <img src="../images/projetos.jpg" alt="Doação" className="header-img" />
-      <section className="cadastro-box">
-        <h2>Formulário de Cadastro</h2>
+    <main role="main" aria-label="Página de cadastro da ONG Via Veritas Vita">
+      <h1 className="sr-only">Cadastro - Via Veritas Vita</h1>
+      <img src="../images/projetos.jpg" alt="Banner ilustrativo de projetos sociais e cadastro" className="header-img" />
+      <section className="cadastro-box" aria-labelledby="cadastro-heading">
+        <h2 id="cadastro-heading">Formulário de Cadastro</h2>
         <div className="cadastro-box-flex">
           <div className="cadastro-info">
             <p><strong>Junte-se a nós e faça parte da transformação!</strong></p>
@@ -36,9 +37,9 @@ export default function CadastroPage() {
               </div>
             </div>
           </div>
-          <form id="cadastroForm" autoComplete="on" className="formulario cadastro-form">
+          <form id="cadastroForm" autoComplete="on" className="formulario cadastro-form" aria-labelledby="formulario-cadastro-legend">
             <fieldset>
-              <legend>Dados Pessoais</legend>
+              <legend id="formulario-cadastro-legend">Dados Pessoais</legend>
               <label htmlFor="nome">Nome Completo:</label>
               <input type="text" id="nome" name="nome" required placeholder="Ex: João da Silva" className="input-campo" />
               <label htmlFor="email">E-mail:</label>
@@ -74,8 +75,8 @@ export default function CadastroPage() {
             </div>
           </form>
         </div>
-        <section className="cadastro-instrucoes">
-          <h3>Instruções</h3>
+        <section className="cadastro-instrucoes" aria-labelledby="cadastro-instrucoes-heading">
+          <h3 id="cadastro-instrucoes-heading">Instruções</h3>
           <ul>
             <li>Após o envio, nossa equipe entrará em contato por e-mail.</li>
             <li>Voluntários recebem certificado digital de participação.</li>
@@ -83,6 +84,6 @@ export default function CadastroPage() {
           </ul>
         </section>
       </section>
-    </div>
+    </main>
   );
 }
