@@ -17,23 +17,24 @@ export default function ContatoPage() {
   }, []);
 
   return (
-    <div>
-      <img src="../images/contato.jpg" alt="Contato" className="header-img" />
-      <section>
-        <h2>Fale Conosco</h2>
+    <main role="main" aria-label="Página de contato da ONG Via Veritas Vita">
+      <h1 className="sr-only">Contato - Via Veritas Vita</h1>
+      <img src="../images/contato.jpg" alt="Equipe da ONG Via Veritas Vita pronta para atender" className="header-img" />
+      <section aria-labelledby="contato-heading">
+        <h2 id="contato-heading">Fale Conosco</h2>
         <div className="contato-box">
           <div className="contato-info">
             <p>Entre em contato com a equipe da ONG Via Veritas Vita para dúvidas, sugestões, parcerias ou informações sobre nossos projetos.</p>
             <ul>
-              <li><strong>Email:</strong> contato@viaveritasvita.org</li>
-              <li><strong>Telefone:</strong> (11) 99999-9999</li>
-              <li><strong>Endereço:</strong> Rua Esperança, 123, São Paulo - SP</li>
+              <li><strong>Email:</strong> <span aria-label="Email">contato@viaveritasvita.org</span></li>
+              <li><strong>Telefone:</strong> <span aria-label="Telefone">(11) 99999-9999</span></li>
+              <li><strong>Endereço:</strong> <span aria-label="Endereço">Rua Esperança, 123, São Paulo - SP</span></li>
             </ul>
             <p>Você também pode nos enviar uma mensagem pelo formulário abaixo:</p>
           </div>
-          <form autoComplete="on" className="formulario">
+          <form autoComplete="on" className="formulario" aria-labelledby="formulario-contato-legend">
             <fieldset>
-              <legend>Mensagem</legend>
+              <legend id="formulario-contato-legend">Mensagem</legend>
               <label htmlFor="nome">Nome:</label>
               <input type="text" id="nome" name="nome" required className="input-campo" />
               <label htmlFor="email">E-mail:</label>
@@ -52,6 +53,6 @@ export default function ContatoPage() {
           </form>
         </div>
       </section>
-    </div>
+    </main>
   );
 }

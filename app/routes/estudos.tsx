@@ -10,13 +10,13 @@ export function meta({}: Route.MetaArgs) {
 
 export default function EstudosPage() {
   return (
-    <div>
-      <section>
-        <h2>Recursos de Estudos</h2>
+    <main role="main" aria-label="Estudos Bíblicos">
+      <h1 className="sr-only">Estudos Bíblicos</h1>
+      <section aria-labelledby="estudos-heading">
+        <h2 id="estudos-heading">Recursos de Estudos</h2>
         <p>Nossos estudos bíblicos são desenvolvidos especialmente para jovens que desejam crescer na fé e no conhecimento da Palavra de Deus. Através de materiais didáticos, apostilas e recursos interativos, oferecemos conteúdo estruturado para facilitar o aprendizado teológico de forma prática e acessível. Cada material é cuidadosamente elaborado por nossa equipe de voluntários capacitados, visando fortalecer os fundamentos cristãos e promover reflexões profundas sobre as Escrituras.</p>
-        
         <p>Além dos estudos tradicionais, disponibilizamos roteiros temáticos que abordam questões relevantes do cotidiano jovem sob a perspectiva bíblica. Temas como propósito de vida, relacionamentos, liderança cristã e serviço ao próximo são explorados de maneira dinâmica e contextualizada. Nosso objetivo é equipar os jovens não apenas com conhecimento teórico, mas também com ferramentas práticas para aplicar os ensinamentos bíblicos em suas vidas diárias, contribuindo para sua formação integral como cidadãos e cristãos comprometidos.</p>
       </section>
-    </div>
+    </main>
   );
 }
