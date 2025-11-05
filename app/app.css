@@ -301,15 +301,15 @@ button[disabled] {
 
 :root {
   
-  --color-primary: #A3C9A8; 
-  --color-secondary: #f3efe1; 
-  --color-accent: #F9F7D9; 
-  --color-success: #B7E5DD; 
-  --color-danger: #F6A6B2; 
-  --color-warning: #FFE5B4; 
-  --color-info: #B4D8F7; 
-  --color-neutral: #F5F5DC; 
-  --color-dark: #2e3236; 
+  --color-primary: #357960;      /* verde escuro */
+  --color-secondary: #f3efe1;   /* bege claro (mantido, mas use texto escuro) */
+  --color-accent: #e6e2b6;      /* amarelo mais escuro */
+  --color-success: #21897e;     /* verde mais escuro */
+  --color-danger: #c0392b;      /* vermelho escuro */
+  --color-warning: #e1a948;     /* amarelo escuro */
+  --color-info: #1565c0;        /* azul escuro */
+  --color-neutral: #f5f5dc;     /* bege claro (mantido, mas use texto escuro) */
+  --color-dark: #2e3236;        /* cinza escuro */
   
   --font-family: 'Geist Mono', monospace;
   --font-size-xs: 12px;
