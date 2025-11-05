@@ -8,16 +8,6 @@ Esse projeto foi dividido em 4 atividades, com 4 entregas. Cada entrega foi sepa
 
 Na raiz do repositorio tem um arquivo `CHANGELOG.md` que contem o versionamento semântico do projeto.
 
-### Como gerar uma release
-
-Rode o comando dentro do repositorio:
-
-```bash
-npx standard-version
-```
-
-Esse comando é uma extensão do npm que vai ler os seus commits e validar se estão no padrão de semantic commits e com isso ele vai gerar a `nova tag` e atualizar o `CHANGELOG.md` e o `package.json` com a nova versão.
-
 ### Atividades
 
 **Atividade 1:**
@@ -35,6 +25,16 @@ Esse comando é uma extensão do npm que vai ler os seus commits e validar se es
 **Atividade 4:**
  - PR: https://github.com/stanleygomes/via-veritas-vita/pull/4
  - Branch: https://github.com/stanleygomes/via-veritas-vita/tree/atividade-4
+
+### Como gerar uma release
+
+Rode o comando dentro do repositorio:
+
+```bash
+npx standard-version
+```
+
+Esse comando é uma extensão do npm que vai ler os seus commits e validar se estão no padrão de semantic commits e com isso ele vai gerar a `nova tag` e atualizar o `CHANGELOG.md` e o `package.json` com a nova versão.
 
 ### Tags no git
 
