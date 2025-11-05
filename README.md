@@ -84,4 +84,23 @@ This template comes with [Tailwind CSS](https://tailwindcss.com/) already config
 
 ---
 
+
+## Acessibilidade: Navegação por Teclado
+
+O site oferece navegação aprimorada por teclado tanto no menu quanto nos formulários:
+
+- **Menu principal e dropdown:**
+	- Use <kbd>Tab</kbd> e <kbd>Shift</kbd>+<kbd>Tab</kbd> para mover entre os itens do menu.
+	- Use <kbd>Seta Direita</kbd> e <kbd>Seta Esquerda</kbd> para navegar entre os links.
+	- Pressione <kbd>Enter</kbd> ou <kbd>Seta para baixo</kbd> na opção "Conteúdo" para acessar o dropdown.
+	- Use <kbd>Seta para cima</kbd> e <kbd>Seta para baixo</kbd> para navegar entre os itens do dropdown.
+
+- **Formulários:**
+	- Use <kbd>Enter</kbd> ou <kbd>Seta para baixo</kbd> para avançar para o próximo campo.
+	- Use <kbd>Seta para cima</kbd> para voltar ao campo anterior.
+
+Esses atalhos tornam o site mais acessível e ágil para navegação sem mouse.
+
+---
+
 Built with ❤️ using React Router.
