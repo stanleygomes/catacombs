@@ -95,7 +95,3 @@ O site oferece navegação aprimorada por teclado tanto no menu quanto nos formu
 	- Use <kbd>Seta para cima</kbd> para voltar ao campo anterior.
 
 Esses atalhos tornam o site mais acessível e ágil para navegação sem mouse.
-
----
-
-Built with ❤️ using React Router.
