@@ -1,89 +1,52 @@
-# Welcome to React Router!
+# via-veritas-vita
 
-A modern, production-ready template for building full-stack React applications using React Router.
+Este é um site da ONG via-veritas-vita que busca ensinar teologia a jovens e mostrar o caminho que Jesus nos ensinou a andar. Queremos resgatar essas almas para junto de Cristo.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
+Esse projeto foi dividido em 4 atividades, com 4 entregas. Cada entrega foi separada em uma branch para poder acompanhar a evolução. Esse é nosso branching GitFlow.
 
-## Features
+## Versionamento
 
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
+Na raiz do repositorio tem um arquivo `CHANGELOG.md` que contem o versionamento semântico do projeto.
 
-## Getting Started
+## Como usar
 
-### Installation
+### Instalação
 
-Install the dependencies:
+Instale as dependências:
 
 ```bash
 npm install
 ```
 
-### Development
+### Desenvolvimento
 
-Start the development server with HMR:
+Inicie o servidor de desenvolvimento:
 
 ```bash
 npm run dev
 ```
 
-Your application will be available at `http://localhost:5173`.
+Sua aplicação estará disponível em `http://localhost:5173`.
 
-## Building for Production
+## Build para Produção
 
-Create a production build:
+Crie um build de produção. O build de produção gera um código minificado e otimiza as imagens.
 
 ```bash
 npm run build
 ```
 
-## Deployment
+## Acessibilidade: Suporte a Leitores de Tela
 
-### Docker Deployment
+Todas as páginas principais do site foram desenvolvidas com foco em acessibilidade para leitores de tela:
 
-To build and run using Docker:
+- Uso de elementos HTML semânticos (nav, main, header, footer, section, etc.) para facilitar a navegação por assistentes.
+- Inclusão de atributos ARIA relevantes para indicar funções, estados e relações entre componentes interativos.
+- Textos alternativos (alt) descritivos em todas as imagens e ícones.
+- Estrutura clara e hierárquica de títulos e seções.
+- Contraste minímo para texto normal de 4.5:1
 
-```bash
-docker build -t my-app .
-
-# Run the container
-docker run -p 3000:3000 my-app
-```
-
-The containerized application can be deployed to any platform that supports Docker, including:
-
-- AWS ECS
-- Google Cloud Run
-- Azure Container Apps
-- Digital Ocean App Platform
-- Fly.io
-- Railway
-
-### DIY Deployment
-
-If you're familiar with deploying Node applications, the built-in app server is production-ready.
-
-Make sure to deploy the output of `npm run build`
-
-```
-├── package.json
-├── package-lock.json (or pnpm-lock.yaml, or bun.lockb)
-├── build/
-│   ├── client/    # Static assets
-│   └── server/    # Server-side code
-```
-
-## Styling
-
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
-
----
-
+Essas práticas garantem que usuários de leitores de tela possam navegar, compreender e interagir com o conteúdo do site de forma eficiente.
 
 ## Acessibilidade: Navegação por Teclado
 
