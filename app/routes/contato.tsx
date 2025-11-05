@@ -1,5 +1,8 @@
 import type { Route } from "./+types/home";
 
+import { useEffect } from "react";
+import { enableKeyboardNavigation } from "../utils/focusNavigation";
+
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -9,11 +12,14 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function ContatoPage() {
+  useEffect(() => {
+    enableKeyboardNavigation(".formulario");
+  }, []);
+
   return (
     <div>
       <img src="../images/contato.jpg" alt="Contato" className="header-img" />
-
-        <section>
+      <section>
         <h2>Fale Conosco</h2>
         <div className="contato-box">
           <div className="contato-info">
