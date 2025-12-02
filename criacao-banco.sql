@@ -1,0 +1,44 @@
+CREATE DATABASE SolaScripturaDB;
+USE SolaScripturaDB;
+
+CREATE TABLE AUTOR (
+    ID_Autor INT PRIMARY KEY AUTO_INCREMENT,
+    Nome_Autor VARCHAR(100) NOT NULL,
+    Nacionalidade VARCHAR(50)
+);
+
+CREATE TABLE EDITORA (
+    ID_Editora INT PRIMARY KEY AUTO_INCREMENT,
+    Nome_Editora VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE MEMBRO (
+    ID_Membro INT PRIMARY KEY AUTO_INCREMENT,
+    Nome VARCHAR(100) NOT NULL,
+    CPF CHAR(11) NOT NULL UNIQUE,
+    Telefone VARCHAR(15),
+    Email VARCHAR(100),
+    Endereco VARCHAR(150)
+);
+
+CREATE TABLE LIVRO (
+    ISBN CHAR(13) PRIMARY KEY,
+    Titulo VARCHAR(150) NOT NULL,
+    Ano_Publicacao INT,
+    Status VARCHAR(20) CHECK (Status IN ('Disponível', 'Emprestado')),
+    ID_Autor INT,
+    ID_Editora INT,
+    FOREIGN KEY (ID_Autor) REFERENCES AUTOR(ID_Autor),
+    FOREIGN KEY (ID_Editora) REFERENCES EDITORA(ID_Editora)
+);
+
+CREATE TABLE EMPRESTIMO (
+    ID_Emprestimo INT PRIMARY KEY AUTO_INCREMENT,
+    Data_Retirada DATE NOT NULL,
+    Data_Prevista DATE NOT NULL,
+    Data_Real DATE,
+    ID_Membro INT,
+    ISBN CHAR(13),
+    FOREIGN KEY (ID_Membro) REFERENCES MEMBRO(ID_Membro),
+    FOREIGN KEY (ISBN) REFERENCES LIVRO(ISBN)
+);
