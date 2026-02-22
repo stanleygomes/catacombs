@@ -1,0 +1,43 @@
+version: '3.5'
+
+services:
+  sqliteweb:
+    image: tomdesinto/sqliteweb
+    ports:
+      - 9999:8080
+    volumes:
+      - ./data/sqlite/default.db:/db/database.db
+    command: database.db
+
+  mariadb:
+    image: mariadb
+    container_name: bibleapp-mariadb
+    restart: always
+    ports:
+      - 3308:3306
+    environment:
+      - MYSQL_DATABASE=bibleapp
+      - MYSQL_USER=bibleapp
+      - MYSQL_PASSWORD=bibleapp
+      - MYSQL_ROOT_PASSWORD=bibleapp
+    volumes:
+      - ./logs/mariadb:/var/log/mysql
+      - ./data/mariadb:/var/lib/mysql
+      - ./config/mysql.cnf:/etc/mysql/conf.d/mysql.cnf
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: bibleapp-phpmyadmin
+    restart: always
+    environment:
+      PMA_HOST: mariadb
+      PMA_PORT: 3306
+    ports:
+      - 8888:80
+    volumes:
+      - /sessions
+      - ./config/php.ini:/usr/local/etc/php/conf.d/php-phpmyadmin.ini
+    links:
+      - mariadb
+    depends_on:
+      - mariadb
