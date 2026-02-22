@@ -3,17 +3,23 @@ on:
   pull_request:
     branches:
     - master
+<<<<<<< HEAD
 <<<<<<<< HEAD:nodevader/.github/workflows/pr-test.yml
+=======
+>>>>>>> a79691d28030e4e275ec3d07b7cc0fc1e15d758a
   release:
     types: [published]
 jobs:
   build:
     name: Lint and Test on Ubuntu
+<<<<<<< HEAD
 ========
 jobs:
   build:
     name: Lint and Test
 >>>>>>>> a79691d28030e4e275ec3d07b7cc0fc1e15d758a:biblia-sagrada/.github/workflows/pr-test.yml
+=======
+>>>>>>> a79691d28030e4e275ec3d07b7cc0fc1e15d758a
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -30,3 +36,8 @@ jobs:
     - name: Lint and test
       run: |
         npm run test
+<<<<<<< HEAD
+=======
+      env:
+        CI: true
+>>>>>>> a79691d28030e4e275ec3d07b7cc0fc1e15d758a
