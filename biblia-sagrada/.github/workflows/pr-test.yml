@@ -3,17 +3,33 @@ on:
   pull_request:
     branches:
     - master
+<<<<<<< HEAD
 jobs:
   build:
 <<<<<<<< HEAD:pablo24por7/.github/workflows/pr-test.yml
     name: Lint and Test on Ubuntu
 ========
+=======
+<<<<<<<< HEAD:nodevader/.github/workflows/pr-test.yml
+  release:
+    types: [published]
+jobs:
+  build:
+    name: Lint and Test on Ubuntu
+========
+jobs:
+  build:
+>>>>>>> a79691d28030e4e275ec3d07b7cc0fc1e15d758a
     name: Lint and Test
 >>>>>>>> a79691d28030e4e275ec3d07b7cc0fc1e15d758a:biblia-sagrada/.github/workflows/pr-test.yml
     runs-on: ubuntu-latest
     strategy:
       matrix:
+<<<<<<< HEAD
         node-version: [10.x]
+=======
+        node-version: [12.x]
+>>>>>>> a79691d28030e4e275ec3d07b7cc0fc1e15d758a
     steps:
     - uses: actions/checkout@v1
     - name: Use Node.js ${{ matrix.node-version }}
