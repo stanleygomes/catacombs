@@ -1,0 +1,28 @@
+name: Lint and test
+on:
+  pull_request:
+    branches:
+    - master
+jobs:
+  build:
+<<<<<<<< HEAD:pablo24por7/.github/workflows/pr-test.yml
+    name: Lint and Test on Ubuntu
+========
+    name: Lint and Test
+>>>>>>>> a79691d28030e4e275ec3d07b7cc0fc1e15d758a:biblia-sagrada/.github/workflows/pr-test.yml
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [10.x]
+    steps:
+    - uses: actions/checkout@v1
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Install dependencies
+      run: |
+        npm install
+    - name: Lint and test
+      run: |
+        npm run test

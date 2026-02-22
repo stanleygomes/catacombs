@@ -5,7 +5,11 @@ on:
     - master
 jobs:
   build:
+<<<<<<<< HEAD:pablo24por7/.github/workflows/pr-test.yml
     name: Lint and Test on Ubuntu
+========
+    name: Lint and Test
+>>>>>>>> a79691d28030e4e275ec3d07b7cc0fc1e15d758a:biblia-sagrada/.github/workflows/pr-test.yml
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -22,5 +26,3 @@ jobs:
     - name: Lint and test
       run: |
         npm run test
-      env:
-        CI: true
