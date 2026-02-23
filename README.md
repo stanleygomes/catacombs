@@ -1,5 +1,7 @@
 # 🏛️ Catacombs
 
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=000) ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=fff) ![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=fff) ![PHP](https://img.shields.io/badge/PHP-777BB4?logo=php&logoColor=fff) ![SQL](https://img.shields.io/badge/SQL-336791) ![Dart](https://img.shields.io/badge/Dart-0175C2?logo=dart&logoColor=fff)
+
 📦 Arquivo pessoal de projetos antigos e experimentos. Este repositório reúne diversos projetos de diferentes tecnologias e linguagens, desenvolvidos ao longo do tempo — alguns para estudo, outros para uso real. Uma verdadeira catacumba de código! 🧱
 
 ---
